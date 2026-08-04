@@ -1,0 +1,607 @@
+{
+  "code": "pl",
+  "htmlLang": "pl",
+  "name": "Polish",
+  "nativeName": "Polski",
+  "dir": "ltr",
+
+  "meta": {
+    "home": {
+      "title": "Grand Property — nieruchomości w Pattayi i apartamenty inwestycyjne w Tajlandii",
+      "description": "Apartamenty inwestycyjne pod klucz w Pattayi, kupowane bezpośrednio od dewelopera. Pełna własność w kondominium dla obcokrajowców, elastyczne plany płatności i opieka po zakupie."
+    },
+    "projects": {
+      "title": "Inwestycje — kondominia od dewelopera w Pattayi | Grand Property",
+      "description": "Wyselekcjonowane inwestycje deweloperskie w Pattayi i na Wschodnim Wybrzeżu — ceny od, plany płatności i terminy oddania."
+    },
+    "thailand": {
+      "title": "Dlaczego Tajlandia — inwestowanie w nieruchomości w Pattayi | Grand Property",
+      "description": "Dlaczego Tajlandia jest bramą do Azji, jak Pattaya stała się jednym z najszybciej rosnących miast kraju i jak obcokrajowiec uzyskuje pełną własność."
+    },
+    "about": {
+      "title": "O nas — doradztwo inwestycyjne w Pattayi | Grand Property",
+      "description": "Grand Property to praktyka doradcza w Pattayi: bezpośredni dostęp do deweloperów, niezależne doradztwo i wsparcie, które nie kończy się na przekazaniu kluczy."
+    },
+    "search": {
+      "title": "Wyszukiwarka nieruchomości — Pattaya i Tajlandia | Grand Property",
+      "description": "Filtruj apartamenty i wille od deweloperów według lokalizacji, typu, ceny, planu płatności, liczby sypialni i statusu budowy."
+    },
+    "contact": {
+      "title": "Kontakt i konsultacja | Grand Property",
+      "description": "Umów prywatną konsultację na temat zakupu nieruchomości inwestycyjnej w Pattayi. Zakup zdalny — rozmowa, e-mail lub WhatsApp."
+    },
+    "project": {
+      "titleSuffix": "Grand Property",
+      "descriptionPrefix": "Apartamenty bezpośrednio od dewelopera od"
+    }
+  },
+
+  "nav": {
+    "projects": "Inwestycje",
+    "thailand": "Tajlandia",
+    "invest": "Inwestuj",
+    "about": "O nas",
+    "search": "Szukaj",
+    "contact": "Kontakt",
+    "menu": "Menu",
+    "close": "Zamknij",
+    "skip": "Przejdź do treści"
+  },
+
+  "lang": {
+    "switcher": "Język",
+    "current": "Aktualny język",
+    "en": "English",
+    "pl": "Polski",
+    "enShort": "EN",
+    "plShort": "PL",
+    "modalEyebrow": "Język",
+    "modalTitle": "Wybierz język strony",
+    "modalBody": "Ta strona jest w całości dostępna po polsku i po angielsku. Wybierz wersję, która Ci odpowiada — możesz ją zmienić w każdej chwili u góry strony.",
+    "modalHintPl": "Wygląda na to, że polska wersja będzie dla Ciebie wygodniejsza.",
+    "modalPrimary": "Kontynuuj po polsku",
+    "modalSecondary": "Continue in English",
+    "modalDismiss": "Zamknij wybór języka",
+    "remember": "Zapamiętamy Twój wybór na tym urządzeniu."
+  },
+
+  "common": {
+    "from": "Od",
+    "learnMore": "Dowiedz się więcej",
+    "viewAll": "Zobacz wszystkie inwestycje",
+    "viewProject": "Zobacz szczegóły inwestycji",
+    "bookCall": "Umów konsultację",
+    "backToProjects": "Wróć do wszystkich inwestycji",
+    "explore": "Nieruchomości",
+    "company": "Firma",
+    "getInTouch": "Kontakt",
+    "enquire": "Zapytaj o tę inwestycję",
+    "thb": "THB",
+    "sqm": "m²"
+  },
+
+  "hero": {
+    "eyebrow": "Pattaya",
+    "titleTop": "Ekspert",
+    "titleBottom": "Nieruchomości",
+    "taglineLine1": "Znajomość rynku. Zaufane doradztwo.",
+    "taglineLine2": "Wyniki na najwyższym poziomie.",
+    "name": "Eryk Fokt",
+    "role": "Doradca ds. nieruchomości",
+    "signatureAlt": "Podpis Eryka Fokta",
+    "ctaPrimary": "Zobacz inwestycje",
+    "ctaSecondary": "Umów konsultację",
+    "scroll": "Przewiń",
+    "search": {
+      "label": "Znajdź nieruchomość",
+      "location": "Lokalizacja",
+      "locationPlaceholder": "Gdzie chcesz mieszkać?",
+      "locationHint": "Pattaya, Jomtien, Pratumnak…",
+      "type": "Typ nieruchomości",
+      "typeAny": "Dowolny typ",
+      "price": "Przedział cenowy",
+      "priceAny": "Dowolna cena",
+      "bedrooms": "Sypialnie",
+      "bedroomsAny": "Dowolnie",
+      "submit": "Szukaj nieruchomości",
+      "popular": "Popularne lokalizacje"
+    }
+  },
+
+  "benefits": {
+    "eyebrow": "Dlaczego my",
+    "title": "Cztery rzeczy, które gwarantujemy",
+    "items": [
+      {
+        "id": "price",
+        "title": "Najlepsza cena",
+        "body": "Umowę zawieramy bezpośrednio z deweloperem, więc do Twojego zakupu nie dochodzi prowizja pośrednika — a cena z oferty jest ceną na formularzu rezerwacji."
+      },
+      {
+        "id": "turnkey",
+        "title": "Inwestycja pod klucz",
+        "body": "Apartamenty przekazujemy wykończone i umeblowane w standardzie, który od pierwszego dnia nadaje się pod wynajem lub do zamieszkania. Bez remontu i bez drugiego budżetu."
+      },
+      {
+        "id": "service",
+        "title": "Pełna obsługa",
+        "body": "Nasza praca zaczyna się przy odbiorze: najem, obsługa techniczna, ciągłość wynajmu, a w swoim czasie — odsprzedaż. Przez cały czas jedna osoba kontaktowa."
+      },
+      {
+        "id": "payment",
+        "title": "Elastyczne płatności",
+        "body": "Harmonogramy deweloperskie rozłożone nawet na cztery lata, 0% odsetek, z odroczonymi ratami w wybranych inwestycjach i wkładem własnym, który nie blokuje kapitału."
+      }
+    ]
+  },
+
+  "pattaya": {
+    "eyebrow": "Lokalizacja",
+    "title": "Wybierz miejsce, w którym inwestycja i życie stają się jedną decyzją",
+    "lead": "Pattaya to już nie tylko kurort nad Zatoką Tajlandzką. To jedno z najszybciej rozwijających się miast w kraju — nadmorska gospodarka z międzynarodowym popytem, realną infrastrukturą i jakością życia, do której właściciele wracają.",
+    "body1": "Miasto leży w granicach Wschodniego Korytarza Gospodarczego (EEC), sztandarowego programu rozwojowego Tajlandii, i około dwóch godzin od międzynarodowego lotniska w Bangkoku. Inwestycje drogowe, kolejowe i mariny wciąż zmieniają linię brzegową, a każda z nich skraca dystans między Pattayą a resztą Azji.",
+    "body2": "Dla właściciela to nietypowe połączenie: kierunek wakacyjny z całorocznym ruchem, osiadła społeczność międzynarodowa i rynek, na którym wykończony apartament z widokiem na morze wciąż kosztuje ułamek europejskiego odpowiednika.",
+    "imageAlt": "Widok z lotu ptaka na zatokę Pattaya i panoramę miasta o zmierzchu",
+    "stats": [
+      { "value": "EEC", "label": "W granicach Wschodniego Korytarza Gospodarczego" },
+      { "value": "~2 godz.", "label": "Od międzynarodowego lotniska w Bangkoku" },
+      { "value": "49%", "label": "Limit własności zagranicznej w kondominium" },
+      { "value": "12 mies.", "label": "Sezon wynajmu, który praktycznie się nie kończy" }
+    ],
+    "points": [
+      {
+        "title": "Miasto, które wciąż się buduje",
+        "body": "Inwestycje w drogi, kolej i mariny w ramach programu EEC stale poszerzają zasięg miasta — a wraz z nim grupę najemców i kupujących."
+      },
+      {
+        "title": "Tropiki tuż za progiem",
+        "body": "Plaże Jomtien i Pratumnak, wyspy wokół Koh Larn, parki narodowe w głębi lądu i klimat, który sprawia, że balkon staje się najczęściej używanym pomieszczeniem."
+      },
+      {
+        "title": "Goście z całego świata",
+        "body": "Przez region przewijają się co roku miliony podróżnych z Europy, Zatoki Perskiej i całej Azji. To właśnie ten ruch stoi za obłożeniem najmu krótkoterminowego."
+      },
+      {
+        "title": "Życie, nie tylko pozycja w arkuszu",
+        "body": "Mariny, pola golfowe, szkoły międzynarodowe, prywatne szpitale i gastronomia od street foodu po fine dining. Ludzie tu inwestują, a potem znajdują powody, żeby zostać."
+      }
+    ]
+  },
+
+  "ownership": {
+    "eyebrow": "Własność",
+    "title": "Jak obcokrajowiec zostaje właścicielem nieruchomości w Tajlandii",
+    "lead": "Zakup mieszkania w kondominium to najprostsza droga na tajski rynek i ta o najczytelniejszej podstawie prawnej dla cudzoziemca. Cztery kroki — i żaden z nich nie wymaga obecności w kraju.",
+    "imageAlt": "Rysunki architektoniczne, mosiężny klucz i teczka z dokumentami na ciemnym biurku",
+    "steps": [
+      {
+        "n": "01",
+        "title": "Kup w ramach limitu zagranicznego",
+        "body": "Prawo tajskie pozwala zarejestrować na cudzoziemców do 49% powierzchni sprzedażowej budynku kondominium. Lokale w tym limicie możesz nabyć osobiście, na pełną własność."
+      },
+      {
+        "n": "02",
+        "title": "Przelej środki z zagranicy",
+        "body": "Pieniądze na zakup muszą wpłynąć do Tajlandii z rachunku zagranicznego w obcej walucie. Bank przyjmujący wystawia następnie zaświadczenie, którego wymaga urząd ziemski."
+      },
+      {
+        "n": "03",
+        "title": "Zarejestruj w urzędzie ziemskim",
+        "body": "Własność zostaje wpisana na Ciebie w prowincjonalnym Departamencie Ziemi, a akt własności jest wydany na Twoje nazwisko. Na podstawie pełnomocnictwa dopełniamy tego za Ciebie."
+      },
+      {
+        "n": "04",
+        "title": "Trzymaj na pełną własność",
+        "body": "Pełna własność lokalu w kondominium jest bezterminowa. Możesz go wynajmować, sprzedać albo przekazać spadkobiercom — to nie jest dzierżawa i nie wygasa."
+      }
+    ],
+    "factsTitle": "Najważniejsze fakty",
+    "facts": [
+      { "k": "Limit zagraniczny", "v": "49% budynku" },
+      { "k": "Rodzaj tytułu", "v": "Pełna własność, nie dzierżawa" },
+      { "k": "Pochodzenie środków", "v": "Udokumentowane z zagranicy" },
+      { "k": "Rejestracja", "v": "Prowincjonalny urząd ziemski" },
+      { "k": "Twoja obecność", "v": "Opcjonalna — zakup zdalny" }
+    ],
+    "note": "To streszczenie w prostym języku, a nie porada prawna. Każdy zakup, który prowadzimy, jest sprawdzany przez niezależnego tajskiego prawnika przed podpisaniem czegokolwiek — i przedstawiamy go na początku, a nie na końcu.",
+    "cta": "Przeczytaj pełny przewodnik"
+  },
+
+  "advantages": {
+    "eyebrow": "Argumenty inwestycyjne",
+    "title": "Dlaczego kapitał płynie do Tajlandii",
+    "lead": "Tajlandia to brama do Azji — regionalny hub z rynkiem otwartym dla zagranicznych nabywców mieszkań i naturalne miejsce, by ulokować aktywa poza Europą.",
+    "groups": [
+      {
+        "title": "Rynek",
+        "items": [
+          "Wzrost wartości w miejscu, w którym ludzie naprawdę chcą być",
+          "Dynamiczny azjatycki rynek nieruchomości z realnym wolumenem transakcji",
+          "Ceny wciąż atrakcyjne wobec porównywalnych rynków nadmorskich w Europie",
+          "Dywersyfikacja kapitału w innej walucie i innym cyklu gospodarczym"
+        ]
+      },
+      {
+        "title": "Nieruchomość",
+        "items": [
+          "Apartamenty w inwestycjach klasy pięciogwiazdkowej, a nie lokale wyłącznie pod inwestora",
+          "Pełna infrastruktura — baseny, siłownia, sauna, coworking, ochrona 24/7",
+          "Wykończenie i umeblowanie pod klucz, gotowe od dnia odbioru",
+          "Stabilny potencjał najmu — zarówno długoterminowego, jak i krótkoterminowego"
+        ]
+      },
+      {
+        "title": "Proces",
+        "items": [
+          "Doświadczeni partnerzy deweloperscy z ukończonymi inwestycjami",
+          "Zakup bezpośredni, bez prowizji pośrednika doliczanej do ceny",
+          "Zdalna obsługa prawna i zakup na podstawie pełnomocnictwa",
+          "Zarządzanie najmem po zakupie, żeby nieruchomość zarabiała"
+        ]
+      }
+    ]
+  },
+
+  "projects": {
+    "eyebrow": "Wybrane inwestycje",
+    "title": "Inwestycje, za którymi stoimy",
+    "lead": "Krótka lista zamiast długiej. Każda inwestycja tutaj to taka, którą odwiedziliśmy, z której deweloperem pracowaliśmy i pod której liczbami jesteśmy gotowi się podpisać.",
+    "cta": "Zobacz wszystkie inwestycje",
+    "labels": {
+      "from": "Od",
+      "plan": "Plan płatności",
+      "completion": "Termin oddania",
+      "location": "Lokalizacja",
+      "bedrooms": "Sypialnie",
+      "size": "Metraże od",
+      "status": "Status",
+      "highlights": "Najważniejsze atuty",
+      "view": "Zobacz szczegóły inwestycji",
+      "floors": "Kondygnacje",
+      "units": "Lokale",
+      "gallery": "Galeria",
+      "overview": "Opis",
+      "facts": "Kluczowe dane",
+      "enquire": "Zapytaj o tę inwestycję",
+      "similar": "Inne inwestycje"
+    },
+    "page": {
+      "eyebrow": "Portfolio",
+      "title": "Aktualne inwestycje",
+      "lead": "Apartamenty i wille bezpośrednio od deweloperów w Pattayi i na Wschodnim Wybrzeżu. Filtruj według tego, co dla Ciebie ważne, albo poproś nas o listę pod konkretny budżet i oczekiwaną rentowność.",
+      "filterAll": "Wszystkie inwestycje",
+      "filterReady": "Gotowe do zamieszkania",
+      "filterOffplan": "W budowie",
+      "count": "Inwestycje: {n}",
+      "countOne": "1 inwestycja"
+    },
+    "items": {
+      "aurea-bayfront": {
+        "name": "Aurea Bayfront Residences",
+        "tagline": "Życie przy plaży na nabrzeżu Jomtien",
+        "summary": "44-piętrowa wieża postawiona bezpośrednio przy plaży Jomtien, z basenem na czterdziestym piętrze i klubem plażowym dla mieszkańców na poziomie terenu. Każdy lokal powyżej dziesiątego piętra ma niezasłonięty widok na morze.",
+        "body": "Aurea to flagowa inwestycja dewelopera na południowym wybrzeżu i ostatnia wolna działka tej wielkości przy plaży w tej dzielnicy. Budynek zaprojektowano tak, by komunikacja znalazła się od strony lądu, a część mieszkalna od strony wody — prosta decyzja, dzięki której niemal każdy apartament ma widok na morze, a nie tylko jego skrawek z boku. Odbiór następuje w pełni umeblowany, a program najmu dewelopera jest dostępny dla właścicieli od momentu oddania.",
+        "highlights": [
+          "Położenie bezpośrednio przy plaży",
+          "Basen i lounge na 40. piętrze",
+          "W pełni umeblowany przy odbiorze",
+          "Plan płatności na 4 lata, 0% odsetek"
+        ]
+      },
+      "celeste-skyline": {
+        "name": "Celeste Skyline Residences",
+        "tagline": "Panorama zatoki ze wzgórza Pratumnak",
+        "summary": "Trzydzieści osiem pięter po spokojniejszej stronie wzgórza Pratumnak, z widokiem na północ, na całą zatokę Pattaya. Większe układy, niższa gęstość zabudowy i prywatny sky lounge na ostatnim piętrze.",
+        "body": "Pratumnak od dawna jest adresem dla kupujących, którzy chcą zatoki bez zgiełku bulwaru. Celeste wykorzystuje tę lokalizację i dokłada skalę: przestronne układy od jednej do trzech sypialni, wysokości powyżej rynkowego standardu oraz program zarządzania najmem sprawdzony już w dwóch wcześniejszych wieżach dewelopera. Położenie na wzgórzu oznacza, że widoku broni ukształtowanie terenu, a nie obietnice.",
+        "highlights": [
+          "Niezasłonięty widok na zatokę Pattaya",
+          "Prywatny sky lounge i basen infinity",
+          "Dostępny program zarządzania najmem",
+          "Plan płatności na 3 lata, 0% odsetek"
+        ]
+      },
+      "verdana-lagoon": {
+        "name": "Verdana Lagoon Suites",
+        "tagline": "Niska zabudowa w kurortowym Na Jomtien",
+        "summary": "Ukończona i zasiedlona. Osiem niskich budynków wokół laguny basenowej o powierzchni 1 800 m² w Na Jomtien, kawałek na południe od miasta i minutę od wody.",
+        "body": "Verdana to opcja dla kupującego, który chce, żeby nieruchomość zarabiała teraz, a nie za trzy lata. Inwestycja jest wykończona, zieleń zdążyła się rozrosnąć, a obłożenie w puli najmu jest już ustabilizowane. Gęstość zabudowy jest celowo niska — osiem budynków po osiem pięter zamiast jednej wieży — i to właśnie sprawia, że w szczycie sezonu kurort nadal przypomina kurort.",
+        "highlights": [
+          "Gotowe do zamieszkania i już wynajmowane",
+          "Laguna basenowa 1 800 m² w centrum założenia",
+          "Niska, rozproszona zabudowa",
+          "Plan płatności na 2 lata dla pozostałych lokali"
+        ]
+      },
+      "meridian-grand": {
+        "name": "Meridian Grand Tower",
+        "tagline": "Centrum Pattayi, spacer od Beach Road",
+        "summary": "Czterdzieści jeden pięter w centrum miasta, z dwukondygnacyjnym sky lobby i widokami na zatokę oraz miasto. Najsilniejszy popyt na najem krótkoterminowy w całym portfolio.",
+        "body": "Tutaj pracuje lokalizacja. Meridian stoi w zasięgu spaceru od Beach Road, Central Festival i południowego krańca zatoki — a to dokładnie ten obszar, który napędza stawki za dobę w szczycie sezonu. Deweloper utrzymał efektywne metraże lokali i hojnie potraktował piętro rekreacyjne — połączenie zaprojektowane pod wyniki najmu, a nie pod folder reklamowy.",
+        "highlights": [
+          "Spacer od Beach Road",
+          "Widok na miasto i zatokę od 12. piętra",
+          "Najwyższy popyt na najem krótkoterminowy w portfolio",
+          "Plan płatności na 3 lata, 0% odsetek"
+        ]
+      },
+      "seranai-wongamat": {
+        "name": "Seranai Wongamat Penthouses",
+        "tagline": "Dziewięćdziesiąt sześć rezydencji na północnej plaży",
+        "summary": "Ukończona butikowa wieża przy plaży Wongamat — spokojnym północnym odcinku — z zaledwie dziewięćdziesięcioma sześcioma rezydencjami i dwupoziomowymi penthouse'ami na trzech najwyższych piętrach.",
+        "body": "Wongamat to miejsce, do którego trafiają mieszkańcy długoterminowi po tym, jak spróbowali reszty wybrzeża. Seranai jest mała jak na tutejsze standardy i odpowiednio wyceniona: mniej, ale większych apartamentów, prywatny dostęp do plaży i standard obsługi bliższy hotelowi niż kondominium. Górne apartamenty dwupoziomowe to największe układy na pełną własność, jakie obecnie reprezentujemy.",
+        "highlights": [
+          "Tylko 96 rezydencji z prywatnym dostępem do plaży",
+          "Dwupoziomowe penthouse'y na trzech górnych piętrach",
+          "Inwestycja ukończona i w pełni działająca",
+          "Obsługa mieszkańców na poziomie hotelowym"
+        ]
+      },
+      "palmera-bangsaray": {
+        "name": "Palmera Bangsaray Villas",
+        "tagline": "Trzydzieści cztery wille z prywatnym basenem nad morzem",
+        "summary": "Zamknięte osiedle trzydziestu czterech willi z trzema i czterema sypialniami w Bangsaray, każda z prywatnym basenem, dwadzieścia minut na południe od Pattayi i kilkaset metrów od plaży.",
+        "body": "Bangsaray to rybacka wioska, do której ekspansja Pattayi jeszcze nie dotarła — i na tym polega cały jej urok. Palmera powstała z myślą o kupujących, którzy chcą ziemi i przestrzeni zamiast numeru piętra: wille parterowe i dwupoziomowe na prywatnych działkach, pawilon plażowy dla mieszkańców oraz firma zarządzająca, która obsługuje wille jako najem krótkoterminowy pod nieobecność właścicieli.",
+        "highlights": [
+          "Prywatny basen przy każdej willi",
+          "Zamknięte osiedle tylko 34 domów",
+          "Pawilon plażowy dla mieszkańców",
+          "Plan płatności na 3 lata, 0% odsetek"
+        ]
+      }
+    }
+  },
+
+  "about": {
+    "eyebrow": "Moje podejście",
+    "title": "Najpierw doradztwo. Transakcja przychodzi później.",
+    "lead": "Spędziłem lata na rynku w Pattayi i to, co naprawdę się liczy, rzadko jest samą ofertą — liczy się wiedza, który deweloper dowozi na czas, który budynek nadal będzie się wynajmował za pięć lat i której transakcji lepiej nie robić.",
+    "body1": "Grand Property zbudowałem wokół bezpośrednich relacji z deweloperami i niezależnego doradztwa. Dostajesz tę samą ofertę w tej samej cenie, co wchodząc do biura sprzedaży osobiście — bez warstwy prowizji i z kimś po Twojej stronie stołu, kto czyta umowę.",
+    "body2": "Czy kupujesz apartament z widokiem na morze pod wynajem, przenosisz kapitał poza Europę, czy planujesz życie zaczynające się w cieplejszym miejscu — proces powinien być jasny, udokumentowany i spokojny. I to jest cała ta praca.",
+    "closing1": "Twoje cele wyznaczają zakres.",
+    "closing2": "Zbudujmy Twoją pozycję w Tajlandii.",
+    "cta": "Przeczytaj więcej o nas",
+    "imageAlt": "Taras z basenem infinity o zachodzie słońca nad Zatoką Tajlandzką",
+    "pillars": [
+      {
+        "title": "Znajomość rynku",
+        "body": "Wiedza z pierwszej ręki o dzielnicach Pattayi, deweloperach i cenach — o rzeczach, które nigdy nie trafiają do folderu."
+      },
+      {
+        "title": "Nastawienie na klienta",
+        "body": "Osobista obsługa oparta na przejrzystości i długich relacjach, a nie na liczbie transakcji."
+      },
+      {
+        "title": "Selekcja premium",
+        "body": "Krótka lista inwestycji spełniających nasze własne standardy jakości wykonania, lokalizacji i wartości."
+      },
+      {
+        "title": "Mądre inwestowanie",
+        "body": "Doradztwo oparte na rentowności, ścieżkach wyjścia i realnych danych o obłożeniu — tak, żeby liczby się broniły."
+      }
+    ],
+    "page": {
+      "eyebrow": "O nas",
+      "title": "Praktyka doradcza, a nie portal z ogłoszeniami",
+      "lead": "Grand Property doradza międzynarodowym nabywcom w zakupie, utrzymaniu i późniejszej sprzedaży nieruchomości mieszkalnych w Tajlandii. Pracujemy z wąską grupą deweloperów, krótką listą inwestycji i klientami, którzy zamierzają zatrzymać nieruchomość.",
+      "storyTitle": "Dlaczego istniejemy",
+      "story1": "Większość ludzi trafia na rynek nieruchomości w Pattayi przez wyszukiwarkę i biuro sprzedaży — w tej kolejności. Pokazuje im się to, co w danym miesiącu daje najwyższą prowizję, podaje się wskaźnik rentowności, który najszybciej domyka sprzedaż, i zostawia samym sobie w dniu przeniesienia własności. To działa — dla wszystkich poza kupującym.",
+      "story2": "Grand Property powstało, żeby to odwrócić. Umowy zawieramy bezpośrednio z deweloperami, więc nasz przychód nie zależy od tego, który budynek wybierzesz. Przed podpisaniem czegokolwiek stawiamy przed Tobą niezależnego tajskiego prawnika. I zostajemy po odbiorze, bo apartament na wynajem, którym nikt nie zarządza, nie jest inwestycją — jest kosztem.",
+      "missionTitle": "Po co jesteśmy",
+      "mission": "Żeby posiadanie nieruchomości w Tajlandii było równie przemyślane, udokumentowane i zwyczajne, co posiadanie nieruchomości w kraju — dla ludzi, którzy robią to z odległości czterech tysięcy mil.",
+      "expertiseTitle": "Znajomość rynku",
+      "expertise1": "Śledzimy terminy oddania, opóźnienia, ceny odsprzedaży i obłożenie najmu w dzielnicach, w których sprzedajemy. To właśnie ta wiedza pozwala nam powiedzieć, która inwestycja jest warta czteroletniego planu płatności, a od której lepiej odejść.",
+      "expertise2": "Dzięki temu możemy też mówić konkretnie. Nie „duży popyt na najem”, tylko ile realnie osiągnęło dwupokojowe mieszkanie przy tej ulicy w ostatnim wysokim sezonie i jak długo stało puste w maju.",
+      "philosophyTitle": "Jak pracujemy z klientami",
+      "philosophy": [
+        {
+          "title": "Zaczynamy od potrzeb, nie od oferty",
+          "body": "Budżet, horyzont czasowy, czy chodzi o rentowność, czy o przyszły dom, i co musiałbyś zobaczyć, żeby się wycofać. Lista propozycji przychodzi po tej rozmowie."
+        },
+        {
+          "title": "Wszystko na piśmie",
+          "body": "Warunki rezerwacji, harmonogram płatności, zakres wykończenia przy odbiorze i co się stanie, jeśli deweloper się spóźni. W Twoim języku, zanim ruszą jakiekolwiek pieniądze."
+        },
+        {
+          "title": "Niezależna weryfikacja prawna",
+          "body": "Tajski prawnik, którego nie opłaca deweloper, czyta umowę i potwierdza, że lokal mieści się w limicie zagranicznym."
+        },
+        {
+          "title": "Jesteśmy tu również w trzecim roku",
+          "body": "Najem, utrzymanie, wsparcie przy rozliczeniach podatkowych i odsprzedaż. Ta relacja ma przetrwać transakcję."
+        }
+      ],
+      "consultantTitle": "Eryk Fokt",
+      "consultantRole": "Założyciel i doradca ds. nieruchomości",
+      "consultantBody": "Mieszka w Pattayi i pracuje z kupującymi z Europy i Azji. Swobodnie porusza się w praktycznych szczegółach tajskiego rynku — limit zagraniczny, przeniesienie własności, podatki, umowa zarządzania — i mówi wprost o transakcjach, które się nie spinają."
+    }
+  },
+
+  "thailand": {
+    "hero": {
+      "eyebrow": "Tajlandia",
+      "title": "Brama do Azji",
+      "lead": "Strategiczne położenie w centrum Azji Południowo-Wschodniej, rynek kondominiów otwarty dla obcokrajowców, głęboka gospodarka turystyczna i cykl walutowy niezależny od europejskiego. Jeśli szukasz miejsca, żeby zainwestować, zabezpieczyć kapitał poza strefą euro albo naprawdę zmienić życie — ten region daje wszystkie trzy rzeczy naraz.",
+      "imageAlt": "Widok z lotu ptaka na tropikalne wybrzeże Tajlandii o złotej godzinie"
+    },
+    "whyTitle": "Dlaczego Tajlandia",
+    "why": [
+      {
+        "title": "Strategiczne położenie",
+        "body": "Z Bangkoku kilka godzin lotu dzieli Cię od każdego większego rynku w regionie — Singapuru, Hongkongu, Kuala Lumpur, Ho Chi Minh — i dalej do Chin oraz Indii. Tajlandia to miejsce, w którym Azja się łączy."
+      },
+      {
+        "title": "Gospodarka oparta na ruchu turystycznym",
+        "body": "Dziesiątki milionów zagranicznych gości rocznie utrzymują sektor hotelarski i rynek najmu na poziomie, z którym niewiele rynków nieruchomości może się równać w tym przedziale cenowym."
+      },
+      {
+        "title": "Rynek otwarty dla obcokrajowców",
+        "body": "Ustawa o kondominiach daje cudzoziemcom czytelną, zarejestrowaną drogę do pełnej własności mieszkania. Bez spółki, bez podstawionego właściciela, bez obchodzenia przepisów."
+      },
+      {
+        "title": "Kapitał poza Europą",
+        "body": "Aktywo materialne w innej walucie, innym reżimie regulacyjnym i innym cyklu gospodarczym — praktyczna definicja dywersyfikacji."
+      }
+    ],
+    "climateTitle": "Klimat inwestycyjny",
+    "climate1": "Wschodni Korytarz Gospodarczy — program przemysłowo-infrastrukturalny obejmujący prowincje Chonburi, Rayong i Chachoengsao — skierował trwałe inwestycje publiczne i prywatne dokładnie na ten odcinek wybrzeża, na którym leży Pattaya. Kolej dużych prędkości, rozbudowa lotniska i modernizacja autostrad to jego widoczna część.",
+    "climate2": "Dla właściciela nieruchomości efekt jest pośredni, ale realny: lepsze połączenia oznaczają więcej mieszkańców, więcej najemców korporacyjnych i więcej weekendowych przyjazdów z Bangkoku. Infrastruktura powstaje wolno, ale jest najbardziej wiarygodną rzeczą, jaką rynek nadmorski może mieć za sobą.",
+    "lifestyleTitle": "Styl życia i turystyka",
+    "lifestyle1": "Codzienne argumenty są prostsze. Ciepła woda przez jedenaście miesięcy w roku, wyspy w godzinę od brzegu, prywatna opieka zdrowotna za ułamek europejskich kosztów, szkoły międzynarodowe, golf, mariny i kuchnia od dania za sto batów na ulicy po menu degustacyjne na czterdziestym piętrze.",
+    "lifestyle2": "Koszty życia pozostają niskie w porównaniu z Europą Zachodnią, a możliwości pobytowe i wizy długoterminowe dla emerytów, osób pracujących zdalnie i inwestorów wyraźnie się w ostatnich latach poszerzyły.",
+    "ctaTitle": "Gotowy na konkrety?",
+    "ctaBody": "Powiedz nam, jaki masz budżet, horyzont czasowy i czy to decyzja o rentowności, czy decyzja o życiu. Wrócimy z listą propozycji i liczbami, które za nią stoją.",
+    "ctaButton": "Umów konsultację"
+  },
+
+  "search": {
+    "eyebrow": "Wyszukiwarka",
+    "title": "Znajdź swoją nieruchomość",
+    "lead": "Filtruj portfolio według lokalizacji, typu, budżetu, planu płatności, liczby sypialni i statusu budowy. Każdy wynik pochodzi bezpośrednio od dewelopera, bez prowizji doliczanej do ceny.",
+    "filters": "Filtry",
+    "location": "Lokalizacja",
+    "type": "Typ nieruchomości",
+    "price": "Przedział cenowy",
+    "plan": "Plan płatności",
+    "bedrooms": "Sypialnie",
+    "status": "Dostępność",
+    "any": "Dowolnie",
+    "anyLocation": "Dowolna lokalizacja",
+    "anyType": "Dowolny typ",
+    "anyPrice": "Dowolna cena",
+    "anyPlan": "Dowolny plan",
+    "anyBedrooms": "Dowolnie",
+    "anyStatus": "Dowolnie",
+    "apply": "Pokaż wyniki",
+    "reset": "Wyczyść filtry",
+    "results": "Wyniki",
+    "resultCount": "Pasujące nieruchomości: {n}",
+    "resultCountOne": "1 pasująca nieruchomość",
+    "empty": "Nic jeszcze nie pasuje do tego zestawu filtrów.",
+    "emptyBody": "Nasze portfolio jest celowo krótkie, a nowe inwestycje pojawiają się niemal co miesiąc. Poszerz któryś filtr albo napisz nam, czego szukasz — poszukamy bezpośrednio.",
+    "emptyCta": "Napisz, czego szukasz",
+    "sort": "Sortuj według",
+    "sortFeatured": "Wyróżnione",
+    "sortPriceAsc": "Cena: od najniższej",
+    "sortPriceDesc": "Cena: od najwyższej"
+  },
+
+  "contact": {
+    "eyebrow": "Konsultacja",
+    "title": "Zacznijmy od rozmowy",
+    "lead": "Bez zalewania folderami i bez presji. Rozmowa, żeby zrozumieć, co chcesz osiągnąć, a potem lista propozycji, która to odzwierciedla — albo uczciwa odpowiedź, że to nie jest ten moment.",
+    "formTitle": "Napisz, czego szukasz",
+    "form": {
+      "name": "Imię i nazwisko",
+      "namePlaceholder": "Twoje imię i nazwisko",
+      "email": "E-mail",
+      "emailPlaceholder": "ty@przyklad.pl",
+      "phone": "Telefon lub WhatsApp",
+      "phonePlaceholder": "Opcjonalnie",
+      "budget": "Budżet",
+      "budgetPlaceholder": "Wybierz przedział",
+      "interest": "Interesuje mnie",
+      "interestOptions": [
+        "Apartament inwestycyjny",
+        "Dom lub nieruchomość na emeryturę",
+        "Jedno i drugie — jeszcze się zastanawiam",
+        "Ogólne doradztwo rynkowe"
+      ],
+      "message": "Coś jeszcze",
+      "messagePlaceholder": "Horyzont czasowy, preferowana dzielnica, pytania o zasady własności…",
+      "consent": "Zgadzam się na kontakt w sprawie mojego zapytania.",
+      "submit": "Umów konsultację",
+      "sending": "Wysyłanie…",
+      "success": "Dziękujemy — Twoje zapytanie zostało zapisane. Na każdą wiadomość odpowiadamy osobiście, zwykle w ciągu jednego dnia roboczego.",
+      "error": "Coś poszło nie tak. Napisz do nas bezpośrednio na e-mail, a odbierzemy sprawę stamtąd.",
+      "required": "Wymagane"
+    },
+    "directTitle": "Albo skontaktuj się bezpośrednio",
+    "whatsapp": "Napisz na WhatsApp",
+    "emailUs": "Wyślij e-mail",
+    "callUs": "Zadzwoń",
+    "hours": "Konsultacje po wcześniejszym umówieniu, od poniedziałku do soboty, czas indochiński (GMT+7).",
+    "remote": "Kupujesz z zagranicy? Cały zakup można przeprowadzić zdalnie na podstawie pełnomocnictwa — większość naszych klientów podpisuje umowę, zanim zobaczy budynek na żywo.",
+    "trust": [
+      "Ceny bezpośrednio od dewelopera, bez prowizji pośrednika",
+      "Niezależna weryfikacja prawna przed podpisaniem",
+      "Wsparcie, które trwa po przekazaniu kluczy"
+    ]
+  },
+
+  "cta": {
+    "eyebrow": "Następny krok",
+    "title": "Wybierz miejsce, w którym inwestycja i życie stają się przyjemnością",
+    "body": "Powiedz nam, co ma zrobić Twój kapitał. My uczciwie powiemy, czy Pattaya jest właściwym miejscem, żeby to zrobić.",
+    "primary": "Umów konsultację",
+    "secondary": "Przeglądaj portfolio"
+  },
+
+  "footer": {
+    "tagline": "Doradztwo inwestycyjne w nieruchomościach w Pattayi w Tajlandii. Bezpośredni dostęp do deweloperów, pełna własność lokali dla obcokrajowców i wsparcie, które trwa po odbiorze.",
+    "explore": "Nieruchomości",
+    "company": "Firma",
+    "contact": "Kontakt",
+    "language": "Język",
+    "rights": "Wszelkie prawa zastrzeżone.",
+    "disclaimer": "Informacje na tej stronie mają charakter ogólny i nie stanowią porady prawnej, podatkowej ani inwestycyjnej. Ceny, dostępność i warunki płatności ustala deweloper i mogą ulec zmianie. Każdy zakup powinien zostać sprawdzony przez niezależnego tajskiego prawnika.",
+    "legal": {
+      "privacy": "Prywatność",
+      "terms": "Regulamin"
+    },
+    "placeholderNote": "Dane kontaktowe są tymczasowe — do uzupełnienia przed startem."
+  },
+
+  "notFound": {
+    "code": "404",
+    "title": "Ta strona już tu nie mieszka",
+    "body": "Adres, który otworzyłeś, już nie istnieje. Najlepiej wrócić do wątku przez portfolio inwestycji.",
+    "primary": "Wróć na stronę główną",
+    "secondary": "Zobacz inwestycje"
+  },
+
+  "values": {
+    "locations": {
+      "pattaya": "Centrum Pattayi",
+      "jomtien": "Jomtien",
+      "pratumnak": "Wzgórze Pratumnak",
+      "najomtien": "Na Jomtien",
+      "bangsaray": "Bangsaray",
+      "wongamat": "Wongamat"
+    },
+    "types": {
+      "condo": "Kondominium",
+      "penthouse": "Penthouse",
+      "villa": "Willa",
+      "townhouse": "Dom szeregowy"
+    },
+    "bedrooms": {
+      "studio": "Kawalerka",
+      "1": "1 sypialnia",
+      "2": "2 sypialnie",
+      "3": "3 sypialnie",
+      "4plus": "4+ sypialni"
+    },
+    "bedroomsShort": {
+      "studio": "Studio",
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4plus": "4+"
+    },
+    "statuses": {
+      "ready": "Gotowe do zamieszkania",
+      "offplan": "W budowie"
+    },
+    "plans": {
+      "plan2": "Do 2 lat, 0%",
+      "plan3": "Do 3 lat, 0%",
+      "plan4": "Do 4 lat, 0%"
+    },
+    "priceBands": {
+      "p1": "Poniżej ฿4 mln",
+      "p2": "฿4 mln – ฿7 mln",
+      "p3": "฿7 mln – ฿12 mln",
+      "p4": "฿12 mln i więcej"
+    }
+  }
+}

@@ -1,0 +1,199 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   Grand Property — design tokens
+   Exposed through @theme so they become real Tailwind utilities:
+   bg-ink, text-gold, border-line, font-serif, tracking-wide-luxe …
+   ========================================================================== */
+
+@theme inline {
+  --color-ink: #0a0b0e;
+  --color-ink-2: #0c0e12;
+  --color-ink-3: #101318;
+  --color-surface: #12151b;
+  --color-surface-2: #171b22;
+  --color-surface-3: #1c212a;
+
+  --color-gold: #c9a25a;
+  --color-gold-bright: #e3c68e;
+  --color-gold-deep: #9c7736;
+
+  --color-cream: #e8e4dc;
+  --color-cream-bright: #f7f4ee;
+  --color-muted: #9b968c;
+  --color-muted-2: #7c776f;
+
+  --color-line: rgba(201, 162, 90, 0.18);
+  --color-line-strong: rgba(201, 162, 90, 0.38);
+  --color-line-soft: rgba(255, 255, 255, 0.07);
+
+  --color-ready: #8fc9a0;
+
+  --font-serif: var(--font-cormorant), "Iowan Old Style", Georgia, serif;
+  --font-sans: var(--font-jost), ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  --tracking-luxe: 0.18em;
+  --tracking-luxer: 0.28em;
+
+  --ease-luxe: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  --animate-fade-in: fade-in 0.4s var(--ease-luxe);
+  --animate-rise-in: rise-in 0.5s var(--ease-luxe);
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+}
+
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(14px); }
+}
+
+/* --------------------------------------------------------------------- base */
+
+@layer base {
+  * {
+    border-color: var(--color-line-soft);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-ink);
+    color: var(--color-cream);
+    font-family: var(--font-sans);
+    font-weight: 300;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    line-height: 1.14;
+    letter-spacing: 0.01em;
+    color: var(--color-cream-bright);
+  }
+
+  ::selection {
+    background: var(--color-gold);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold-bright);
+    outline-offset: 3px;
+  }
+
+  /* Native selects and options render on the OS surface — keep them dark. */
+  option {
+    background: var(--color-surface);
+    color: var(--color-cream);
+  }
+}
+
+/* --------------------------------------------------------------- utilities */
+
+/* The page gutter and max width, used by every section. */
+@utility shell {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 3.5rem);
+}
+
+/* Vertical rhythm for a full-width section. */
+@utility section-y {
+  padding-block: clamp(4.5rem, 9vw, 8.5rem);
+}
+
+/* The gold-to-transparent hairline that sits under every heading. */
+@utility rule-gold {
+  display: block;
+  width: 58px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--color-gold), transparent);
+}
+
+@utility rule-gold-center {
+  display: block;
+  width: 58px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+  margin-inline: auto;
+}
+
+/* Gold gradient clipped to the glyphs — used on hero and display headings. */
+@utility text-gradient-gold {
+  background: linear-gradient(100deg, #e6cc96 0%, #c9a25a 45%, #a17c37 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Darkens the left of the hero so copy holds contrast over the portrait. */
+@utility hero-scrim {
+  background:
+    linear-gradient(100deg, rgba(6, 7, 9, 0.94) 0%, rgba(6, 7, 9, 0.82) 26%, rgba(6, 7, 9, 0.34) 52%, rgba(6, 7, 9, 0.12) 72%, rgba(6, 7, 9, 0.5) 100%),
+    linear-gradient(to bottom, rgba(6, 7, 9, 0.72) 0%, transparent 22%, transparent 55%, rgba(6, 7, 9, 0.88) 100%);
+}
+
+@utility hero-scrim-mobile {
+  background: linear-gradient(to bottom, rgba(6, 7, 9, 0.86) 0%, rgba(6, 7, 9, 0.45) 28%, rgba(6, 7, 9, 0.55) 52%, rgba(6, 7, 9, 0.96) 82%);
+}
+
+@utility page-scrim {
+  background:
+    linear-gradient(105deg, rgba(8, 9, 12, 0.95) 0%, rgba(8, 9, 12, 0.78) 45%, rgba(8, 9, 12, 0.45) 100%),
+    linear-gradient(to bottom, rgba(8, 9, 12, 0.85) 0%, transparent 35%, rgba(10, 11, 14, 0.98) 100%);
+}
+
+/* Low-opacity photographic texture behind a section. */
+@utility section-wash {
+  opacity: 0.05;
+  filter: grayscale(0.35);
+  mask-image: linear-gradient(to bottom, transparent, #000 22%, #000 78%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 22%, #000 78%, transparent);
+}
+
+/* --------------------------------------------------------------- reveal */
+
+@layer components {
+  .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition:
+      opacity 0.85s var(--ease-luxe),
+      transform 0.85s var(--ease-luxe);
+  }
+
+  .reveal[data-shown="true"] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
