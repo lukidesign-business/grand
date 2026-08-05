@@ -45,9 +45,9 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
         className="pointer-events-none absolute -z-10 hidden border border-gold/13 md:block md:inset-[clamp(1rem,2.5vw,2.2rem)]"
       />
 
-      <div className="shell flex flex-1 items-end md:items-center">
-        <div className="max-w-full md:max-w-[34rem]">
-          <span className="mb-3 block text-[0.72rem] uppercase tracking-[0.4em] text-gold sm:text-[0.82rem] sm:tracking-[0.5em]">
+      <div className="shell flex flex-1 items-end md:items-start">
+        <div className="max-w-full pb-2 pl-1 sm:pl-2 md:max-w-[32rem] md:pb-0 md:pl-[clamp(1rem,3vw,3rem)] md:pt-[clamp(2rem,5vh,4rem)]">
+          <span className="mb-4 block text-[0.72rem] uppercase tracking-[0.4em] text-gold sm:text-[0.82rem] sm:tracking-[0.5em]">
             {h.eyebrow}
           </span>
 
@@ -55,8 +55,8 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             className={cn(
               'font-light uppercase leading-[0.96] tracking-[0.015em]',
               locale === 'pl'
-                ? 'text-[clamp(2.4rem,5.6vw,4.5rem)]'
-                : 'text-[clamp(3.1rem,7.4vw,6rem)]'
+                ? 'text-[clamp(2.25rem,5.2vw,4.5rem)]'
+                : 'text-[clamp(2.75rem,6.8vw,6rem)]'
             )}
           >
             <span className="block text-cream-bright">{h.titleTop}</span>
