@@ -32,15 +32,27 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
   const c = dict.contact;
 
   const links = [
-    {
+    ...BRAND.whatsapp.map((number) => ({
       icon: MessageCircle,
       label: c.whatsapp,
-      value: BRAND.phoneDisplay,
-      href: BRAND.whatsappHref,
+      value: number.display,
+      href: number.href,
       external: true
+    })),
+    {
+      icon: Mail,
+      label: c.emailUs,
+      value: BRAND.email,
+      href: `mailto:${BRAND.email}`,
+      external: false
     },
-    { icon: Mail, label: c.emailUs, value: BRAND.email, href: `mailto:${BRAND.email}` },
-    { icon: Phone, label: c.callUs, value: BRAND.phoneDisplay, href: `tel:${BRAND.phoneHref}` }
+    {
+      icon: Phone,
+      label: c.callUs,
+      value: BRAND.phoneDisplay,
+      href: `tel:${BRAND.phoneHref}`,
+      external: false
+    }
   ];
 
   return (
@@ -92,7 +104,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
 
               <p className="mt-5 flex items-start gap-2 text-[0.8rem] leading-relaxed text-muted-2">
                 <MapPin className="mt-0.5 size-4 shrink-0 text-gold" />
-                {BRAND.city}, {BRAND.country}
+                {BRAND.address}
               </p>
               <p className="mt-3 text-[0.8rem] leading-relaxed text-muted-2">{c.hours}</p>
             </div>

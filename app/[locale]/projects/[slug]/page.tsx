@@ -2,12 +2,13 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, Building2, Check, MapPin, MessageCircle } from 'lucide-react';
+import { ArrowLeft, Building2, Check, MapPin } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { Rule } from '@/components/ui/section-head';
 import { ProjectCard } from '@/components/project-card';
 import { ProjectGallery } from '@/components/project-gallery';
+import { WhatsAppSelector } from '@/components/whatsapp-selector';
 import { CtaBand } from '@/components/sections';
 import { BRAND, PROJECTS, formatPrice, getProject, href } from '@/lib/site';
 import { getDictionary } from '@/lib/i18n';
@@ -114,7 +115,7 @@ export default async function ProjectPage({
 
           <p className="flex items-baseline gap-3">
             <span className="text-[0.68rem] uppercase tracking-luxe text-muted-2">{labels.from}</span>
-            <strong className="font-serif text-[clamp(1.9rem,3.4vw,2.6rem)] font-light text-gold">
+            <strong className="font-serif text-[clamp(1.9rem,3.4vw,2.6rem)] font-semibold text-gold">
               {project.priceFrom ? formatPrice(locale, project.priceFrom) : labels.priceOnRequest}
             </strong>
           </p>
@@ -204,7 +205,7 @@ export default async function ProjectPage({
                     <dd
                       className={cn(
                         'm-0 text-right text-[0.92rem] text-cream',
-                        fact.price && 'font-serif text-[1.3rem] text-gold'
+                        fact.price && 'font-serif text-[1.3rem] font-semibold text-gold'
                       )}
                     >
                       {fact.v}
@@ -218,12 +219,12 @@ export default async function ProjectPage({
                   {labels.enquire}
                 </Link>
               </Button>
-              <Button asChild variant="ghost" size="block" className="mt-3">
-                <a href={BRAND.whatsappHref} target="_blank" rel="noopener noreferrer">
-                  <MessageCircle />
-                  {dict.contact.whatsapp}
-                </a>
-              </Button>
+              <WhatsAppSelector
+                numbers={BRAND.whatsapp}
+                label={dict.contact.whatsapp}
+                chooseLabel={dict.contact.chooseWhatsapp}
+                className="mt-3"
+              />
 
               <p className="mt-5 text-[0.8rem] leading-relaxed text-muted-2">{dict.contact.remote}</p>
             </div>
@@ -231,17 +232,19 @@ export default async function ProjectPage({
         </div>
       </section>
 
-      <section className="section-y bg-ink-2">
-        <div className="shell">
-          <h2 className="text-[clamp(2rem,3.6vw,3.1rem)]">{labels.similar}</h2>
-          <Rule />
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-            {others.map((other) => (
-              <ProjectCard key={other.id} project={other} locale={locale} dict={dict} />
-            ))}
+      {others.length > 0 && (
+        <section className="section-y bg-ink-2">
+          <div className="shell">
+            <h2 className="text-[clamp(2rem,3.6vw,3.1rem)]">{labels.similar}</h2>
+            <Rule />
+            <div className="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+              {others.map((other) => (
+                <ProjectCard key={other.id} project={other} locale={locale} dict={dict} />
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       <CtaBand locale={locale} dict={dict} />
     </>

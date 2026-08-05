@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Facebook, Instagram, Linkedin, Mail, MapPin, MessageCircle, Phone } from 'lucide-react';
+import { Facebook, Instagram, Linkedin, Mail, MapPin, MessageCircle } from 'lucide-react';
 
 import { LanguageSwitcher } from '@/components/language-switcher';
 import { BRAND, FOOTER_NAV, href } from '@/lib/site';
@@ -92,33 +92,22 @@ export function SiteFooter({ locale, dict }: { locale: Locale; dict: Dictionary 
                   <span>{BRAND.email}</span>
                 </a>
               </li>
-              <li>
-                <a
-                  href={`tel:${BRAND.phoneHref}`}
-                  className="flex items-start gap-2.5 transition-all duration-300 hover:pl-1 hover:text-gold-bright"
-                >
-                  <Phone className="mt-1 size-4.5 shrink-0 text-gold" />
-                  <span>{BRAND.phoneDisplay}</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href={BRAND.whatsappHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-start gap-2.5 transition-all duration-300 hover:pl-1 hover:text-gold-bright"
-                >
-                  <MessageCircle className="mt-1 size-4.5 shrink-0 text-gold" />
-                  <span>WhatsApp</span>
-                </a>
-              </li>
+              {BRAND.whatsapp.map((number, index) => (
+                <li key={number.display}>
+                  <a
+                    href={number.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-start gap-2.5 transition-all duration-300 hover:pl-1 hover:text-gold-bright"
+                  >
+                    <MessageCircle className="mt-1 size-4.5 shrink-0 text-gold" />
+                    <span>WhatsApp {number.display}</span>
+                  </a>
+                </li>
+              ))}
               <li className="flex items-start gap-2.5 leading-relaxed">
                 <MapPin className="mt-1 size-4.5 shrink-0 text-gold" />
-                <span>
-                  {BRAND.city}
-                  <br />
-                  {BRAND.country}
-                </span>
+                <span>{BRAND.address}</span>
               </li>
             </ul>
 
