@@ -93,16 +93,18 @@ export interface Project {
   id: string;
   image: string;
   gallery: string[];
+  additionalImages?: string[];
+  mapUrl?: string;
   location: LocationId;
   type: PropertyType;
   status: StatusId;
-  plan: PlanId;
+  plan?: PlanId;
   completion: string;
-  priceFrom: number;
+  priceFrom?: number;
   sizeFrom: number;
   bedrooms: BedroomId[];
-  floors: number;
-  units: number;
+  floors?: number;
+  units?: number;
   featured: boolean;
 }
 
@@ -201,6 +203,37 @@ export const PROJECTS: Project[] = [
     bedrooms: ['3', '4plus'],
     floors: 2,
     units: 34,
+    featured: false
+  },
+  {
+    id: 'zenith-pattaya',
+    image: 'zenith-living-1.jpg',
+    gallery: [
+      'zenith-bedroom-1.jpg',
+      'zenith-living-2.jpg',
+      'zenith-living-3.jpg',
+      'zenith-bedroom-2.jpg',
+      'zenith-bedroom-3.jpg',
+      'zenith-bedroom-4.jpg',
+      'zenith-bedroom-5.jpg',
+      'zenith-living-4.jpg',
+      'zenith-living-5.jpg',
+      'zenith-living-6.jpg',
+      'zenith-living-7.jpg',
+      'zenith-living-8.jpg',
+      'zenith-bathroom-1.jpg',
+      'zenith-bathroom-2.jpg',
+      'zenith-bathroom-3.jpg',
+      'zenith-bathroom-4.jpg'
+    ],
+    additionalImages: ['zenith-map.jpg'],
+    mapUrl: 'https://maps.app.goo.gl/AHsdtqmkctAocsLx8?g_st=it',
+    location: 'pattaya',
+    type: 'condo',
+    status: 'ready',
+    completion: 'Ready to move in',
+    sizeFrom: 65,
+    bedrooms: ['2'],
     featured: false
   }
 ];

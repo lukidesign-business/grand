@@ -247,8 +247,12 @@
     "title": "Inwestycje, za którymi stoimy",
     "lead": "Krótka lista zamiast długiej. Każda inwestycja tutaj to taka, którą odwiedziliśmy, z której deweloperem pracowaliśmy i pod której liczbami jesteśmy gotowi się podpisać.",
     "cta": "Zobacz wszystkie inwestycje",
-    "labels": {
+      "labels": {
       "from": "Od",
+      "priceOnRequest": "Cena na zapytanie",
+      "resale": "Rynek wtórny",
+      "map": "Mapa lokalizacji",
+      "openMap": "Otwórz w Google Maps",
       "plan": "Plan płatności",
       "completion": "Termin oddania",
       "location": "Lokalizacja",
@@ -292,7 +296,7 @@
         "name": "Celeste Skyline Residences",
         "tagline": "Panorama zatoki ze wzgórza Pratumnak",
         "summary": "Trzydzieści osiem pięter po spokojniejszej stronie wzgórza Pratumnak, z widokiem na północ, na całą zatokę Pattaya. Większe układy, niższa gęstość zabudowy i prywatny sky lounge na ostatnim piętrze.",
-        "body": "Pratumnak od dawna jest adresem dla kupujących, którzy chcą zatoki bez zgiełku bulwaru. Celeste wykorzystuje tę lokalizację i dokłada skalę: przestronne układy od jednej do trzech sypialni, wysokości powyżej rynkowego standardu oraz program zarządzania najmem sprawdzony już w dwóch wcześniejszych wieżach dewelopera. Położenie na wzgórzu oznacza, że widoku broni ukształtowanie terenu, a nie obietnice.",
+        "body": "Pratumnak od dawna jest adresem dla kupujących, którzy chcą zatoki bez zgiełku bulwaru. Celeste wykorzystuje tę lokalizację i dokłada skalę: przestronne układy od jednej do trzech sypialni, wysokości powyżej rynkowego standardu oraz program zarządzania najmem sprawdzony już w dwóch wcześniejszych wieżach dewelopera. Położenie na wzg��rzu oznacza, że widoku broni ukształtowanie terenu, a nie obietnice.",
         "highlights": [
           "Niezasłonięty widok na zatokę Pattaya",
           "Prywatny sky lounge i basen infinity",
@@ -346,6 +350,18 @@
           "Zamknięte osiedle tylko 34 domów",
           "Pawilon plażowy dla mieszkańców",
           "Plan płatności na 3 lata, 0% odsetek"
+        ]
+      },
+      "zenith-pattaya": {
+        "name": "ZENITH Pattaya",
+        "tagline": "Gotowy, w pełni umeblowany apartament 65 m² z dwiema sypialniami",
+        "summary": "Gotowy do zamieszkania apartament z rynku wtórnego w ZENITH Pattaya, wykończony w eleganckiej palecie czerni, marmuru i kremu, z przestronną częścią dzienną i dwiema sypialniami.",
+        "body": "Apartament o powierzchni 65 m² łączy dopracowane wnętrze, zabudowaną kuchnię, lustrzane detale i łazienki w hotelowym stylu w jednej z ugruntowanych rezydencji wypoczynkowych Pattayi. Nieruchomość jest gotowa do odsprzedaży i można ją obejrzeć po umówieniu wizyty.",
+        "highlights": [
+          "Gotowe do zamieszkania",
+          "W pełni umeblowany układ z dwiema sypialniami",
+          "65 m² powierzchni użytkowej",
+          "Marmurowe wykończenia i wyposażona kuchnia"
         ]
       }
     }
