@@ -57,7 +57,7 @@ export function HeroSearchField({
     <div
       ref={fieldRef}
       className={cn(
-        'group relative z-0 flex min-w-0 items-center gap-3.5 px-4 py-4 transition-colors duration-300 hover:bg-gold/5',
+        'group relative z-0 flex min-w-0 items-center gap-3 px-3 py-3 transition-colors duration-300 hover:bg-gold/5 sm:gap-3.5 sm:px-4 sm:py-4',
         open && 'z-[100] bg-gold/7',
         className
       )}
@@ -88,7 +88,7 @@ export function HeroSearchField({
           <div
             role="listbox"
             aria-label={label}
-            className="absolute left-0 top-[calc(100%+1rem)] z-30 min-w-[min(17rem,calc(100vw-3rem))] overflow-hidden border border-gold/35 bg-[rgba(12,13,17,.98)] py-1 shadow-[0_22px_50px_-18px_rgba(0,0,0,.95)] backdrop-blur-xl"
+            className="absolute left-0 top-[calc(100%+0.5rem)] z-30 w-[min(17rem,calc(100vw-2.5rem))] min-w-0 overflow-hidden border border-gold/35 bg-[rgba(12,13,17,.98)] py-1 shadow-[0_22px_50px_-18px_rgba(0,0,0,.95)] backdrop-blur-xl"
           >
             <button
               type="button"

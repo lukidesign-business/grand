@@ -113,6 +113,16 @@
   padding-block: clamp(4.5rem, 9vw, 8.5rem);
 }
 
+@media (max-width: 767px) {
+  .shell {
+    padding-inline: 1rem;
+  }
+
+  .section-y {
+    padding-block: 3.5rem;
+  }
+}
+
 /* The gold-to-transparent hairline that sits under every heading. */
 @utility rule-gold {
   display: block;
