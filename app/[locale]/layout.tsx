@@ -6,7 +6,6 @@ import { Cormorant_Garamond, Jost } from 'next/font/google';
 import { SiteHeader } from '@/components/site-header';
 import { SiteFooter } from '@/components/site-footer';
 import { LanguageGate } from '@/components/language-gate';
-import { RevealOnScroll } from '@/components/reveal-on-scroll';
 import { BackToTop } from '@/components/back-to-top';
 import { getDictionary } from '@/lib/i18n';
 import { isLocale, locales, type Locale } from '@/lib/i18n/config';
@@ -17,7 +16,7 @@ import '../globals.css';
 const cormorant = Cormorant_Garamond({
   subsets: ['latin', 'latin-ext'],
   weight: ['300', '400', '500'],
-  style: ['normal', 'italic'],
+  style: ['normal'],
   variable: '--font-cormorant',
   display: 'swap'
 });
@@ -97,7 +96,6 @@ export default async function LocaleLayout({
         <SiteFooter locale={locale as Locale} dict={dict} />
 
         <LanguageGate locale={locale as Locale} copy={dict.lang} />
-        <RevealOnScroll />
         <BackToTop label={dict.nav.backToTop} />
       </body>
     </html>
