@@ -45,15 +45,15 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
         className="pointer-events-none absolute -z-10 hidden border border-gold/13 md:block md:inset-[clamp(1rem,2.5vw,2.2rem)]"
       />
 
-      <div className="shell flex flex-1 items-end md:items-start">
-        <div className="max-w-full pb-2 pl-1 sm:pl-2 md:max-w-[32rem] md:pb-0 md:pl-[clamp(1rem,3vw,3rem)] md:pt-[clamp(2rem,5vh,4rem)]">
-          <span className="mb-4 block text-[0.72rem] uppercase tracking-[0.4em] text-gold sm:text-[0.82rem] sm:tracking-[0.5em]">
+      <div className="shell flex min-h-0 flex-1 items-end md:items-center md:pb-[clamp(1rem,3vh,2.5rem)]">
+        <div className="max-w-full pb-2 pl-1 pr-1 sm:pl-2 sm:pr-2 md:max-w-[40rem] md:pb-0 md:pl-[clamp(1rem,3vw,3rem)] md:pr-4 md:pt-0">
+          <span className="mb-3 block text-[0.72rem] uppercase tracking-[0.4em] text-gold sm:text-[0.82rem] sm:tracking-[0.5em]">
             {h.eyebrow}
           </span>
 
           <h1
             className={cn(
-              'font-light uppercase leading-[0.96] tracking-[0.015em]',
+              'font-light uppercase leading-[0.82] tracking-[0.015em]',
               locale === 'pl'
                 ? 'text-[clamp(2.25rem,5.2vw,4.5rem)]'
                 : 'text-[clamp(2.75rem,6.8vw,6rem)]'
@@ -83,7 +83,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           <p className="mb-1 text-[0.82rem] uppercase tracking-luxer text-gold">{h.name}</p>
           <p className="text-[0.72rem] uppercase tracking-luxe text-muted">{h.role}</p>
 
-          <div className="mt-6 flex flex-wrap gap-3 md:mt-8">
+          <div className="mt-6 flex flex-wrap gap-3 md:mt-8 md:flex-nowrap">
             <Button asChild variant="gold" className="max-sm:w-full">
               <Link href={href(locale, 'projects')}>{h.ctaPrimary}</Link>
             </Button>
