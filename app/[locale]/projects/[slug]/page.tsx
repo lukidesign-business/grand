@@ -33,7 +33,7 @@ export async function generateMetadata({
 
   return {
     title: `${item.name} — ${dict.values.locations[project.location]} | ${dict.meta.project.titleSuffix}`,
-    description: `${dict.meta.project.descriptionPrefix} ${formatPrice(locale, project.priceFrom)}. ${item.tagline}. ${dict.values.plans[project.plan]}.`,
+    description: `${dict.meta.project.descriptionPrefix} ${project.priceFrom ? formatPrice(locale, project.priceFrom) : dict.projects.labels.priceOnRequest}. ${item.tagline}.`,
     alternates: alternatesFor(locale, `projects/${slug}`),
     openGraph: { images: [`/images/${project.image}`] }
   };
@@ -54,15 +54,19 @@ export default async function ProjectPage({
   const others = PROJECTS.filter((p) => p.id !== project.id).slice(0, 3);
 
   const facts = [
-    { k: labels.from, v: formatPrice(locale, project.priceFrom), price: true },
+    {
+      k: labels.from,
+      v: project.priceFrom ? formatPrice(locale, project.priceFrom) : labels.priceOnRequest,
+      price: true
+    },
     { k: labels.location, v: dict.values.locations[project.location] },
     { k: labels.status, v: dict.values.statuses[project.status] },
     { k: labels.completion, v: project.completion },
-    { k: labels.plan, v: dict.values.plans[project.plan] },
+    { k: labels.plan, v: project.plan ? dict.values.plans[project.plan] : labels.resale },
     { k: labels.bedrooms, v: project.bedrooms.map((b) => dict.values.bedroomsShort[b]).join(' · ') },
     { k: labels.size, v: `${project.sizeFrom} ${dict.common.sqm}` },
-    { k: labels.floors, v: String(project.floors) },
-    { k: labels.units, v: String(project.units) }
+    ...(project.floors ? [{ k: labels.floors, v: String(project.floors) }] : []),
+    ...(project.units ? [{ k: labels.units, v: String(project.units) }] : [])
   ];
 
   return (
@@ -111,7 +115,7 @@ export default async function ProjectPage({
           <p className="flex items-baseline gap-3">
             <span className="text-[0.68rem] uppercase tracking-luxe text-muted-2">{labels.from}</span>
             <strong className="font-serif text-[clamp(1.9rem,3.4vw,2.6rem)] font-light text-gold">
-              {formatPrice(locale, project.priceFrom)}
+              {project.priceFrom ? formatPrice(locale, project.priceFrom) : labels.priceOnRequest}
             </strong>
           </p>
         </div>
@@ -145,7 +149,7 @@ export default async function ProjectPage({
                 <FramedImage
                   key={image}
                   src={`/images/${image}`}
-                  alt=""
+                  alt={`${item.name} interior photograph`}
                   width={1280}
                   height={731}
                   tight
@@ -154,6 +158,33 @@ export default async function ProjectPage({
                 />
               ))}
             </div>
+
+            {project.additionalImages?.length && project.mapUrl ? (
+              <section className="mt-12 border-t border-line-soft pt-8">
+                <div className="flex flex-wrap items-end justify-between gap-4">
+                  <div>
+                    <h3 className="text-[1.35rem]">{labels.map}</h3>
+                    <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted">
+                      {dict.values.locations[project.location]}, {BRAND.country}
+                    </p>
+                  </div>
+                  <Button asChild variant="ghost" size="sm">
+                    <a href={project.mapUrl} target="_blank" rel="noopener noreferrer">
+                      {labels.openMap}
+                    </a>
+                  </Button>
+                </div>
+                <div className="mt-5 max-w-3xl border border-line-soft bg-ink-2 p-2">
+                  <Image
+                    src={`/images/${project.additionalImages[0]}`}
+                    alt={`${item.name} location map`}
+                    width={1600}
+                    height={1000}
+                    className="h-auto w-full"
+                  />
+                </div>
+              </section>
+            ) : null}
           </div>
 
           <aside>

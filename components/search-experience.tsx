@@ -57,13 +57,20 @@ export function SearchExperience({ locale, dict }: { locale: Locale; dict: Dicti
       if (filters.plan && project.plan !== filters.plan) return false;
       if (filters.status && project.status !== filters.status) return false;
       if (filters.bedrooms && !project.bedrooms.includes(filters.bedrooms as never)) return false;
-      if (band && (project.priceFrom < band.min || project.priceFrom >= band.max)) return false;
+      if (
+        band &&
+        (project.priceFrom === undefined ||
+          project.priceFrom < band.min ||
+          project.priceFrom >= band.max)
+      ) {
+        return false;
+      }
       return true;
     });
 
     return [...matched].sort((a, b) => {
-      if (sort === 'asc') return a.priceFrom - b.priceFrom;
-      if (sort === 'desc') return b.priceFrom - a.priceFrom;
+      if (sort === 'asc') return (a.priceFrom ?? Number.POSITIVE_INFINITY) - (b.priceFrom ?? Number.POSITIVE_INFINITY);
+      if (sort === 'desc') return (b.priceFrom ?? -1) - (a.priceFrom ?? -1);
       return Number(b.featured) - Number(a.featured);
     });
   }, [filters, sort]);
