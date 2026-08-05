@@ -8,9 +8,9 @@ export const BRAND = {
   phoneHref: '+48666212777',
   whatsappHref: 'https://wa.me/48666212777',
   whatsapp: [
-    { display: '+48 666 212 777', href: 'https://wa.me/48666212777' },
-    { display: '+48 600 377 522', href: 'https://wa.me/48600377522' },
-    { display: '+66 81 373 0494', href: 'https://wa.me/66813730494' }
+    { display: '+48 666 212 777', href: 'https://wa.me/48666212777', country: 'Poland', code: 'PL' },
+    { display: '+48 600 377 522', href: 'https://wa.me/48600377522', country: 'Poland', code: 'PL' },
+    { display: '+66 81 373 0494', href: 'https://wa.me/66813730494', country: 'Thailand', code: 'TH' }
   ],
   address: '433/8 Moo 12, Tapphraya Rd., Nongprue, Banglamung, Chon Buri 20150',
   city: '433/8 Moo 12, Tapphraya Rd., Nongprue, Banglamung',

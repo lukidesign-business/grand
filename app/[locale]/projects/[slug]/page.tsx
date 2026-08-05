@@ -2,12 +2,13 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, Building2, Check, MapPin, MessageCircle } from 'lucide-react';
+import { ArrowLeft, Building2, Check, MapPin } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { Rule } from '@/components/ui/section-head';
 import { ProjectCard } from '@/components/project-card';
 import { ProjectGallery } from '@/components/project-gallery';
+import { WhatsAppSelector } from '@/components/whatsapp-selector';
 import { CtaBand } from '@/components/sections';
 import { BRAND, PROJECTS, formatPrice, getProject, href } from '@/lib/site';
 import { getDictionary } from '@/lib/i18n';
@@ -218,16 +219,12 @@ export default async function ProjectPage({
                   {labels.enquire}
                 </Link>
               </Button>
-              <div className="mt-3 grid gap-2">
-                {BRAND.whatsapp.map((number) => (
-                  <Button key={number.display} asChild variant="ghost" size="block">
-                    <a href={number.href} target="_blank" rel="noopener noreferrer">
-                      <MessageCircle />
-                      {dict.contact.whatsapp} {number.display}
-                    </a>
-                  </Button>
-                ))}
-              </div>
+              <WhatsAppSelector
+                numbers={BRAND.whatsapp}
+                label={dict.contact.whatsapp}
+                chooseLabel={dict.contact.chooseWhatsapp}
+                className="mt-3"
+              />
 
               <p className="mt-5 text-[0.8rem] leading-relaxed text-muted-2">{dict.contact.remote}</p>
             </div>
