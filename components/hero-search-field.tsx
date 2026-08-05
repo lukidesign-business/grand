@@ -13,6 +13,8 @@ interface SearchOption {
 interface HeroSearchFieldProps {
   id: string;
   name: string;
+  openField: string | null;
+  setOpenField: (id: string | null) => void;
   label: string;
   placeholder: string;
   hint?: string;
@@ -29,10 +31,12 @@ export function HeroSearchField({
   hint,
   icon,
   options,
-  className
+  className,
+  openField,
+  setOpenField
 }: HeroSearchFieldProps) {
-  const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState('');
+  const open = openField === id;
   const selectedLabel = options.find((option) => option.value === selected)?.label ?? placeholder;
 
   return (
@@ -57,7 +61,7 @@ export function HeroSearchField({
           type="button"
           aria-haspopup="listbox"
           aria-expanded={open}
-          onClick={() => setOpen((value) => !value)}
+          onClick={() => setOpenField(open ? null : id)}
           className="flex w-full items-center justify-between gap-2 border-0 bg-transparent p-0 text-left text-[0.95rem] font-light text-cream-bright outline-none"
         >
           <span className="truncate">{selectedLabel}</span>
@@ -77,7 +81,7 @@ export function HeroSearchField({
               aria-selected={!selected}
               onClick={() => {
                 setSelected('');
-                setOpen(false);
+                setOpenField(null);
               }}
               className="flex w-full items-center justify-between gap-4 px-4 py-2.5 text-left text-[0.82rem] text-muted transition-colors hover:bg-gold/10 hover:text-cream-bright"
             >
@@ -92,7 +96,7 @@ export function HeroSearchField({
                 aria-selected={selected === option.value}
                 onClick={() => {
                   setSelected(option.value);
-                  setOpen(false);
+                  setOpenField(null);
                 }}
                 className="flex w-full items-center justify-between gap-4 px-4 py-2.5 text-left text-[0.82rem] text-cream transition-colors hover:bg-gold/10 hover:text-gold-bright"
               >

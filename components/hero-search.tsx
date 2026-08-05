@@ -1,4 +1,7 @@
+'use client';
+
 import Link from 'next/link';
+import { useState } from 'react';
 import { BedDouble, ChevronDown, Home, MapPin, Search, Tag } from 'lucide-react';
 
 import { HeroSearchField } from '@/components/hero-search-field';
@@ -66,15 +69,18 @@ export function HeroSearch({ locale, dict }: { locale: Locale; dict: Dictionary 
   const s = dict.hero.search;
   const v = dict.values;
   const action = href(locale, 'search');
+  const [openField, setOpenField] = useState<string | null>(null);
 
   const divider = 'sm:border-l sm:border-line-soft border-t border-line-soft sm:border-t-0';
 
   return (
     <form action={action} method="get" role="search" aria-label={s.label} className="reveal relative z-[100]">
-      <div className="grid border border-line bg-[rgba(12,13,17,.78)] shadow-[0_30px_70px_-40px_rgba(0,0,0,.95)] backdrop-blur-xl backdrop-saturate-125 sm:grid-cols-2 xl:grid-cols-[1.45fr_1fr_1fr_.85fr_auto]">
+      <div className="relative z-[200] grid border border-line bg-[rgba(12,13,17,.78)] shadow-[0_30px_70px_-40px_rgba(0,0,0,.95)] backdrop-blur-xl backdrop-saturate-125 sm:grid-cols-2 xl:grid-cols-[1.45fr_1fr_1fr_.85fr_auto]">
         <HeroSearchField
           id="hero-location"
           name="location"
+          openField={openField}
+          setOpenField={setOpenField}
           label={s.location}
           placeholder={s.locationPlaceholder}
           hint={s.locationHint}
@@ -84,6 +90,8 @@ export function HeroSearch({ locale, dict }: { locale: Locale; dict: Dictionary 
         <HeroSearchField
           id="hero-type"
           name="type"
+          openField={openField}
+          setOpenField={setOpenField}
           label={s.type}
           placeholder={s.typeAny}
           icon={<Home />}
@@ -93,6 +101,8 @@ export function HeroSearch({ locale, dict }: { locale: Locale; dict: Dictionary 
         <HeroSearchField
           id="hero-price"
           name="price"
+          openField={openField}
+          setOpenField={setOpenField}
           label={s.price}
           placeholder={s.priceAny}
           icon={<Tag />}
@@ -102,6 +112,8 @@ export function HeroSearch({ locale, dict }: { locale: Locale; dict: Dictionary 
         <HeroSearchField
           id="hero-bedrooms"
           name="bedrooms"
+          openField={openField}
+          setOpenField={setOpenField}
           label={s.bedrooms}
           placeholder={s.bedroomsAny}
           icon={<BedDouble />}
@@ -118,7 +130,7 @@ export function HeroSearch({ locale, dict }: { locale: Locale; dict: Dictionary 
         </button>
       </div>
 
-      <div className="mt-4 flex flex-wrap items-center gap-2.5">
+      <div className="relative z-0 mt-4 flex flex-wrap items-center gap-2.5">
         <span className="mr-1 text-[0.62rem] uppercase tracking-[0.22em] text-gold">{s.popular}</span>
         <ul className="flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none] sm:flex-wrap sm:overflow-visible [&::-webkit-scrollbar]:hidden">
           {LOCATIONS.slice(0, 5).map((id) => (
