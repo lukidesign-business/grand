@@ -85,7 +85,7 @@ export function ProjectCard({ project, locale, dict, priority = false }: Project
               <dd
                 className={cn(
                   'm-0 text-[0.88rem] text-cream',
-                  entry.price && 'font-serif text-[1.35rem] leading-tight text-gold'
+                  entry.price && 'font-serif text-[1.35rem] font-semibold leading-tight text-gold'
                 )}
               >
                 {entry.value}

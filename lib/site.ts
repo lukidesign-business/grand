@@ -3,7 +3,7 @@ import type { Locale } from './i18n/config';
 export const BRAND = {
   name: 'Grand Property',
   consultant: 'Eryk Fokt',
-  email: 'hello@grandproperty.co.th',
+  email: 'thai@grand-properties.com',
   phoneDisplay: '+48 666 212 777',
   phoneHref: '+48666212777',
   whatsappHref: 'https://wa.me/48666212777',

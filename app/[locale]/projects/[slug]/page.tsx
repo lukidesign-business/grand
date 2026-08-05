@@ -115,7 +115,7 @@ export default async function ProjectPage({
 
           <p className="flex items-baseline gap-3">
             <span className="text-[0.68rem] uppercase tracking-luxe text-muted-2">{labels.from}</span>
-            <strong className="font-serif text-[clamp(1.9rem,3.4vw,2.6rem)] font-light text-gold">
+            <strong className="font-serif text-[clamp(1.9rem,3.4vw,2.6rem)] font-semibold text-gold">
               {project.priceFrom ? formatPrice(locale, project.priceFrom) : labels.priceOnRequest}
             </strong>
           </p>
@@ -205,7 +205,7 @@ export default async function ProjectPage({
                     <dd
                       className={cn(
                         'm-0 text-right text-[0.92rem] text-cream',
-                        fact.price && 'font-serif text-[1.3rem] text-gold'
+                        fact.price && 'font-serif text-[1.3rem] font-semibold text-gold'
                       )}
                     >
                       {fact.v}
