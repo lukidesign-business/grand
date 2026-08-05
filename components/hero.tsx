@@ -18,7 +18,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const h = dict.hero;
 
   return (
-    <section className="relative isolate flex min-h-[100svh] flex-col justify-center overflow-hidden pb-8 pt-24 md:max-h-[980px] md:justify-end md:pb-[clamp(2rem,5vh,4rem)] md:pt-[clamp(7rem,12vh,10rem)]">
+    <section className="relative isolate mt-0 flex min-h-[100svh] flex-col justify-center overflow-hidden pb-8 pt-24 lg:mt-[clamp(5rem,8vw,7rem)] md:max-h-[980px] md:justify-end md:pb-[clamp(2rem,5vh,4rem)] md:pt-[clamp(7rem,12vh,10rem)]">
       {/*
         Art-directed with a real <picture> rather than two <Image>s: the browser
         downloads exactly one source, and these files are already compressed to
