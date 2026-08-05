@@ -166,14 +166,6 @@
 
 @layer components {
   .reveal {
-    opacity: 0;
-    transform: translateY(22px);
-    transition:
-      opacity 0.85s var(--ease-luxe),
-      transform 0.85s var(--ease-luxe);
-  }
-
-  .reveal[data-shown="true"] {
     opacity: 1;
     transform: none;
   }

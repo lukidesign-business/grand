@@ -30,7 +30,7 @@ type SectionProps = { locale: Locale; dict: Dictionary };
 function Wash({ src }: { src: string }) {
   return (
     <div aria-hidden="true" className="section-wash absolute inset-0 z-0">
-      <Image src={src} alt="" fill sizes="100vw" className="object-cover" />
+      <Image src={src} alt="" fill sizes="100vw" loading="lazy" className="object-cover" />
     </div>
   );
 }
