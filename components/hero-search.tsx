@@ -1,58 +1,51 @@
+'use client';
+
 import Link from 'next/link';
+import { useState } from 'react';
 import { BedDouble, ChevronDown, Home, MapPin, Search, Tag } from 'lucide-react';
 
+import { HeroSearchField } from '@/components/hero-search-field';
 import { BEDROOMS, LOCATIONS, PRICE_BANDS, PROPERTY_TYPES, href } from '@/lib/site';
 import type { Dictionary } from '@/lib/i18n';
 import type { Locale } from '@/lib/i18n/config';
 import { cn } from '@/lib/utils';
 
-interface FieldProps {
+interface FilterFieldProps {
   id: string;
   name: string;
   label: string;
   placeholder: string;
-  hint?: string;
   icon: React.ReactNode;
   options: { value: string; label: string }[];
   className?: string;
-  /** Omit both to leave the select uncontrolled (the plain-GET hero bar). */
-  value?: string;
-  onChange?: React.ChangeEventHandler<HTMLSelectElement>;
+  value: string;
+  onChange: React.ChangeEventHandler<HTMLSelectElement>;
 }
 
-/** One cell of the search bar: icon, floating label, native select, chevron. */
+/** The filter-page variant remains a native controlled field for instant filtering. */
 export function SearchField({
   id,
   name,
   label,
   placeholder,
-  hint,
   icon,
   options,
   className,
   value,
   onChange
-}: FieldProps) {
-  const controlled = value !== undefined;
+}: FilterFieldProps) {
   return (
-    <div
-      className={cn(
-        'group relative flex min-w-0 items-center gap-3.5 px-4 py-4 transition-colors duration-300 hover:bg-gold/5 focus-within:bg-gold/7',
-        className
-      )}
-    >
+    <div className={cn('group relative flex min-w-0 items-center gap-3.5 px-4 py-4', className)}>
       <span className="flex text-gold [&_svg]:size-5.5">{icon}</span>
       <div className="flex min-w-0 flex-1 flex-col">
-        <label
-          htmlFor={id}
-          className="mb-0.5 text-[0.6rem] uppercase tracking-[0.2em] text-gold group-focus-within:text-gold-bright"
-        >
+        <label htmlFor={id} className="mb-0.5 text-[0.6rem] uppercase tracking-[0.2em] text-gold">
           {label}
         </label>
         <select
           id={id}
           name={name}
-          {...(controlled ? { value, onChange } : { defaultValue: '' })}
+          value={value}
+          onChange={onChange}
           className="w-full cursor-pointer appearance-none truncate border-0 bg-transparent p-0 text-[0.95rem] font-light text-cream-bright focus:outline-none"
         >
           <option value="">{placeholder}</option>
@@ -62,9 +55,8 @@ export function SearchField({
             </option>
           ))}
         </select>
-        {hint ? <span className="mt-0.5 text-[0.66rem] text-muted-2">{hint}</span> : null}
       </div>
-      <ChevronDown className="size-4 text-muted transition-transform duration-300 group-focus-within:rotate-180 group-focus-within:text-gold" />
+      <ChevronDown className="size-4 text-muted" />
     </div>
   );
 }
@@ -77,42 +69,51 @@ export function HeroSearch({ locale, dict }: { locale: Locale; dict: Dictionary 
   const s = dict.hero.search;
   const v = dict.values;
   const action = href(locale, 'search');
+  const [openField, setOpenField] = useState<string | null>(null);
 
   const divider = 'sm:border-l sm:border-line-soft border-t border-line-soft sm:border-t-0';
 
   return (
-    <form action={action} method="get" role="search" aria-label={s.label} className="reveal">
-      <div className="grid border border-line bg-[rgba(12,13,17,.78)] shadow-[0_30px_70px_-40px_rgba(0,0,0,.95)] backdrop-blur-xl backdrop-saturate-125 sm:grid-cols-2 xl:grid-cols-[1.45fr_1fr_1fr_.85fr_auto]">
-        <SearchField
+    <form action={action} method="get" role="search" aria-label={s.label} className="reveal relative z-[100]">
+      <div className="relative z-[200] grid border border-line bg-[rgba(12,13,17,.78)] shadow-[0_30px_70px_-40px_rgba(0,0,0,.95)] backdrop-blur-xl backdrop-saturate-125 sm:grid-cols-2 xl:grid-cols-[1.45fr_1fr_1fr_.85fr_auto]">
+        <HeroSearchField
           id="hero-location"
           name="location"
+          openField={openField}
+          setOpenField={setOpenField}
           label={s.location}
           placeholder={s.locationPlaceholder}
           hint={s.locationHint}
           icon={<MapPin />}
           options={LOCATIONS.map((id) => ({ value: id, label: v.locations[id] }))}
         />
-        <SearchField
+        <HeroSearchField
           id="hero-type"
           name="type"
+          openField={openField}
+          setOpenField={setOpenField}
           label={s.type}
           placeholder={s.typeAny}
           icon={<Home />}
           options={PROPERTY_TYPES.map((id) => ({ value: id, label: v.types[id] }))}
           className={divider}
         />
-        <SearchField
+        <HeroSearchField
           id="hero-price"
           name="price"
+          openField={openField}
+          setOpenField={setOpenField}
           label={s.price}
           placeholder={s.priceAny}
           icon={<Tag />}
           options={PRICE_BANDS.map((band) => ({ value: band.id, label: v.priceBands[band.id] }))}
           className="border-t border-line-soft sm:border-l-0 xl:border-l xl:border-t-0"
         />
-        <SearchField
+        <HeroSearchField
           id="hero-bedrooms"
           name="bedrooms"
+          openField={openField}
+          setOpenField={setOpenField}
           label={s.bedrooms}
           placeholder={s.bedroomsAny}
           icon={<BedDouble />}
@@ -129,7 +130,7 @@ export function HeroSearch({ locale, dict }: { locale: Locale; dict: Dictionary 
         </button>
       </div>
 
-      <div className="mt-4 flex flex-wrap items-center gap-2.5">
+      <div className="relative z-0 mt-4 flex flex-wrap items-center gap-2.5">
         <span className="mr-1 text-[0.62rem] uppercase tracking-[0.22em] text-gold">{s.popular}</span>
         <ul className="flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none] sm:flex-wrap sm:overflow-visible [&::-webkit-scrollbar]:hidden">
           {LOCATIONS.slice(0, 5).map((id) => (
