@@ -72,7 +72,7 @@ export function formatPrice(locale: Locale, value: number): string {
 
 /* ------------------------------------------------------------ filter values */
 
-export const LOCATIONS = ['pattaya', 'jomtien', 'pratumnak', 'najomtien', 'bangsaray', 'wongamat'] as const;
+export const LOCATIONS = ['pattaya', 'jomtien', 'pratumnak', 'bangsaray', 'wongamat'] as const;
 export const PROPERTY_TYPES = ['condo', 'penthouse', 'villa', 'townhouse'] as const;
 export const BEDROOMS = ['studio', '1', '2', '3', '4plus'] as const;
 export const STATUSES = ['ready', 'offplan'] as const;
