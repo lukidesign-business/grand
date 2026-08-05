@@ -264,6 +264,10 @@
       "floors": "Kondygnacje",
       "units": "Lokale",
       "gallery": "Galeria",
+      "viewAll": "Zobacz wszystkie zdjęcia ({count})",
+      "close": "Zamknij galerię",
+      "prev": "Poprzednie zdjęcie",
+      "next": "Następne zdjęcie",
       "overview": "Opis",
       "facts": "Kluczowe dane",
       "enquire": "Zapytaj o tę inwestycję",
@@ -504,7 +508,7 @@
   "contact": {
     "eyebrow": "Konsultacja",
     "title": "Zacznijmy od rozmowy",
-    "lead": "Bez zalewania folderami i bez presji. Rozmowa, żeby zrozumieć, co chcesz osiągnąć, a potem lista propozycji, która to odzwierciedla — albo uczciwa odpowiedź, że to nie jest ten moment.",
+    "lead": "Bez zalewania folderami i bez presji. Rozmowa, żeby zrozumieć, co chcesz osiągnąć, a potem lista propozycji, kt��ra to odzwierciedla — albo uczciwa odpowiedź, że to nie jest ten moment.",
     "formTitle": "Napisz, czego szukasz",
     "form": {
       "name": "Imię i nazwisko",
