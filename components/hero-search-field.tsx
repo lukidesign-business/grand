@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Check, ChevronDown } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
@@ -35,12 +35,27 @@ export function HeroSearchField({
   openField,
   setOpenField
 }: HeroSearchFieldProps) {
+  const fieldRef = useRef<HTMLDivElement>(null);
   const [selected, setSelected] = useState('');
   const open = openField === id;
+
+  useEffect(() => {
+    if (!open) return;
+
+    const handlePointerDown = (event: PointerEvent) => {
+      if (!fieldRef.current?.contains(event.target as Node)) {
+        setOpenField(null);
+      }
+    };
+
+    document.addEventListener('pointerdown', handlePointerDown);
+    return () => document.removeEventListener('pointerdown', handlePointerDown);
+  }, [open, setOpenField]);
   const selectedLabel = options.find((option) => option.value === selected)?.label ?? placeholder;
 
   return (
     <div
+      ref={fieldRef}
       className={cn(
         'group relative z-0 flex min-w-0 items-center gap-3.5 px-4 py-4 transition-colors duration-300 hover:bg-gold/5',
         open && 'z-[100] bg-gold/7',
