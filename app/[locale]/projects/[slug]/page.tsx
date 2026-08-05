@@ -232,17 +232,19 @@ export default async function ProjectPage({
         </div>
       </section>
 
-      <section className="section-y bg-ink-2">
-        <div className="shell">
-          <h2 className="text-[clamp(2rem,3.6vw,3.1rem)]">{labels.similar}</h2>
-          <Rule />
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-            {others.map((other) => (
-              <ProjectCard key={other.id} project={other} locale={locale} dict={dict} />
-            ))}
+      {others.length > 0 && (
+        <section className="section-y bg-ink-2">
+          <div className="shell">
+            <h2 className="text-[clamp(2rem,3.6vw,3.1rem)]">{labels.similar}</h2>
+            <Rule />
+            <div className="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+              {others.map((other) => (
+                <ProjectCard key={other.id} project={other} locale={locale} dict={dict} />
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       <CtaBand locale={locale} dict={dict} />
     </>
