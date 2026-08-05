@@ -38,8 +38,8 @@ export function HeroSearchField({
   return (
     <div
       className={cn(
-        'group relative flex min-w-0 items-center gap-3.5 px-4 py-4 transition-colors duration-300 hover:bg-gold/5',
-        open && 'bg-gold/7',
+        'group relative z-0 flex min-w-0 items-center gap-3.5 px-4 py-4 transition-colors duration-300 hover:bg-gold/5',
+        open && 'z-[100] bg-gold/7',
         className
       )}
     >
