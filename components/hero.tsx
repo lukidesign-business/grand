@@ -47,7 +47,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
 
       <div className="shell flex min-h-0 flex-1 items-end md:items-center md:pb-[clamp(1rem,3vh,2.5rem)]">
         <div className="max-w-full pb-2 pl-1 pr-1 sm:pl-2 sm:pr-2 md:max-w-[40rem] md:pb-0 md:pl-[clamp(1rem,3vw,3rem)] md:pr-4 md:pt-0">
-          <span className="mb-1 block text-[0.92rem] uppercase tracking-[0.32em] text-gold sm:text-[1.05rem] sm:tracking-[0.4em]">
+          <span className="-mt-[20px] mb-[-13px] block text-[0.92rem] uppercase tracking-[0.32em] text-gold sm:text-[1.05rem] sm:tracking-[0.4em]">
             {h.eyebrow}
           </span>
 
@@ -60,7 +60,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             )}
           >
             <span className="block text-cream-bright">{h.titleTop}</span>
-            <span className="text-gradient-gold block">{h.titleBottom}</span>
+            <span className="-mt-[26px] text-gradient-gold block">{h.titleBottom}</span>
           </h1>
 
           <span aria-hidden="true" className="rule-gold my-5 w-17 md:my-7" />
