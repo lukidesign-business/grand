@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Check, MapPin } from 'lucide-react';
+import { ArrowRight, MapPin } from 'lucide-react';
 
 import { formatPrice, projectHref, type Project } from '@/lib/site';
 import type { Dictionary } from '@/lib/i18n';
@@ -38,7 +38,7 @@ export function ProjectCard({ project, locale, dict, priority = false }: Project
 
   return (
     <article className="reveal group flex flex-col border border-line-soft bg-[linear-gradient(170deg,var(--color-surface),var(--color-ink-2))] transition-all duration-500 ease-luxe hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_30px_60px_-40px_rgba(0,0,0,.95)]">
-      <Link href={url} tabIndex={-1} aria-hidden="true" className="relative block aspect-16/11 overflow-hidden">
+      <Link href={url} tabIndex={-1} aria-hidden="true" className="relative block aspect-[16/9] overflow-hidden">
         <Image
           src={`/images/${project.image}`}
           alt=""
@@ -63,53 +63,44 @@ export function ProjectCard({ project, locale, dict, priority = false }: Project
         </span>
       </Link>
 
-      <div className="flex flex-1 flex-col p-6 md:p-7">
-        <p className="mb-3 flex items-center gap-1.5 text-[0.68rem] uppercase tracking-[0.18em] text-gold">
-          <MapPin className="size-3.5" />
-          <span>{dict.values.locations[project.location]}</span>
-        </p>
-
-        <h3 className="mb-2 text-[1.55rem]">
-          <Link href={url} className="transition-colors duration-300 group-hover:text-gold-bright">
-            {item.name}
+      <div className="flex flex-1 flex-col p-4 sm:p-5">
+        <div className="flex items-start justify-between gap-4">
+          <div className="min-w-0">
+            <p className="mb-1.5 flex items-center gap-1.5 text-[0.62rem] uppercase tracking-[0.16em] text-gold">
+              <MapPin className="size-3" />
+              <span>{dict.values.locations[project.location]}</span>
+            </p>
+            <h3 className="text-[1.4rem] leading-tight">
+              <Link href={url} className="transition-colors duration-300 group-hover:text-gold-bright">
+                {item.name}
+              </Link>
+            </h3>
+          </div>
+          <Link
+            href={url}
+            aria-label={`${labels.view}: ${item.name}`}
+            className="mt-1 shrink-0 text-gold transition-colors duration-300 hover:text-gold-bright"
+          >
+            <ArrowRight className="size-5" />
           </Link>
-        </h3>
-        <p className="mb-5 text-[0.9rem] text-muted">{item.tagline}</p>
+        </div>
 
-        <dl className="mb-5 grid grid-cols-2 gap-x-4 gap-y-3.5 border-y border-line-soft py-4">
-          {meta.map((entry) => (
-            <div key={entry.label}>
-              <dt className="mb-0.5 text-[0.6rem] uppercase tracking-[0.18em] text-muted-2">
-                {entry.label}
-              </dt>
-              <dd
-                className={cn(
-                  'm-0 text-[0.88rem] text-cream',
-                  entry.price && 'font-serif text-[1.35rem] font-semibold leading-tight text-gold'
-                )}
-              >
-                {entry.value}
-              </dd>
-            </div>
-          ))}
+        <dl className="mt-4 flex items-end gap-6 border-t border-line-soft pt-3">
+          <div>
+            <dt className="mb-0.5 text-[0.56rem] uppercase tracking-[0.16em] text-muted-2">{labels.from}</dt>
+            <dd className="m-0 font-serif text-[1.3rem] font-semibold leading-tight text-gold">
+              {meta[0].value}
+            </dd>
+          </div>
+          <div>
+            <dt className="mb-0.5 text-[0.56rem] uppercase tracking-[0.16em] text-muted-2">{labels.bedrooms}</dt>
+            <dd className="m-0 text-[0.82rem] text-cream">{meta[2].value}</dd>
+          </div>
+          <div className="ml-auto hidden sm:block">
+            <dt className="sr-only">{labels.plan}</dt>
+            <dd className="m-0 text-[0.72rem] text-muted">{meta[1].value}</dd>
+          </div>
         </dl>
-
-        <ul className="mb-6 grid gap-2">
-          {item.highlights.slice(0, 3).map((highlight) => (
-            <li key={highlight} className="flex gap-2.5 text-[0.84rem] leading-relaxed text-muted">
-              <Check className="mt-1 size-3.5 shrink-0 text-gold" />
-              <span>{highlight}</span>
-            </li>
-          ))}
-        </ul>
-
-        <Link
-          href={url}
-          className="mt-auto inline-flex items-center gap-2.5 self-start border-b border-gold/25 pb-1 text-[0.72rem] uppercase tracking-luxe text-gold transition-colors duration-300 hover:border-gold hover:text-gold-bright"
-        >
-          {labels.view}
-          <ArrowRight className="size-4 transition-transform duration-300 hover:translate-x-1" />
-        </Link>
       </div>
     </article>
   );
