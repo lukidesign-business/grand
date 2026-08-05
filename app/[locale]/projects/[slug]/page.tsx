@@ -6,8 +6,8 @@ import { ArrowLeft, Building2, Check, MapPin, MessageCircle } from 'lucide-react
 
 import { Button } from '@/components/ui/button';
 import { Rule } from '@/components/ui/section-head';
-import { FramedImage } from '@/components/ui/framed-image';
 import { ProjectCard } from '@/components/project-card';
+import { ProjectGallery } from '@/components/project-gallery';
 import { CtaBand } from '@/components/sections';
 import { BRAND, PROJECTS, formatPrice, getProject, href } from '@/lib/site';
 import { getDictionary } from '@/lib/i18n';
@@ -144,20 +144,16 @@ export default async function ProjectPage({
             </ul>
 
             <h3 className="mt-10 border-t border-line-soft pt-6 text-[1.35rem]">{labels.gallery}</h3>
-            <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {project.gallery.map((image) => (
-                <FramedImage
-                  key={image}
-                  src={`/images/${image}`}
-                  alt={`${item.name} interior photograph`}
-                  width={1280}
-                  height={731}
-                  tight
-                  imageClassName="aspect-4/3"
-                  sizes="(max-width: 640px) 100vw, 33vw"
-                />
-              ))}
-            </div>
+            <ProjectGallery
+              images={project.gallery}
+              name={item.name}
+              labels={{
+                viewAll: labels.viewAll,
+                close: labels.close,
+                prev: labels.prev,
+                next: labels.next
+              }}
+            />
 
             {project.additionalImages?.length && project.mapUrl ? (
               <section className="mt-12 border-t border-line-soft pt-8">
