@@ -2,7 +2,6 @@
 
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
 import { BedDouble, Building2, CalendarDays, ChevronDown, Home, MapPin, Search, Tag } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -22,7 +21,7 @@ import { fill } from '@/lib/i18n/fill';
 import type { Dictionary } from '@/lib/i18n';
 import type { Locale } from '@/lib/i18n/config';
 
-type Filters = {
+export type SearchFilters = {
   location: string;
   type: string;
   price: string;
@@ -31,21 +30,19 @@ type Filters = {
   status: string;
 };
 
-const EMPTY: Filters = { location: '', type: '', price: '', plan: '', bedrooms: '', status: '' };
+const EMPTY: SearchFilters = { location: '', type: '', price: '', plan: '', bedrooms: '', status: '' };
 type SortMode = 'featured' | 'asc' | 'desc';
 
-export function SearchExperience({ locale, dict }: { locale: Locale; dict: Dictionary }) {
-  const params = useSearchParams();
-
-  // The hero bar hands its query off here, so seed state from the URL.
-  const [filters, setFilters] = useState<Filters>(() => ({
-    location: params.get('location') ?? '',
-    type: params.get('type') ?? '',
-    price: params.get('price') ?? '',
-    plan: params.get('plan') ?? '',
-    bedrooms: params.get('bedrooms') ?? '',
-    status: params.get('status') ?? ''
-  }));
+export function SearchExperience({
+  locale,
+  dict,
+  initialFilters
+}: {
+  locale: Locale;
+  dict: Dictionary;
+  initialFilters: SearchFilters;
+}) {
+  const [filters, setFilters] = useState<SearchFilters>(initialFilters);
   const [sort, setSort] = useState<SortMode>('featured');
 
   const results = useMemo(() => {
@@ -75,7 +72,7 @@ export function SearchExperience({ locale, dict }: { locale: Locale; dict: Dicti
     });
   }, [filters, sort]);
 
-  const set = (key: keyof Filters) => (event: React.ChangeEvent<HTMLSelectElement>) =>
+  const set = (key: keyof SearchFilters) => (event: React.ChangeEvent<HTMLSelectElement>) =>
     setFilters((current) => ({ ...current, [key]: event.target.value }));
 
   const s = dict.search;

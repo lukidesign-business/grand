@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
 
 import { Rule } from '@/components/ui/section-head';
@@ -24,10 +23,20 @@ export async function generateMetadata({
   };
 }
 
-export default async function SearchPage({ params }: { params: Promise<{ locale: string }> }) {
-  const { locale } = await params;
+export default async function SearchPage({
+  params,
+  searchParams
+}: {
+  params: Promise<{ locale: string }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
+  const [{ locale }, query] = await Promise.all([params, searchParams]);
   if (!isLocale(locale)) notFound();
   const dict = getDictionary(locale as Locale);
+  const value = (key: string) => {
+    const entry = query[key];
+    return typeof entry === 'string' ? entry : '';
+  };
 
   return (
     <>
@@ -41,10 +50,18 @@ export default async function SearchPage({ params }: { params: Promise<{ locale:
       </section>
 
       <section className="section-y bg-ink-2">
-        {/* useSearchParams needs a Suspense boundary during prerender. */}
-        <Suspense fallback={<div className="shell text-muted">{dict.search.results}…</div>}>
-          <SearchExperience locale={locale} dict={dict} />
-        </Suspense>
+        <SearchExperience
+          locale={locale}
+          dict={dict}
+          initialFilters={{
+            location: value('location'),
+            type: value('type'),
+            price: value('price'),
+            plan: value('plan'),
+            bedrooms: value('bedrooms'),
+            status: value('status')
+          }}
+        />
       </section>
     </>
   );
