@@ -47,13 +47,13 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
 
       <div className="shell flex min-h-0 flex-1 items-end md:items-center md:pb-[clamp(1rem,3vh,2.5rem)]">
         <div className="max-w-full pb-2 pl-1 pr-1 sm:pl-2 sm:pr-2 md:max-w-[40rem] md:pb-0 md:pl-[clamp(1rem,3vw,3rem)] md:pr-4 md:pt-0">
-          <span className="mb-3 block text-[0.72rem] uppercase tracking-[0.4em] text-gold sm:text-[0.82rem] sm:tracking-[0.5em]">
+          <span className="mb-1 block text-[0.92rem] uppercase tracking-[0.32em] text-gold sm:text-[1.05rem] sm:tracking-[0.4em]">
             {h.eyebrow}
           </span>
 
           <h1
             className={cn(
-              'font-light uppercase leading-[0.82] tracking-[0.015em]',
+              'font-light uppercase leading-[0.74] tracking-[0.015em]',
               locale === 'pl'
                 ? 'text-[clamp(2.25rem,5.2vw,4.5rem)]'
                 : 'text-[clamp(2.75rem,6.8vw,6rem)]'
