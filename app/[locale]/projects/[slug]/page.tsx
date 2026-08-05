@@ -218,12 +218,16 @@ export default async function ProjectPage({
                   {labels.enquire}
                 </Link>
               </Button>
-              <Button asChild variant="ghost" size="block" className="mt-3">
-                <a href={BRAND.whatsappHref} target="_blank" rel="noopener noreferrer">
-                  <MessageCircle />
-                  {dict.contact.whatsapp}
-                </a>
-              </Button>
+              <div className="mt-3 grid gap-2">
+                {BRAND.whatsapp.map((number) => (
+                  <Button key={number.display} asChild variant="ghost" size="block">
+                    <a href={number.href} target="_blank" rel="noopener noreferrer">
+                      <MessageCircle />
+                      {dict.contact.whatsapp} {number.display}
+                    </a>
+                  </Button>
+                ))}
+              </div>
 
               <p className="mt-5 text-[0.8rem] leading-relaxed text-muted-2">{dict.contact.remote}</p>
             </div>

@@ -4,12 +4,17 @@ export const BRAND = {
   name: 'Grand Property',
   consultant: 'Eryk Fokt',
   email: 'hello@grandproperty.co.th',
-  // Placeholder contact details — replace with the live numbers before launch.
-  phoneDisplay: '+66 (0) 00 000 0000',
-  phoneHref: '+660000000000',
-  whatsappHref: 'https://wa.me/660000000000',
-  city: 'Central Pattaya, Chonburi',
-  country: 'Thailand',
+  phoneDisplay: '+48 666 212 777',
+  phoneHref: '+48666212777',
+  whatsappHref: 'https://wa.me/48666212777',
+  whatsapp: [
+    { display: '+48 666 212 777', href: 'https://wa.me/48666212777' },
+    { display: '+48 600 377 522', href: 'https://wa.me/48600377522' },
+    { display: '+66 81 373 0494', href: 'https://wa.me/66813730494' }
+  ],
+  address: '433/8 Moo 12, Tapphraya Rd., Nongprue, Banglamung, Chon Buri 20150',
+  city: '433/8 Moo 12, Tapphraya Rd., Nongprue, Banglamung',
+  country: 'Chon Buri 20150, Thailand',
   social: [
     { id: 'instagram', href: 'https://instagram.com/' },
     { id: 'facebook', href: 'https://facebook.com/' },

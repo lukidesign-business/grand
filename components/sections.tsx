@@ -395,11 +395,13 @@ export function ConsultSection({ locale, dict }: SectionProps) {
               { href: href(locale, 'contact') },
               true
             )}
-            {tile('whatsapp', <MessageCircle />, c.whatsapp, BRAND.phoneDisplay, {
-              href: BRAND.whatsappHref,
-              target: '_blank',
-              rel: 'noopener noreferrer'
-            })}
+            {BRAND.whatsapp.map((number) =>
+              tile('whatsapp-' + number.display, <MessageCircle />, c.whatsapp, number.display, {
+                href: number.href,
+                target: '_blank',
+                rel: 'noopener noreferrer'
+              })
+            )}
             {tile('email', <Mail />, c.emailUs, BRAND.email, { href: `mailto:${BRAND.email}` })}
             <p className="mt-1 flex items-start gap-2.5 text-[0.8rem] text-muted-2">
               <MapPin className="mt-1 size-4 shrink-0 text-gold" />
