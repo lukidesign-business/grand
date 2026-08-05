@@ -18,7 +18,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const h = dict.hero;
 
   return (
-    <section className="relative isolate flex min-h-[100svh] flex-col justify-center overflow-hidden pb-8 pt-24 md:max-h-[980px] md:justify-end md:pb-[clamp(2rem,5vh,4rem)] md:pt-[clamp(7rem,12vh,10rem)]">
+    <section className="relative isolate mt-0 flex min-h-[100svh] flex-col justify-center overflow-hidden pb-8 pt-24 lg:mt-[clamp(5rem,8vw,7rem)] md:max-h-[980px] md:justify-end md:pb-[clamp(2rem,5vh,4rem)] md:pt-[clamp(7rem,12vh,10rem)]">
       {/*
         Art-directed with a real <picture> rather than two <Image>s: the browser
         downloads exactly one source, and these files are already compressed to
@@ -45,22 +45,22 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
         className="pointer-events-none absolute -z-10 hidden border border-gold/13 md:block md:inset-[clamp(1rem,2.5vw,2.2rem)]"
       />
 
-      <div className="shell flex flex-1 items-end md:items-center">
-        <div className="max-w-full md:max-w-[34rem]">
-          <span className="mb-3 block text-[0.72rem] uppercase tracking-[0.4em] text-gold sm:text-[0.82rem] sm:tracking-[0.5em]">
+      <div className="shell flex min-h-0 flex-1 items-end md:items-center md:pb-[clamp(1rem,3vh,2.5rem)]">
+        <div className="max-w-full pb-2 pl-1 pr-1 sm:pl-2 sm:pr-2 md:max-w-[40rem] md:pb-0 md:pl-[clamp(1rem,3vw,3rem)] md:pr-4 md:pt-0">
+          <span className="-mt-[20px] mb-[-13px] block text-[0.92rem] uppercase tracking-[0.32em] text-gold sm:text-[1.05rem] sm:tracking-[0.4em]">
             {h.eyebrow}
           </span>
 
           <h1
             className={cn(
-              'font-light uppercase leading-[0.96] tracking-[0.015em]',
+              'font-light uppercase leading-[0.74] tracking-[0.015em]',
               locale === 'pl'
-                ? 'text-[clamp(2.4rem,5.6vw,4.5rem)]'
-                : 'text-[clamp(3.1rem,7.4vw,6rem)]'
+                ? 'text-[clamp(2.25rem,5.2vw,4.5rem)]'
+                : 'text-[clamp(2.75rem,6.8vw,6rem)]'
             )}
           >
             <span className="block text-cream-bright">{h.titleTop}</span>
-            <span className="text-gradient-gold block">{h.titleBottom}</span>
+            <span className="-mt-[26px] text-gradient-gold block">{h.titleBottom}</span>
           </h1>
 
           <span aria-hidden="true" className="rule-gold my-5 w-17 md:my-7" />
@@ -83,7 +83,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           <p className="mb-1 text-[0.82rem] uppercase tracking-luxer text-gold">{h.name}</p>
           <p className="text-[0.72rem] uppercase tracking-luxe text-muted">{h.role}</p>
 
-          <div className="mt-6 flex flex-wrap gap-3 md:mt-8">
+          <div className="mt-6 flex flex-wrap gap-3 md:mt-8 md:flex-nowrap">
             <Button asChild variant="gold" className="max-sm:w-full">
               <Link href={href(locale, 'projects')}>{h.ctaPrimary}</Link>
             </Button>

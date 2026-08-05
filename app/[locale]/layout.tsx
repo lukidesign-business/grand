@@ -7,6 +7,7 @@ import { SiteHeader } from '@/components/site-header';
 import { SiteFooter } from '@/components/site-footer';
 import { LanguageGate } from '@/components/language-gate';
 import { RevealOnScroll } from '@/components/reveal-on-scroll';
+import { BackToTop } from '@/components/back-to-top';
 import { getDictionary } from '@/lib/i18n';
 import { isLocale, locales, type Locale } from '@/lib/i18n/config';
 import { BRAND } from '@/lib/site';
@@ -97,6 +98,7 @@ export default async function LocaleLayout({
 
         <LanguageGate locale={locale as Locale} copy={dict.lang} />
         <RevealOnScroll />
+        <BackToTop label={dict.nav.backToTop} />
       </body>
     </html>
   );
