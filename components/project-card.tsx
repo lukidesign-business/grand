@@ -20,8 +20,15 @@ export function ProjectCard({ project, locale, dict, priority = false }: Project
   const url = projectHref(locale, project.id);
 
   const meta = [
-    { label: labels.from, value: formatPrice(locale, project.priceFrom), price: true },
-    { label: labels.plan, value: dict.values.plans[project.plan] },
+    {
+      label: labels.from,
+      value: project.priceFrom ? formatPrice(locale, project.priceFrom) : labels.priceOnRequest,
+      price: true
+    },
+    {
+      label: labels.plan,
+      value: project.plan ? dict.values.plans[project.plan] : labels.resale
+    },
     {
       label: labels.bedrooms,
       value: project.bedrooms.map((b) => dict.values.bedroomsShort[b]).join(' · ')

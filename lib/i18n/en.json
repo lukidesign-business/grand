@@ -247,8 +247,12 @@
     "title": "Developments we stand behind",
     "lead": "A short list rather than a long one. Every project here is one we have visited, whose developer we have worked with, and whose numbers we are willing to put our name to.",
     "cta": "View all projects",
-    "labels": {
+      "labels": {
       "from": "From",
+      "priceOnRequest": "Price on request",
+      "resale": "Resale",
+      "map": "Location map",
+      "openMap": "Open in Google Maps",
       "plan": "Payment plan",
       "completion": "Completion",
       "location": "Location",
@@ -346,6 +350,18 @@
           "Gated enclave of only 34 homes",
           "Beach pavilion for residents",
           "3-year payment plan, 0% interest"
+        ]
+      },
+      "zenith-pattaya": {
+        "name": "ZENITH Pattaya",
+        "tagline": "A fully furnished 65 m² two-bedroom residence",
+        "summary": "A ready-to-move-in resale residence in ZENITH Pattaya, finished in a refined black, marble and cream palette with generous living space and two bedrooms.",
+        "body": "This 65 m² residence combines a polished interior, integrated kitchen, mirrored detailing and hotel-style bathrooms in one of Pattaya's established resort residences. The property is available for resale and can be viewed by appointment.",
+        "highlights": [
+          "Ready to move in",
+          "Fully furnished two-bedroom layout",
+          "65 m² of interior space",
+          "Premium marble finishes and fitted kitchen"
         ]
       }
     }
