@@ -53,7 +53,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
 
           <h1
             className={cn(
-              'font-light uppercase leading-[0.92] tracking-[0.015em] sm:leading-[0.74]',
+              'font-light uppercase leading-[0.92] tracking-[0.015em] sm:leading-[0.9] md:leading-[0.84]',
               locale === 'pl'
                 ? 'text-[clamp(2.25rem,5.2vw,4.5rem)]'
                 : 'text-[clamp(2.75rem,6.8vw,6rem)]'
