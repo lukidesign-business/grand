@@ -74,8 +74,8 @@ export function HeroSearch({ locale, dict }: { locale: Locale; dict: Dictionary 
   const divider = 'sm:border-l sm:border-line-soft border-t border-line-soft sm:border-t-0';
 
   return (
-    <form action={action} method="get" role="search" aria-label={s.label} className="reveal relative z-[100] max-md:mt-2">
-      <div className="relative z-[200] grid border border-line bg-[rgba(12,13,17,.82)] shadow-[0_24px_55px_-32px_rgba(0,0,0,.95)] backdrop-blur-xl backdrop-saturate-125 max-md:rounded-sm sm:grid-cols-2 xl:grid-cols-[1.45fr_1fr_1fr_.85fr_auto]">
+    <form action={action} method="get" role="search" aria-label={s.label} className="reveal relative z-[100] mx-auto w-full max-md:mt-3">
+      <div className="relative z-[200] grid border border-line bg-[rgba(12,13,17,.82)] shadow-[0_24px_55px_-32px_rgba(0,0,0,.95)] backdrop-blur-xl backdrop-saturate-125 max-md:rounded-sm max-md:grid-cols-1 sm:grid-cols-2 xl:grid-cols-[1.45fr_1fr_1fr_.85fr_auto]">
         <HeroSearchField
           id="hero-location"
           name="location"
@@ -123,7 +123,7 @@ export function HeroSearch({ locale, dict }: { locale: Locale; dict: Dictionary 
 
         <button
           type="submit"
-          className="group flex items-center justify-center gap-2.5 bg-[linear-gradient(135deg,#d8b26d,#b98f45_60%,#cfa561)] px-5 py-3 text-[0.66rem] font-medium uppercase tracking-luxe text-ink transition-[filter] duration-300 hover:brightness-110 sm:col-span-2 sm:px-8 sm:py-4 xl:col-span-1"
+          className="group flex min-h-12 w-full items-center justify-center gap-2.5 bg-[linear-gradient(135deg,#d8b26d,#b98f45_60%,#cfa561)] px-5 py-3 text-[0.66rem] font-medium uppercase tracking-luxe text-ink transition-[filter] duration-300 hover:brightness-110 sm:col-span-2 sm:min-h-0 sm:px-8 sm:py-4 xl:col-span-1"
         >
           <Search className="size-4.5" />
           <span>{s.submit}</span>

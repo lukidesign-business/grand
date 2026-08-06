@@ -57,7 +57,7 @@ export function HeroSearchField({
     <div
       ref={fieldRef}
       className={cn(
-        'group relative z-0 flex min-w-0 items-center gap-3 px-3 py-3 transition-colors duration-300 hover:bg-gold/5 sm:gap-3.5 sm:px-4 sm:py-4',
+        'group relative z-0 flex min-h-14 min-w-0 items-center gap-3 px-3 py-2.5 transition-colors duration-300 hover:bg-gold/5 sm:min-h-0 sm:gap-3.5 sm:px-4 sm:py-4',
         open && 'z-[100] bg-gold/7',
         className
       )}

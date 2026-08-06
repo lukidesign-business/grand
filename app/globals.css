@@ -155,7 +155,7 @@
 }
 
 @utility hero-scrim-mobile {
-  background: linear-gradient(to bottom, rgba(6, 7, 9, 0.86) 0%, rgba(6, 7, 9, 0.45) 28%, rgba(6, 7, 9, 0.55) 52%, rgba(6, 7, 9, 0.96) 82%);
+  background: linear-gradient(to bottom, rgba(6, 7, 9, 0.38) 0%, rgba(6, 7, 9, 0.16) 30%, rgba(6, 7, 9, 0.28) 56%, rgba(6, 7, 9, 0.72) 86%);
 }
 
 @utility page-scrim {
