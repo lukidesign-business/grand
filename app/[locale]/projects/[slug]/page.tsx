@@ -10,14 +10,20 @@ import { ProjectCard } from '@/components/project-card';
 import { ProjectGallery } from '@/components/project-gallery';
 import { WhatsAppSelector } from '@/components/whatsapp-selector';
 import { CtaBand } from '@/components/sections';
-import { BRAND, PROJECTS, formatPrice, getProject, href } from '@/lib/site';
+import { BRAND, PROJECTS, formatPrice, getProject, href, type Project } from '@/lib/site';
+import { getPropertyBySlug, getPublishedProperties, propertyToProject } from '@/lib/properties';
 import { getDictionary } from '@/lib/i18n';
 import { isLocale, locales, type Locale } from '@/lib/i18n/config';
 import { alternatesFor } from '@/lib/metadata';
 import { cn } from '@/lib/utils';
 
-export function generateStaticParams() {
-  return locales.flatMap((locale) => PROJECTS.map((project) => ({ locale, slug: project.id })));
+const imageSrc = (image: string) =>
+  image.startsWith('http') || image.startsWith('/') ? image : `/images/${image}`;
+
+export async function generateStaticParams() {
+  const published = await getPublishedProperties();
+  const projects = published.length ? published.map(propertyToProject) : PROJECTS;
+  return locales.flatMap((locale) => projects.map((project) => ({ locale, slug: project.id })));
 }
 
 export async function generateMetadata({
@@ -26,17 +32,21 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
   const { locale, slug } = await params;
-  const project = getProject(slug);
+  const property = await getPropertyBySlug(slug);
+  const project = property ? propertyToProject(property) : getProject(slug);
   if (!isLocale(locale) || !project) return {};
 
   const dict = getDictionary(locale);
-  const item = dict.projects.items[slug as keyof typeof dict.projects.items];
+  const item = dict.projects.items[slug as keyof typeof dict.projects.items] ?? {
+    name: property?.name ?? slug,
+    tagline: property?.description ?? ''
+  };
 
   return {
     title: `${item.name} — ${dict.values.locations[project.location]} | ${dict.meta.project.titleSuffix}`,
     description: `${dict.meta.project.descriptionPrefix} ${project.priceFrom ? formatPrice(locale, project.priceFrom) : dict.projects.labels.priceOnRequest}. ${item.tagline}.`,
     alternates: alternatesFor(locale, `projects/${slug}`),
-    openGraph: { images: [`/images/${project.image}`] }
+    openGraph: { images: [imageSrc(project.image)] }
   };
 }
 
@@ -46,13 +56,22 @@ export default async function ProjectPage({
   params: Promise<{ locale: string; slug: string }>;
 }) {
   const { locale, slug } = await params;
-  const project = getProject(slug);
+  const property = await getPropertyBySlug(slug);
+  const project = property ? propertyToProject(property) : getProject(slug);
   if (!isLocale(locale) || !project) notFound();
 
   const dict = getDictionary(locale as Locale);
-  const item = dict.projects.items[slug as keyof typeof dict.projects.items];
+  const item = dict.projects.items[slug as keyof typeof dict.projects.items] ?? {
+    name: property?.name ?? slug,
+    tagline: property?.description ?? '',
+    summary: property?.description ?? '',
+    body: property?.description ?? '',
+    highlights: []
+  };
   const labels = dict.projects.labels;
-  const others = PROJECTS.filter((p) => p.id !== project.id).slice(0, 3);
+  const published = await getPublishedProperties();
+  const catalog = published.length ? published.map(propertyToProject) : PROJECTS;
+  const others = catalog.filter((p) => p.id !== project.id).slice(0, 3);
 
   const facts = [
     {
@@ -75,7 +94,7 @@ export default async function ProjectPage({
       <section className="relative isolate overflow-hidden pb-[clamp(3rem,6vw,5rem)] pt-[clamp(9rem,17vh,12rem)]">
         <div aria-hidden="true" className="absolute inset-0 -z-10">
           <Image
-            src={`/images/${project.image}`}
+            src={imageSrc(project.image)}
             alt=""
             fill
             priority
