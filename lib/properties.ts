@@ -4,16 +4,31 @@ import { properties, type Property } from '@/lib/db/schema'
 import type { Project } from '@/lib/site'
 
 export async function getAllProperties() {
-  return db.select().from(properties).orderBy(desc(properties.updatedAt))
+  try {
+    return await db.select().from(properties).orderBy(desc(properties.updatedAt))
+  } catch (error) {
+    console.warn('[properties] Database unavailable while loading all properties:', error)
+    return []
+  }
 }
 
 export async function getPublishedProperties() {
-  return db.select().from(properties).where(eq(properties.isPublished, true)).orderBy(desc(properties.updatedAt))
+  try {
+    return await db.select().from(properties).where(eq(properties.isPublished, true)).orderBy(desc(properties.updatedAt))
+  } catch (error) {
+    console.warn('[properties] Database unavailable while loading published properties:', error)
+    return []
+  }
 }
 
 export async function getPropertyBySlug(slug: string) {
-  const rows = await db.select().from(properties).where(eq(properties.slug, slug)).limit(1)
-  return rows[0]
+  try {
+    const rows = await db.select().from(properties).where(eq(properties.slug, slug)).limit(1)
+    return rows[0]
+  } catch (error) {
+    console.warn(`[properties] Database unavailable while loading ${slug}:`, error)
+    return undefined
+  }
 }
 
 export function propertyToProject(property: Property): Project {
