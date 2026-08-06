@@ -1,5 +1,4 @@
-import type { Metadata, Viewport } from 'next';
-import type { ReactNode } from 'react';
+import type { Metadata } from 'next';
 import { Cormorant_Garamond, Jost } from 'next/font/google';
 
 import './globals.css';
@@ -7,7 +6,6 @@ import './globals.css';
 const cormorant = Cormorant_Garamond({
   subsets: ['latin', 'latin-ext'],
   weight: ['300', '400', '500'],
-  style: ['normal'],
   variable: '--font-cormorant',
   display: 'swap'
 });
@@ -23,16 +21,15 @@ export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'),
   title: 'Grand Property',
   description: 'Premium real estate advisory in Thailand',
-  icons: { icon: '/images/emblem-sm.png', apple: '/images/emblem.png' }
+  icons: {
+    icon: '/images/emblem-sm.png',
+    apple: '/images/emblem.png'
+  }
 };
 
-export const viewport: Viewport = {
-  themeColor: '#0a0b0e'
-};
-
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${jost.variable}`}>
+    <html lang="en" className={`${cormorant.variable} ${jost.variable} bg-ink`}>
       <body>{children}</body>
     </html>
   );

@@ -10,15 +10,12 @@ import { ProjectCard } from '@/components/project-card';
 import { ProjectGallery } from '@/components/project-gallery';
 import { WhatsAppSelector } from '@/components/whatsapp-selector';
 import { CtaBand } from '@/components/sections';
-import { BRAND, PROJECTS, formatPrice, getProject, href, type Project } from '@/lib/site';
-import { getPropertyBySlug, getPublishedProperties, propertyToProject } from '@/lib/properties';
+import { BRAND, PROJECTS, formatPrice, getProject, href } from '@/lib/site';
 import { getDictionary } from '@/lib/i18n';
 import { isLocale, locales, type Locale } from '@/lib/i18n/config';
 import { alternatesFor } from '@/lib/metadata';
+import { getPropertyBySlug, getPublishedProperties, propertyToProject } from '@/lib/properties';
 import { cn } from '@/lib/utils';
-
-const imageSrc = (image: string) =>
-  image.startsWith('http') || image.startsWith('/') ? image : `/images/${image}`;
 
 export async function generateStaticParams() {
   const published = await getPublishedProperties();
@@ -46,7 +43,7 @@ export async function generateMetadata({
     title: `${item.name} — ${dict.values.locations[project.location]} | ${dict.meta.project.titleSuffix}`,
     description: `${dict.meta.project.descriptionPrefix} ${project.priceFrom ? formatPrice(locale, project.priceFrom) : dict.projects.labels.priceOnRequest}. ${item.tagline}.`,
     alternates: alternatesFor(locale, `projects/${slug}`),
-    openGraph: { images: [imageSrc(project.image)] }
+    openGraph: { images: [`/images/${project.image}`] }
   };
 }
 
@@ -94,7 +91,7 @@ export default async function ProjectPage({
       <section className="relative isolate overflow-hidden pb-[clamp(3rem,6vw,5rem)] pt-[clamp(9rem,17vh,12rem)]">
         <div aria-hidden="true" className="absolute inset-0 -z-10">
           <Image
-            src={imageSrc(project.image)}
+            src={project.image.startsWith('http') || project.image.startsWith('/') ? project.image : `/images/${project.image}`}
             alt=""
             fill
             priority
@@ -175,7 +172,7 @@ export default async function ProjectPage({
               }}
             />
 
-            {project.additionalImages?.length && project.mapUrl ? (
+            {project.mapImage && project.mapUrl ? (
               <section className="mt-12 border-t border-line-soft pt-8">
                 <div className="flex flex-wrap items-end justify-between gap-4">
                   <div>
@@ -192,7 +189,7 @@ export default async function ProjectPage({
                 </div>
                 <div className="mt-5 max-w-3xl border border-line-soft bg-ink-2 p-2">
                   <Image
-                    src={imageSrc(project.additionalImages[0])}
+                    src={project.mapImage.startsWith('http') || project.mapImage.startsWith('/') ? project.mapImage : `/images/${project.mapImage}`}
                     alt={`${item.name} location map`}
                     width={1600}
                     height={1000}

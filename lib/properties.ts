@@ -4,16 +4,31 @@ import { properties, type Property } from '@/lib/db/schema'
 import type { Project } from '@/lib/site'
 
 export async function getAllProperties() {
-  return db.select().from(properties).orderBy(desc(properties.updatedAt))
+  try {
+    return await db.select().from(properties).orderBy(desc(properties.updatedAt))
+  } catch (error) {
+    console.warn('[properties] Database unavailable while loading all properties:', error)
+    return []
+  }
 }
 
 export async function getPublishedProperties() {
-  return db.select().from(properties).where(eq(properties.isPublished, true)).orderBy(desc(properties.updatedAt))
+  try {
+    return await db.select().from(properties).where(eq(properties.isPublished, true)).orderBy(desc(properties.updatedAt))
+  } catch (error) {
+    console.warn('[properties] Database unavailable while loading published properties:', error)
+    return []
+  }
 }
 
 export async function getPropertyBySlug(slug: string) {
-  const rows = await db.select().from(properties).where(eq(properties.slug, slug)).limit(1)
-  return rows[0]
+  try {
+    const rows = await db.select().from(properties).where(eq(properties.slug, slug)).limit(1)
+    return rows[0]
+  } catch (error) {
+    console.warn(`[properties] Database unavailable while loading ${slug}:`, error)
+    return undefined
+  }
 }
 
 export function propertyToProject(property: Property): Project {
@@ -22,17 +37,34 @@ export function propertyToProject(property: Property): Project {
   const image = property.coverImageUrl
   const gallery = property.galleryImageUrls
   const numericPrice = Number(property.price.replace(/[^0-9.]/g, ''))
+  const isZenithPattaya = property.slug === 'zenith-pattaya'
+  const isZenithPattayaTwo = property.slug === 'zenith-pattaya-2'
 
   return {
     id: property.slug,
     image,
     gallery,
+    additionalImages: isZenithPattaya
+      ? ['/images/zenith-map.jpg']
+      : isZenithPattayaTwo
+        ? ['/images/zenith-pattaya-2-map.jpg']
+        : undefined,
+    mapImage: isZenithPattaya
+      ? 'zenith-map.jpg'
+      : isZenithPattayaTwo
+        ? 'zenith-pattaya-2-map.jpg'
+        : undefined,
+    mapUrl: isZenithPattaya
+      ? 'https://maps.google.com/?q=Zenith+Pattaya'
+      : isZenithPattayaTwo
+        ? 'https://maps.google.com/?q=Zenith+Pattaya+2'
+        : undefined,
     location,
     type: property.propertyType.toLowerCase().includes('villa') ? 'villa' : 'condo',
     status,
     completion: property.status,
     priceFrom: Number.isFinite(numericPrice) && numericPrice > 0 ? numericPrice * 1_000_000 : undefined,
-    sizeFrom: 0,
+    sizeFrom: property.areaSqm ?? (isZenithPattaya ? 35 : isZenithPattayaTwo ? 65 : 0),
     bedrooms: [String(property.bedrooms) as Project['bedrooms'][number]],
     featured: true,
   }

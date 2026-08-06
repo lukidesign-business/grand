@@ -98,6 +98,7 @@ export interface Project {
   image: string;
   gallery: string[];
   additionalImages?: string[];
+  mapImage?: string;
   mapUrl?: string;
   location: LocationId;
   type: PropertyType;
@@ -117,10 +118,14 @@ export const PROJECTS: Project[] = [
     id: 'zenith-pattaya',
     image: 'zenith-living-1.jpg',
     gallery: ['zenith-living-1.jpg'],
+    additionalImages: ['zenith-map.jpg'],
+    mapImage: 'zenith-map.jpg',
+    mapUrl: 'https://maps.google.com/?q=Zenith+Pattaya',
     location: 'pattaya',
     type: 'condo',
     status: 'ready',
     completion: 'Ready to move in',
+    priceFrom: 3_900_000,
     sizeFrom: 35,
     bedrooms: ['1'],
     featured: true
@@ -145,13 +150,15 @@ export const PROJECTS: Project[] = [
       'zenith-pattaya-2-exterior-5.jpg'
     ],
     additionalImages: ['zenith-pattaya-2-map.jpg'],
+    mapImage: 'zenith-pattaya-2-map.jpg',
     mapUrl: 'https://maps.google.com/?q=Zenith+Pattaya+2',
     location: 'jomtien',
     type: 'condo',
-    status: 'offplan',
-    completion: 'Q4 2028',
+    status: 'ready',
+    completion: 'Ready to move in',
+    priceFrom: 4_200_000,
     sizeFrom: 65,
-    bedrooms: ['2'],
+    bedrooms: ['1'],
     floors: 8,
     units: 900,
     featured: true

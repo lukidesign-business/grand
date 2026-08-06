@@ -36,13 +36,11 @@ type SortMode = 'featured' | 'asc' | 'desc';
 export function SearchExperience({
   locale,
   dict,
-  initialFilters,
-  projects = PROJECTS
+  initialFilters
 }: {
   locale: Locale;
   dict: Dictionary;
   initialFilters: SearchFilters;
-  projects?: typeof PROJECTS;
 }) {
   const [filters, setFilters] = useState<SearchFilters>(initialFilters);
   const [sort, setSort] = useState<SortMode>('featured');
@@ -50,7 +48,7 @@ export function SearchExperience({
   const results = useMemo(() => {
     const band = PRICE_BANDS.find((b) => b.id === filters.price);
 
-    const matched = projects.filter((project) => {
+    const matched = PROJECTS.filter((project) => {
       if (filters.location && project.location !== filters.location) return false;
       if (filters.type && project.type !== filters.type) return false;
       if (filters.plan && project.plan !== filters.plan) return false;
