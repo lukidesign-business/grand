@@ -65,7 +65,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
 
           <span aria-hidden="true" className="rule-gold my-5 w-17 md:my-7" />
 
-          <p className="mb-4 text-[0.78rem] uppercase leading-[1.85] tracking-[0.16em] text-cream-bright/90 sm:text-[0.84rem] sm:leading-[2] md:mb-6">
+          <p className="mb-4 text-[0.56rem] uppercase leading-[1.7] tracking-[0.12em] text-cream-bright/90 sm:text-[0.84rem] sm:leading-[2] sm:tracking-[0.16em] md:mb-6">
             {h.taglineLine1}
             <br />
             {h.taglineLine2}
@@ -81,7 +81,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           />
 
           <p className="mb-1 text-[0.82rem] uppercase tracking-luxer text-gold">{h.name}</p>
-          <p className="text-[0.72rem] uppercase tracking-luxe text-muted">{h.role}</p>
+          <p className="text-[0.58rem] uppercase tracking-luxe text-cream-bright sm:text-[0.72rem] sm:text-muted">{h.role}</p>
 
           <div className="mt-5 flex flex-wrap gap-2 sm:mt-6 sm:gap-3 md:mt-8 md:flex-nowrap">
             <Button asChild variant="gold" className="max-sm:px-4 max-sm:py-2.5 max-sm:text-[0.62rem]">
