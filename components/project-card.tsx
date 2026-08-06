@@ -40,7 +40,7 @@ export function ProjectCard({ project, locale, dict, priority = false }: Project
     <article className="group flex flex-col border border-line-soft bg-[linear-gradient(170deg,var(--color-surface),var(--color-ink-2))] transition-all duration-500 ease-luxe hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_30px_60px_-40px_rgba(0,0,0,.95)]">
       <Link href={url} tabIndex={-1} aria-hidden="true" className="relative block aspect-[16/9] overflow-hidden">
         <Image
-          src={`/images/${project.image}`}
+          src={project.image.startsWith('http') || project.image.startsWith('/') ? project.image : `/images/${project.image}`}
           alt=""
           fill
           priority={priority}

@@ -183,6 +183,10 @@
   }
 }
 
+@utility admin-input {
+  @apply mt-2 w-full border border-line-soft bg-ink px-3 py-2.5 text-sm normal-case tracking-normal text-cream outline-none transition-colors focus:border-gold;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
