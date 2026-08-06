@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from 'next';
 import type { ReactNode } from 'react';
 import { notFound } from 'next/navigation';
+import { Cormorant_Garamond, Jost } from 'next/font/google';
+
 import { SiteHeader } from '@/components/site-header';
 import { SiteFooter } from '@/components/site-footer';
 import { LanguageGate } from '@/components/language-gate';
@@ -8,6 +10,23 @@ import { BackToTop } from '@/components/back-to-top';
 import { getDictionary } from '@/lib/i18n';
 import { isLocale, locales, type Locale } from '@/lib/i18n/config';
 import { BRAND } from '@/lib/site';
+
+import '../globals.css';
+
+const cormorant = Cormorant_Garamond({
+  subsets: ['latin', 'latin-ext'],
+  weight: ['300', '400', '500'],
+  style: ['normal'],
+  variable: '--font-cormorant',
+  display: 'swap'
+});
+
+const jost = Jost({
+  subsets: ['latin', 'latin-ext'],
+  weight: ['200', '300', '400', '500'],
+  variable: '--font-jost',
+  display: 'swap'
+});
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -56,27 +75,29 @@ export default async function LocaleLayout({
   const dict = getDictionary(locale as Locale);
 
   return (
-    <>
-      <a
-        href="#main"
-        className="fixed left-4 top-[-100%] z-999 bg-gold px-5 py-3 text-[0.78rem] uppercase tracking-luxe text-ink focus:top-4"
-      >
-        {dict.nav.skip}
-      </a>
+    <html lang={dict.htmlLang} dir={dict.dir} className={`${cormorant.variable} ${jost.variable}`}>
+      <body>
+        <a
+          href="#main"
+          className="fixed left-4 top-[-100%] z-999 bg-gold px-5 py-3 text-[0.78rem] uppercase tracking-luxe text-ink focus:top-4"
+        >
+          {dict.nav.skip}
+        </a>
 
-      <SiteHeader
-        locale={locale as Locale}
-        nav={dict.nav}
-        langLabels={dict.lang}
-        bookCallLabel={dict.common.bookCall}
-      />
+        <SiteHeader
+          locale={locale as Locale}
+          nav={dict.nav}
+          langLabels={dict.lang}
+          bookCallLabel={dict.common.bookCall}
+        />
 
-      <main id="main">{children}</main>
+        <main id="main">{children}</main>
 
-      <SiteFooter locale={locale as Locale} dict={dict} />
+        <SiteFooter locale={locale as Locale} dict={dict} />
 
-      <LanguageGate locale={locale as Locale} copy={dict.lang} />
-      <BackToTop label={dict.nav.backToTop} />
-    </>
+        <LanguageGate locale={locale as Locale} copy={dict.lang} />
+        <BackToTop label={dict.nav.backToTop} />
+      </body>
+    </html>
   );
 }

@@ -192,7 +192,7 @@ export default async function ProjectPage({
                 </div>
                 <div className="mt-5 max-w-3xl border border-line-soft bg-ink-2 p-2">
                   <Image
-                    src={imageSrc(project.additionalImages[0])}
+                    src={`/images/${project.additionalImages[0]}`}
                     alt={`${item.name} location map`}
                     width={1600}
                     height={1000}
