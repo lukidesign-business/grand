@@ -80,7 +80,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             width={1186}
             height={369}
             priority
-            className="mb-1 w-[175px] opacity-95 sm:w-[clamp(180px,22vw,250px)]"
+            className="mb-1 w-[130px] opacity-95 sm:w-[clamp(180px,22vw,250px)]"
           />
 
           <p className="mb-1 text-[0.82rem] uppercase tracking-luxer text-gold">{h.name}</p>
