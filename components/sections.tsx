@@ -342,7 +342,7 @@ export function AboutSection({ locale, dict }: SectionProps) {
 function WhatsAppDropdown({ numbers, label }: { numbers: typeof BRAND.whatsapp; label: string }) {
   return (
     <details className="group reveal border border-line-soft bg-surface transition-colors duration-400 hover:border-line-strong hover:bg-surface-2">
-      <summary className="grid cursor-pointer list-none grid-cols-[auto_1fr_auto] items-center gap-x-4.5 p-6 [&::-webkit-details-marker]:hidden">
+      <summary className="grid w-full cursor-pointer list-none grid-cols-[auto_1fr_auto] items-center gap-x-4.5 p-6 [&::-webkit-details-marker]:hidden lg:col-span-full">
         <span className="row-span-2 text-gold [&_svg]:size-7"><MessageCircle className="size-7" /></span>
         <span className="text-[0.68rem] uppercase tracking-luxe text-gold">{label}</span>
         <span className="row-span-2 text-muted transition-transform duration-300 group-open:rotate-180">
