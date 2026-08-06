@@ -20,6 +20,7 @@ import { Eyebrow, Rule, SectionHead } from '@/components/ui/section-head';
 import { FramedImage } from '@/components/ui/framed-image';
 import { ProjectCard } from '@/components/project-card';
 import { BRAND, PROJECTS, href } from '@/lib/site';
+import { getPublishedProperties, propertyToProject } from '@/lib/properties';
 import type { Dictionary } from '@/lib/i18n';
 import type { Locale } from '@/lib/i18n/config';
 import { cn } from '@/lib/utils';
@@ -242,8 +243,11 @@ export function Advantages({ dict, children }: { dict: Dictionary; children?: Re
 
 /* --------------------------------------------------------------- projects */
 
-export function FeaturedProjects({ locale, dict }: SectionProps) {
-  const featured = PROJECTS.filter((p) => p.featured).slice(0, 4);
+export async function FeaturedProjects({ locale, dict }: SectionProps) {
+  const published = await getPublishedProperties();
+  const featured = published.length
+    ? published.map(propertyToProject).filter((project) => project.featured).slice(0, 4)
+    : PROJECTS.filter((p) => p.featured).slice(0, 4);
   return (
     <section id="projects" className="section-y bg-ink">
       <div className="shell">

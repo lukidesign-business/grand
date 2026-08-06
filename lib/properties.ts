@@ -22,17 +22,34 @@ export function propertyToProject(property: Property): Project {
   const image = property.coverImageUrl
   const gallery = property.galleryImageUrls
   const numericPrice = Number(property.price.replace(/[^0-9.]/g, ''))
+  const isZenithPattaya = property.slug === 'zenith-pattaya'
+  const isZenithPattayaTwo = property.slug === 'zenith-pattaya-2'
 
   return {
     id: property.slug,
     image,
     gallery,
+    additionalImages: isZenithPattaya
+      ? ['/images/zenith-map.jpg']
+      : isZenithPattayaTwo
+        ? ['/images/zenith-pattaya-2-map.jpg']
+        : undefined,
+    mapImage: isZenithPattaya
+      ? 'zenith-map.jpg'
+      : isZenithPattayaTwo
+        ? 'zenith-pattaya-2-map.jpg'
+        : undefined,
+    mapUrl: isZenithPattaya
+      ? 'https://maps.google.com/?q=Zenith+Pattaya'
+      : isZenithPattayaTwo
+        ? 'https://maps.google.com/?q=Zenith+Pattaya+2'
+        : undefined,
     location,
     type: property.propertyType.toLowerCase().includes('villa') ? 'villa' : 'condo',
     status,
     completion: property.status,
     priceFrom: Number.isFinite(numericPrice) && numericPrice > 0 ? numericPrice * 1_000_000 : undefined,
-    sizeFrom: 0,
+    sizeFrom: property.areaSqm ?? (isZenithPattaya ? 35 : isZenithPattayaTwo ? 65 : 0),
     bedrooms: [String(property.bedrooms) as Project['bedrooms'][number]],
     featured: true,
   }
