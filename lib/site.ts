@@ -17,8 +17,7 @@ export const BRAND = {
   country: 'Chon Buri 20150, Thailand',
   social: [
     { id: 'instagram', href: 'https://instagram.com/' },
-    { id: 'facebook', href: 'https://facebook.com/' },
-    { id: 'linkedin', href: 'https://linkedin.com/' }
+    { id: 'facebook', href: 'https://facebook.com/' }
   ]
 } as const;
 

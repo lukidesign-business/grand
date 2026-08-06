@@ -86,18 +86,21 @@ export function WhyPattaya({ dict }: { dict: Dictionary }) {
         <SectionHead eyebrow={p.eyebrow} title={p.title} lead={p.lead} />
 
         <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
-          <FramedImage
-            src="/images/pattaya-aerial.jpg"
-            alt={p.imageAlt}
-            width={1280}
-            height={731}
-            className="reveal lg:order-2"
-          />
+          {/* Left col: body text — always first on mobile, always left on desktop */}
           <div className="reveal">
             <p className="mb-5 text-muted">{p.body1}</p>
             <p className="text-muted">{p.body2}</p>
+          </div>
 
-            <ul className="mt-10 grid gap-px border border-line-soft bg-line-soft sm:grid-cols-2">
+          {/* Right col: image + stats — stacks below text on mobile, right on desktop */}
+          <div className="reveal flex flex-col gap-6">
+            <FramedImage
+              src="/images/pattaya-aerial.jpg"
+              alt={p.imageAlt}
+              width={1280}
+              height={731}
+            />
+            <ul className="grid gap-px border border-line-soft bg-line-soft sm:grid-cols-2">
               {p.stats.map((stat) => (
                 <li key={stat.label} className="bg-ink-2 px-6 py-5">
                   <span className="mb-1.5 block font-serif text-[1.9rem] leading-tight text-gold">
@@ -334,6 +337,36 @@ export function AboutSection({ locale, dict }: SectionProps) {
 
 /* ---------------------------------------------------------------- consult */
 
+function WhatsAppDropdown({ numbers, label }: { numbers: typeof BRAND.whatsapp; label: string }) {
+  return (
+    <details className="group reveal border border-line-soft bg-surface transition-colors duration-400 hover:border-line-strong hover:bg-surface-2">
+      <summary className="grid cursor-pointer list-none grid-cols-[auto_1fr_auto] items-center gap-x-4.5 p-6 [&::-webkit-details-marker]:hidden">
+        <span className="row-span-2 text-gold [&_svg]:size-7"><MessageCircle className="size-7" /></span>
+        <span className="text-[0.68rem] uppercase tracking-luxe text-gold">{label}</span>
+        <span className="row-span-2 text-muted transition-transform duration-300 group-open:rotate-180">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="size-4"><path d="m6 9 6 6 6-6"/></svg>
+        </span>
+        <span className="text-[0.92rem] text-muted">{numbers.map(n => n.display).join(' · ')}</span>
+      </summary>
+      <ul className="border-t border-line-soft">
+        {numbers.map((number) => (
+          <li key={number.display}>
+            <a
+              href={number.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-between gap-4 px-6 py-4 text-[0.88rem] text-muted transition-colors duration-300 hover:bg-surface-2 hover:text-gold-bright"
+            >
+              <span>{number.display}</span>
+              <span className="text-[0.68rem] uppercase tracking-luxe text-muted-2">{number.country}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </details>
+  );
+}
+
 export function ConsultSection({ locale, dict }: SectionProps) {
   const c = dict.contact;
 
@@ -395,13 +428,7 @@ export function ConsultSection({ locale, dict }: SectionProps) {
               { href: href(locale, 'contact') },
               true
             )}
-            {BRAND.whatsapp.map((number) =>
-              tile('whatsapp-' + number.display, <MessageCircle />, c.whatsapp, number.display, {
-                href: number.href,
-                target: '_blank',
-                rel: 'noopener noreferrer'
-              })
-            )}
+            <WhatsAppDropdown numbers={BRAND.whatsapp} label={c.whatsapp} />
             {tile('email', <Mail />, c.emailUs, BRAND.email, { href: `mailto:${BRAND.email}` })}
             <p className="mt-1 flex items-start gap-2.5 text-[0.8rem] text-muted-2">
               <MapPin className="mt-1 size-4 shrink-0 text-gold" />
