@@ -3,7 +3,7 @@
 import { useMemo, useState } from 'react';
 
 import { ProjectCard } from '@/components/project-card';
-import { PROJECTS } from '@/lib/site';
+import { PROJECTS, type Project } from '@/lib/site';
 import { fill } from '@/lib/i18n/fill';
 import type { Dictionary } from '@/lib/i18n';
 import type { Locale } from '@/lib/i18n/config';
@@ -11,7 +11,7 @@ import { cn } from '@/lib/utils';
 
 type Tab = 'all' | 'ready' | 'offplan';
 
-export function ProjectsBrowser({ locale, dict }: { locale: Locale; dict: Dictionary }) {
+export function ProjectsBrowser({ locale, dict, projects = PROJECTS }: { locale: Locale; dict: Dictionary; projects?: Project[] }) {
   const [tab, setTab] = useState<Tab>('all');
   const page = dict.projects.page;
 
@@ -22,7 +22,7 @@ export function ProjectsBrowser({ locale, dict }: { locale: Locale; dict: Dictio
   ];
 
   const visible = useMemo(
-    () => (tab === 'all' ? PROJECTS : PROJECTS.filter((project) => project.status === tab)),
+    () => (tab === 'all' ? projects : projects.filter((project) => project.status === tab)),
     [tab]
   );
 

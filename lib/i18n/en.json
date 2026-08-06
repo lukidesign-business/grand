@@ -359,14 +359,27 @@
       },
       "zenith-pattaya": {
         "name": "ZENITH Pattaya",
-        "tagline": "A fully furnished 65 m² two-bedroom residence",
-        "summary": "A ready-to-move-in resale residence in ZENITH Pattaya, finished in a refined black, marble and cream palette with generous living space and two bedrooms.",
-        "body": "This 65 m² residence combines a polished interior, integrated kitchen, mirrored detailing and hotel-style bathrooms in one of Pattaya's established resort residences. The property is available for resale and can be viewed by appointment.",
+        "tagline": "A fully furnished 35 m² one-bedroom residence",
+        "summary": "A ready-to-move-in resale residence in ZENITH Pattaya, finished in a refined black, marble and cream palette with a smart one-bedroom layout.",
+        "body": "This 35 m² residence combines a polished interior, integrated kitchen, mirrored detailing and hotel-style bathrooms in one of Pattaya's established resort residences. The one-bedroom property is available for resale and can be viewed by appointment.",
         "highlights": [
           "Ready to move in",
           "Fully furnished two-bedroom layout",
-          "65 m² of interior space",
+          "35 m² of interior space",
           "Premium marble finishes and fitted kitchen"
+        ]
+      },
+      "zenith-pattaya-2": {
+        "name": "Zenith Pattaya 2",
+        "tagline": "A new low-rise resort condominium near Jomtien Beach",
+        "summary": "A modern eight-storey resort condominium in the Tappraya area, planned around lagoon pools, Japanese gardens and more than 900 residences.",
+        "body": "Zenith Pattaya 2 is approximately 2 km from the sea, with convenient access to Jomtien Beach, cafés, markets and the main roads. Construction is scheduled to start in 2026 with completion planned for Q4 2028. Prices are currently available on request.",
+        "highlights": [
+          "Approximately 10 minutes to Jomtien Beach",
+          "Lagoon pools, Japanese gardens and resort amenities",
+          "Eight-storey low-rise development with 900+ residences",
+          "Interest-free installment schedule through handover",
+          "Construction completion planned for Q4 2028"
         ]
       }
     }
@@ -542,7 +555,7 @@
     "emailUs": "Email us",
     "callUs": "Call us",
     "hours": "Consultations by appointment, Monday to Saturday, Indochina Time (GMT+7).",
-    "remote": "Buying from abroad? The entire purchase can be completed remotely under power of attorney — most of our clients sign before they ever see the building in person.",
+    "remote": "Buying from abroad? The entire purchase can be completed remotely under power of attorney ��� most of our clients sign before they ever see the building in person.",
     "trust": [
       "Direct developer pricing, no brokerage commission",
       "Independent Thai legal review before you sign",

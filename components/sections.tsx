@@ -80,37 +80,42 @@ export function Benefits({ dict }: { dict: Dictionary }) {
 export function WhyPattaya({ dict }: { dict: Dictionary }) {
   const p = dict.pattaya;
   return (
-    <section id="pattaya" className="section-y relative bg-ink-2">
+    <section id="pattaya" className="relative bg-ink-2 py-16 md:py-20 lg:py-24">
       <Wash src="/images/wash-city.jpg" />
       <div className="shell relative z-1">
-        <SectionHead eyebrow={p.eyebrow} title={p.title} lead={p.lead} />
+        <SectionHead eyebrow={p.eyebrow} title={p.title} lead={p.lead} className="max-w-4xl md:mb-12" />
 
-        <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
-          <FramedImage
-            src="/images/pattaya-aerial.jpg"
-            alt={p.imageAlt}
-            width={1280}
-            height={731}
-            className="reveal lg:order-2"
-          />
-          <div className="reveal">
+        <div className="mt-10 grid items-start gap-10 lg:mt-12 lg:grid-cols-[minmax(0,0.78fr)_minmax(34rem,1.22fr)] lg:gap-16">
+          {/* Editorial copy aligns to the top of the media column for a clean desktop rhythm. */}
+          <div className="reveal max-w-[34rem] lg:pt-0">
             <p className="mb-5 text-muted">{p.body1}</p>
             <p className="text-muted">{p.body2}</p>
+          </div>
 
-            <ul className="mt-10 grid gap-px border border-line-soft bg-line-soft sm:grid-cols-2">
+          {/* Image and statistics share one measured right-hand column. */}
+          <div className="reveal min-w-0">
+            <FramedImage
+              src="/images/pattaya-aerial.jpg"
+              alt={p.imageAlt}
+              width={1280}
+              height={731}
+              className="w-full"
+              sizes="(max-width: 1024px) 100vw, 58vw"
+            />
+            <ul className="mt-6 grid grid-cols-2 gap-px border border-line-soft bg-line-soft">
               {p.stats.map((stat) => (
-                <li key={stat.label} className="bg-ink-2 px-6 py-5">
+                <li key={stat.label} className="min-h-32 bg-ink-2 px-6 py-5 lg:px-7 lg:py-6">
                   <span className="mb-1.5 block font-serif text-[1.9rem] leading-tight text-gold">
                     {stat.value}
                   </span>
-                  <span className="block text-[0.76rem] leading-snug text-muted">{stat.label}</span>
+                  <span className="block max-w-[15rem] text-[0.76rem] leading-snug text-muted">{stat.label}</span>
                 </li>
               ))}
             </ul>
           </div>
         </div>
 
-        <ul className="mt-12 grid gap-px border border-line-soft bg-line-soft sm:grid-cols-2 lg:grid-cols-4 lg:mt-20">
+        <ul className="mt-12 grid gap-px border border-line-soft bg-line-soft sm:grid-cols-2 lg:mt-16 lg:grid-cols-4">
           {p.points.map((point) => (
             <li
               key={point.title}
@@ -334,6 +339,36 @@ export function AboutSection({ locale, dict }: SectionProps) {
 
 /* ---------------------------------------------------------------- consult */
 
+function WhatsAppDropdown({ numbers, label }: { numbers: typeof BRAND.whatsapp; label: string }) {
+  return (
+    <details className="group reveal border border-line-soft bg-surface transition-colors duration-400 hover:border-line-strong hover:bg-surface-2">
+      <summary className="grid w-full cursor-pointer list-none grid-cols-[auto_1fr_auto] items-center gap-x-4.5 p-6 [&::-webkit-details-marker]:hidden lg:col-span-full">
+        <span className="row-span-2 text-gold [&_svg]:size-7"><MessageCircle className="size-7" /></span>
+        <span className="text-[0.68rem] uppercase tracking-luxe text-gold">{label}</span>
+        <span className="row-span-2 text-muted transition-transform duration-300 group-open:rotate-180">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="size-4"><path d="m6 9 6 6 6-6"/></svg>
+        </span>
+        <span className="text-[0.92rem] text-muted">{numbers.map(n => n.display).join(' · ')}</span>
+      </summary>
+      <ul className="border-t border-line-soft">
+        {numbers.map((number) => (
+          <li key={number.display}>
+            <a
+              href={number.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-between gap-4 px-6 py-4 text-[0.88rem] text-muted transition-colors duration-300 hover:bg-surface-2 hover:text-gold-bright"
+            >
+              <span>{number.display}</span>
+              <span className="text-[0.68rem] uppercase tracking-luxe text-muted-2">{number.country}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </details>
+  );
+}
+
 export function ConsultSection({ locale, dict }: SectionProps) {
   const c = dict.contact;
 
@@ -395,13 +430,7 @@ export function ConsultSection({ locale, dict }: SectionProps) {
               { href: href(locale, 'contact') },
               true
             )}
-            {BRAND.whatsapp.map((number) =>
-              tile('whatsapp-' + number.display, <MessageCircle />, c.whatsapp, number.display, {
-                href: number.href,
-                target: '_blank',
-                rel: 'noopener noreferrer'
-              })
-            )}
+            <WhatsAppDropdown numbers={BRAND.whatsapp} label={c.whatsapp} />
             {tile('email', <Mail />, c.emailUs, BRAND.email, { href: `mailto:${BRAND.email}` })}
             <p className="mt-1 flex items-start gap-2.5 text-[0.8rem] text-muted-2">
               <MapPin className="mt-1 size-4 shrink-0 text-gold" />

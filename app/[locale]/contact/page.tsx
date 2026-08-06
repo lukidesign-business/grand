@@ -3,7 +3,6 @@ import { notFound } from 'next/navigation';
 import { Check, Mail, MapPin, MessageCircle, Phone, ShieldCheck } from 'lucide-react';
 
 import { Eyebrow, Rule } from '@/components/ui/section-head';
-import { FramedImage } from '@/components/ui/framed-image';
 import { ContactForm } from '@/components/contact-form';
 import { getDictionary } from '@/lib/i18n';
 import { isLocale, type Locale } from '@/lib/i18n/config';
@@ -125,15 +124,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
               <p className="mt-5 text-[0.8rem] leading-relaxed text-muted-2">{c.remote}</p>
             </div>
 
-            <FramedImage
-              src="/images/bedroom.jpg"
-              alt=""
-              width={640}
-              height={877}
-              tight
-              className="reveal"
-              sizes="(max-width: 1024px) 100vw, 30vw"
-            />
+
           </aside>
         </div>
       </section>

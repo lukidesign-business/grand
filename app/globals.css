@@ -113,6 +113,16 @@
   padding-block: clamp(4.5rem, 9vw, 8.5rem);
 }
 
+@media (max-width: 767px) {
+  .shell {
+    padding-inline: 1rem;
+  }
+
+  .section-y {
+    padding-block: 3.5rem;
+  }
+}
+
 /* The gold-to-transparent hairline that sits under every heading. */
 @utility rule-gold {
   display: block;
@@ -137,15 +147,17 @@
   color: transparent;
 }
 
-/* Darkens the left of the hero so copy holds contrast over the portrait. */
+/* Darkens the left of the hero so copy holds contrast over the portrait.
+   The vertical layer now stays fully opaque at the very top so the
+   fixed header area is always covered regardless of the -top-32 offset. */
 @utility hero-scrim {
   background:
     linear-gradient(100deg, rgba(6, 7, 9, 0.94) 0%, rgba(6, 7, 9, 0.82) 26%, rgba(6, 7, 9, 0.34) 52%, rgba(6, 7, 9, 0.12) 72%, rgba(6, 7, 9, 0.5) 100%),
-    linear-gradient(to bottom, rgba(6, 7, 9, 0.72) 0%, transparent 22%, transparent 55%, rgba(6, 7, 9, 0.88) 100%);
+    linear-gradient(to bottom, rgba(6, 7, 9, 0.96) 0%, rgba(6, 7, 9, 0.82) 10%, transparent 28%, transparent 55%, rgba(6, 7, 9, 0.92) 100%);
 }
 
 @utility hero-scrim-mobile {
-  background: linear-gradient(to bottom, rgba(6, 7, 9, 0.86) 0%, rgba(6, 7, 9, 0.45) 28%, rgba(6, 7, 9, 0.55) 52%, rgba(6, 7, 9, 0.96) 82%);
+  background: linear-gradient(to bottom, rgba(6, 7, 9, 0.38) 0%, rgba(6, 7, 9, 0.16) 30%, rgba(6, 7, 9, 0.28) 56%, rgba(6, 7, 9, 0.72) 86%);
 }
 
 @utility page-scrim {
@@ -169,6 +181,10 @@
     opacity: 1;
     transform: none;
   }
+}
+
+@utility admin-input {
+  @apply mt-2 w-full border border-line-soft bg-ink px-3 py-2.5 text-sm normal-case tracking-normal text-cream outline-none transition-colors focus:border-gold;
 }
 
 @media (prefers-reduced-motion: reduce) {

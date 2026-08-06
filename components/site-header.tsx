@@ -54,8 +54,8 @@ export function SiteHeader({ locale, nav, langLabels, bookCallLabel }: SiteHeade
   return (
     <header
       className={cn(
-        'fixed inset-x-0 top-0 z-90 border-b border-transparent transition-all duration-500 ease-luxe',
-        stuck && 'border-line-soft bg-ink/90 backdrop-blur-xl backdrop-saturate-150',
+        'fixed inset-x-0 top-0 z-90 border-b border-line-soft bg-ink/90 backdrop-blur-xl backdrop-saturate-150 transition-all duration-500 ease-luxe',
+        stuck && 'border-line-soft',
         hidden && !menuOpen && '-translate-y-full'
       )}
     >

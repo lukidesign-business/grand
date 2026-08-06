@@ -57,7 +57,7 @@ export function HeroSearchField({
     <div
       ref={fieldRef}
       className={cn(
-        'group relative z-0 flex min-w-0 items-center gap-3.5 px-4 py-4 transition-colors duration-300 hover:bg-gold/5',
+        'group relative z-0 flex min-h-14 min-w-0 items-center gap-3 px-3 py-2.5 transition-colors duration-300 hover:bg-gold/5 sm:min-h-0 sm:gap-3.5 sm:px-4 sm:py-4',
         open && 'z-[100] bg-gold/7',
         className
       )}
@@ -84,44 +84,45 @@ export function HeroSearchField({
         </button>
         {hint ? <span className="mt-0.5 block text-[0.66rem] text-muted-2">{hint}</span> : null}
 
-        {open ? (
-          <div
-            role="listbox"
-            aria-label={label}
-            className="absolute left-0 top-[calc(100%+1rem)] z-30 min-w-[min(17rem,calc(100vw-3rem))] overflow-hidden border border-gold/35 bg-[rgba(12,13,17,.98)] py-1 shadow-[0_22px_50px_-18px_rgba(0,0,0,.95)] backdrop-blur-xl"
+        
+      </div>
+      {open ? (
+        <div
+          role="listbox"
+          aria-label={label}
+          className="absolute left-0 top-0 z-[110] w-full min-w-0 overflow-hidden border border-gold/35 bg-[rgba(12,13,17,.99)] py-1 shadow-[0_22px_50px_-18px_rgba(0,0,0,.95)] backdrop-blur-xl sm:left-0 sm:top-[calc(100%+0.5rem)] sm:w-[min(17rem,calc(100vw-2.5rem))]"
+        >
+          <button
+            type="button"
+            role="option"
+            aria-selected={!selected}
+            onClick={() => {
+              setSelected('');
+              setOpenField(null);
+            }}
+            className="flex min-h-12 w-full items-center justify-between gap-4 px-4 py-2.5 text-left text-[0.82rem] text-muted transition-colors hover:bg-gold/10 hover:text-cream-bright"
           >
+            {placeholder}
+            {!selected ? <Check className="size-3.5 text-gold" /> : null}
+          </button>
+          {options.map((option) => (
             <button
+              key={option.value}
               type="button"
               role="option"
-              aria-selected={!selected}
+              aria-selected={selected === option.value}
               onClick={() => {
-                setSelected('');
+                setSelected(option.value);
                 setOpenField(null);
               }}
-              className="flex w-full items-center justify-between gap-4 px-4 py-2.5 text-left text-[0.82rem] text-muted transition-colors hover:bg-gold/10 hover:text-cream-bright"
+              className="flex min-h-12 w-full items-center justify-between gap-4 px-4 py-2.5 text-left text-[0.82rem] text-cream transition-colors hover:bg-gold/10 hover:text-gold-bright"
             >
-              {placeholder}
-              {!selected ? <Check className="size-3.5 text-gold" /> : null}
+              {option.label}
+              {selected === option.value ? <Check className="size-3.5 text-gold" /> : null}
             </button>
-            {options.map((option) => (
-              <button
-                key={option.value}
-                type="button"
-                role="option"
-                aria-selected={selected === option.value}
-                onClick={() => {
-                  setSelected(option.value);
-                  setOpenField(null);
-                }}
-                className="flex w-full items-center justify-between gap-4 px-4 py-2.5 text-left text-[0.82rem] text-cream transition-colors hover:bg-gold/10 hover:text-gold-bright"
-              >
-                {option.label}
-                {selected === option.value ? <Check className="size-3.5 text-gold" /> : null}
-              </button>
-            ))}
-          </div>
-        ) : null}
-      </div>
+          ))}
+        </div>
+      ) : null}
     </div>
   );
 }

@@ -359,14 +359,27 @@
       },
       "zenith-pattaya": {
         "name": "ZENITH Pattaya",
-        "tagline": "Gotowy, w pełni umeblowany apartament 65 m² z dwiema sypialniami",
-        "summary": "Gotowy do zamieszkania apartament z rynku wtórnego w ZENITH Pattaya, wykończony w eleganckiej palecie czerni, marmuru i kremu, z przestronną częścią dzienną i dwiema sypialniami.",
-        "body": "Apartament o powierzchni 65 m² łączy dopracowane wnętrze, zabudowaną kuchnię, lustrzane detale i łazienki w hotelowym stylu w jednej z ugruntowanych rezydencji wypoczynkowych Pattayi. Nieruchomość jest gotowa do odsprzedaży i można ją obejrzeć po umówieniu wizyty.",
+        "tagline": "Gotowy, w pełni umeblowany apartament 35 m² z jedną sypialnią",
+        "summary": "Gotowy do zamieszkania apartament z rynku wtórnego w ZENITH Pattaya, wykończony w eleganckiej palecie czerni, marmuru i kremu, z funkcjonalnym układem jednej sypialni.",
+        "body": "Apartament o powierzchni 35 m² łączy dopracowane wnętrze, zabudowaną kuchnię, lustrzane detale i łazienki w hotelowym stylu w jednej z ugruntowanych rezydencji wypoczynkowych Pattayi. Jednopokojowa nieruchomość jest gotowa do odsprzedaży i można ją obejrzeć po umówieniu wizyty.",
         "highlights": [
           "Gotowe do zamieszkania",
           "W pełni umeblowany układ z dwiema sypialniami",
-          "65 m² powierzchni użytkowej",
+          "35 m² powierzchni użytkowej",
           "Marmurowe wykończenia i wyposażona kuchnia"
+        ]
+      },
+      "zenith-pattaya-2": {
+        "name": "Zenith Pattaya 2",
+        "tagline": "Nowoczesny, niskokondygnacyjny resort condo blisko plaży Jomtien",
+        "summary": "Nowoczesny, ośmiokondygnacyjny kompleks wypoczynkowy w rejonie Tappraya, zaplanowany wokół lagunowych basenów, ogrodów japońskich i ponad 900 rezydencji.",
+        "body": "Zenith Pattaya 2 znajduje się około 2 km od morza, z wygodnym dostępem do plaży Jomtien, kawiarni, marketów i głównych dróg. Rozpoczęcie budowy zaplanowano na 2026 rok, a ukończenie na IV kwartał 2028 roku. Ceny są obecnie dostępne na zapytanie.",
+        "highlights": [
+          "Około 10 minut do plaży Jomtien",
+          "Laguny, ogrody japońskie i resortowa infrastruktura",
+          "Niskokondygnacyjny kompleks z ponad 900 rezydencjami",
+          "Nieoprocentowany harmonogram płatności do odbioru",
+          "Planowane ukończenie w IV kwartale 2028 roku"
         ]
       }
     }

@@ -7,6 +7,7 @@ import { SearchExperience } from '@/components/search-experience';
 import { getDictionary } from '@/lib/i18n';
 import { isLocale, type Locale } from '@/lib/i18n/config';
 import { alternatesFor } from '@/lib/metadata';
+import { getPublishedProperties, propertyToProject } from '@/lib/properties';
 
 export async function generateMetadata({
   params
@@ -33,6 +34,8 @@ export default async function SearchPage({
   const [{ locale }, query] = await Promise.all([params, searchParams]);
   if (!isLocale(locale)) notFound();
   const dict = getDictionary(locale as Locale);
+  const published = await getPublishedProperties();
+  const projects = published.length ? published.map(propertyToProject) : undefined;
   const value = (key: string) => {
     const entry = query[key];
     return typeof entry === 'string' ? entry : '';
@@ -61,6 +64,7 @@ export default async function SearchPage({
             bedrooms: value('bedrooms'),
             status: value('status')
           }}
+          projects={projects}
         />
       </section>
     </>
