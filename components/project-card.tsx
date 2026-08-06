@@ -15,13 +15,7 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project, locale, dict, priority = false }: ProjectCardProps) {
-  const item = dict.projects.items[project.id as keyof typeof dict.projects.items] ?? {
-    name: project.id.replace(/-/g, ' '),
-    tagline: '',
-    summary: '',
-    body: '',
-    highlights: []
-  };
+  const item = dict.projects.items[project.id as keyof typeof dict.projects.items];
   const labels = dict.projects.labels;
   const url = projectHref(locale, project.id);
 

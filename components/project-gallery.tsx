@@ -6,9 +6,6 @@ import { ChevronLeft, ChevronRight, Expand, X } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 
-const imageSrc = (image: string) =>
-  image.startsWith('http') || image.startsWith('/') ? image : `/images/${image}`;
-
 interface GalleryLabels {
   viewAll: string;
   close: string;
@@ -75,7 +72,7 @@ export function ProjectGallery({ images, name, labels }: ProjectGalleryProps) {
             aria-label={`${name} — ${index + 1} / ${total}`}
           >
             <Image
-              src={imageSrc(image)}
+              src={`/images/${image}`}
               alt={`${name} interior photograph ${index + 1}`}
               fill
               sizes="(max-width: 640px) 50vw, 25vw"
@@ -173,7 +170,7 @@ export function ProjectGallery({ images, name, labels }: ProjectGalleryProps) {
                   )}
                 >
                   <Image
-                    src={imageSrc(image)}
+                    src={`/images/${image}`}
                     alt=""
                     fill
                     sizes="96px"
