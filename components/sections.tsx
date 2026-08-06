@@ -80,40 +80,42 @@ export function Benefits({ dict }: { dict: Dictionary }) {
 export function WhyPattaya({ dict }: { dict: Dictionary }) {
   const p = dict.pattaya;
   return (
-    <section id="pattaya" className="section-y relative bg-ink-2">
+    <section id="pattaya" className="relative bg-ink-2 py-16 md:py-20 lg:py-24">
       <Wash src="/images/wash-city.jpg" />
       <div className="shell relative z-1">
-        <SectionHead eyebrow={p.eyebrow} title={p.title} lead={p.lead} />
+        <SectionHead eyebrow={p.eyebrow} title={p.title} lead={p.lead} className="max-w-4xl md:mb-12" />
 
-        <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
-          {/* Left col: body text — always first on mobile, always left on desktop */}
-          <div className="reveal">
+        <div className="mt-10 grid items-start gap-10 lg:mt-12 lg:grid-cols-[minmax(0,0.78fr)_minmax(34rem,1.22fr)] lg:gap-16">
+          {/* Editorial copy aligns to the top of the media column for a clean desktop rhythm. */}
+          <div className="reveal max-w-[34rem] lg:pt-0">
             <p className="mb-5 text-muted">{p.body1}</p>
             <p className="text-muted">{p.body2}</p>
           </div>
 
-          {/* Right col: image + stats — stacks below text on mobile, right on desktop */}
-          <div className="reveal flex flex-col gap-6">
+          {/* Image and statistics share one measured right-hand column. */}
+          <div className="reveal min-w-0">
             <FramedImage
               src="/images/pattaya-aerial.jpg"
               alt={p.imageAlt}
               width={1280}
               height={731}
+              className="w-full"
+              sizes="(max-width: 1024px) 100vw, 58vw"
             />
-            <ul className="grid gap-px border border-line-soft bg-line-soft sm:grid-cols-2">
+            <ul className="mt-6 grid grid-cols-2 gap-px border border-line-soft bg-line-soft">
               {p.stats.map((stat) => (
-                <li key={stat.label} className="bg-ink-2 px-6 py-5">
+                <li key={stat.label} className="min-h-32 bg-ink-2 px-6 py-5 lg:px-7 lg:py-6">
                   <span className="mb-1.5 block font-serif text-[1.9rem] leading-tight text-gold">
                     {stat.value}
                   </span>
-                  <span className="block text-[0.76rem] leading-snug text-muted">{stat.label}</span>
+                  <span className="block max-w-[15rem] text-[0.76rem] leading-snug text-muted">{stat.label}</span>
                 </li>
               ))}
             </ul>
           </div>
         </div>
 
-        <ul className="mt-12 grid gap-px border border-line-soft bg-line-soft sm:grid-cols-2 lg:grid-cols-4 lg:mt-20">
+        <ul className="mt-12 grid gap-px border border-line-soft bg-line-soft sm:grid-cols-2 lg:mt-16 lg:grid-cols-4">
           {p.points.map((point) => (
             <li
               key={point.title}

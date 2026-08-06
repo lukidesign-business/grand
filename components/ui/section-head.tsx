@@ -44,7 +44,7 @@ export function SectionHead({
   return (
     <div
       className={cn(
-        'reveal mb-10 max-w-[60ch] md:mb-16',
+        'reveal mb-10 max-w-[60ch] md:mb-12',
         centered && 'mx-auto text-center',
         className
       )}
