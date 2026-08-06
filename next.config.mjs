@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  distDir: process.env.NODE_ENV === 'development' ? '.next-dev' : '.next',
   images: {
     formats: ['image/avif', 'image/webp'],
     // Source art tops out around 1600px wide, so the 2048/3840 breakpoints only

@@ -122,7 +122,7 @@ export const PROJECTS: Project[] = [
     status: 'ready',
     completion: 'Ready to move in',
     sizeFrom: 35,
-    bedrooms: ['2'],
+    bedrooms: ['1'],
     featured: true
   },
   {
