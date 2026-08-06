@@ -59,8 +59,8 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
                 : 'text-[clamp(2.75rem,6.8vw,6rem)]'
             )}
           >
-            <span className="block text-cream-bright">{h.titleTop}</span>
-            <span className="-mt-[26px] text-gradient-gold block">{h.titleBottom}</span>
+            <span className="block text-cream-bright md:mb-3">{h.titleTop}</span>
+            <span className="-mt-[26px] text-gradient-gold block md:-mt-[26px]">{h.titleBottom}</span>
           </h1>
 
           <span aria-hidden="true" className="rule-gold my-5 w-17 md:my-7" />
