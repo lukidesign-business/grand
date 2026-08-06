@@ -36,7 +36,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             height={600}
             fetchPriority="high"
             decoding="async"
-            className="size-full object-cover object-[65%_30%] max-md:object-[50%_15%]"
+            className="size-full object-cover object-[65%_30%] max-md:object-[72%_15%]"
           />
         </picture>
       </div>
