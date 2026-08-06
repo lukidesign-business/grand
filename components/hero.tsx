@@ -18,28 +18,31 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const h = dict.hero;
 
   return (
-    <section className="relative isolate mt-0 flex min-h-0 flex-col justify-center overflow-visible pb-6 pt-28 lg:mt-[clamp(5rem,8vw,7rem)] md:min-h-[100svh] md:max-h-[980px] md:justify-end md:pb-[clamp(2rem,5vh,4rem)] md:pt-[clamp(7rem,12vh,10rem)]">
+    <section className="relative isolate mt-0 flex min-h-0 flex-col justify-center overflow-visible pb-6 pt-28 md:mt-[clamp(5rem,8vw,7rem)] md:min-h-[100svh] md:max-h-[980px] md:justify-end md:pb-[clamp(2rem,5vh,4rem)] md:pt-[clamp(7rem,12vh,10rem)]">
       {/*
         Art-directed with a real <picture> rather than two <Image>s: the browser
         downloads exactly one source, and these files are already compressed to
         their display size, so the optimiser would only upscale them.
       */}
-      <div aria-hidden="true" className="absolute inset-0 -z-20">
+      <div aria-hidden="true" className="absolute inset-0 -z-20 overflow-hidden">
         <picture>
+          {/* Mobile: natural 9:16 portrait, centred */}
           <source media="(max-width: 767px)" srcSet="/images/hero-portrait-mobile.jpg" />
+          {/* Desktop: natural 19:6 landscape, no zoom */}
           <img
             src="/images/hero-portrait.jpg"
             alt=""
-            width={1600}
-            height={905}
+            width={1900}
+            height={600}
             fetchPriority="high"
             decoding="async"
-            className="size-full object-cover object-[50%_50%] opacity-100 md:origin-[72%_58%] md:scale-[1.25] md:object-[72%_62%]"
+            className="size-full object-cover object-[65%_30%] max-md:object-[50%_15%]"
           />
         </picture>
       </div>
 
-      <div aria-hidden="true" className="hero-scrim-mobile md:hero-scrim absolute inset-0 -z-10" />
+      {/* Overlay: extends to cover header area via negative top offset */}
+      <div aria-hidden="true" className="hero-scrim-mobile md:hero-scrim absolute -top-32 bottom-0 left-0 right-0 -z-10" />
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -z-10 hidden border border-gold/13 md:block md:inset-[clamp(1rem,2.5vw,2.2rem)]"

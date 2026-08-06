@@ -147,11 +147,13 @@
   color: transparent;
 }
 
-/* Darkens the left of the hero so copy holds contrast over the portrait. */
+/* Darkens the left of the hero so copy holds contrast over the portrait.
+   The vertical layer now stays fully opaque at the very top so the
+   fixed header area is always covered regardless of the -top-32 offset. */
 @utility hero-scrim {
   background:
     linear-gradient(100deg, rgba(6, 7, 9, 0.94) 0%, rgba(6, 7, 9, 0.82) 26%, rgba(6, 7, 9, 0.34) 52%, rgba(6, 7, 9, 0.12) 72%, rgba(6, 7, 9, 0.5) 100%),
-    linear-gradient(to bottom, rgba(6, 7, 9, 0.72) 0%, transparent 22%, transparent 55%, rgba(6, 7, 9, 0.88) 100%);
+    linear-gradient(to bottom, rgba(6, 7, 9, 0.96) 0%, rgba(6, 7, 9, 0.82) 10%, transparent 28%, transparent 55%, rgba(6, 7, 9, 0.92) 100%);
 }
 
 @utility hero-scrim-mobile {
