@@ -26,7 +26,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
       */}
       <div aria-hidden="true" className="absolute inset-0 -z-20">
         <picture>
-          <source media="(max-width: 767px)" srcSet="/images/project-01.jpg" />
+          <source media="(max-width: 767px)" srcSet="/images/hero-portrait-mobile.jpg" />
           <img
             src="/images/hero-portrait.jpg"
             alt=""
@@ -34,7 +34,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             height={905}
             fetchPriority="high"
             decoding="async"
-            className="size-full origin-[50%_62%] scale-100 object-none object-[50%_55%] opacity-100 md:origin-[72%_58%] md:scale-[1.25] md:object-cover md:object-[72%_62%]"
+            className="size-full object-cover object-[50%_50%] opacity-100 md:origin-[72%_58%] md:scale-[1.25] md:object-[72%_62%]"
           />
         </picture>
       </div>
