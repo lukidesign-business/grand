@@ -60,7 +60,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             )}
           >
             <span className="block text-cream-bright md:mb-6">{h.titleTop}</span>
-            <span className="-mt-[36px] text-gradient-gold block md:-mt-[36px]">{h.titleBottom}</span>
+            <span className="-mt-[31px] text-gradient-gold block md:-mt-[31px]">{h.titleBottom}</span>
           </h1>
 
           <span aria-hidden="true" className="rule-gold my-5 w-17 md:my-7" />
