@@ -47,7 +47,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
 
       <div className="shell flex min-h-0 flex-1 items-start pt-4 md:items-center md:pb-[clamp(1rem,3vh,2.5rem)] md:pt-0">
         <div className="max-w-full pb-2 pl-1 pr-1 max-md:pt-2 sm:pl-2 sm:pr-2 md:max-w-[40rem] md:pb-0 md:pl-[clamp(1rem,3vw,3rem)] md:pr-4 md:pt-0">
-          <span className="-mt-2 mb-1 block text-[0.8rem] uppercase tracking-[0.24em] text-gold sm:-mt-[20px] sm:mb-[-13px] sm:text-[1.05rem] sm:tracking-[0.4em]">
+          <span className="-mt-2 mb-1 block text-[0.8rem] uppercase tracking-[0.24em] text-gold sm:-mt-[63px] sm:mb-[-6px] sm:text-[1.05rem] sm:tracking-[0.4em]">
             {h.eyebrow}
           </span>
 
@@ -59,8 +59,8 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
                 : 'text-[clamp(2.75rem,6.8vw,6rem)]'
             )}
           >
-            <span className="block text-cream-bright md:mb-3">{h.titleTop}</span>
-            <span className="-mt-[26px] text-gradient-gold block md:-mt-[26px]">{h.titleBottom}</span>
+            <span className="block text-cream-bright md:mb-6">{h.titleTop}</span>
+            <span className="-mt-[36px] text-gradient-gold block md:-mt-[36px]">{h.titleBottom}</span>
           </h1>
 
           <span aria-hidden="true" className="rule-gold my-5 w-17 md:my-7" />
