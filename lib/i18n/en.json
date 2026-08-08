@@ -578,15 +578,12 @@
   "company": "Company",
   "contact": "Contact",
   "language": "Language",
-  "team": "Your Team",
   "officialPartner": "Official Partner",
   "rights": "All rights reserved.",
-    "disclaimer": "Information on this site is provided for general guidance and does not constitute legal, tax or investment advice. Prices, availability and payment terms are set by the developer and may change. Every purchase should be reviewed by an independent Thai lawyer.",
     "legal": {
       "privacy": "Privacy",
       "terms": "Terms"
-    },
-    "placeholderNote": "Contact details shown are placeholders pending launch."
+    }
   },
 
   "notFound": {

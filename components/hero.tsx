@@ -49,17 +49,18 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
       />
 
       {/* Official partner mark, docked to the upper-right corner of the frame */}
-      <div className="absolute right-4 top-24 z-[70] flex flex-col items-end gap-1.5 sm:right-6 sm:top-28 md:right-[clamp(1.5rem,3.5vw,2.8rem)] md:top-[clamp(6.5rem,11vh,9rem)]">
-        <span className="text-[0.5rem] uppercase tracking-[0.3em] text-cream-bright/80 sm:text-[0.6rem]">
+      <div className="absolute right-4 top-24 z-[70] flex flex-col items-center gap-2 border border-gold/45 bg-ink/65 px-3 py-3 backdrop-blur-sm sm:right-6 sm:top-28 sm:px-4 sm:py-4 md:right-[clamp(1.5rem,3.5vw,2.8rem)] md:top-[clamp(6.5rem,11vh,9rem)]">
+        <span className="text-[0.55rem] uppercase tracking-[0.26em] text-gold-bright sm:text-[0.65rem]">
           {h.officialPartner}
         </span>
         <Image
           src={OFFICIAL_PARTNER.mark}
           alt={OFFICIAL_PARTNER.name}
-          width={96}
-          height={96}
-          className="size-10 opacity-95 drop-shadow-[0_4px_14px_rgba(0,0,0,.55)] sm:size-14"
+          width={144}
+          height={144}
+          className="size-20 opacity-100 drop-shadow-[0_5px_18px_rgba(0,0,0,.7)] sm:size-28"
         />
+        <span className="text-[0.6rem] uppercase tracking-[0.2em] text-cream-bright/90">{OFFICIAL_PARTNER.name}</span>
       </div>
 
       <div className="shell flex min-h-0 flex-1 items-start pt-4 md:items-center md:pb-[clamp(1rem,3vh,2.5rem)] md:pt-0">

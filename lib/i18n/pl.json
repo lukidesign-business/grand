@@ -578,15 +578,12 @@
     "company": "Firma",
     "contact": "Kontakt",
     "language": "Język",
-    "team": "Twój Zespół",
-    "officialPartner": "Oficjalny Partner",
-    "rights": "Wszelkie prawa zastrzeżone.",
-    "disclaimer": "Informacje na tej stronie mają charakter ogólny i nie stanowią porady prawnej, podatkowej ani inwestycyjnej. Ceny, dostępność i warunki płatności ustala deweloper i mogą ulec zmianie. Każdy zakup powinien zostać sprawdzony przez niezależnego tajskiego prawnika.",
-    "legal": {
-      "privacy": "Prywatność",
-      "terms": "Regulamin"
-    },
-    "placeholderNote": "Dane kontaktowe są tymczasowe — do uzupełnienia przed startem."
+  "officialPartner": "Oficjalny Partner",
+  "rights": "Wszelkie prawa zastrzeżone.",
+  "legal": {
+  "privacy": "Prywatność",
+  "terms": "Regulamin"
+  }
   },
 
   "notFound": {
