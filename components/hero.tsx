@@ -49,7 +49,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
       />
 
       {/* Official partner mark, docked to the upper-right corner of the frame */}
-      <div className="absolute bottom-[7.25rem] right-3 z-[70] flex flex-col items-center gap-1 border border-gold/45 bg-ink/70 px-2 py-1.5 backdrop-blur-sm max-sm:scale-90 sm:right-6 sm:top-28 sm:bottom-auto sm:gap-2 sm:px-4 sm:py-4 md:right-[clamp(1.5rem,3.5vw,2.8rem)] md:top-[clamp(5rem,8vh,7rem)]">
+      <div className="absolute bottom-[7.25rem] right-3 z-[70] flex flex-col items-center gap-1 border border-gold/45 bg-ink/70 px-2 py-1.5 backdrop-blur-sm max-sm:scale-90 sm:right-6 sm:top-28 sm:bottom-auto sm:gap-2 sm:px-4 sm:py-4 md:right-[clamp(1.5rem,3.5vw,2.8rem)] md:top-[clamp(2.5rem,4vh,4rem)]">
         <span className="text-[0.42rem] uppercase tracking-[0.2em] text-gold-bright sm:text-[0.65rem]">
           {h.officialPartner}
         </span>
@@ -73,7 +73,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             className={cn(
               'font-light uppercase leading-[0.92] tracking-[0.015em] sm:leading-[0.9] md:leading-[0.84]',
               locale === 'pl'
-                ? 'text-[clamp(2.25rem,5.2vw,4.5rem)]'
+                ? 'text-[clamp(2.15rem,4.8vw,4.15rem)] tracking-[0.005em]'
                 : 'text-[clamp(2.75rem,6.8vw,6rem)]'
             )}
           >
