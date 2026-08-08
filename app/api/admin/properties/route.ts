@@ -32,8 +32,10 @@ export async function POST(request: Request) {
     const description = String(body.description ?? '').trim()
     const coverImageUrl = String(body.coverImageUrl ?? '').trim()
     const galleryImageUrls = Array.isArray(body.galleryImageUrls) ? body.galleryImageUrls.filter((url: unknown) => typeof url === 'string') : []
+    const mapImageUrl = String(body.mapImageUrl ?? '').trim() || null
+    const areaSqm = body.areaSqm === null || body.areaSqm === '' ? null : Number(body.areaSqm)
 
-    if (!name || !slug || !location || !price || !description || !coverImageUrl || !Number.isInteger(bedrooms) || bedrooms < 0) {
+    if (!name || !slug || !location || !description || !coverImageUrl || !Number.isInteger(bedrooms) || bedrooms < 0 || (areaSqm !== null && (!Number.isInteger(areaSqm) || areaSqm < 0))) {
       return NextResponse.json({ error: 'Complete every property field before publishing' }, { status: 400 })
     }
     if (!allowedStatuses.has(status) || !allowedTypes.has(propertyType)) {
@@ -51,6 +53,8 @@ export async function POST(request: Request) {
       description,
       coverImageUrl,
       galleryImageUrls: galleryImageUrls.length ? galleryImageUrls : [coverImageUrl],
+      mapImageUrl,
+      areaSqm,
       isPublished: body.isPublished !== false,
     }).onConflictDoUpdate({
       target: properties.slug,

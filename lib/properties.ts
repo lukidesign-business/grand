@@ -44,16 +44,18 @@ export function propertyToProject(property: Property): Project {
     id: property.slug,
     image,
     gallery,
-    additionalImages: isZenithPattaya
-      ? ['/images/zenith-map.jpg']
-      : isZenithPattayaTwo
-        ? ['/images/zenith-pattaya-2-map.jpg']
-        : undefined,
-    mapImage: isZenithPattaya
+    additionalImages: property.mapImageUrl
+      ? [property.mapImageUrl]
+      : isZenithPattaya
+        ? ['/images/zenith-map.jpg']
+        : isZenithPattayaTwo
+          ? ['/images/zenith-pattaya-2-map.jpg']
+          : undefined,
+    mapImage: property.mapImageUrl ?? (isZenithPattaya
       ? 'zenith-map.jpg'
       : isZenithPattayaTwo
         ? 'zenith-pattaya-2-map.jpg'
-        : undefined,
+        : undefined),
     mapUrl: isZenithPattaya
       ? 'https://maps.google.com/?q=Zenith+Pattaya'
       : isZenithPattayaTwo
