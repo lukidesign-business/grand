@@ -83,6 +83,26 @@ export async function POST(request: Request) {
   }
 }
 
+export async function DELETE(request: Request) {
+  try {
+    await requireAdmin()
+    const { id } = await request.json()
+    if (typeof id !== 'string' || !id.trim()) return NextResponse.json({ error: 'Property id is required' }, { status: 400 })
+    const [deleted] = await db.delete(properties).where(eq(properties.id, id)).returning({ slug: properties.slug })
+    if (!deleted) return NextResponse.json({ error: 'Property was not found' }, { status: 404 })
+    revalidateTag('published-properties')
+    for (const locale of ['en', 'th', 'ru', 'de', 'fr']) {
+      revalidatePath(`/${locale}/projects`)
+      revalidatePath(`/${locale}/search`)
+      revalidatePath(`/${locale}/projects/${deleted.slug}`)
+    }
+    return NextResponse.json({ ok: true, slug: deleted.slug })
+  } catch (error) {
+    const message = error instanceof Error ? error.message : 'Unable to delete property'
+    return NextResponse.json({ error: message }, { status: message === 'Unauthorized' ? 401 : 500 })
+  }
+}
+
 export async function PATCH(request: Request) {
   try {
     await requireAdmin()
