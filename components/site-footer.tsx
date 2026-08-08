@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Facebook, Instagram, Mail, MapPin, MessageCircle } from 'lucide-react';
 
 import { LanguageSwitcher } from '@/components/language-switcher';
-import { BRAND, FOOTER_NAV, href } from '@/lib/site';
+import { BRAND, FOOTER_NAV, OFFICIAL_PARTNER, TEAM, href } from '@/lib/site';
 import type { Dictionary } from '@/lib/i18n';
 import type { Locale } from '@/lib/i18n/config';
 
@@ -101,7 +101,7 @@ export function SiteFooter({ locale, dict }: { locale: Locale; dict: Dictionary 
                     className="flex items-start gap-2.5 transition-all duration-300 hover:pl-1 hover:text-gold-bright"
                   >
                     <MessageCircle className="mt-1 size-4.5 shrink-0 text-gold" />
-                    <span>WhatsApp {number.display}</span>
+                    <span><span aria-hidden="true" className="mr-1.5">{number.code === 'TH' ? '🇹🇭' : '🇵🇱'}</span>WhatsApp {number.display}</span>
                   </a>
                 </li>
               ))}
@@ -118,17 +118,29 @@ export function SiteFooter({ locale, dict }: { locale: Locale; dict: Dictionary 
               <LanguageSwitcher locale={locale} labels={lang} />
             </div>
           </div>
+
+          <div className="border-t border-line-soft pt-8 md:col-span-2 lg:col-span-4">
+            <div className="grid gap-8 md:grid-cols-[1.3fr_1fr_1fr] md:items-center">
+              {TEAM.map((person) => (
+                <div key={person.id} className="flex items-center gap-4">
+                  <Image src={person.photo} alt={person.name} width={96} height={96} className="size-20 shrink-0 rounded-full border border-line-soft object-cover" />
+                  <div className="min-w-0">
+                    <p className="text-[0.95rem] text-cream-bright">{person.name}</p>
+                    <p className="mt-1 text-[0.68rem] uppercase tracking-luxe text-gold">{person.role}</p>
+                    {'whatsapp' in person ? <div className="mt-2 grid gap-1"><a href={person.whatsapp.href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[0.8rem] text-muted hover:text-gold-bright"><MessageCircle className="size-3.5 text-gold" />{person.whatsapp.display}</a><a href={person.phone.href} className="flex items-center gap-2 text-[0.8rem] text-muted hover:text-gold-bright"><MessageCircle className="size-3.5 text-gold" />{person.phone.display}</a></div> : <div className="mt-2 grid gap-1">{BRAND.whatsapp.map((number) => <a key={number.display} href={number.href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[0.8rem] text-muted hover:text-gold-bright"><MessageCircle className="size-3.5 text-gold" /><span aria-hidden="true">{number.code === 'TH' ? '🇹🇭' : '🇵🇱'}</span>{number.display}</a>)}</div>}
+                  </div>
+                </div>
+              ))}
+              <div className="flex items-center gap-4 md:justify-end">
+                <div><span className="block text-[0.68rem] uppercase tracking-luxer text-gold">{footer.officialPartner}</span><span className="mt-1 block text-[0.8rem] text-muted">{OFFICIAL_PARTNER.name}</span></div>
+                <Image src={OFFICIAL_PARTNER.mark} alt={OFFICIAL_PARTNER.name} width={112} height={112} className="size-24 opacity-95" />
+              </div>
+            </div>
+          </div>
         </div>
 
-        <p className="mt-8 max-w-[88ch] text-[0.76rem] leading-[1.75] text-muted-2">
-          {footer.disclaimer}
-        </p>
-
-        <div className="mt-6 flex flex-wrap justify-between gap-2 border-t border-line-soft pt-6 text-[0.76rem] text-muted-2">
-          <p>
-            © {new Date().getFullYear()} {BRAND.name}. {footer.rights}
-          </p>
-          <p>{footer.placeholderNote}</p>
+        <div className="mt-6 border-t border-line-soft pt-6 text-[0.76rem] text-muted-2">
+          <p>© {new Date().getFullYear()} {BRAND.name}. {footer.rights}</p>
         </div>
       </div>
     </footer>

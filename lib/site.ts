@@ -4,21 +4,44 @@ export const BRAND = {
   name: 'Grand Property',
   consultant: 'Eryk Fokt',
   email: 'thai@grand-properties.com',
-  phoneDisplay: '+48 666 212 777',
-  phoneHref: '+48666212777',
-  whatsappHref: 'https://wa.me/48666212777',
+  phoneDisplay: '+66 98 085 0053',
+  phoneHref: '+66980850053',
+  whatsappHref: 'https://wa.me/66980850053',
   whatsapp: [
-    { display: '+48 666 212 777', href: 'https://wa.me/48666212777', country: 'Poland', code: 'PL' },
-    { display: '+48 600 377 522', href: 'https://wa.me/48600377522', country: 'Poland', code: 'PL' },
-    { display: '+66 81 373 0494', href: 'https://wa.me/66813730494', country: 'Thailand', code: 'TH' }
+    { display: '+66 98 085 0053', href: 'https://wa.me/66980850053', country: 'Thailand', code: 'TH' },
+    { display: '+48 666 212 777', href: 'https://wa.me/48666212777', country: 'Poland', code: 'PL' }
   ],
-  address: '433/8 Moo 12, Tapphraya Rd., Nongprue, Banglamung, Chon Buri 20150',
-  city: '433/8 Moo 12, Tapphraya Rd., Nongprue, Banglamung',
-  country: 'Chon Buri 20150, Thailand',
+  address: '315/85 Moo 12, Nongprue Banglamung, Chonburi, Thailand',
+  city: '315/85 Moo 12, Nongprue Banglamung',
+  country: 'Chonburi, Thailand',
   social: [
     { id: 'instagram', href: 'https://instagram.com/' },
     { id: 'facebook', href: 'https://facebook.com/' }
   ]
+} as const;
+
+/** The two people clients deal with directly, shown together in the footer. */
+export const TEAM = [
+  {
+    id: 'eryk',
+    name: 'Eryk Fokt',
+    role: 'Founder & Property Consultant',
+    photo: '/images/partners/eryk-fokt.png'
+  },
+  {
+    id: 'business-partner',
+    name: 'Pattaya Property 11',
+    role: 'Business Partner',
+    photo: '/images/partners/business-partner.jpg',
+    whatsapp: { display: '+66 98 085 0053', href: 'https://wa.me/66980850053' },
+    phone: { display: '+66 98 085 0053', href: 'tel:+66980850053' }
+  }
+] as const;
+
+/** Development partner credited across the hero and footer. */
+export const OFFICIAL_PARTNER = {
+  name: 'Grand Solaire',
+  mark: '/images/partners/grand-solaire-mark.png'
 } as const;
 
 /** Route ids double as dictionary keys for nav labels and page metadata. */

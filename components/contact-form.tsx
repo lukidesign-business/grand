@@ -160,7 +160,6 @@ export function ContactForm({ dict }: { dict: Dictionary }) {
         </p>
       ) : null}
 
-      <p className="text-[0.74rem] text-muted-2">{dict.footer.placeholderNote}</p>
     </form>
   );
 }

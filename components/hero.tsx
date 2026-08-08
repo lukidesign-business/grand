@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import { Button } from '@/components/ui/button';
 import { HeroSearch } from '@/components/hero-search';
-import { href } from '@/lib/site';
+import { OFFICIAL_PARTNER, href } from '@/lib/site';
 import type { Dictionary } from '@/lib/i18n';
 import type { Locale } from '@/lib/i18n/config';
 import { cn } from '@/lib/utils';
@@ -48,6 +48,21 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
         className="pointer-events-none absolute -z-10 hidden border border-gold/13 md:block md:inset-[clamp(1rem,2.5vw,2.2rem)]"
       />
 
+      {/* Official partner mark, docked to the upper-right corner of the frame */}
+      <div className="absolute bottom-[7.25rem] right-3 z-[70] flex flex-col items-center gap-1 border border-gold/45 bg-ink/70 px-2 py-1.5 backdrop-blur-sm max-sm:scale-90 sm:right-6 sm:top-28 sm:bottom-auto sm:gap-2 sm:px-4 sm:py-4 md:right-[clamp(1.5rem,3.5vw,2.8rem)] md:top-[clamp(2.5rem,4vh,4rem)]">
+        <span className="text-[0.42rem] uppercase tracking-[0.2em] text-gold-bright sm:text-[0.65rem]">
+          {h.officialPartner}
+        </span>
+        <Image
+          src={OFFICIAL_PARTNER.mark}
+          alt={OFFICIAL_PARTNER.name}
+          width={144}
+          height={144}
+          className="size-10 opacity-100 drop-shadow-[0_5px_18px_rgba(0,0,0,.7)] sm:size-28"
+        />
+        <span className="hidden text-[0.6rem] uppercase tracking-[0.2em] text-cream-bright/90 sm:block">{OFFICIAL_PARTNER.name}</span>
+      </div>
+
       <div className="shell flex min-h-0 flex-1 items-start pt-4 md:items-center md:pb-[clamp(1rem,3vh,2.5rem)] md:pt-0">
         <div className="max-w-full pb-2 pl-1 pr-1 max-md:pt-2 sm:pl-2 sm:pr-2 md:max-w-[40rem] md:pb-0 md:pl-[clamp(1rem,3vw,3rem)] md:pr-4 md:pt-0">
           <span className="-mt-2 mb-1 block text-[0.8rem] uppercase tracking-[0.24em] text-gold sm:-mt-[63px] sm:mb-[-6px] sm:text-[1.05rem] sm:tracking-[0.4em]">
@@ -58,7 +73,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             className={cn(
               'font-light uppercase leading-[0.92] tracking-[0.015em] sm:leading-[0.9] md:leading-[0.84]',
               locale === 'pl'
-                ? 'text-[clamp(2.25rem,5.2vw,4.5rem)]'
+                ? 'text-[clamp(2.15rem,4.8vw,4.15rem)] tracking-[0.005em]'
                 : 'text-[clamp(2.75rem,6.8vw,6rem)]'
             )}
           >
