@@ -59,7 +59,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
           </div>
 
           <FramedImage
-            src="/images/approach-pool.jpg"
+            src="/images/eryk-approach.png"
             alt={dict.about.imageAlt}
             width={1280}
             height={731}

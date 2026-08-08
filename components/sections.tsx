@@ -329,7 +329,7 @@ export function AboutSection({ locale, dict }: SectionProps) {
           </div>
 
           <FramedImage
-            src="/images/approach-pool.jpg"
+            src="/images/eryk-approach.png"
             alt={a.imageAlt}
             width={1280}
             height={731}
