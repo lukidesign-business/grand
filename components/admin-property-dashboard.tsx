@@ -139,10 +139,11 @@ export function AdminPropertyDashboard({ initialProperties }: { initialPropertie
     const result = await response.json()
     if (!response.ok) setMessage(result.error ?? 'Unable to publish property')
     else {
-      setProperties((current) => [result, ...current.filter((property) => property.id !== result.id)])
+      setProperties((current) => [result, ...current.filter((property) => property.id !== result.id)].sort((a, b) => a.name.localeCompare(b.name)))
+      const wasEditing = Boolean(editingId)
       setEditingId(null)
       setForm(initialForm)
-      setMessage(editingId ? 'Property updated.' : 'Property published.')
+      setMessage(wasEditing ? 'Property updated and public pages refreshed.' : 'Property published.')
     }
     setSaving(false)
   }
