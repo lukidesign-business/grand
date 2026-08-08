@@ -24,16 +24,16 @@ export async function POST(request: Request) {
     await requireAdmin()
     const body = await request.json()
     const name = String(body.name ?? '').trim()
-    const slug = String(body.slug ?? '').trim() || name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
-    if (!name || !slug) return NextResponse.json({ error: 'Property name and slug are required' }, { status: 400 })
+    const safeName = name || 'Untitled property'
+    const requestedSlug = String(body.slug ?? '').trim()
+    const safeSlug = requestedSlug || safeName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || `property-${Date.now()}`
     const status = String(body.status ?? 'Ready to move')
     const propertyType = String(body.propertyType ?? 'Condominium')
-    const bedrooms = Number(body.bedrooms)
-    const location = String(body.location ?? '').trim()
-    const price = String(body.price ?? '').trim()
-    const description = String(body.description ?? '').trim()
-    const coverImageUrl = String(body.coverImageUrl ?? '').trim()
-    if (!location || !price || !description || !coverImageUrl) return NextResponse.json({ error: 'Location, price, description, and cover image are required' }, { status: 400 })
+    const bedrooms = Number.isFinite(Number(body.bedrooms)) ? Number(body.bedrooms) : 0
+    const location = String(body.location ?? '').trim() || 'Location available on request'
+    const price = String(body.price ?? '').trim() || 'Price available on request'
+    const description = String(body.description ?? '').trim() || 'Property details available on request'
+    const coverImageUrl = String(body.coverImageUrl ?? '').trim() || '/placeholder.svg?height=720&width=960'
     const galleryImageUrls = Array.isArray(body.galleryImageUrls) ? body.galleryImageUrls.filter((url: unknown) => typeof url === 'string') : []
     const mapImageUrl = String(body.mapImageUrl ?? '').trim() || null
     const areaSqm = body.areaSqm === null || body.areaSqm === '' ? null : Number(body.areaSqm)
@@ -46,8 +46,8 @@ export async function POST(request: Request) {
     }
 
     const values = {
-      slug,
-      name,
+      slug: safeSlug,
+      name: safeName,
       status,
       propertyType,
       bedrooms,
@@ -79,6 +79,26 @@ export async function POST(request: Request) {
     return NextResponse.json(property)
   } catch (error) {
     const message = error instanceof Error ? error.message : 'Unable to save property'
+    return NextResponse.json({ error: message }, { status: message === 'Unauthorized' ? 401 : 500 })
+  }
+}
+
+export async function DELETE(request: Request) {
+  try {
+    await requireAdmin()
+    const { id } = await request.json()
+    if (typeof id !== 'string' || !id.trim()) return NextResponse.json({ error: 'Property id is required' }, { status: 400 })
+    const [deleted] = await db.delete(properties).where(eq(properties.id, id)).returning({ slug: properties.slug })
+    if (!deleted) return NextResponse.json({ error: 'Property was not found' }, { status: 404 })
+    revalidateTag('published-properties')
+    for (const locale of ['en', 'th', 'ru', 'de', 'fr']) {
+      revalidatePath(`/${locale}/projects`)
+      revalidatePath(`/${locale}/search`)
+      revalidatePath(`/${locale}/projects/${deleted.slug}`)
+    }
+    return NextResponse.json({ ok: true, slug: deleted.slug })
+  } catch (error) {
+    const message = error instanceof Error ? error.message : 'Unable to delete property'
     return NextResponse.json({ error: message }, { status: message === 'Unauthorized' ? 401 : 500 })
   }
 }

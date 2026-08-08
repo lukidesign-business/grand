@@ -160,12 +160,6 @@ export function AdminPropertyDashboard({ initialProperties }: { initialPropertie
     event.preventDefault()
     const errors = validateForm()
     setFieldErrors(errors)
-    if (Object.keys(errors).length) {
-      const firstField = Object.keys(errors)[0] as PropertyField
-      fieldRefs.current[firstField]?.focus()
-      setMessage('Please complete the highlighted fields before publishing.')
-      return
-    }
     setSaving(true)
     setMessage('')
     const response = await fetch('/api/admin/properties', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ ...form, id: editingId, bedrooms: Number(form.bedrooms), areaSqm: form.areaSqm ? Number(form.areaSqm) : null }) })
@@ -189,6 +183,19 @@ export function AdminPropertyDashboard({ initialProperties }: { initialPropertie
     const response = await fetch('/api/admin/properties', { method: 'PATCH', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ id: property.id, isPublished: !property.isPublished }) })
     if (!response.ok) return
     setProperties((current) => current.map((item) => item.id === property.id ? { ...item, isPublished: !item.isPublished } : item))
+  }
+
+  async function removeProperty(property: Property) {
+    if (!window.confirm(`Remove “${property.name}” permanently?`)) return
+    const response = await fetch('/api/admin/properties', { method: 'DELETE', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ id: property.id }) })
+    const result = await response.json().catch(() => ({}))
+    if (!response.ok) {
+      setMessage(result.error ?? 'Unable to remove property')
+      return
+    }
+    setProperties((current) => current.filter((item) => item.id !== property.id))
+    if (editingId === property.id) resetForm()
+    setMessage('Property removed and public pages refreshed.')
   }
 
   return (
@@ -222,7 +229,7 @@ export function AdminPropertyDashboard({ initialProperties }: { initialPropertie
             {message ? <p className="mt-4 text-sm text-gold" role="status">{message}</p> : null}
             <div className="mt-7 flex gap-3"><button type="submit" disabled={saving || uploading} className="flex-1 bg-gold px-5 py-3 text-sm font-medium text-ink disabled:opacity-60">{saving ? 'Saving…' : editingId ? 'Update property' : 'Publish property'}</button>{editingId ? <button type="button" onClick={resetForm} className="border border-line-strong px-5 py-3 text-sm text-muted hover:text-cream">Cancel</button> : null}</div>
           </form>
-          <aside><p className="text-[0.65rem] uppercase tracking-luxe text-gold">Catalog</p><h2 className="mt-2 font-serif text-2xl">Live properties</h2><div className="mt-5 grid gap-3">{properties.map((property) => <article key={property.id} className="border border-line-soft bg-surface p-4"><div className="flex gap-4"><img src={property.coverImageUrl} alt="" className="size-20 shrink-0 object-cover" /><div className="min-w-0"><h3 className="font-serif text-lg">{property.name}</h3><p className="mt-1 text-xs text-muted">{property.bedrooms === 0 ? 'Studio' : `${property.bedrooms} bedroom`} · {property.status}</p><div className="mt-3 flex flex-wrap gap-3"><button onClick={() => editProperty(property)} className="text-[0.65rem] uppercase tracking-luxe text-gold">Edit listing</button><button onClick={() => toggle(property)} className="text-[0.65rem] uppercase tracking-luxe text-muted hover:text-gold">{property.isPublished ? 'Unpublish' : 'Publish'}</button></div></div></div></article>)}</div></aside>
+          <aside><p className="text-[0.65rem] uppercase tracking-luxe text-gold">Catalog</p><h2 className="mt-2 font-serif text-2xl">Live properties</h2><div className="mt-5 grid gap-3">{properties.map((property) => <article key={property.id} className="border border-line-soft bg-surface p-4"><div className="flex gap-4"><img src={property.coverImageUrl} alt="" className="size-20 shrink-0 object-cover" /><div className="min-w-0"><h3 className="font-serif text-lg">{property.name}</h3><p className="mt-1 text-xs text-muted">{property.bedrooms === 0 ? 'Studio' : `${property.bedrooms} bedroom`} · {property.status}</p><div className="mt-3 flex flex-wrap gap-3"><button onClick={() => editProperty(property)} className="text-[0.65rem] uppercase tracking-luxe text-gold">Edit listing</button><button onClick={() => toggle(property)} className="text-[0.65rem] uppercase tracking-luxe text-muted hover:text-gold">{property.isPublished ? 'Unpublish' : 'Publish'}</button><button type="button" onClick={() => removeProperty(property)} className="text-[0.65rem] uppercase tracking-luxe text-red-400 hover:text-red-300">Remove</button></div></div></div></article>)}</div></aside>
         </div>
       </div>
     </main>
