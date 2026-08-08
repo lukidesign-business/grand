@@ -11,14 +11,23 @@ export function AdminLogin() {
     event.preventDefault()
     setLoading(true)
     setError('')
-    const response = await fetch('/api/admin/login', {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ password }),
-    })
-    if (response.ok) window.location.reload()
-    else setError('That password is not correct.')
-    setLoading(false)
+    try {
+      const response = await fetch('/api/admin/login', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({ password }),
+      })
+      if (response.ok) {
+        window.location.assign('/admin/properties')
+        return
+      }
+      setError(response.status === 401 ? 'That password is not correct.' : 'The admin service is unavailable. Please try again.')
+    } catch {
+      setError('The admin service is unavailable. Please try again.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (

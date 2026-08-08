@@ -13,10 +13,11 @@ export async function POST(request: Request) {
   if (!valid) return NextResponse.json({ error: 'Invalid credentials' }, { status: 401 })
 
   const response = NextResponse.json({ ok: true })
+  const secureCookie = process.env.NODE_ENV === 'production' || Boolean(process.env.VERCEL_URL || process.env.V0_RUNTIME_URL)
   response.cookies.set(ADMIN_COOKIE, expectedToken(), {
     httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: 'lax',
+    secure: secureCookie,
+    sameSite: secureCookie ? 'none' : 'lax',
     path: '/',
     maxAge: 60 * 60 * 24 * 7,
   })
