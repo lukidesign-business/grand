@@ -90,6 +90,7 @@
     "name": "Eryk Fokt",
     "role": "Doradca ds. nieruchomości",
     "signatureAlt": "Podpis Eryka Fokta",
+    "officialPartner": "Oficjalny Partner",
     "ctaPrimary": "Zobacz inwestycje",
     "ctaSecondary": "Umów konsultację",
     "scroll": "Przewiń",
@@ -577,6 +578,8 @@
     "company": "Firma",
     "contact": "Kontakt",
     "language": "Język",
+    "team": "Twój Zespół",
+    "officialPartner": "Oficjalny Partner",
     "rights": "Wszelkie prawa zastrzeżone.",
     "disclaimer": "Informacje na tej stronie mają charakter ogólny i nie stanowią porady prawnej, podatkowej ani inwestycyjnej. Ceny, dostępność i warunki płatności ustala deweloper i mogą ulec zmianie. Każdy zakup powinien zostać sprawdzony przez niezależnego tajskiego prawnika.",
     "legal": {

@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Facebook, Instagram, Mail, MapPin, MessageCircle } from 'lucide-react';
+import { Facebook, Instagram, Mail, MapPin, MessageCircle, Phone } from 'lucide-react';
 
 import { LanguageSwitcher } from '@/components/language-switcher';
-import { BRAND, FOOTER_NAV, href } from '@/lib/site';
+import { BRAND, FOOTER_NAV, OFFICIAL_PARTNER, TEAM, href } from '@/lib/site';
 import type { Dictionary } from '@/lib/i18n';
 import type { Locale } from '@/lib/i18n/config';
 
@@ -117,6 +117,64 @@ export function SiteFooter({ locale, dict }: { locale: Locale; dict: Dictionary 
               </span>
               <LanguageSwitcher locale={locale} labels={lang} />
             </div>
+          </div>
+        </div>
+
+        <div className="grid gap-10 border-b border-line-soft py-12 md:grid-cols-[1.4fr_.9fr] md:items-start">
+          <div>
+            <h3 className="mb-6 text-[0.68rem] font-normal uppercase tracking-luxer text-gold">
+              {footer.team}
+            </h3>
+            <div className="grid gap-6 sm:grid-cols-2">
+              {TEAM.map((person) => (
+                <div key={person.id} className="flex items-center gap-4">
+                  <Image
+                    src={person.photo}
+                    alt={person.name}
+                    width={88}
+                    height={88}
+                    className="size-16 shrink-0 rounded-full border border-line-soft object-cover sm:size-18"
+                  />
+                  <div className="min-w-0">
+                    <p className="truncate text-[0.92rem] text-cream-bright">{person.name}</p>
+                    <p className="text-[0.72rem] uppercase tracking-luxe text-gold">{person.role}</p>
+                    {'whatsapp' in person ? (
+                      <div className="mt-2 grid gap-1.5">
+                        <a
+                          href={person.whatsapp.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-1.5 text-[0.8rem] text-muted transition-colors duration-300 hover:text-gold-bright"
+                        >
+                          <MessageCircle className="size-3.5 shrink-0 text-gold" />
+                          <span>{person.whatsapp.display}</span>
+                        </a>
+                        <a
+                          href={person.phone.href}
+                          className="flex items-center gap-1.5 text-[0.8rem] text-muted transition-colors duration-300 hover:text-gold-bright"
+                        >
+                          <Phone className="size-3.5 shrink-0 text-gold" />
+                          <span>{person.phone.display}</span>
+                        </a>
+                      </div>
+                    ) : null}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="flex flex-col items-start gap-3 md:items-end">
+            <span className="text-[0.68rem] uppercase tracking-luxer text-gold">
+              {footer.officialPartner}
+            </span>
+            <Image
+              src={OFFICIAL_PARTNER.mark}
+              alt={OFFICIAL_PARTNER.name}
+              width={96}
+              height={96}
+              className="size-16 opacity-95 sm:size-20"
+            />
           </div>
         </div>
 

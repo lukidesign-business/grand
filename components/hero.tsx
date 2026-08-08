@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import { Button } from '@/components/ui/button';
 import { HeroSearch } from '@/components/hero-search';
-import { href } from '@/lib/site';
+import { OFFICIAL_PARTNER, href } from '@/lib/site';
 import type { Dictionary } from '@/lib/i18n';
 import type { Locale } from '@/lib/i18n/config';
 import { cn } from '@/lib/utils';
@@ -47,6 +47,20 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
         aria-hidden="true"
         className="pointer-events-none absolute -z-10 hidden border border-gold/13 md:block md:inset-[clamp(1rem,2.5vw,2.2rem)]"
       />
+
+      {/* Official partner mark, docked to the upper-right corner of the frame */}
+      <div className="absolute right-4 top-24 z-[70] flex flex-col items-end gap-1.5 sm:right-6 sm:top-28 md:right-[clamp(1.5rem,3.5vw,2.8rem)] md:top-[clamp(6.5rem,11vh,9rem)]">
+        <span className="text-[0.5rem] uppercase tracking-[0.3em] text-cream-bright/80 sm:text-[0.6rem]">
+          {h.officialPartner}
+        </span>
+        <Image
+          src={OFFICIAL_PARTNER.mark}
+          alt={OFFICIAL_PARTNER.name}
+          width={96}
+          height={96}
+          className="size-10 opacity-95 drop-shadow-[0_4px_14px_rgba(0,0,0,.55)] sm:size-14"
+        />
+      </div>
 
       <div className="shell flex min-h-0 flex-1 items-start pt-4 md:items-center md:pb-[clamp(1rem,3vh,2.5rem)] md:pt-0">
         <div className="max-w-full pb-2 pl-1 pr-1 max-md:pt-2 sm:pl-2 sm:pr-2 md:max-w-[40rem] md:pb-0 md:pl-[clamp(1rem,3vw,3rem)] md:pr-4 md:pt-0">

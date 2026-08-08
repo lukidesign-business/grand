@@ -90,6 +90,7 @@
     "name": "Eryk Fokt",
     "role": "Real Estate Consultant",
     "signatureAlt": "Eryk Fokt signature",
+    "officialPartner": "Official Partner",
     "ctaPrimary": "Explore projects",
     "ctaSecondary": "Book a consultation",
     "scroll": "Scroll",
@@ -572,12 +573,14 @@
   },
 
   "footer": {
-    "tagline": "Advisory-led property investment in Pattaya, Thailand. Direct developer access, freehold condominium ownership for foreign buyers, and support that continues after handover.",
-    "explore": "Explore",
-    "company": "Company",
-    "contact": "Contact",
-    "language": "Language",
-    "rights": "All rights reserved.",
+  "tagline": "Advisory-led property investment in Pattaya, Thailand. Direct developer access, freehold condominium ownership for foreign buyers, and support that continues after handover.",
+  "explore": "Explore",
+  "company": "Company",
+  "contact": "Contact",
+  "language": "Language",
+  "team": "Your Team",
+  "officialPartner": "Official Partner",
+  "rights": "All rights reserved.",
     "disclaimer": "Information on this site is provided for general guidance and does not constitute legal, tax or investment advice. Prices, availability and payment terms are set by the developer and may change. Every purchase should be reviewed by an independent Thai lawyer.",
     "legal": {
       "privacy": "Privacy",

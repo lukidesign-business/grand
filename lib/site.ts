@@ -21,6 +21,30 @@ export const BRAND = {
   ]
 } as const;
 
+/** The two people clients deal with directly, shown together in the footer. */
+export const TEAM = [
+  {
+    id: 'eryk',
+    name: 'Eryk Fokt',
+    role: 'Founder & Property Consultant',
+    photo: '/images/partners/eryk-fokt.png'
+  },
+  {
+    id: 'business-partner',
+    name: 'Pattaya Property 11',
+    role: 'Business Partner',
+    photo: '/images/partners/business-partner.jpg',
+    whatsapp: { display: '+66 98 085 0053', href: 'https://wa.me/66980850053' },
+    phone: { display: '+66 98 085 0053', href: 'tel:+66980850053' }
+  }
+] as const;
+
+/** Development partner credited across the hero and footer. */
+export const OFFICIAL_PARTNER = {
+  name: 'Grand Solaire',
+  mark: '/images/partners/grand-solaire-mark.png'
+} as const;
+
 /** Route ids double as dictionary keys for nav labels and page metadata. */
 export type RouteId = 'home' | 'projects' | 'thailand' | 'about' | 'search' | 'contact';
 
