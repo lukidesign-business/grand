@@ -32,7 +32,7 @@ export default async function ProjectsPage({ params }: { params: Promise<{ local
   const dict = getDictionary(locale as Locale);
   const page = dict.projects.page;
   const published = await getPublishedProperties();
-  const projects = published.length ? published.map(propertyToProject) : undefined;
+  const projects = published.map(propertyToProject);
 
   return (
     <>
