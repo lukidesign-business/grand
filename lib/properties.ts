@@ -45,9 +45,15 @@ export function propertyToProject(property: Property): Project {
   const numericPrice = Number(property.price.replace(/[^0-9.]/g, ''))
   const isZenithPattaya = property.slug === 'zenith-pattaya'
   const isZenithPattayaTwo = property.slug === 'zenith-pattaya-2'
+  const bedroomId: Project['bedrooms'][number] =
+    property.bedrooms <= 0 ? 'studio' : property.bedrooms >= 4 ? '4plus' : (String(property.bedrooms) as Project['bedrooms'][number])
 
   return {
     id: property.slug,
+    name: property.name,
+    tagline: property.description,
+    summary: property.description,
+    body: property.description,
     image,
     gallery,
     additionalImages: property.mapImageUrl
@@ -73,7 +79,7 @@ export function propertyToProject(property: Property): Project {
     completion: property.status,
     priceFrom: Number.isFinite(numericPrice) && numericPrice > 0 ? numericPrice * 1_000_000 : undefined,
     sizeFrom: property.areaSqm ?? (isZenithPattaya ? 35 : isZenithPattayaTwo ? 65 : 0),
-    bedrooms: [String(property.bedrooms) as Project['bedrooms'][number]],
+    bedrooms: [bedroomId],
     featured: true,
   }
 }

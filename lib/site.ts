@@ -95,6 +95,10 @@ export const PRICE_BANDS: { id: PriceBandId; min: number; max: number }[] = [
 
 export interface Project {
   id: string;
+  name?: string;
+  tagline?: string;
+  summary?: string;
+  body?: string;
   image: string;
   gallery: string[];
   additionalImages?: string[];

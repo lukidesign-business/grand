@@ -37,14 +37,13 @@ export async function generateMetadata({
   if (!isLocale(locale) || !project) return {};
 
   const dict = getDictionary(locale);
-  const item = dict.projects.items[slug as keyof typeof dict.projects.items] ?? {
-    name: property?.name ?? slug,
-    tagline: property?.description ?? ''
-  };
+  const dictItem = dict.projects.items[slug as keyof typeof dict.projects.items];
+  const name = project.name ?? dictItem?.name ?? slug;
+  const tagline = project.tagline ?? dictItem?.tagline ?? '';
 
   return {
-    title: `${item.name} — ${dict.values.locations[project.location]} | ${dict.meta.project.titleSuffix}`,
-    description: `${dict.meta.project.descriptionPrefix} ${project.priceFrom ? formatPrice(locale, project.priceFrom) : dict.projects.labels.priceOnRequest}. ${item.tagline}.`,
+    title: `${name} — ${dict.values.locations[project.location]} | ${dict.meta.project.titleSuffix}`,
+    description: `${dict.meta.project.descriptionPrefix} ${project.priceFrom ? formatPrice(locale, project.priceFrom) : dict.projects.labels.priceOnRequest}. ${tagline}.`,
     alternates: alternatesFor(locale, `projects/${slug}`),
     openGraph: { images: [`/images/${project.image}`] }
   };
@@ -61,12 +60,13 @@ export default async function ProjectPage({
   if (!isLocale(locale) || !project) notFound();
 
   const dict = getDictionary(locale as Locale);
-  const item = dict.projects.items[slug as keyof typeof dict.projects.items] ?? {
-    name: property?.name ?? slug,
-    tagline: property?.description ?? '',
-    summary: property?.description ?? '',
-    body: property?.description ?? '',
-    highlights: []
+  const dictItem = dict.projects.items[slug as keyof typeof dict.projects.items];
+  const item = {
+    name: project.name ?? dictItem?.name ?? slug,
+    tagline: project.tagline ?? dictItem?.tagline ?? '',
+    summary: project.summary ?? dictItem?.summary ?? '',
+    body: project.body ?? dictItem?.body ?? '',
+    highlights: dictItem?.highlights ?? []
   };
   const labels = dict.projects.labels;
   const published = await getPublishedProperties();

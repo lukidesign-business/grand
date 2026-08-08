@@ -23,7 +23,7 @@ export function ProjectsBrowser({ locale, dict, projects = [] }: { locale: Local
 
   const visible = useMemo(
     () => (tab === 'all' ? projects : projects.filter((project) => project.status === tab)),
-    [tab]
+    [tab, projects]
   );
 
   const countLabel =
