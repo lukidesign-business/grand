@@ -160,12 +160,6 @@ export function AdminPropertyDashboard({ initialProperties }: { initialPropertie
     event.preventDefault()
     const errors = validateForm()
     setFieldErrors(errors)
-    if (Object.keys(errors).length) {
-      const firstField = Object.keys(errors)[0] as PropertyField
-      fieldRefs.current[firstField]?.focus()
-      setMessage('Please complete the highlighted fields before publishing.')
-      return
-    }
     setSaving(true)
     setMessage('')
     const response = await fetch('/api/admin/properties', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ ...form, id: editingId, bedrooms: Number(form.bedrooms), areaSqm: form.areaSqm ? Number(form.areaSqm) : null }) })

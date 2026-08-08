@@ -46,13 +46,13 @@ export function getPropertyBySlug(slug: string) {
 export function propertyToProject(property: Property): Project {
   const location = property.location.toLowerCase().includes('jomtien') ? 'jomtien' : 'pattaya'
   const status = property.status.toLowerCase().includes('ready') ? 'ready' : 'offplan'
-  const normalizeImageUrl = (value: string) => {
-    const trimmed = value.trim()
-    if (!trimmed) return ''
+  const normalizeImageUrl = (value: string | null | undefined) => {
+    const trimmed = value?.trim() ?? ''
+    if (!trimmed || trimmed.startsWith('blob:')) return ''
     if (trimmed.startsWith('http://') || trimmed.startsWith('https://') || trimmed.startsWith('/')) return trimmed
     return `/images/${trimmed.replace(/^images\//, '')}`
   }
-  const image = normalizeImageUrl(property.coverImageUrl)
+  const image = normalizeImageUrl(property.coverImageUrl) || '/placeholder.svg?height=720&width=960'
   const gallery = property.galleryImageUrls.map(normalizeImageUrl).filter(Boolean)
   const numericPrice = Number(property.price.replace(/[^0-9.]/g, ''))
   const isZenithPattaya = property.slug === 'zenith-pattaya'
@@ -74,12 +74,12 @@ export function propertyToProject(property: Property): Project {
         ? ['/images/zenith-map.jpg']
         : isZenithPattayaTwo
           ? ['/images/zenith-pattaya-2-map.jpg']
-          : undefined,
-    mapImage: property.mapImageUrl ? normalizeImageUrl(property.mapImageUrl) : (isZenithPattaya
+          : ['/placeholder.svg?height=420&width=960'],
+    mapImage: normalizeImageUrl(property.mapImageUrl) || (isZenithPattaya
       ? '/images/zenith-map.jpg'
       : isZenithPattayaTwo
         ? '/images/zenith-pattaya-2-map.jpg'
-        : undefined),
+        : '/placeholder.svg?height=420&width=960'),
     mapUrl: isZenithPattaya
       ? 'https://maps.google.com/?q=Zenith+Pattaya'
       : isZenithPattayaTwo
