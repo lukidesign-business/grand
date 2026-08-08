@@ -68,6 +68,8 @@ export async function POST(request: Request) {
         description,
         coverImageUrl,
         galleryImageUrls: galleryImageUrls.length ? galleryImageUrls : [coverImageUrl],
+        mapImageUrl,
+        areaSqm,
         isPublished: body.isPublished !== false,
         updatedAt: new Date(),
       },
