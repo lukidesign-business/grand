@@ -16,6 +16,9 @@ import { getDictionary } from '@/lib/i18n';
 import { isLocale, type Locale } from '@/lib/i18n/config';
 import { alternatesFor } from '@/lib/metadata';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export async function generateMetadata({
   params
 }: {

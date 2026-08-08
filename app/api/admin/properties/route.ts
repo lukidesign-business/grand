@@ -1,4 +1,4 @@
-import { revalidatePath } from 'next/cache'
+import { revalidatePath, revalidateTag } from 'next/cache'
 import { NextResponse } from 'next/server'
 import { asc, eq } from 'drizzle-orm'
 import { db } from '@/lib/db'
@@ -23,15 +23,17 @@ export async function POST(request: Request) {
   try {
     await requireAdmin()
     const body = await request.json()
-    const name = String(body.name ?? '').trim() || 'Untitled property'
-    const slug = String(body.slug ?? name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')) || `property-${Date.now()}`
+    const name = String(body.name ?? '').trim()
+    const slug = String(body.slug ?? '').trim() || name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+    if (!name || !slug) return NextResponse.json({ error: 'Property name and slug are required' }, { status: 400 })
     const status = String(body.status ?? 'Ready to move')
     const propertyType = String(body.propertyType ?? 'Condominium')
     const bedrooms = Number(body.bedrooms)
-    const location = String(body.location ?? '').trim() || 'Location available on request'
-    const price = String(body.price ?? '').trim() || 'Price available on request'
-    const description = String(body.description ?? '').trim() || 'Property details available on request'
+    const location = String(body.location ?? '').trim()
+    const price = String(body.price ?? '').trim()
+    const description = String(body.description ?? '').trim()
     const coverImageUrl = String(body.coverImageUrl ?? '').trim()
+    if (!location || !price || !description || !coverImageUrl) return NextResponse.json({ error: 'Location, price, description, and cover image are required' }, { status: 400 })
     const galleryImageUrls = Array.isArray(body.galleryImageUrls) ? body.galleryImageUrls.filter((url: unknown) => typeof url === 'string') : []
     const mapImageUrl = String(body.mapImageUrl ?? '').trim() || null
     const areaSqm = body.areaSqm === null || body.areaSqm === '' ? null : Number(body.areaSqm)
@@ -68,6 +70,7 @@ export async function POST(request: Request) {
         }).returning()
 
     if (!property) return NextResponse.json({ error: 'Property was not found' }, { status: 404 })
+    revalidateTag('published-properties')
     for (const locale of ['en', 'th', 'ru', 'de', 'fr']) {
       revalidatePath(`/${locale}/projects`)
       revalidatePath(`/${locale}/projects/${property.slug}`)
@@ -86,6 +89,10 @@ export async function PATCH(request: Request) {
     const { id, isPublished } = await request.json()
     if (typeof id !== 'string' || typeof isPublished !== 'boolean') return NextResponse.json({ error: 'Invalid request' }, { status: 400 })
     const [property] = await db.update(properties).set({ isPublished, updatedAt: new Date() }).where(eq(properties.id, id)).returning()
+    revalidateTag('published-properties')
+    if (property) {
+      for (const locale of ['en', 'th', 'ru', 'de', 'fr']) revalidatePath(`/${locale}/projects/${property.slug}`)
+    }
     return NextResponse.json(property)
   } catch (error) {
     const message = error instanceof Error ? error.message : 'Unable to update property'

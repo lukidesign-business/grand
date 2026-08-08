@@ -15,7 +15,8 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project, locale, dict, priority = false }: ProjectCardProps) {
-  const item = dict.projects.items[project.id as keyof typeof dict.projects.items];
+  const dictItem = dict.projects.items[project.id as keyof typeof dict.projects.items];
+  const name = project.name ?? dictItem?.name ?? project.id;
   const labels = dict.projects.labels;
   const url = projectHref(locale, project.id);
 
@@ -46,6 +47,7 @@ export function ProjectCard({ project, locale, dict, priority = false }: Project
           priority={priority}
           sizes="(max-width: 860px) 100vw, (max-width: 1280px) 50vw, 33vw"
           className="object-cover transition-transform duration-1000 ease-luxe group-hover:scale-105"
+          unoptimized={project.image.startsWith('http://') || project.image.startsWith('https://')}
         />
         <span
           aria-hidden="true"
@@ -72,13 +74,13 @@ export function ProjectCard({ project, locale, dict, priority = false }: Project
             </p>
             <h3 className="text-[1.4rem] leading-tight">
               <Link href={url} className="transition-colors duration-300 group-hover:text-gold-bright">
-                {item.name}
+                {name}
               </Link>
             </h3>
           </div>
           <Link
             href={url}
-            aria-label={`${labels.view}: ${item.name}`}
+            aria-label={`${labels.view}: ${name}`}
             className="mt-1 shrink-0 text-gold transition-colors duration-300 hover:text-gold-bright"
           >
             <ArrowRight className="size-5" />

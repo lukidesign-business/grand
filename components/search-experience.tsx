@@ -12,10 +12,10 @@ import {
   LOCATIONS,
   PLANS,
   PRICE_BANDS,
-  PROJECTS,
   PROPERTY_TYPES,
   STATUSES,
-  href
+  href,
+  type Project
 } from '@/lib/site';
 import { fill } from '@/lib/i18n/fill';
 import type { Dictionary } from '@/lib/i18n';
@@ -36,11 +36,13 @@ type SortMode = 'featured' | 'asc' | 'desc';
 export function SearchExperience({
   locale,
   dict,
-  initialFilters
+  initialFilters,
+  projects
 }: {
   locale: Locale;
   dict: Dictionary;
   initialFilters: SearchFilters;
+  projects: Project[];
 }) {
   const [filters, setFilters] = useState<SearchFilters>(initialFilters);
   const [sort, setSort] = useState<SortMode>('featured');
@@ -48,7 +50,7 @@ export function SearchExperience({
   const results = useMemo(() => {
     const band = PRICE_BANDS.find((b) => b.id === filters.price);
 
-    const matched = PROJECTS.filter((project) => {
+    const matched = projects.filter((project) => {
       if (filters.location && project.location !== filters.location) return false;
       if (filters.type && project.type !== filters.type) return false;
       if (filters.plan && project.plan !== filters.plan) return false;
@@ -70,7 +72,7 @@ export function SearchExperience({
       if (sort === 'desc') return (b.priceFrom ?? -1) - (a.priceFrom ?? -1);
       return Number(b.featured) - Number(a.featured);
     });
-  }, [filters, sort]);
+  }, [filters, sort, projects]);
 
   const set = (key: keyof SearchFilters) => (event: React.ChangeEvent<HTMLSelectElement>) =>
     setFilters((current) => ({ ...current, [key]: event.target.value }));

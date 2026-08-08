@@ -3,7 +3,7 @@
 import { useMemo, useState } from 'react';
 
 import { ProjectCard } from '@/components/project-card';
-import { PROJECTS, type Project } from '@/lib/site';
+import type { Project } from '@/lib/site';
 import { fill } from '@/lib/i18n/fill';
 import type { Dictionary } from '@/lib/i18n';
 import type { Locale } from '@/lib/i18n/config';
@@ -11,7 +11,7 @@ import { cn } from '@/lib/utils';
 
 type Tab = 'all' | 'ready' | 'offplan';
 
-export function ProjectsBrowser({ locale, dict, projects = PROJECTS }: { locale: Locale; dict: Dictionary; projects?: Project[] }) {
+export function ProjectsBrowser({ locale, dict, projects = [] }: { locale: Locale; dict: Dictionary; projects?: Project[] }) {
   const [tab, setTab] = useState<Tab>('all');
   const page = dict.projects.page;
 
@@ -23,7 +23,7 @@ export function ProjectsBrowser({ locale, dict, projects = PROJECTS }: { locale:
 
   const visible = useMemo(
     () => (tab === 'all' ? projects : projects.filter((project) => project.status === tab)),
-    [tab]
+    [tab, projects]
   );
 
   const countLabel =
