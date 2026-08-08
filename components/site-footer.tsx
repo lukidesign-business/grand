@@ -101,7 +101,7 @@ export function SiteFooter({ locale, dict }: { locale: Locale; dict: Dictionary 
                     className="flex items-start gap-2.5 transition-all duration-300 hover:pl-1 hover:text-gold-bright"
                   >
                     <MessageCircle className="mt-1 size-4.5 shrink-0 text-gold" />
-                    <span>WhatsApp {number.display}</span>
+                    <span><span aria-hidden="true" className="mr-1.5">{number.code === 'TH' ? '🇹🇭' : '🇵🇱'}</span>WhatsApp {number.display}</span>
                   </a>
                 </li>
               ))}
@@ -127,7 +127,7 @@ export function SiteFooter({ locale, dict }: { locale: Locale; dict: Dictionary 
                   <div className="min-w-0">
                     <p className="text-[0.95rem] text-cream-bright">{person.name}</p>
                     <p className="mt-1 text-[0.68rem] uppercase tracking-luxe text-gold">{person.role}</p>
-                    {'whatsapp' in person ? <div className="mt-2 grid gap-1"><a href={person.whatsapp.href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[0.8rem] text-muted hover:text-gold-bright"><MessageCircle className="size-3.5 text-gold" />{person.whatsapp.display}</a><a href={person.phone.href} className="flex items-center gap-2 text-[0.8rem] text-muted hover:text-gold-bright"><MessageCircle className="size-3.5 text-gold" />{person.phone.display}</a></div> : <div className="mt-2 grid gap-1">{BRAND.whatsapp.map((number) => <a key={number.display} href={number.href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[0.8rem] text-muted hover:text-gold-bright"><MessageCircle className="size-3.5 text-gold" />{number.display}</a>)}</div>}
+                    {'whatsapp' in person ? <div className="mt-2 grid gap-1"><a href={person.whatsapp.href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[0.8rem] text-muted hover:text-gold-bright"><MessageCircle className="size-3.5 text-gold" />{person.whatsapp.display}</a><a href={person.phone.href} className="flex items-center gap-2 text-[0.8rem] text-muted hover:text-gold-bright"><MessageCircle className="size-3.5 text-gold" />{person.phone.display}</a></div> : <div className="mt-2 grid gap-1">{BRAND.whatsapp.map((number) => <a key={number.display} href={number.href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[0.8rem] text-muted hover:text-gold-bright"><MessageCircle className="size-3.5 text-gold" /><span aria-hidden="true">{number.code === 'TH' ? '🇹🇭' : '🇵🇱'}</span>{number.display}</a>)}</div>}
                   </div>
                 </div>
               ))}

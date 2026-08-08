@@ -49,8 +49,8 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
       />
 
       {/* Official partner mark, docked to the upper-right corner of the frame */}
-      <div className="absolute right-4 top-24 z-[70] flex flex-col items-center gap-2 border border-gold/45 bg-ink/65 px-3 py-3 backdrop-blur-sm sm:right-6 sm:top-28 sm:px-4 sm:py-4 md:right-[clamp(1.5rem,3.5vw,2.8rem)] md:top-[clamp(6.5rem,11vh,9rem)]">
-        <span className="text-[0.55rem] uppercase tracking-[0.26em] text-gold-bright sm:text-[0.65rem]">
+      <div className="absolute bottom-[7.25rem] right-3 z-[70] flex flex-col items-center gap-1 border border-gold/45 bg-ink/70 px-2 py-1.5 backdrop-blur-sm max-sm:scale-90 sm:right-6 sm:top-28 sm:bottom-auto sm:gap-2 sm:px-4 sm:py-4 md:right-[clamp(1.5rem,3.5vw,2.8rem)] md:top-[clamp(5rem,8vh,7rem)]">
+        <span className="text-[0.42rem] uppercase tracking-[0.2em] text-gold-bright sm:text-[0.65rem]">
           {h.officialPartner}
         </span>
         <Image
@@ -58,9 +58,9 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           alt={OFFICIAL_PARTNER.name}
           width={144}
           height={144}
-          className="size-20 opacity-100 drop-shadow-[0_5px_18px_rgba(0,0,0,.7)] sm:size-28"
+          className="size-10 opacity-100 drop-shadow-[0_5px_18px_rgba(0,0,0,.7)] sm:size-28"
         />
-        <span className="text-[0.6rem] uppercase tracking-[0.2em] text-cream-bright/90">{OFFICIAL_PARTNER.name}</span>
+        <span className="hidden text-[0.6rem] uppercase tracking-[0.2em] text-cream-bright/90 sm:block">{OFFICIAL_PARTNER.name}</span>
       </div>
 
       <div className="shell flex min-h-0 flex-1 items-start pt-4 md:items-center md:pb-[clamp(1rem,3vh,2.5rem)] md:pt-0">
