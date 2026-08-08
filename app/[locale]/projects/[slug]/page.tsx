@@ -17,6 +17,9 @@ import { alternatesFor } from '@/lib/metadata';
 import { getPropertyBySlug, getPublishedProperties, propertyToProject } from '@/lib/properties';
 import { cn } from '@/lib/utils';
 
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 export async function generateStaticParams() {
   const published = await getPublishedProperties();
   const projects = published.length ? published.map(propertyToProject) : PROJECTS;

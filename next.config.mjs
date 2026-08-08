@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  serverExternalPackages: ['drizzle-orm', 'pg'],
   images: {
     formats: ['image/avif', 'image/webp'],
     // Source art tops out around 1600px wide, so the 2048/3840 breakpoints only

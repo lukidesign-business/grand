@@ -34,8 +34,9 @@ export async function getPropertyBySlug(slug: string) {
 export function propertyToProject(property: Property): Project {
   const location = property.location.toLowerCase().includes('jomtien') ? 'jomtien' : 'pattaya'
   const status = property.status.toLowerCase().includes('ready') ? 'ready' : 'offplan'
-  const image = property.coverImageUrl
-  const gallery = property.galleryImageUrls
+  const normalizeImageUrl = (value: string) => value.startsWith('http') || value.startsWith('/') ? value : `/images/${value}`
+  const image = normalizeImageUrl(property.coverImageUrl)
+  const gallery = property.galleryImageUrls.map(normalizeImageUrl)
   const numericPrice = Number(property.price.replace(/[^0-9.]/g, ''))
   const isZenithPattaya = property.slug === 'zenith-pattaya'
   const isZenithPattayaTwo = property.slug === 'zenith-pattaya-2'
@@ -44,16 +45,18 @@ export function propertyToProject(property: Property): Project {
     id: property.slug,
     image,
     gallery,
-    additionalImages: isZenithPattaya
-      ? ['/images/zenith-map.jpg']
-      : isZenithPattayaTwo
-        ? ['/images/zenith-pattaya-2-map.jpg']
-        : undefined,
-    mapImage: isZenithPattaya
+    additionalImages: property.mapImageUrl
+      ? [normalizeImageUrl(property.mapImageUrl)]
+      : isZenithPattaya
+        ? ['/images/zenith-map.jpg']
+        : isZenithPattayaTwo
+          ? ['/images/zenith-pattaya-2-map.jpg']
+          : undefined,
+    mapImage: property.mapImageUrl ? normalizeImageUrl(property.mapImageUrl) : (isZenithPattaya
       ? 'zenith-map.jpg'
       : isZenithPattayaTwo
         ? 'zenith-pattaya-2-map.jpg'
-        : undefined,
+        : undefined),
     mapUrl: isZenithPattaya
       ? 'https://maps.google.com/?q=Zenith+Pattaya'
       : isZenithPattayaTwo
