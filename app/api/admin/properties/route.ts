@@ -1,4 +1,4 @@
-import { revalidatePath } from 'next/cache'
+import { revalidatePath, revalidateTag } from 'next/cache'
 import { NextResponse } from 'next/server'
 import { asc, eq } from 'drizzle-orm'
 import { db } from '@/lib/db'
@@ -68,6 +68,7 @@ export async function POST(request: Request) {
         }).returning()
 
     if (!property) return NextResponse.json({ error: 'Property was not found' }, { status: 404 })
+    revalidateTag('published-properties')
     for (const locale of ['en', 'th', 'ru', 'de', 'fr']) {
       revalidatePath(`/${locale}/projects`)
       revalidatePath(`/${locale}/projects/${property.slug}`)
@@ -86,6 +87,10 @@ export async function PATCH(request: Request) {
     const { id, isPublished } = await request.json()
     if (typeof id !== 'string' || typeof isPublished !== 'boolean') return NextResponse.json({ error: 'Invalid request' }, { status: 400 })
     const [property] = await db.update(properties).set({ isPublished, updatedAt: new Date() }).where(eq(properties.id, id)).returning()
+    revalidateTag('published-properties')
+    if (property) {
+      for (const locale of ['en', 'th', 'ru', 'de', 'fr']) revalidatePath(`/${locale}/projects/${property.slug}`)
+    }
     return NextResponse.json(property)
   } catch (error) {
     const message = error instanceof Error ? error.message : 'Unable to update property'

@@ -45,7 +45,7 @@ export async function generateMetadata({
     title: `${name} — ${dict.values.locations[project.location]} | ${dict.meta.project.titleSuffix}`,
     description: `${dict.meta.project.descriptionPrefix} ${project.priceFrom ? formatPrice(locale, project.priceFrom) : dict.projects.labels.priceOnRequest}. ${tagline}.`,
     alternates: alternatesFor(locale, `projects/${slug}`),
-    openGraph: { images: [`/images/${project.image}`] }
+    openGraph: { images: [project.image] }
   };
 }
 
@@ -100,6 +100,7 @@ export default async function ProjectPage({
             priority
             sizes="100vw"
             className="object-cover"
+            unoptimized={project.image.startsWith('http://') || project.image.startsWith('https://')}
           />
           <span className="page-scrim absolute inset-0" />
         </div>
@@ -197,6 +198,7 @@ export default async function ProjectPage({
                     width={1600}
                     height={1000}
                     className="h-auto w-full"
+                    unoptimized={project.mapImage.startsWith('http://') || project.mapImage.startsWith('https://')}
                   />
                 </div>
               </section>

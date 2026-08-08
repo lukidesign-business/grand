@@ -1,3 +1,4 @@
+import { unstable_cache } from 'next/cache'
 import { desc, eq } from 'drizzle-orm'
 import { db } from '@/lib/db'
 import { properties, type Property } from '@/lib/db/schema'
@@ -12,7 +13,7 @@ export async function getAllProperties() {
   }
 }
 
-export async function getPublishedProperties() {
+async function loadPublishedProperties() {
   try {
     return await db.select().from(properties).where(eq(properties.isPublished, true)).orderBy(desc(properties.updatedAt))
   } catch (error) {
@@ -21,14 +22,25 @@ export async function getPublishedProperties() {
   }
 }
 
-export async function getPropertyBySlug(slug: string) {
-  try {
-    const rows = await db.select().from(properties).where(eq(properties.slug, slug)).limit(1)
-    return rows[0]
-  } catch (error) {
-    console.warn(`[properties] Database unavailable while loading ${slug}:`, error)
-    return undefined
-  }
+export const getPublishedProperties = unstable_cache(loadPublishedProperties, ['published-properties'], {
+  revalidate: 15,
+  tags: ['published-properties']
+})
+
+export function getPropertyBySlug(slug: string) {
+  return unstable_cache(
+    async () => {
+      try {
+        const rows = await db.select().from(properties).where(eq(properties.slug, slug)).limit(1)
+        return rows[0]
+      } catch (error) {
+        console.warn(`[properties] Database unavailable while loading ${slug}:`, error)
+        return undefined
+      }
+    },
+    ['property-by-slug', slug],
+    { revalidate: 15, tags: ['published-properties', `property-${slug}`] }
+  )()
 }
 
 export function propertyToProject(property: Property): Project {
@@ -72,7 +84,7 @@ export function propertyToProject(property: Property): Project {
       ? 'https://maps.google.com/?q=Zenith+Pattaya'
       : isZenithPattayaTwo
         ? 'https://maps.google.com/?q=Zenith+Pattaya+2'
-        : undefined,
+        : `https://maps.google.com/?q=${encodeURIComponent(property.location)}`,
     location,
     type: property.propertyType.toLowerCase().includes('villa') ? 'villa' : 'condo',
     status,

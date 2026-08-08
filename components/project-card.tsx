@@ -47,6 +47,7 @@ export function ProjectCard({ project, locale, dict, priority = false }: Project
           priority={priority}
           sizes="(max-width: 860px) 100vw, (max-width: 1280px) 50vw, 33vw"
           className="object-cover transition-transform duration-1000 ease-luxe group-hover:scale-105"
+          unoptimized={project.image.startsWith('http://') || project.image.startsWith('https://')}
         />
         <span
           aria-hidden="true"
