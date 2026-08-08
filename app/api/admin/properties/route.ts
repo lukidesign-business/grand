@@ -22,21 +22,21 @@ export async function POST(request: Request) {
   try {
     await requireAdmin()
     const body = await request.json()
-    const name = String(body.name ?? '').trim()
-    const slug = String(body.slug ?? name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''))
-    const status = String(body.status ?? '')
-    const propertyType = String(body.propertyType ?? '')
+    const name = String(body.name ?? '').trim() || 'Untitled property'
+    const slug = String(body.slug ?? name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')) || `property-${Date.now()}`
+    const status = String(body.status ?? 'Ready to move')
+    const propertyType = String(body.propertyType ?? 'Condominium')
     const bedrooms = Number(body.bedrooms)
-    const location = String(body.location ?? '').trim()
-    const price = String(body.price ?? '').trim()
-    const description = String(body.description ?? '').trim()
+    const location = String(body.location ?? '').trim() || 'Location available on request'
+    const price = String(body.price ?? '').trim() || 'Price available on request'
+    const description = String(body.description ?? '').trim() || 'Property details available on request'
     const coverImageUrl = String(body.coverImageUrl ?? '').trim()
     const galleryImageUrls = Array.isArray(body.galleryImageUrls) ? body.galleryImageUrls.filter((url: unknown) => typeof url === 'string') : []
     const mapImageUrl = String(body.mapImageUrl ?? '').trim() || null
     const areaSqm = body.areaSqm === null || body.areaSqm === '' ? null : Number(body.areaSqm)
 
-    if (!name || !slug || !location || !description || !coverImageUrl || !Number.isInteger(bedrooms) || bedrooms < 0 || (areaSqm !== null && (!Number.isInteger(areaSqm) || areaSqm < 0))) {
-      return NextResponse.json({ error: 'Complete every property field before publishing' }, { status: 400 })
+    if (!Number.isInteger(bedrooms) || bedrooms < 0 || (areaSqm !== null && (!Number.isInteger(areaSqm) || areaSqm < 0))) {
+      return NextResponse.json({ error: 'Bedrooms and size must be valid numbers' }, { status: 400 })
     }
     if (!allowedStatuses.has(status) || !allowedTypes.has(propertyType)) {
       return NextResponse.json({ error: 'Choose a valid status and property type' }, { status: 400 })
@@ -52,7 +52,7 @@ export async function POST(request: Request) {
       price,
       description,
       coverImageUrl,
-      galleryImageUrls: galleryImageUrls.length ? galleryImageUrls : [coverImageUrl],
+      galleryImageUrls: galleryImageUrls.length ? galleryImageUrls : (coverImageUrl ? [coverImageUrl] : []),
       mapImageUrl,
       areaSqm,
       isPublished: body.isPublished !== false,
@@ -67,7 +67,7 @@ export async function POST(request: Request) {
         price,
         description,
         coverImageUrl,
-        galleryImageUrls: galleryImageUrls.length ? galleryImageUrls : [coverImageUrl],
+        galleryImageUrls: galleryImageUrls.length ? galleryImageUrls : (coverImageUrl ? [coverImageUrl] : []),
         mapImageUrl,
         areaSqm,
         isPublished: body.isPublished !== false,
