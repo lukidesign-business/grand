@@ -6,6 +6,15 @@ import { ChevronLeft, ChevronRight, Expand, X } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 
+function resolveImageSrc(image: string) {
+  if (/^(https?:|blob:|data:|\/)/.test(image)) return image;
+  return `/images/${image}`;
+}
+
+function isExternalImage(image: string) {
+  return /^(https?:|blob:|data:)/.test(image);
+}
+
 interface GalleryLabels {
   viewAll: string;
   close: string;
@@ -72,12 +81,13 @@ export function ProjectGallery({ images, name, labels }: ProjectGalleryProps) {
             aria-label={`${name} — ${index + 1} / ${total}`}
           >
             <Image
-              src={`/images/${image}`}
+              src={resolveImageSrc(image)}
               alt={`${name} interior photograph ${index + 1}`}
               fill
               sizes="(max-width: 640px) 50vw, 25vw"
               className="object-cover transition-transform duration-700 ease-luxe group-hover:scale-[1.05]"
               priority={index === 0}
+              unoptimized={isExternalImage(image)}
             />
             <span
               aria-hidden="true"
@@ -134,12 +144,13 @@ export function ProjectGallery({ images, name, labels }: ProjectGalleryProps) {
             <div className="relative h-full w-full">
               <Image
                 key={images[openIndex!]}
-                src={`/images/${images[openIndex!]}`}
+                src={resolveImageSrc(images[openIndex!])}
                 alt={`${name} interior photograph ${openIndex! + 1}`}
                 fill
                 sizes="100vw"
                 className="object-contain"
                 priority
+                unoptimized={isExternalImage(images[openIndex!])}
               />
             </div>
 
@@ -170,11 +181,12 @@ export function ProjectGallery({ images, name, labels }: ProjectGalleryProps) {
                   )}
                 >
                   <Image
-                    src={`/images/${image}`}
+                    src={resolveImageSrc(image)}
                     alt=""
                     fill
                     sizes="96px"
                     className="object-cover"
+                    unoptimized={isExternalImage(image)}
                   />
                 </button>
               ))}

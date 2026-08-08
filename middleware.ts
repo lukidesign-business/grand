@@ -20,7 +20,8 @@ export function middleware(request: NextRequest) {
   const hasLocale = locales.some(
     (locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`)
   );
-  if (hasLocale) return NextResponse.next();
+  const isAdminRoute = pathname === '/admin' || pathname.startsWith('/admin/');
+  if (hasLocale || isAdminRoute) return NextResponse.next();
 
   const stored = request.cookies.get(LANG_COOKIE)?.value;
   const country = request.headers.get('x-vercel-ip-country')?.toUpperCase();
