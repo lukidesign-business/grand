@@ -64,7 +64,7 @@ export function Benefits({ dict }: { dict: Dictionary }) {
                   />
                 </span>
                 <h3 className="mb-3.5 text-[1.06rem] uppercase tracking-luxe text-gold">
-                  {item.title}
+                  {item.id === 'service' ? <><span className="text-[0.8em] align-[0.08em]">100%</span>{item.title.slice(3)}</> : item.title}
                 </h3>
                 <p className="text-[0.93rem] leading-[1.85] text-muted">{item.body}</p>
               </li>
@@ -86,11 +86,11 @@ export function WhyPattaya({ dict }: { dict: Dictionary }) {
       <div className="shell relative z-1">
         <SectionHead eyebrow={p.eyebrow} title={p.title} lead={p.lead} className="max-w-4xl md:mb-12" />
 
-        <div className="mt-10 grid items-start gap-10 lg:mt-12 lg:grid-cols-[minmax(0,0.78fr)_minmax(34rem,1.22fr)] lg:gap-16">
+        <div className="mt-10 grid items-start gap-8 lg:mt-12 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:gap-12">
           {/* Editorial copy aligns to the top of the media column for a clean desktop rhythm. */}
-          <div className="reveal max-w-[34rem] lg:pt-0">
-            <p className="mb-5 text-muted">{p.body1}</p>
-            <p className="text-muted">{p.body2}</p>
+          <div className="reveal max-w-[38rem] lg:pt-2">
+            <p className="text-[0.98rem] leading-[1.75] text-muted">{p.body1}</p>
+            <p className="mt-5 text-[0.98rem] leading-[1.75] text-muted">{p.body2}</p>
           </div>
 
           {/* Image and statistics share one measured right-hand column. */}
@@ -102,6 +102,7 @@ export function WhyPattaya({ dict }: { dict: Dictionary }) {
               height={731}
               className="w-full"
               sizes="(max-width: 1024px) 100vw, 58vw"
+              tight
             />
             <ul className="mt-6 grid grid-cols-2 gap-px border border-line-soft bg-line-soft">
               {p.stats.map((stat) => (
@@ -142,12 +143,12 @@ export function Ownership({ locale, dict, withLink = true }: SectionProps & { wi
       <div className="shell relative z-1">
         <SectionHead eyebrow={o.eyebrow} title={o.title} lead={o.lead} />
 
-        <div className="grid items-start gap-8 lg:grid-cols-[1.25fr_.85fr] lg:gap-16">
+        <div className="grid items-start gap-8 lg:grid-cols-[1.15fr_.85fr] lg:gap-12">
           <ol className="grid gap-px border border-line-soft bg-line-soft">
             {o.steps.map((step) => (
               <li
                 key={step.n}
-                className="reveal flex flex-col gap-3 bg-ink p-7 transition-colors duration-500 hover:bg-surface sm:flex-row sm:gap-6 md:p-8"
+                className="reveal flex flex-col gap-4 bg-ink p-6 transition-colors duration-500 hover:bg-surface sm:flex-row sm:gap-5 md:p-7"
               >
                 <span className="min-w-10 shrink-0 font-serif text-[1.9rem] leading-none text-gold/55">
                   {step.n}
@@ -167,10 +168,10 @@ export function Ownership({ locale, dict, withLink = true }: SectionProps & { wi
               width={820}
               height={598}
               tight
-              className="reveal"
+              className="reveal w-full"
               sizes="(max-width: 1024px) 100vw, 33vw"
             />
-            <div className="reveal border border-line bg-[linear-gradient(160deg,rgba(28,33,42,.75),rgba(16,19,24,.9))] p-7 md:p-8">
+            <div className="reveal border border-line bg-[linear-gradient(160deg,rgba(28,33,42,.75),rgba(16,19,24,.9))] p-6 md:p-7">
               <h3 className="mb-5 flex items-center gap-2.5 text-[1.05rem] uppercase tracking-luxe text-gold">
                 <ShieldCheck className="size-5" />
                 {o.factsTitle}
@@ -218,7 +219,7 @@ export function Advantages({ dict, children }: { dict: Dictionary; children?: Re
       <Wash src="/images/wash-pool.jpg" />
       <div className="shell relative z-1">
         <SectionHead eyebrow={a.eyebrow} title={a.title} lead={a.lead} />
-        <div className="grid gap-8 md:gap-12 lg:grid-cols-3">
+        <div className="grid gap-6 md:gap-8 lg:grid-cols-3">
           {a.groups.map((group) => (
             <div key={group.title} className="reveal border-t border-line-strong pt-6">
               <h3 className="mb-5 text-[1.15rem] uppercase tracking-luxe text-gold">
@@ -226,7 +227,7 @@ export function Advantages({ dict, children }: { dict: Dictionary; children?: Re
               </h3>
               <ul className="grid gap-3.5">
                 {group.items.map((item) => (
-                  <li key={item} className="flex gap-3 text-[0.93rem] leading-relaxed text-muted">
+<li key={item} className="flex gap-3 text-[0.9rem] leading-[1.65] text-cream/85">
                     <Check className="mt-1.5 size-4 shrink-0 text-gold" />
                     <span>{item}</span>
                   </li>
