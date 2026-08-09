@@ -114,15 +114,6 @@ export default async function ProjectPage({
             {dict.common.backToProjects}
           </Link>
 
-          <span
-            className={cn(
-              'mb-4 inline-block border bg-ink/80 px-3 py-1.5 text-[0.62rem] uppercase tracking-[0.18em] backdrop-blur',
-              project.status === 'ready' ? 'border-ready/35 text-ready' : 'border-line text-gold'
-            )}
-          >
-            {dict.values.statuses[project.status]}
-          </span>
-
           <h1 className="mb-2.5 text-[clamp(2.3rem,5.2vw,4rem)]">{item.name}</h1>
           <p className="mb-5 text-[1.1rem] text-muted">{item.tagline}</p>
 

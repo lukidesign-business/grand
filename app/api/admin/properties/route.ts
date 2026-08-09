@@ -73,6 +73,7 @@ export async function POST(request: Request) {
     revalidateTag('published-properties')
     for (const locale of ['en', 'th', 'ru', 'de', 'fr']) {
       revalidatePath(`/${locale}/projects`)
+      revalidatePath(`/${locale}/search`)
       revalidatePath(`/${locale}/projects/${property.slug}`)
       if (previous?.slug && previous.slug !== property.slug) revalidatePath(`/${locale}/projects/${previous.slug}`)
     }

@@ -44,8 +44,17 @@ export function getPropertyBySlug(slug: string) {
 }
 
 export function propertyToProject(property: Property): Project {
-  const location = property.location.toLowerCase().includes('jomtien') ? 'jomtien' : 'pattaya'
-  const status = property.status.toLowerCase().includes('ready') ? 'ready' : 'offplan'
+  const normalizedLocation = property.location.toLowerCase()
+  const location = normalizedLocation.includes('jomtien')
+    ? 'jomtien'
+    : normalizedLocation.includes('pratumnak')
+      ? 'pratumnak'
+      : normalizedLocation.includes('bangsaray')
+        ? 'bangsaray'
+        : normalizedLocation.includes('wongamat')
+          ? 'wongamat'
+          : 'pattaya'
+  const status = property.status.toLowerCase().includes('ready') || property.status.toLowerCase().includes('resale') ? 'ready' : 'offplan'
   const normalizeImageUrl = (value: string | null | undefined) => {
     const trimmed = value?.trim() ?? ''
     if (!trimmed || trimmed.startsWith('blob:')) return ''
@@ -86,8 +95,19 @@ export function propertyToProject(property: Property): Project {
         ? 'https://maps.google.com/?q=Zenith+Pattaya+2'
         : `https://maps.google.com/?q=${encodeURIComponent(property.location)}`,
     location,
-    type: property.propertyType.toLowerCase().includes('villa') ? 'villa' : 'condo',
+    type: property.propertyType.toLowerCase().includes('villa')
+      ? 'villa'
+      : property.propertyType.toLowerCase().includes('penthouse')
+        ? 'penthouse'
+        : property.propertyType.toLowerCase().includes('townhouse') || property.propertyType.toLowerCase().includes('house')
+          ? 'townhouse'
+          : 'condo',
     status,
+    plan: property.status.toLowerCase().includes('ready') || property.status.toLowerCase().includes('resale')
+      ? 'plan2'
+      : property.status.toLowerCase().includes('construction')
+        ? 'plan3'
+        : 'plan4',
     completion: property.status,
     priceFrom: Number.isFinite(numericPrice) && numericPrice > 0 ? numericPrice * 1_000_000 : undefined,
     sizeFrom: property.areaSqm ?? (isZenithPattaya ? 35 : isZenithPattayaTwo ? 65 : 0),
