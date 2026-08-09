@@ -64,7 +64,7 @@ export function Benefits({ dict }: { dict: Dictionary }) {
                   />
                 </span>
                 <h3 className="mb-3.5 text-[1.06rem] uppercase tracking-luxe text-gold">
-                  {item.id === 'service' ? <><span className="text-[0.78em] align-baseline">100%</span>{item.title.replace(/^100%%?\s*/, '')}</> : item.title}
+                  {item.title}
                 </h3>
                 <p className="text-[0.93rem] leading-[1.85] text-muted">{item.body}</p>
               </li>
