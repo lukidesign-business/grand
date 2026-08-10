@@ -9,12 +9,12 @@ export async function POST(request: Request) {
   try {
     await requireAdmin()
     const body = await request.json()
-    const kind = body?.clientPayload === 'video' ? 'video' : body?.clientPayload === 'pdf' ? 'pdf' : null
-    if (!kind) return NextResponse.json({ error: 'Missing upload media type' }, { status: 400 })
     const result = await handleUpload({
       request,
       body,
-      onBeforeGenerateToken: async (pathname) => {
+      onBeforeGenerateToken: async (pathname, clientPayload) => {
+        const kind = clientPayload === 'video' ? 'video' : clientPayload === 'pdf' ? 'pdf' : null
+        if (!kind) throw new Error('Missing upload media type')
         const extension = pathname.split('.').pop()?.toLowerCase()
         if (kind === 'pdf' && extension !== 'pdf') throw new Error('Only PDF files are allowed')
         if (kind === 'video' && !['mp4', 'webm', 'mov', 'm4v'].includes(extension ?? '')) throw new Error('Use an MP4, WebM, MOV, or M4V video')
