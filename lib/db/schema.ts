@@ -13,6 +13,8 @@ export const properties = pgTable('properties', {
   coverImageUrl: text('cover_image_url').notNull(),
   galleryImageUrls: jsonb('gallery_image_urls').$type<string[]>().notNull().default([]),
   mapImageUrl: text('map_image_url'),
+  videoUrl: text('video_url'),
+  documents: jsonb('documents').$type<Array<{ title: string; url: string }>>().notNull().default([]),
   isPublished: boolean('is_published').notNull().default(false),
   createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
   updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),

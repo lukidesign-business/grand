@@ -77,6 +77,8 @@ export function propertyToProject(property: Property): Project {
     body: property.description,
     image,
     gallery,
+    videoUrl: property.videoUrl ?? null,
+    documents: property.documents ?? [],
     additionalImages: property.mapImageUrl
       ? [normalizeImageUrl(property.mapImageUrl)]
       : isZenithPattaya

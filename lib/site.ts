@@ -125,6 +125,8 @@ export interface Project {
   body?: string;
   image: string;
   gallery: string[];
+  videoUrl?: string | null;
+  documents?: Array<{ title: string; url: string }>;
   additionalImages?: string[];
   mapImage?: string;
   mapUrl?: string;

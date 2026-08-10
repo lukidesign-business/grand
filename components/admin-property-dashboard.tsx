@@ -18,6 +18,8 @@ type Property = {
   mapImageUrl: string | null
   areaSqm: number | null
   isPublished: boolean
+  videoUrl: string | null
+  documents: Array<{ title: string; url: string }>
 }
 
 type PropertyForm = {
@@ -34,13 +36,15 @@ type PropertyForm = {
   mapImageUrl: string
   areaSqm: string
   isPublished: boolean
+  videoUrl: string
+  documents: Array<{ title: string; url: string }>
 }
 
 type PropertyField = keyof PropertyForm
 type FieldErrors = Partial<Record<PropertyField, string>>
 
 const initialForm: PropertyForm = {
-  name: '', slug: '', status: 'Ready to move', propertyType: 'Condominium', bedrooms: '1', location: 'Pattaya, Thailand', price: '', description: '', coverImageUrl: '', galleryImageUrls: [], mapImageUrl: '', areaSqm: '', isPublished: true,
+  name: '', slug: '', status: 'Ready to move', propertyType: 'Condominium', bedrooms: '1', location: 'Pattaya, Thailand', price: '', description: '', coverImageUrl: '', galleryImageUrls: [], mapImageUrl: '', areaSqm: '', isPublished: true, videoUrl: '', documents: [],
 }
 
 export function AdminPropertyDashboard({ initialProperties }: { initialProperties: Property[] }) {
@@ -50,12 +54,12 @@ export function AdminPropertyDashboard({ initialProperties }: { initialPropertie
   const [saving, setSaving] = useState(false)
   const [message, setMessage] = useState('')
   const [editingId, setEditingId] = useState<string | null>(null)
-  const [uploadKind, setUploadKind] = useState<'cover' | 'gallery' | 'map'>('gallery')
+  const [uploadKind, setUploadKind] = useState<'cover' | 'gallery' | 'map' | 'pdf' | 'video'>('gallery')
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({})
   const [draggedGalleryIndex, setDraggedGalleryIndex] = useState<number | null>(null)
   const fieldRefs = useRef<Partial<Record<PropertyField, HTMLElement | null>>>({})
 
-  function update(key: keyof PropertyForm, value: string | boolean | string[]) {
+  function update(key: keyof PropertyForm, value: PropertyForm[typeof key]) {
     setForm((current) => ({ ...current, [key]: value }))
     setFieldErrors((current) => {
       if (!current[key]) return current
@@ -84,6 +88,8 @@ export function AdminPropertyDashboard({ initialProperties }: { initialPropertie
       mapImageUrl: property.mapImageUrl ?? '',
       areaSqm: property.areaSqm ? String(property.areaSqm) : '',
       isPublished: property.isPublished,
+      videoUrl: property.videoUrl ?? '',
+      documents: property.documents ?? [],
     })
     setMessage(`Editing “${property.name}” — update the fields below.`)
     window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -109,7 +115,7 @@ export function AdminPropertyDashboard({ initialProperties }: { initialPropertie
     return errors
   }
 
-  async function upload(event: React.ChangeEvent<HTMLInputElement>, kind: 'cover' | 'gallery' | 'map') {
+  async function upload(event: React.ChangeEvent<HTMLInputElement>, kind: 'cover' | 'gallery' | 'map' | 'pdf' | 'video') {
     const files = Array.from(event.target.files ?? [])
     if (!files.length) return
     setUploading(true)
@@ -118,13 +124,19 @@ export function AdminPropertyDashboard({ initialProperties }: { initialPropertie
     for (const file of files) {
       const body = new FormData()
       body.append('file', file)
+      body.append('kind', kind)
       const response = await fetch('/api/admin/upload', { method: 'POST', body })
       const result = await response.json()
       if (!response.ok) { setMessage(result.error ?? 'Image upload failed'); setUploading(false); return }
       if (!result.url) { setMessage('Image upload returned no URL'); setUploading(false); return }
       urls.push(result.url)
     }
-    if (kind === 'map') {
+    if (kind === 'video') {
+      setForm((current) => ({ ...current, videoUrl: urls[0] }))
+    } else if (kind === 'pdf') {
+      const title = files[0]?.name.replace(/\.pdf$/i, '').replace(/[-_]+/g, ' ') || 'Property brochure'
+      setForm((current) => ({ ...current, documents: [...current.documents, { title, url: urls[0] }] }))
+    } else if (kind === 'map') {
       setForm((current) => ({ ...current, mapImageUrl: urls[0] }))
     } else if (kind === 'cover') {
       setForm((current) => ({ ...current, coverImageUrl: urls[0] }))
@@ -240,6 +252,9 @@ export function AdminPropertyDashboard({ initialProperties }: { initialPropertie
             {form.galleryImageUrls.length ? <div className="mt-4"><p className="mb-2 text-xs text-muted">Drag images to reorder them, or use the arrows.</p><div className="grid grid-cols-2 gap-3 sm:grid-cols-4">{form.galleryImageUrls.map((url, index) => <div key={`${url}-${index}`} draggable onDragStart={() => setDraggedGalleryIndex(index)} onDragOver={(event) => event.preventDefault()} onDrop={(event) => handleGalleryDrop(event, index)} onDragEnd={() => setDraggedGalleryIndex(null)} className={`group relative overflow-hidden border bg-surface ${draggedGalleryIndex === index ? 'border-gold opacity-60' : 'border-line-soft'}`}><img src={url} alt={`Uploaded property image ${index + 1}`} className="aspect-square w-full cursor-grab object-cover transition-transform duration-300 group-hover:scale-105 active:cursor-grabbing" /><span className="absolute bottom-1 left-1 bg-ink/80 px-1.5 py-0.5 text-[0.6rem] text-cream">{index + 1}</span><div className="absolute right-1 top-1 flex gap-1"><button type="button" aria-label={`Move gallery image ${index + 1} left`} disabled={index === 0} onClick={() => moveGalleryImage(index, index - 1)} className="grid size-7 place-items-center bg-ink/85 text-cream disabled:opacity-30"><span aria-hidden="true">←</span></button><button type="button" aria-label={`Move gallery image ${index + 1} right`} disabled={index === form.galleryImageUrls.length - 1} onClick={() => moveGalleryImage(index, index + 1)} className="grid size-7 place-items-center bg-ink/85 text-cream disabled:opacity-30"><span aria-hidden="true">→</span></button><button type="button" aria-label={`Remove gallery image ${index + 1}`} onClick={() => update('galleryImageUrls', form.galleryImageUrls.filter((_, imageIndex) => imageIndex !== index))} className="grid size-7 place-items-center bg-ink/85 text-cream transition hover:bg-gold hover:text-ink"><X className="size-4" /></button></div></div>)}</div></div> : null}
             <label onDragOver={dragOver} onDragLeave={dragLeave} onDrop={(event) => handleDrop(event, 'map')} className="mt-5 block cursor-pointer border border-dashed border-line-strong p-5 text-sm text-muted transition-colors hover:border-gold hover:bg-gold/5"><span className="block text-cream">Location map image</span><span className="mt-1 block text-xs">Click to choose or drag and drop one image here</span><input type="file" accept="image/*" onChange={(event) => { setUploadKind('map'); upload(event, 'map') }} className="sr-only" />{uploading && uploadKind === 'map' ? <span className="mt-2 block text-gold">Uploading…</span> : null}</label>
             {form.mapImageUrl ? <div className="group relative mt-4 overflow-hidden"><img src={form.mapImageUrl} alt="Location map preview" className="aspect-[16/7] w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]" /><button type="button" aria-label="Remove location map image" onClick={() => update('mapImageUrl', '')} className="absolute right-2 top-2 grid size-8 place-items-center bg-ink/85 text-cream transition hover:bg-gold hover:text-ink"><X className="size-4" /></button></div> : null}
+            <label className="mt-5 block cursor-pointer border border-dashed border-line-strong p-5 text-sm text-muted transition-colors hover:border-gold hover:bg-gold/5"><span className="block text-cream">Property video tour</span><span className="mt-1 block text-xs">Upload a 16:9 MP4 or WebM video, up to 200MB</span><input type="file" accept="video/*" onChange={(event) => { setUploadKind('video'); void upload(event, 'video') }} className="sr-only" />{uploading && uploadKind === 'video' ? <span className="mt-2 block text-gold">Uploading video…</span> : null}</label>
+            {form.videoUrl ? <div className="relative mt-4 overflow-hidden border border-line-soft bg-ink"><video src={form.videoUrl} controls className="aspect-video w-full" /><button type="button" onClick={() => update('videoUrl', '')} className="absolute right-2 top-2 grid size-8 place-items-center bg-ink/85 text-cream hover:bg-gold hover:text-ink" aria-label="Remove property video"><X className="size-4" /></button></div> : null}
+            <div className="mt-5 border-t border-line-soft pt-5"><p className="text-sm text-cream">Property PDFs</p><p className="mt-1 text-xs text-muted">Add brochures or floor plans with a customer-facing title.</p><label className="mt-3 block cursor-pointer border border-dashed border-line-strong p-5 text-sm text-muted transition-colors hover:border-gold hover:bg-gold/5"><span className="block text-cream">Upload PDF</span><input type="file" accept="application/pdf,.pdf" onChange={(event) => { setUploadKind('pdf'); void upload(event, 'pdf') }} className="sr-only" />{uploading && uploadKind === 'pdf' ? <span className="mt-2 block text-gold">Uploading PDF…</span> : null}</label><div className="mt-3 grid gap-2">{form.documents.map((document, index) => <div key={`${document.url}-${index}`} className="flex items-center gap-2 border border-line-soft bg-ink px-3 py-2"><input value={document.title} onChange={(event) => setForm((current) => ({ ...current, documents: current.documents.map((item, itemIndex) => itemIndex === index ? { ...item, title: event.target.value } : item) }))} className="min-w-0 flex-1 bg-transparent text-sm text-cream outline-none" aria-label={`PDF title ${index + 1}`} /><button type="button" onClick={() => update('documents', form.documents.filter((_, itemIndex) => itemIndex !== index))} className="text-muted hover:text-gold" aria-label={`Remove PDF ${index + 1}`}><X className="size-4" /></button></div>)}</div></div>
             {Object.keys(fieldErrors).length ? <div className="mt-5 border border-red-500/60 bg-red-500/10 p-4 text-sm text-red-300" role="alert"><p className="font-medium text-red-200">Complete the highlighted fields before publishing.</p><ul className="mt-2 list-disc space-y-1 pl-5">{Object.entries(fieldErrors).map(([field, error]) => <li key={field}>{error}</li>)}</ul></div> : null}
             {message ? <p className="mt-4 text-sm text-gold" role="status">{message}</p> : null}
             <div className="mt-7 flex gap-3"><button type="submit" disabled={saving || uploading} className="flex-1 bg-gold px-5 py-3 text-sm font-medium text-ink disabled:opacity-60">{saving ? 'Saving…' : editingId ? 'Update property' : 'Publish property'}</button>{editingId ? <button type="button" onClick={resetForm} className="border border-line-strong px-5 py-3 text-sm text-muted hover:text-cream">Cancel</button> : null}</div>

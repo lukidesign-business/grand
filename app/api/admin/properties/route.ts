@@ -37,6 +37,8 @@ export async function POST(request: Request) {
     const galleryImageUrls = Array.isArray(body.galleryImageUrls) ? body.galleryImageUrls.filter((url: unknown) => typeof url === 'string') : []
     const mapImageUrl = String(body.mapImageUrl ?? '').trim() || null
     const areaSqm = body.areaSqm === null || body.areaSqm === '' ? null : Number(body.areaSqm)
+    const videoUrl = String(body.videoUrl ?? '').trim() || null
+    const documents = Array.isArray(body.documents) ? body.documents.filter((document: unknown) => document && typeof document === 'object' && typeof (document as { title?: unknown }).title === 'string' && typeof (document as { url?: unknown }).url === 'string').map((document: { title: string; url: string }) => ({ title: document.title.trim(), url: document.url.trim() })).filter((document: { title: string; url: string }) => document.title && document.url) : []
 
     if (!Number.isInteger(bedrooms) || bedrooms < 0 || (areaSqm !== null && (!Number.isInteger(areaSqm) || areaSqm < 0))) {
       return NextResponse.json({ error: 'Bedrooms and size must be valid numbers' }, { status: 400 })
@@ -58,6 +60,8 @@ export async function POST(request: Request) {
       galleryImageUrls: galleryImageUrls.length ? galleryImageUrls : (coverImageUrl ? [coverImageUrl] : []),
       mapImageUrl,
       areaSqm,
+      videoUrl,
+      documents,
       isPublished: body.isPublished !== false,
     }
     const id = typeof body.id === 'string' ? body.id : null

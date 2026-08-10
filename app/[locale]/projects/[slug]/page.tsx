@@ -167,6 +167,10 @@ export default async function ProjectPage({
               }}
             />
 
+            {project.videoUrl ? <section className="mt-12 border-t border-line-soft pt-8"><h3 className="text-[1.35rem]">Property video tour</h3><div className="mt-5 overflow-hidden border border-line-soft bg-ink-2 shadow-[0_18px_50px_rgba(0,0,0,.22)]"><video src={project.videoUrl} controls playsInline preload="metadata" className="aspect-video w-full" /></div></section> : null}
+
+            {project.documents?.length ? <section className="mt-12 border-t border-line-soft pt-8"><h3 className="text-[1.35rem]">Property documents</h3><div className="mt-5 grid gap-4 sm:grid-cols-2">{project.documents.map((document) => <article key={document.url} className="border border-line-soft bg-ink-2 p-4"><div className="flex items-start justify-between gap-4"><div><p className="text-sm text-cream">{document.title}</p><p className="mt-1 text-xs uppercase tracking-luxe text-gold">PDF</p></div><a href={document.url} download target="_blank" rel="noopener noreferrer" className="text-xs uppercase tracking-luxe text-gold hover:text-gold-bright">Download</a></div><iframe src={`${document.url}#toolbar=0`} title={document.title} className="mt-4 h-64 w-full border border-line-soft bg-ink" /></article>)}</div></section> : null}
+
             {project.mapImage && project.mapUrl ? (
               <section className="mt-12 border-t border-line-soft pt-8">
                 <div className="flex flex-wrap items-end justify-between gap-4">
