@@ -74,7 +74,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
           </div>
 
           <aside className="grid gap-6">
-            <div className="reveal border border-line bg-[linear-gradient(160deg,rgba(28,33,42,.75),rgba(16,19,24,.9))] p-7 md:p-8">
+            <div className="on-photo reveal border border-line bg-[linear-gradient(160deg,rgba(28,33,42,.75),rgba(16,19,24,.9))] p-7 md:p-8">
               <h2 className="mb-5 flex items-center gap-2.5 text-[1.05rem] uppercase tracking-luxe text-gold">
                 <Phone className="size-5" />
                 {c.directTitle}
@@ -108,7 +108,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
               <p className="mt-3 text-[0.8rem] leading-relaxed text-muted-2">{c.hours}</p>
             </div>
 
-            <div className="reveal border border-line bg-[linear-gradient(160deg,rgba(28,33,42,.75),rgba(16,19,24,.9))] p-7 md:p-8">
+            <div className="on-photo reveal border border-line bg-[linear-gradient(160deg,rgba(28,33,42,.75),rgba(16,19,24,.9))] p-7 md:p-8">
               <h2 className="mb-5 flex items-center gap-2.5 text-[1.05rem] uppercase tracking-luxe text-gold">
                 <ShieldCheck className="size-5" />
                 {dict.cta.eyebrow}

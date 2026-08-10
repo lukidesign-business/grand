@@ -45,7 +45,7 @@ export function ProjectsBrowser({ locale, dict, projects = [] }: { locale: Local
                 className={cn(
                   'border px-5 py-2.5 text-[0.7rem] uppercase tracking-luxe transition-colors duration-300',
                   active
-                    ? 'border-transparent bg-[linear-gradient(135deg,#d8b26d,#b98f45)] font-medium text-ink'
+                    ? 'border-transparent bg-[linear-gradient(135deg,#d8b26d,#b98f45)] font-medium text-[var(--fixed-ink)]'
                     : 'border-line-soft text-muted hover:border-line-strong hover:text-gold-bright'
                 )}
               >

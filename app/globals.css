@@ -6,7 +6,7 @@
    bg-ink, text-gold, border-line, font-serif, tracking-wide-luxe …
    ========================================================================== */
 
-@theme inline {
+@theme {
   --color-ink: #0a0b0e;
   --color-ink-2: #0c0e12;
   --color-ink-3: #101318;
@@ -39,6 +39,79 @@
 
   --animate-fade-in: fade-in 0.4s var(--ease-luxe);
   --animate-rise-in: rise-in 0.5s var(--ease-luxe);
+}
+
+/*
+ * Fixed (theme-invariant) tones for text that sits directly on the
+ * art-directed photo sections (Hero, PageHero banners, the CTA band and the
+ * hero search bar). Those sections intentionally stay on their original dark,
+ * photographic treatment in both page colours, so their text must not flip
+ * to a dark tone when the page switches to light — it would disappear.
+ */
+:root {
+  --fixed-cream: #e8e4dc;
+  --fixed-cream-bright: #f7f4ee;
+  --fixed-gold: #c9a25a;
+  --fixed-gold-bright: #e3c68e;
+  --fixed-muted: #b7b3aa;
+  --fixed-muted-2: #9b968c;
+  --fixed-ink: #0a0b0e;
+}
+
+/*
+ * Light page colour — a warm, high-contrast paper tone rather than a
+ * clinical white, with deep charcoal text and a richer, darker gold so it
+ * still reads clearly against the light surfaces.
+ */
+[data-theme='light'] {
+  --color-ink: #f6f4ef;
+  --color-ink-2: #efece4;
+  --color-ink-3: #e6e2d8;
+  --color-surface: #ffffff;
+  --color-surface-2: #fbf9f4;
+  --color-surface-3: #f1ede3;
+
+  --color-gold: #8a6018;
+  --color-gold-bright: #6b4a12;
+  --color-gold-deep: #a8791f;
+
+  --color-cream: #262420;
+  --color-cream-bright: #16140f;
+  --color-muted: #55524a;
+  --color-muted-2: #6d6a5f;
+
+  --color-line: rgba(138, 96, 24, 0.3);
+  --color-line-strong: rgba(138, 96, 24, 0.5);
+  --color-line-soft: rgba(28, 26, 20, 0.14);
+
+  --color-ready: #2f6b40;
+}
+
+[data-theme='light'] body {
+  background-color: var(--color-ink);
+  color: var(--color-cream);
+}
+
+/*
+ * Sections that render text directly over a fixed-dark photographic
+ * treatment (Hero, PageHero banners, the CTA band, the property detail
+ * hero) keep their original dark scrim in both page colours. Scoping the
+ * token overrides to this class means every text-gold / text-cream /
+ * text-muted / border-line utility inside automatically resolves to the
+ * legible dark-mode tone, in light mode too, without editing each element.
+ */
+.on-photo {
+  --color-gold: var(--fixed-gold);
+  --color-gold-bright: var(--fixed-gold-bright);
+  --color-gold-deep: #9c7736;
+  --color-cream: var(--fixed-cream);
+  --color-cream-bright: var(--fixed-cream-bright);
+  --color-muted: var(--fixed-muted);
+  --color-muted-2: var(--fixed-muted-2);
+  --color-line: rgba(201, 162, 90, 0.18);
+  --color-line-strong: rgba(201, 162, 90, 0.38);
+  --color-line-soft: rgba(255, 255, 255, 0.09);
+  color: var(--fixed-cream);
 }
 
 @keyframes fade-in {

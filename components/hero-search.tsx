@@ -123,7 +123,7 @@ export function HeroSearch({ locale, dict }: { locale: Locale; dict: Dictionary 
 
         <button
           type="submit"
-          className="group flex min-h-12 w-full items-center justify-center gap-2.5 bg-[linear-gradient(135deg,#d8b26d,#b98f45_60%,#cfa561)] px-5 py-3 text-[0.66rem] font-medium uppercase tracking-luxe text-ink transition-[filter] duration-300 hover:brightness-110 sm:col-span-2 sm:min-h-0 sm:px-8 sm:py-4 xl:col-span-1"
+          className="group flex min-h-12 w-full items-center justify-center gap-2.5 bg-[linear-gradient(135deg,#d8b26d,#b98f45_60%,#cfa561)] px-5 py-3 text-[0.66rem] font-medium uppercase tracking-luxe text-[var(--fixed-ink)] transition-[filter] duration-300 hover:brightness-110 sm:col-span-2 sm:min-h-0 sm:px-8 sm:py-4 xl:col-span-1"
         >
           <Search className="size-4.5" />
           <span>{s.submit}</span>
@@ -131,15 +131,15 @@ export function HeroSearch({ locale, dict }: { locale: Locale; dict: Dictionary 
       </div>
 
       <div className="relative z-0 mt-4 flex flex-wrap items-center gap-2.5">
-        <span className="mr-1 text-[0.62rem] uppercase tracking-[0.22em] text-gold">{s.popular}</span>
+        <span className="mr-1 text-[0.62rem] uppercase tracking-[0.22em] text-[var(--fixed-gold)]">{s.popular}</span>
         <ul className="flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none] sm:flex-wrap sm:overflow-visible [&::-webkit-scrollbar]:hidden">
           {LOCATIONS.slice(0, 5).map((id) => (
             <li key={id}>
               <Link
                 href={`${action}?location=${id}`}
-                className="inline-flex items-center gap-1.5 whitespace-nowrap border border-line bg-[rgba(12,13,17,.5)] px-4 py-2 text-[0.76rem] text-cream/90 backdrop-blur transition-colors duration-300 hover:border-gold hover:bg-gold/8 hover:text-gold-bright"
+                className="inline-flex items-center gap-1.5 whitespace-nowrap border border-[rgba(201,162,90,0.35)] bg-[rgba(12,13,17,.5)] px-4 py-2 text-[0.76rem] text-[rgba(232,228,220,0.9)] backdrop-blur transition-colors duration-300 hover:border-[var(--fixed-gold)] hover:bg-[rgba(201,162,90,0.08)] hover:text-[var(--fixed-gold-bright)]"
               >
-                <MapPin className="size-3.5 text-gold" />
+                <MapPin className="size-3.5 text-[var(--fixed-gold)]" />
                 <span>{v.locations[id]}</span>
               </Link>
             </li>

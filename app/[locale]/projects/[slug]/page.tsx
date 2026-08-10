@@ -92,7 +92,7 @@ export default async function ProjectPage({
 
   return (
     <>
-      <section className="relative isolate overflow-hidden pb-[clamp(3rem,6vw,5rem)] pt-[clamp(9rem,17vh,12rem)]">
+      <section className="on-photo relative isolate overflow-hidden pb-[clamp(3rem,6vw,5rem)] pt-[clamp(9rem,17vh,12rem)]">
         <div aria-hidden="true" className="absolute inset-0 -z-10">
           <Image
             src={project.image.startsWith('http') || project.image.startsWith('/') ? project.image : `/images/${project.image}`}
@@ -202,7 +202,7 @@ export default async function ProjectPage({
           </div>
 
           <aside>
-            <div className="border border-line bg-[linear-gradient(160deg,rgba(28,33,42,.75),rgba(16,19,24,.9))] p-7 lg:sticky lg:top-26 md:p-8">
+            <div className="on-photo border border-line bg-[linear-gradient(160deg,rgba(28,33,42,.75),rgba(16,19,24,.9))] p-7 lg:sticky lg:top-26 md:p-8">
               <h2 className="mb-5 flex items-center gap-2.5 text-[1.05rem] uppercase tracking-luxe text-gold">
                 <Building2 className="size-5" />
                 {labels.facts}

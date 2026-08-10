@@ -171,7 +171,7 @@ export function Ownership({ locale, dict, withLink = true }: SectionProps & { wi
               className="reveal w-full"
               sizes="(max-width: 1024px) 100vw, 33vw"
             />
-            <div className="reveal border border-line bg-[linear-gradient(160deg,rgba(28,33,42,.75),rgba(16,19,24,.9))] p-6 md:p-7">
+            <div className="on-photo reveal border border-line bg-[linear-gradient(160deg,rgba(28,33,42,.75),rgba(16,19,24,.9))] p-6 md:p-7">
               <h3 className="mb-5 flex items-center gap-2.5 text-[1.05rem] uppercase tracking-luxe text-gold">
                 <ShieldCheck className="size-5" />
                 {o.factsTitle}
@@ -391,7 +391,7 @@ export function ConsultSection({ locale, dict }: SectionProps) {
       className={cn(
         'reveal grid grid-cols-[auto_1fr] items-center gap-x-4.5 border p-6 transition-all duration-400 hover:translate-x-1 hover:bg-surface-2',
         primary
-          ? 'border-line-strong bg-[linear-gradient(140deg,rgba(201,162,90,.14),rgba(201,162,90,.03))]'
+          ? 'on-photo border-line-strong bg-[linear-gradient(140deg,rgba(201,162,90,.14),rgba(201,162,90,.03))]'
           : 'border-line-soft bg-surface hover:border-line-strong'
       )}
     >
@@ -452,7 +452,7 @@ export function ConsultSection({ locale, dict }: SectionProps) {
 
 export function CtaBand({ locale, dict }: SectionProps) {
   return (
-    <section className="relative isolate overflow-hidden py-[clamp(5rem,10vw,8rem)] text-center">
+    <section className="on-photo relative isolate overflow-hidden py-[clamp(5rem,10vw,8rem)] text-center">
       <div aria-hidden="true" className="absolute inset-0 -z-10">
         <Image
           src="/images/lobby.jpg"
@@ -472,8 +472,8 @@ export function CtaBand({ locale, dict }: SectionProps) {
           <Button asChild variant="gold">
             <Link href={href(locale, 'contact')}>{dict.cta.primary}</Link>
           </Button>
-          <Button asChild variant="ghost">
-            <Link href={href(locale, 'projects')}>{dict.cta.secondary}</Link>
+          <Button asChild variant="ghost" className="text-[var(--fixed-cream)] hover:text-[var(--fixed-gold-bright)]">
+            <Link href={href(locale, 'contact')}>{dict.cta.secondary}</Link>
           </Button>
         </div>
       </div>
@@ -494,7 +494,7 @@ interface PageHeroProps {
 
 export function PageHero({ eyebrow, title, lead, image, imageAlt = '', children }: PageHeroProps) {
   return (
-    <section className="relative isolate overflow-hidden pb-[clamp(4rem,8vw,6.5rem)] pt-[clamp(9rem,18vh,13rem)]">
+    <section className="on-photo relative isolate overflow-hidden pb-[clamp(4rem,8vw,6.5rem)] pt-[clamp(9rem,18vh,13rem)]">
       <div aria-hidden="true" className="absolute inset-0 -z-10">
         <Image src={`/images/${image}`} alt={imageAlt} fill priority sizes="100vw" className="object-cover" />
         <span className="page-scrim absolute inset-0" />

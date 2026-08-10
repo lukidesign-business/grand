@@ -44,7 +44,7 @@ export function LanguageSwitcher({ locale, labels, className }: LanguageSwitcher
               'px-3 py-1.5 text-[0.68rem] uppercase tracking-[0.14em] transition-colors duration-300',
               index > 0 && 'border-l border-line',
               active
-                ? 'bg-[linear-gradient(135deg,#d8b26d,#b98f45)] font-medium text-ink'
+                ? 'bg-[linear-gradient(135deg,#d8b26d,#b98f45)] font-medium text-[var(--fixed-ink)]'
                 : 'text-muted hover:bg-gold/8 hover:text-gold-bright'
             )}
           >
