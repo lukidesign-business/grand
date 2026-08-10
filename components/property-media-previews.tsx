@@ -29,12 +29,12 @@ type PropertyPdfPreviewProps = { src: string; title: string }
 
 export function PropertyPdfPreview({ src, title }: PropertyPdfPreviewProps) {
   return (
-    <div className="relative h-64 w-full overflow-hidden bg-ink" aria-label={`${title} first page preview`}>
+    <div className="relative aspect-[4/3] w-full overflow-hidden bg-ink sm:aspect-[16/9]" aria-label={`${title} first page preview`}>
       <iframe
         src={`${src}#page=1&toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
         title={`${title} first page`}
         scrolling="no"
-        className="pointer-events-none absolute left-0 top-0 block h-[calc(100%+24px)] w-[calc(100%+24px)] border-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="pointer-events-none absolute inset-0 block h-full w-full border-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       />
     </div>
   )
