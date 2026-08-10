@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Keep the preview bundler on stable defaults; unsupported experimental flags
+  // can leave stale webpack manifests and produce missing-chunk 500 errors.
   serverExternalPackages: ['drizzle-orm', 'pg'],
   images: {
     formats: ['image/avif', 'image/webp'],

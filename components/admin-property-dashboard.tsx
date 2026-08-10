@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef, useState } from 'react'
+import { upload as uploadToBlob } from '@vercel/blob/client'
 import { X } from 'lucide-react'
 
 type Property = {
@@ -51,6 +52,8 @@ export function AdminPropertyDashboard({ initialProperties }: { initialPropertie
   const [properties, setProperties] = useState(initialProperties)
   const [form, setForm] = useState(initialForm)
   const [uploading, setUploading] = useState(false)
+  const [uploadProgress, setUploadProgress] = useState(0)
+  const [draggingMedia, setDraggingMedia] = useState<'pdf' | 'video' | null>(null)
   const [saving, setSaving] = useState(false)
   const [message, setMessage] = useState('')
   const [editingId, setEditingId] = useState<string | null>(null)
@@ -117,19 +120,40 @@ export function AdminPropertyDashboard({ initialProperties }: { initialPropertie
 
   async function upload(event: React.ChangeEvent<HTMLInputElement>, kind: 'cover' | 'gallery' | 'map' | 'pdf' | 'video') {
     const files = Array.from(event.target.files ?? [])
+    await uploadFiles(files, kind)
+    event.target.value = ''
+  }
+
+  async function uploadFiles(files: File[], kind: 'cover' | 'gallery' | 'map' | 'pdf' | 'video') {
     if (!files.length) return
+    if ((kind === 'pdf' || kind === 'video') && files.length > 1) files = files.slice(0, 1)
     setUploading(true)
+    setUploadProgress(0)
     setMessage('')
     const urls: string[] = []
-    for (const file of files) {
-      const body = new FormData()
-      body.append('file', file)
-      body.append('kind', kind)
-      const response = await fetch('/api/admin/upload', { method: 'POST', body })
-      const result = await response.json()
-      if (!response.ok) { setMessage(result.error ?? 'Image upload failed'); setUploading(false); return }
-      if (!result.url) { setMessage('Image upload returned no URL'); setUploading(false); return }
-      urls.push(result.url)
+    try {
+      for (const file of files) {
+        if (kind === 'pdf' && file.type !== 'application/pdf') throw new Error('Only PDF files are allowed')
+        if (kind === 'video' && !file.type.startsWith('video/')) throw new Error('Only video files are allowed')
+        if (kind === 'video' && file.size > 200 * 1024 * 1024) throw new Error('Videos must be 200MB or smaller')
+        if (kind === 'pdf' && file.size > 100 * 1024 * 1024) throw new Error('PDFs must be 100MB or smaller')
+        if (kind === 'pdf' || kind === 'video') {
+          const blob = await uploadToBlob(`properties/media/${crypto.randomUUID()}-${file.name}`, file, { access: 'public', handleUploadUrl: '/api/admin/upload-token', clientPayload: kind, multipart: file.size > 5 * 1024 * 1024, onUploadProgress: ({ percentage }) => setUploadProgress(Math.round(percentage)) })
+          urls.push(blob.url)
+        } else {
+          const body = new FormData()
+          body.append('file', file)
+          body.append('kind', kind)
+          const response = await fetch('/api/admin/upload', { method: 'POST', body })
+          const result = await response.json()
+          if (!response.ok || !result.url) throw new Error(result.error ?? 'Image upload failed')
+          urls.push(result.url)
+        }
+      }
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : 'Upload failed')
+      setUploading(false)
+      return
     }
     if (kind === 'video') {
       setForm((current) => ({ ...current, videoUrl: urls[0] }))
@@ -144,29 +168,24 @@ export function AdminPropertyDashboard({ initialProperties }: { initialPropertie
       setForm((current) => ({ ...current, galleryImageUrls: [...current.galleryImageUrls, ...urls] }))
     }
     setUploading(false)
-    setMessage(`${urls.length} image${urls.length === 1 ? '' : 's'} uploaded.`)
+    setUploadProgress(100)
+    setMessage(`${urls.length} ${kind === 'pdf' ? 'PDF' : kind === 'video' ? 'video' : 'image'}${urls.length === 1 ? '' : 's'} uploaded.`)
   }
 
-  function handleDrop(event: React.DragEvent<HTMLLabelElement>, kind: 'cover' | 'gallery' | 'map') {
+  function handleDrop(event: React.DragEvent<HTMLLabelElement>, kind: 'cover' | 'gallery' | 'map' | 'pdf' | 'video') {
     event.preventDefault()
-    event.currentTarget.classList.remove('border-gold', 'bg-gold/5')
-    const files = Array.from(event.dataTransfer.files)
-    if (!files.length) return
-    const input = event.currentTarget.querySelector('input[type=file]') as HTMLInputElement | null
-    if (!input) return
-    const transfer = new DataTransfer()
-    files.forEach((file) => transfer.items.add(file))
-    input.files = transfer.files
-    void upload({ target: input } as React.ChangeEvent<HTMLInputElement>, kind)
+    setDraggingMedia(null)
+    void uploadFiles(Array.from(event.dataTransfer.files), kind)
   }
 
-  function dragOver(event: React.DragEvent<HTMLLabelElement>) {
+  function dragOver(event: React.DragEvent<HTMLLabelElement>, kind?: 'pdf' | 'video') {
     event.preventDefault()
-    event.currentTarget.classList.add('border-gold', 'bg-gold/5')
+    if (kind) setDraggingMedia(kind)
   }
 
-  function dragLeave(event: React.DragEvent<HTMLLabelElement>) {
-    event.currentTarget.classList.remove('border-gold', 'bg-gold/5')
+  function dragLeave(event: React.DragEvent<HTMLLabelElement>, kind?: 'pdf' | 'video') {
+    if (kind && event.currentTarget.contains(event.relatedTarget as Node)) return
+    if (kind) setDraggingMedia(null)
   }
 
   function moveGalleryImage(from: number, to: number) {
@@ -252,9 +271,9 @@ export function AdminPropertyDashboard({ initialProperties }: { initialPropertie
             {form.galleryImageUrls.length ? <div className="mt-4"><p className="mb-2 text-xs text-muted">Drag images to reorder them, or use the arrows.</p><div className="grid grid-cols-2 gap-3 sm:grid-cols-4">{form.galleryImageUrls.map((url, index) => <div key={`${url}-${index}`} draggable onDragStart={() => setDraggedGalleryIndex(index)} onDragOver={(event) => event.preventDefault()} onDrop={(event) => handleGalleryDrop(event, index)} onDragEnd={() => setDraggedGalleryIndex(null)} className={`group relative overflow-hidden border bg-surface ${draggedGalleryIndex === index ? 'border-gold opacity-60' : 'border-line-soft'}`}><img src={url} alt={`Uploaded property image ${index + 1}`} className="aspect-square w-full cursor-grab object-cover transition-transform duration-300 group-hover:scale-105 active:cursor-grabbing" /><span className="absolute bottom-1 left-1 bg-ink/80 px-1.5 py-0.5 text-[0.6rem] text-cream">{index + 1}</span><div className="absolute right-1 top-1 flex gap-1"><button type="button" aria-label={`Move gallery image ${index + 1} left`} disabled={index === 0} onClick={() => moveGalleryImage(index, index - 1)} className="grid size-7 place-items-center bg-ink/85 text-cream disabled:opacity-30"><span aria-hidden="true">←</span></button><button type="button" aria-label={`Move gallery image ${index + 1} right`} disabled={index === form.galleryImageUrls.length - 1} onClick={() => moveGalleryImage(index, index + 1)} className="grid size-7 place-items-center bg-ink/85 text-cream disabled:opacity-30"><span aria-hidden="true">→</span></button><button type="button" aria-label={`Remove gallery image ${index + 1}`} onClick={() => update('galleryImageUrls', form.galleryImageUrls.filter((_, imageIndex) => imageIndex !== index))} className="grid size-7 place-items-center bg-ink/85 text-cream transition hover:bg-gold hover:text-ink"><X className="size-4" /></button></div></div>)}</div></div> : null}
             <label onDragOver={dragOver} onDragLeave={dragLeave} onDrop={(event) => handleDrop(event, 'map')} className="mt-5 block cursor-pointer border border-dashed border-line-strong p-5 text-sm text-muted transition-colors hover:border-gold hover:bg-gold/5"><span className="block text-cream">Location map image</span><span className="mt-1 block text-xs">Click to choose or drag and drop one image here</span><input type="file" accept="image/*" onChange={(event) => { setUploadKind('map'); upload(event, 'map') }} className="sr-only" />{uploading && uploadKind === 'map' ? <span className="mt-2 block text-gold">Uploading…</span> : null}</label>
             {form.mapImageUrl ? <div className="group relative mt-4 overflow-hidden"><img src={form.mapImageUrl} alt="Location map preview" className="aspect-[16/7] w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]" /><button type="button" aria-label="Remove location map image" onClick={() => update('mapImageUrl', '')} className="absolute right-2 top-2 grid size-8 place-items-center bg-ink/85 text-cream transition hover:bg-gold hover:text-ink"><X className="size-4" /></button></div> : null}
-            <label className="mt-5 block cursor-pointer border border-dashed border-line-strong p-5 text-sm text-muted transition-colors hover:border-gold hover:bg-gold/5"><span className="block text-cream">Property video tour</span><span className="mt-1 block text-xs">Upload a 16:9 MP4 or WebM video, up to 200MB</span><input type="file" accept="video/*" onChange={(event) => { setUploadKind('video'); void upload(event, 'video') }} className="sr-only" />{uploading && uploadKind === 'video' ? <span className="mt-2 block text-gold">Uploading video…</span> : null}</label>
+            <label onDragOver={(event) => dragOver(event, 'video')} onDragLeave={(event) => dragLeave(event, 'video')} onDrop={(event) => handleDrop(event, 'video')} className={`mt-5 block cursor-pointer border border-dashed p-5 text-sm text-muted transition-colors hover:border-gold hover:bg-gold/5 ${draggingMedia === 'video' ? 'border-gold bg-gold/10' : 'border-line-strong'}`}><span className="block text-cream">Property video tour</span><span className="mt-1 block text-xs">Click or drag a 16:9 MP4/WebM video here, up to 200MB</span><input type="file" accept="video/*" onChange={(event) => { setUploadKind('video'); void upload(event, 'video') }} className="sr-only" />{uploading && uploadKind === 'video' ? <span className="mt-2 block text-gold">Uploading video — {uploadProgress}%</span> : null}</label>
             {form.videoUrl ? <div className="relative mt-4 overflow-hidden border border-line-soft bg-ink"><video src={form.videoUrl} controls className="aspect-video w-full" /><button type="button" onClick={() => update('videoUrl', '')} className="absolute right-2 top-2 grid size-8 place-items-center bg-ink/85 text-cream hover:bg-gold hover:text-ink" aria-label="Remove property video"><X className="size-4" /></button></div> : null}
-            <div className="mt-5 border-t border-line-soft pt-5"><p className="text-sm text-cream">Property PDFs</p><p className="mt-1 text-xs text-muted">Add brochures or floor plans with a customer-facing title.</p><label className="mt-3 block cursor-pointer border border-dashed border-line-strong p-5 text-sm text-muted transition-colors hover:border-gold hover:bg-gold/5"><span className="block text-cream">Upload PDF</span><input type="file" accept="application/pdf,.pdf" onChange={(event) => { setUploadKind('pdf'); void upload(event, 'pdf') }} className="sr-only" />{uploading && uploadKind === 'pdf' ? <span className="mt-2 block text-gold">Uploading PDF…</span> : null}</label><div className="mt-3 grid gap-2">{form.documents.map((document, index) => <div key={`${document.url}-${index}`} className="flex items-center gap-2 border border-line-soft bg-ink px-3 py-2"><input value={document.title} onChange={(event) => setForm((current) => ({ ...current, documents: current.documents.map((item, itemIndex) => itemIndex === index ? { ...item, title: event.target.value } : item) }))} className="min-w-0 flex-1 bg-transparent text-sm text-cream outline-none" aria-label={`PDF title ${index + 1}`} /><button type="button" onClick={() => update('documents', form.documents.filter((_, itemIndex) => itemIndex !== index))} className="text-muted hover:text-gold" aria-label={`Remove PDF ${index + 1}`}><X className="size-4" /></button></div>)}</div></div>
+            <div className="mt-5 border-t border-line-soft pt-5"><p className="text-sm text-cream">Property PDFs</p><p className="mt-1 text-xs text-muted">Add brochures or floor plans with a customer-facing title.</p><label onDragOver={(event) => dragOver(event, 'pdf')} onDragLeave={(event) => dragLeave(event, 'pdf')} onDrop={(event) => handleDrop(event, 'pdf')} className={`mt-3 block cursor-pointer border border-dashed p-5 text-sm text-muted transition-colors hover:border-gold hover:bg-gold/5 ${draggingMedia === 'pdf' ? 'border-gold bg-gold/10' : 'border-line-strong'}`}><span className="block text-cream">Upload PDF</span><span className="mt-1 block text-xs">Click or drag a PDF here, up to 100MB</span><input type="file" accept="application/pdf,.pdf" onChange={(event) => { setUploadKind('pdf'); void upload(event, 'pdf') }} className="sr-only" />{uploading && uploadKind === 'pdf' ? <span className="mt-2 block text-gold">Uploading PDF — {uploadProgress}%</span> : null}</label><div className="mt-3 grid gap-2">{form.documents.map((document, index) => <div key={`${document.url}-${index}`} className="flex items-center gap-2 border border-line-soft bg-ink px-3 py-2"><input value={document.title} onChange={(event) => setForm((current) => ({ ...current, documents: current.documents.map((item, itemIndex) => itemIndex === index ? { ...item, title: event.target.value } : item) }))} className="min-w-0 flex-1 bg-transparent text-sm text-cream outline-none" aria-label={`PDF title ${index + 1}`} /><button type="button" onClick={() => update('documents', form.documents.filter((_, itemIndex) => itemIndex !== index))} className="text-muted hover:text-gold" aria-label={`Remove PDF ${index + 1}`}><X className="size-4" /></button></div>)}</div></div>
             {Object.keys(fieldErrors).length ? <div className="mt-5 border border-red-500/60 bg-red-500/10 p-4 text-sm text-red-300" role="alert"><p className="font-medium text-red-200">Complete the highlighted fields before publishing.</p><ul className="mt-2 list-disc space-y-1 pl-5">{Object.entries(fieldErrors).map(([field, error]) => <li key={field}>{error}</li>)}</ul></div> : null}
             {message ? <p className="mt-4 text-sm text-gold" role="status">{message}</p> : null}
             <div className="mt-7 flex gap-3"><button type="submit" disabled={saving || uploading} className="flex-1 bg-gold px-5 py-3 text-sm font-medium text-ink disabled:opacity-60">{saving ? 'Saving…' : editingId ? 'Update property' : 'Publish property'}</button>{editingId ? <button type="button" onClick={resetForm} className="border border-line-strong px-5 py-3 text-sm text-muted hover:text-cream">Cancel</button> : null}</div>
