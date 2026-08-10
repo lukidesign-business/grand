@@ -111,7 +111,7 @@ export default async function ThailandPage({ params }: { params: Promise<{ local
       <Ownership locale={locale} dict={dict} withLink={false} />
 
       <Advantages dict={dict}>
-        <div className="reveal mt-12 border border-line bg-[linear-gradient(140deg,rgba(201,162,90,.09),rgba(16,19,24,.6))] p-8 text-center md:mt-20 md:p-12">
+        <div className="on-photo reveal mt-12 border border-line bg-[linear-gradient(140deg,rgba(201,162,90,.09),rgba(16,19,24,.6))] p-8 text-center md:mt-20 md:p-12">
           <h3 className="mb-3 text-[clamp(1.6rem,3vw,2.2rem)]">{t.ctaTitle}</h3>
           <p className="mx-auto mb-8 max-w-[52ch] text-muted">{t.ctaBody}</p>
           <Button asChild variant="gold">

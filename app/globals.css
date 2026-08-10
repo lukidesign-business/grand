@@ -92,6 +92,28 @@
   color: var(--color-cream);
 }
 
+/*
+ * Sections that render text directly over a fixed-dark photographic
+ * treatment (Hero, PageHero banners, the CTA band, the property detail
+ * hero) keep their original dark scrim in both page colours. Scoping the
+ * token overrides to this class means every text-gold / text-cream /
+ * text-muted / border-line utility inside automatically resolves to the
+ * legible dark-mode tone, in light mode too, without editing each element.
+ */
+.on-photo {
+  --color-gold: var(--fixed-gold);
+  --color-gold-bright: var(--fixed-gold-bright);
+  --color-gold-deep: #9c7736;
+  --color-cream: var(--fixed-cream);
+  --color-cream-bright: var(--fixed-cream-bright);
+  --color-muted: var(--fixed-muted);
+  --color-muted-2: var(--fixed-muted-2);
+  --color-line: rgba(201, 162, 90, 0.18);
+  --color-line-strong: rgba(201, 162, 90, 0.38);
+  --color-line-soft: rgba(255, 255, 255, 0.09);
+  color: var(--fixed-cream);
+}
+
 @keyframes fade-in {
   from { opacity: 0; }
 }

@@ -90,7 +90,7 @@ export function SearchExperience({
           role="search"
           aria-label={s.title}
           onSubmit={(event) => event.preventDefault()}
-          className="border border-line bg-[linear-gradient(165deg,rgba(28,33,42,.6),rgba(14,16,20,.9))] p-6"
+          className="on-photo border border-line bg-[linear-gradient(165deg,rgba(28,33,42,.6),rgba(14,16,20,.9))] p-6"
         >
           <div className="mb-5 flex items-center justify-between gap-4 border-b border-line-soft pb-5">
             <h2 className="flex items-center gap-2 text-[0.85rem] uppercase tracking-luxe text-gold">
