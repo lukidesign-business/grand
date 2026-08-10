@@ -80,7 +80,7 @@ export default async function ProjectPage({
       v: project.priceFrom ? formatPrice(locale, project.priceFrom) : labels.priceOnRequest,
       price: true
     },
-    { k: labels.location, v: dict.values.locations[project.location] },
+    { k: labels.location, v: project.locationLabel || dict.values.locations[project.location] },
     { k: labels.status, v: dict.values.statuses[project.status] },
     { k: labels.completion, v: project.completion },
     { k: labels.plan, v: project.plan ? dict.values.plans[project.plan] : labels.resale },

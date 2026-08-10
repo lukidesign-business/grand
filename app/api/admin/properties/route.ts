@@ -31,6 +31,8 @@ export async function POST(request: Request) {
     const propertyType = String(body.propertyType ?? 'Condominium')
     const bedrooms = Number.isFinite(Number(body.bedrooms)) ? Number(body.bedrooms) : 0
     const location = String(body.location ?? '').trim() || 'Location available on request'
+    const customLocation = String(body.customLocation ?? '').trim() || null
+    const customLocationUrl = String(body.customLocationUrl ?? '').trim() || null
     const price = String(body.price ?? '').trim() || 'Price available on request'
     const description = String(body.description ?? '').trim() || 'Property details available on request'
     const coverImageUrl = String(body.coverImageUrl ?? '').trim() || '/placeholder.svg?height=720&width=960'
@@ -54,6 +56,8 @@ export async function POST(request: Request) {
       propertyType,
       bedrooms,
       location,
+      customLocation,
+      customLocationUrl,
       price,
       description,
       coverImageUrl,

@@ -8,6 +8,8 @@ export const properties = pgTable('properties', {
   propertyType: text('property_type').notNull(),
   bedrooms: integer('bedrooms').notNull(),
   location: text('location').notNull(),
+  customLocation: text('custom_location'),
+  customLocationUrl: text('custom_location_url'),
   price: text('price').notNull(),
   description: text('description').notNull(),
   coverImageUrl: text('cover_image_url').notNull(),

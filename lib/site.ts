@@ -129,6 +129,7 @@ export interface Project {
   mapImage?: string;
   mapUrl?: string;
   location: LocationId;
+  locationLabel?: string;
   type: PropertyType;
   status: StatusId;
   plan?: PlanId;

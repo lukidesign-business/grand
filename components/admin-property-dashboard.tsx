@@ -12,6 +12,8 @@ type Property = {
   propertyType: string
   bedrooms: number
   location: string
+  customLocation: string | null
+  customLocationUrl: string | null
   price: string
   description: string
   coverImageUrl: string
@@ -30,6 +32,8 @@ type PropertyForm = {
   propertyType: string
   bedrooms: string
   location: string
+  customLocation: string
+  customLocationUrl: string
   price: string
   description: string
   coverImageUrl: string
@@ -45,7 +49,7 @@ type PropertyField = keyof PropertyForm
 type FieldErrors = Partial<Record<PropertyField, string>>
 
 const initialForm: PropertyForm = {
-  name: '', slug: '', status: 'Ready to move', propertyType: 'Condominium', bedrooms: '1', location: 'Pattaya, Thailand', price: '', description: '', coverImageUrl: '', galleryImageUrls: [], mapImageUrl: '', areaSqm: '', isPublished: true, videoUrl: '', documents: [],
+  name: '', slug: '', status: 'Ready to move', propertyType: 'Condominium', bedrooms: '1', location: 'Pattaya, Thailand', customLocation: '', customLocationUrl: '', price: '', description: '', coverImageUrl: '', galleryImageUrls: [], mapImageUrl: '', areaSqm: '', isPublished: true, videoUrl: '', documents: [],
 }
 
 export function AdminPropertyDashboard({ initialProperties }: { initialProperties: Property[] }) {
@@ -84,6 +88,8 @@ export function AdminPropertyDashboard({ initialProperties }: { initialPropertie
       propertyType: validPropertyTypes.includes(property.propertyType) ? property.propertyType : 'Condominium',
       bedrooms: String(property.bedrooms),
       location: property.location,
+      customLocation: property.customLocation ?? '',
+      customLocationUrl: property.customLocationUrl ?? '',
       price: property.price,
       description: property.description,
       coverImageUrl: property.coverImageUrl,
@@ -265,6 +271,8 @@ export function AdminPropertyDashboard({ initialProperties }: { initialPropertie
               <label className="text-xs uppercase tracking-wide text-muted">Property type<select value={form.propertyType} onChange={(e) => update('propertyType', e.target.value)} className="admin-input"><option>Condominium</option><option>Villa</option><option>House</option></select></label>
               <label className="text-xs uppercase tracking-wide text-muted">Bedrooms<select value={form.bedrooms} onChange={(e) => update('bedrooms', e.target.value)} className="admin-input"><option value="0">Studio</option><option value="1">1 bedroom</option><option value="2">2 bedrooms</option><option value="3">3 bedrooms</option><option value="4">4 bedrooms</option></select></label>
               <label className="text-xs uppercase tracking-wide text-muted">Location<select id="property-location" name="location" ref={(element) => { fieldRefs.current.location = element }} value={form.location} onChange={(e) => update('location', e.target.value)} aria-invalid={Boolean(fieldErrors.location)} className={`admin-input ${fieldErrors.location ? 'border-red-500 ring-1 ring-red-500' : ''}`}><option>Pattaya, Thailand</option><option>Jomtien, Thailand</option><option>Bangkok, Thailand</option><option>Phuket, Thailand</option></select>{fieldErrors.location ? <span className="mt-1 block text-xs normal-case tracking-normal text-red-400">{fieldErrors.location}</span> : null}</label>
+              <label className="text-xs uppercase tracking-wide text-muted">Custom location<input id="custom-location" value={form.customLocation} onChange={(e) => update('customLocation', e.target.value)} placeholder="Exact building, street, or neighborhood" className="admin-input" /></label>
+              <label className="text-xs uppercase tracking-wide text-muted">Google Maps link<input id="custom-location-url" type="url" value={form.customLocationUrl} onChange={(e) => update('customLocationUrl', e.target.value)} placeholder="https://maps.google.com/..." className="admin-input" /></label>
               <label className="text-xs uppercase tracking-wide text-muted">Size in m²<input id="property-area" name="areaSqm" type="number" min="0" ref={(element) => { fieldRefs.current.areaSqm = element }} value={form.areaSqm} onChange={(e) => update('areaSqm', e.target.value)} placeholder="65" aria-invalid={Boolean(fieldErrors.areaSqm)} className={`admin-input ${fieldErrors.areaSqm ? 'border-red-500 ring-1 ring-red-500' : ''}`} />{fieldErrors.areaSqm ? <span className="mt-1 block text-xs normal-case tracking-normal text-red-400">{fieldErrors.areaSqm}</span> : null}</label>
               <label className="text-xs uppercase tracking-wide text-muted">Price<input id="property-price" name="price" ref={(element) => { fieldRefs.current.price = element }} value={form.price} onChange={(e) => update('price', e.target.value)} placeholder="Price available on request" aria-invalid={Boolean(fieldErrors.price)} className={`admin-input ${fieldErrors.price ? 'border-red-500 ring-1 ring-red-500' : ''}`} />{fieldErrors.price ? <span className="mt-1 block text-xs normal-case tracking-normal text-red-400">{fieldErrors.price}</span> : null}</label>
               <label className="text-xs uppercase tracking-wide text-muted sm:col-span-2">Description<textarea id="property-description" name="description" ref={(element) => { fieldRefs.current.description = element }} value={form.description} onChange={(e) => update('description', e.target.value)} rows={4} aria-invalid={Boolean(fieldErrors.description)} className={`admin-input ${fieldErrors.description ? 'border-red-500 ring-1 ring-red-500' : ''}`} />{fieldErrors.description ? <span className="mt-1 block text-xs normal-case tracking-normal text-red-400">{fieldErrors.description}</span> : null}</label>

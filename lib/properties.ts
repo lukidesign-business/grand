@@ -91,12 +91,13 @@ export function propertyToProject(property: Property): Project {
       : isZenithPattayaTwo
         ? '/images/zenith-pattaya-2-map.jpg'
         : '/placeholder.svg?height=420&width=960'),
-    mapUrl: isZenithPattaya
+    mapUrl: property.customLocationUrl?.trim() || (isZenithPattaya
       ? 'https://maps.google.com/?q=Zenith+Pattaya'
       : isZenithPattayaTwo
         ? 'https://maps.google.com/?q=Zenith+Pattaya+2'
-        : `https://maps.google.com/?q=${encodeURIComponent(property.location)}`,
+        : `https://maps.google.com/?q=${encodeURIComponent(property.customLocation || property.location)}`),
     location,
+    locationLabel: property.customLocation || property.location,
     type: property.propertyType.toLowerCase().includes('villa')
       ? 'villa'
       : property.propertyType.toLowerCase().includes('penthouse')
