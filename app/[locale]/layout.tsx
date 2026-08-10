@@ -5,6 +5,7 @@ import { SiteHeader } from '@/components/site-header';
 import { SiteFooter } from '@/components/site-footer';
 import { LanguageGate } from '@/components/language-gate';
 import { BackToTop } from '@/components/back-to-top';
+import { PageColorToggle } from '@/components/page-color-toggle';
 import { getDictionary } from '@/lib/i18n';
 import { isLocale, locales, type Locale } from '@/lib/i18n/config';
 import { BRAND } from '@/lib/site';
@@ -14,7 +15,7 @@ export function generateStaticParams() {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#0a0b0e'
+  themeColor: '#f5f4f0'
 };
 
 export async function generateMetadata({
@@ -76,6 +77,7 @@ export default async function LocaleLayout({
       <SiteFooter locale={locale as Locale} dict={dict} />
 
       <LanguageGate locale={locale as Locale} copy={dict.lang} />
+      <PageColorToggle darkLabel="Use dark page" lightLabel="Use light page" />
       <BackToTop label={dict.nav.backToTop} />
     </>
   );
