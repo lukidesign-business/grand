@@ -74,7 +74,7 @@ export async function POST(request: Request) {
         }).returning()
 
     if (!property) return NextResponse.json({ error: 'Property was not found' }, { status: 404 })
-    revalidateTag('published-properties')
+    revalidateTag('published-properties', 'max')
     for (const locale of ['en', 'th', 'ru', 'de', 'fr']) {
       revalidatePath(`/${locale}/projects`)
       revalidatePath(`/${locale}/search`)
@@ -95,7 +95,7 @@ export async function DELETE(request: Request) {
     if (typeof id !== 'string' || !id.trim()) return NextResponse.json({ error: 'Property id is required' }, { status: 400 })
     const [deleted] = await db.delete(properties).where(eq(properties.id, id)).returning({ slug: properties.slug })
     if (!deleted) return NextResponse.json({ error: 'Property was not found' }, { status: 404 })
-    revalidateTag('published-properties')
+    revalidateTag('published-properties', 'max')
     for (const locale of ['en', 'th', 'ru', 'de', 'fr']) {
       revalidatePath(`/${locale}/projects`)
       revalidatePath(`/${locale}/search`)
@@ -114,7 +114,7 @@ export async function PATCH(request: Request) {
     const { id, isPublished } = await request.json()
     if (typeof id !== 'string' || typeof isPublished !== 'boolean') return NextResponse.json({ error: 'Invalid request' }, { status: 400 })
     const [property] = await db.update(properties).set({ isPublished, updatedAt: new Date() }).where(eq(properties.id, id)).returning()
-    revalidateTag('published-properties')
+    revalidateTag('published-properties', 'max')
     if (property) {
       for (const locale of ['en', 'th', 'ru', 'de', 'fr']) revalidatePath(`/${locale}/projects/${property.slug}`)
     }
