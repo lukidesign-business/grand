@@ -21,7 +21,7 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        gold: 'border border-transparent bg-[linear-gradient(135deg,#d8b26d,#b98f45_55%,#cfa561)] font-medium text-ink shadow-[0_10px_34px_-18px_rgba(201,162,90,.4)] hover:shadow-[0_16px_40px_-16px_rgba(201,162,90,.45)]',
+        gold: 'border border-transparent bg-[linear-gradient(135deg,#d8b26d,#b98f45_55%,#cfa561)] font-medium text-[var(--fixed-ink)] shadow-[0_10px_34px_-18px_rgba(201,162,90,.4)] hover:shadow-[0_16px_40px_-16px_rgba(201,162,90,.45)]',
         ghost: 'border border-white/20 text-cream backdrop-blur-sm hover:border-gold hover:text-gold-bright',
         outline: 'border border-line-strong text-cream hover:border-gold hover:bg-gold/5 hover:text-gold-bright'
       },

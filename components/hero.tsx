@@ -49,8 +49,8 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
       />
 
       {/* Official partner mark, docked to the upper-right corner of the frame */}
-      <div className="absolute bottom-[7.25rem] right-3 z-[70] flex flex-col items-center gap-1 border border-gold/45 bg-ink/70 px-2 py-1.5 backdrop-blur-sm max-sm:scale-90 sm:right-6 sm:top-28 sm:bottom-auto sm:gap-2 sm:px-4 sm:py-4 md:right-[clamp(1.5rem,3.5vw,2.8rem)] md:top-[clamp(2.5rem,4vh,4rem)]">
-        <span className="text-[0.42rem] uppercase tracking-[0.2em] text-gold-bright sm:text-[0.65rem]">
+      <div className="absolute bottom-[7.25rem] right-3 z-[70] flex flex-col items-center gap-1 border border-[rgba(201,162,90,0.45)] bg-[rgba(10,11,14,0.7)] px-2 py-1.5 backdrop-blur-sm max-sm:scale-90 sm:right-6 sm:top-28 sm:bottom-auto sm:gap-2 sm:px-4 sm:py-4 md:right-[clamp(1.5rem,3.5vw,2.8rem)] md:top-[clamp(2.5rem,4vh,4rem)]">
+        <span className="text-[0.42rem] uppercase tracking-[0.2em] text-[var(--fixed-gold-bright)] sm:text-[0.65rem]">
           {h.officialPartner}
         </span>
         <Image
@@ -60,12 +60,12 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           height={144}
           className="size-10 opacity-100 drop-shadow-[0_5px_18px_rgba(0,0,0,.7)] sm:size-28"
         />
-        <span className="hidden text-[0.6rem] uppercase tracking-[0.2em] text-cream-bright/90 sm:block">{OFFICIAL_PARTNER.name}</span>
+        <span className="hidden text-[0.6rem] uppercase tracking-[0.2em] text-[rgba(247,244,238,0.9)] sm:block">{OFFICIAL_PARTNER.name}</span>
       </div>
 
       <div className="shell flex min-h-0 flex-1 items-start pt-4 md:items-center md:pb-[clamp(1rem,3vh,2.5rem)] md:pt-0">
         <div className="max-w-full pb-2 pl-1 pr-1 max-md:pt-2 sm:pl-2 sm:pr-2 md:max-w-[40rem] md:pb-0 md:pl-[clamp(1rem,3vw,3rem)] md:pr-4 md:pt-0">
-          <span className="-mt-2 mb-1 block text-[0.8rem] uppercase tracking-[0.24em] text-gold sm:-mt-[63px] sm:mb-[-6px] sm:text-[1.05rem] sm:tracking-[0.4em]">
+          <span className="-mt-2 mb-1 block text-[0.8rem] uppercase tracking-[0.24em] text-[var(--fixed-gold)] sm:-mt-[63px] sm:mb-[-6px] sm:text-[1.05rem] sm:tracking-[0.4em]">
             {h.eyebrow}
           </span>
 
@@ -77,13 +77,13 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
                 : 'text-[clamp(2.75rem,6.8vw,6rem)]'
             )}
           >
-            <span className="mb-[22px] block text-cream-bright md:mb-6">{h.titleTop}</span>
+            <span className="mb-[22px] block text-[var(--fixed-cream-bright)] md:mb-6">{h.titleTop}</span>
             <span className="-mt-[31px] text-gradient-gold block md:-mt-[31px]">{h.titleBottom}</span>
           </h1>
 
           <span aria-hidden="true" className="rule-gold my-5 w-17 md:my-7" />
 
-          <p className="mb-4 text-[0.56rem] uppercase leading-[1.7] tracking-[0.12em] text-cream-bright/90 sm:text-[0.84rem] sm:leading-[2] sm:tracking-[0.16em] md:mb-6">
+          <p className="mb-4 text-[0.56rem] uppercase leading-[1.7] tracking-[0.12em] text-[rgba(247,244,238,0.9)] sm:text-[0.84rem] sm:leading-[2] sm:tracking-[0.16em] md:mb-6">
             {h.taglineLine1}
             <br />
             {h.taglineLine2}
@@ -98,14 +98,18 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             className="mb-1 w-[130px] opacity-95 sm:w-[clamp(180px,22vw,250px)]"
           />
 
-          <p className="mb-1 text-[0.82rem] uppercase tracking-luxer text-gold">{h.name}</p>
-          <p className="text-[0.58rem] uppercase tracking-luxe text-cream-bright sm:text-[0.72rem] sm:text-muted">{h.role}</p>
+          <p className="mb-1 text-[0.82rem] uppercase tracking-luxer text-[var(--fixed-gold)]">{h.name}</p>
+          <p className="text-[0.58rem] uppercase tracking-luxe text-[var(--fixed-cream-bright)] sm:text-[0.72rem] sm:text-[var(--fixed-muted)]">{h.role}</p>
 
           <div className="mt-5 flex flex-wrap gap-2 sm:mt-6 sm:gap-3 md:mt-8 md:flex-nowrap">
             <Button asChild variant="gold" className="max-sm:px-4 max-sm:py-2.5 max-sm:text-[0.62rem]">
               <Link href={href(locale, 'projects')}>{h.ctaPrimary}</Link>
             </Button>
-            <Button asChild variant="ghost" className="max-sm:px-4 max-sm:py-2.5 max-sm:text-[0.62rem]">
+            <Button
+              asChild
+              variant="ghost"
+              className="max-sm:px-4 max-sm:py-2.5 max-sm:text-[0.62rem] text-[var(--fixed-cream)] hover:text-[var(--fixed-gold-bright)]"
+            >
               <Link href={href(locale, 'contact')}>{h.ctaSecondary}</Link>
             </Button>
           </div>

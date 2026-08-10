@@ -57,7 +57,7 @@ export function ProjectCard({ project, locale, dict, priority = false }: Project
           className={cn(
             'absolute left-4 top-4 z-1 border bg-ink/80 px-3 py-1.5 text-[0.62rem] uppercase tracking-[0.18em] backdrop-blur',
             project.status === 'ready'
-              ? 'border-gold-bright bg-[linear-gradient(135deg,var(--color-gold-bright),var(--color-gold-deep))] font-medium text-ink shadow-[0_8px_24px_-12px_rgba(214,170,84,.95)]'
+              ? 'border-gold-bright bg-[linear-gradient(135deg,var(--color-gold-bright),var(--color-gold-deep))] font-medium text-[var(--fixed-ink)] shadow-[0_8px_24px_-12px_rgba(214,170,84,.95)]'
               : 'border-line text-gold'
           )}
         >

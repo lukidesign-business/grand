@@ -6,7 +6,7 @@
    bg-ink, text-gold, border-line, font-serif, tracking-wide-luxe …
    ========================================================================== */
 
-@theme inline {
+@theme {
   --color-ink: #0a0b0e;
   --color-ink-2: #0c0e12;
   --color-ink-3: #101318;
@@ -41,65 +41,55 @@
   --animate-rise-in: rise-in 0.5s var(--ease-luxe);
 }
 
+/*
+ * Fixed (theme-invariant) tones for text that sits directly on the
+ * art-directed photo sections (Hero, PageHero banners, the CTA band and the
+ * hero search bar). Those sections intentionally stay on their original dark,
+ * photographic treatment in both page colours, so their text must not flip
+ * to a dark tone when the page switches to light — it would disappear.
+ */
+:root {
+  --fixed-cream: #e8e4dc;
+  --fixed-cream-bright: #f7f4ee;
+  --fixed-gold: #c9a25a;
+  --fixed-gold-bright: #e3c68e;
+  --fixed-muted: #b7b3aa;
+  --fixed-muted-2: #9b968c;
+  --fixed-ink: #0a0b0e;
+}
+
+/*
+ * Light page colour — a warm, high-contrast paper tone rather than a
+ * clinical white, with deep charcoal text and a richer, darker gold so it
+ * still reads clearly against the light surfaces.
+ */
 [data-theme='light'] {
-  --color-ink: #f5f4f0;
-  --color-ink-2: #efeee9;
-  --color-ink-3: #e8e7e1;
+  --color-ink: #f6f4ef;
+  --color-ink-2: #efece4;
+  --color-ink-3: #e6e2d8;
   --color-surface: #ffffff;
-  --color-surface-2: #faf9f6;
-  --color-surface-3: #f0eee8;
-  --color-gold: #9b712d;
-  --color-gold-bright: #74531d;
-  --color-gold-deep: #b38b4a;
-  --color-cream: #2a2926;
-  --color-cream-bright: #171614;
-  --color-muted: #625f58;
-  --color-muted-2: #77736b;
-  --color-line: rgba(155, 113, 45, 0.24);
-  --color-line-strong: rgba(155, 113, 45, 0.45);
-  --color-line-soft: rgba(28, 27, 24, 0.12);
-  --color-ready: #39734b;
+  --color-surface-2: #fbf9f4;
+  --color-surface-3: #f1ede3;
+
+  --color-gold: #8a6018;
+  --color-gold-bright: #6b4a12;
+  --color-gold-deep: #a8791f;
+
+  --color-cream: #262420;
+  --color-cream-bright: #16140f;
+  --color-muted: #55524a;
+  --color-muted-2: #6d6a5f;
+
+  --color-line: rgba(138, 96, 24, 0.3);
+  --color-line-strong: rgba(138, 96, 24, 0.5);
+  --color-line-soft: rgba(28, 26, 20, 0.14);
+
+  --color-ready: #2f6b40;
 }
 
 [data-theme='light'] body {
   background-color: var(--color-ink);
   color: var(--color-cream);
-}
-
-[data-theme='light'] .bg-ink { background-color: var(--color-ink) !important; }
-[data-theme='light'] .bg-ink-2 { background-color: var(--color-ink-2) !important; }
-[data-theme='light'] .bg-ink-3 { background-color: var(--color-ink-3) !important; }
-[data-theme='light'] .bg-surface { background-color: var(--color-surface) !important; }
-[data-theme='light'] .bg-surface-2 { background-color: var(--color-surface-2) !important; }
-[data-theme='light'] .bg-surface-3 { background-color: var(--color-surface-3) !important; }
-[data-theme='light'] .bg-\[\#08090b\] { background-color: var(--color-ink-2) !important; }
-[data-theme='light'] .text-cream { color: var(--color-cream) !important; }
-[data-theme='light'] .text-cream-bright { color: var(--color-cream-bright) !important; }
-[data-theme='light'] .text-muted { color: var(--color-muted) !important; }
-[data-theme='light'] .text-muted-2 { color: var(--color-muted-2) !important; }
-[data-theme='light'] .border-line-soft { border-color: var(--color-line-soft) !important; }
-[data-theme='light'] .border-line { border-color: var(--color-line) !important; }
-[data-theme='light'] .border-line-strong { border-color: var(--color-line-strong) !important; }
-[data-theme='light'] .bg-ink\/90 { background-color: color-mix(in srgb, var(--color-ink) 90%, transparent) !important; }
-[data-theme='light'] .bg-ink\/85 { background-color: color-mix(in srgb, var(--color-ink) 85%, transparent) !important; }
-[data-theme='light'] .hero-scrim {
-  background:
-    linear-gradient(100deg, rgba(245, 244, 240, 0.94) 0%, rgba(245, 244, 240, 0.78) 26%, rgba(245, 244, 240, 0.34) 52%, rgba(245, 244, 240, 0.08) 72%, rgba(245, 244, 240, 0.32) 100%),
-    linear-gradient(to bottom, rgba(245, 244, 240, 0.92) 0%, rgba(245, 244, 240, 0.6) 10%, transparent 28%, transparent 55%, rgba(245, 244, 240, 0.82) 100%);
-}
-[data-theme='light'] .hero-scrim-mobile {
-  background: linear-gradient(to bottom, rgba(245, 244, 240, 0.3) 0%, rgba(245, 244, 240, 0.12) 30%, rgba(245, 244, 240, 0.24) 56%, rgba(245, 244, 240, 0.76) 86%);
-}
-[data-theme='light'] .page-scrim {
-  background:
-    linear-gradient(105deg, rgba(245, 244, 240, 0.94) 0%, rgba(245, 244, 240, 0.76) 45%, rgba(245, 244, 240, 0.42) 100%),
-    linear-gradient(to bottom, rgba(245, 244, 240, 0.82) 0%, transparent 35%, rgba(245, 244, 240, 0.96) 100%);
-}
-
-[data-theme='light'] .hero-scrim,
-[data-theme='light'] .hero-scrim-mobile,
-[data-theme='light'] .page-scrim {
-  filter: saturate(0.85);
 }
 
 @keyframes fade-in {
