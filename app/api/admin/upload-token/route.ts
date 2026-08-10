@@ -9,7 +9,8 @@ export async function POST(request: Request) {
   try {
     await requireAdmin()
     const body = await request.json()
-    const kind = body?.clientPayload === 'video' ? 'video' : 'pdf'
+    const kind = body?.clientPayload === 'video' ? 'video' : body?.clientPayload === 'pdf' ? 'pdf' : null
+    if (!kind) return NextResponse.json({ error: 'Missing upload media type' }, { status: 400 })
     const result = await handleUpload({
       request,
       body,

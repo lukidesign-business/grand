@@ -133,12 +133,14 @@ export function AdminPropertyDashboard({ initialProperties }: { initialPropertie
     const urls: string[] = []
     try {
       for (const file of files) {
-        if (kind === 'pdf' && file.type !== 'application/pdf') throw new Error('Only PDF files are allowed')
-        if (kind === 'video' && !file.type.startsWith('video/')) throw new Error('Only video files are allowed')
+        const isPdf = file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf')
+        const isVideo = file.type.startsWith('video/') || /\.(mp4|webm|mov|m4v)$/i.test(file.name)
+        if (kind === 'pdf' && !isPdf) throw new Error('Only PDF files are allowed')
+        if (kind === 'video' && !isVideo) throw new Error('Only MP4, WebM, MOV, or M4V videos are allowed')
         if (kind === 'video' && file.size > 200 * 1024 * 1024) throw new Error('Videos must be 200MB or smaller')
         if (kind === 'pdf' && file.size > 100 * 1024 * 1024) throw new Error('PDFs must be 100MB or smaller')
         if (kind === 'pdf' || kind === 'video') {
-          const blob = await uploadToBlob(`properties/media/${crypto.randomUUID()}-${file.name}`, file, { access: 'public', handleUploadUrl: '/api/admin/upload-token', clientPayload: kind, multipart: file.size > 5 * 1024 * 1024, onUploadProgress: ({ percentage }) => setUploadProgress(Math.round(percentage)) })
+          const blob = await uploadToBlob(`properties/media/${crypto.randomUUID()}-${file.name}`, file, { access: 'public', handleUploadUrl: '/api/admin/upload-token', clientPayload: kind, contentType: file.type || (kind === 'pdf' ? 'application/pdf' : 'video/mp4'), onUploadProgress: ({ percentage }) => setUploadProgress(Math.round(percentage)) })
           urls.push(blob.url)
         } else {
           const body = new FormData()
@@ -151,8 +153,9 @@ export function AdminPropertyDashboard({ initialProperties }: { initialPropertie
         }
       }
     } catch (error) {
-      setMessage(error instanceof Error ? error.message : 'Upload failed')
+      setMessage(error instanceof Error ? error.message : 'Upload failed. Please try again.')
       setUploading(false)
+      setUploadProgress(0)
       return
     }
     if (kind === 'video') {
