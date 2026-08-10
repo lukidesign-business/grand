@@ -61,6 +61,7 @@ export function AdminPropertyDashboard({ initialProperties }: { initialPropertie
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({})
   const [draggedGalleryIndex, setDraggedGalleryIndex] = useState<number | null>(null)
   const [customLocationMode, setCustomLocationMode] = useState(false)
+  const [manualAddress, setManualAddress] = useState('')
   const fieldRefs = useRef<Partial<Record<PropertyField, HTMLElement | null>>>({})
 
   function update(key: keyof PropertyForm, value: PropertyForm[typeof key]) {
@@ -78,7 +79,9 @@ export function AdminPropertyDashboard({ initialProperties }: { initialPropertie
 
   function editProperty(property: Property) {
     setEditingId(property.id)
-    setCustomLocationMode(!['Pattaya, Thailand', 'Jomtien, Thailand', 'Bangkok, Thailand', 'Phuket, Thailand'].includes(property.location))
+    const isCustomAddress = !['Pattaya, Thailand', 'Jomtien, Thailand', 'Bangkok, Thailand', 'Phuket, Thailand'].includes(property.location)
+    setCustomLocationMode(isCustomAddress)
+    setManualAddress(isCustomAddress ? property.location : '')
     setForm({
       name: property.name,
       slug: property.slug,
@@ -103,6 +106,7 @@ export function AdminPropertyDashboard({ initialProperties }: { initialPropertie
   function resetForm() {
     setEditingId(null)
     setCustomLocationMode(false)
+    setManualAddress('')
     setForm(initialForm)
     setFieldErrors({})
     setMessage('Ready to create a new property.')
@@ -215,7 +219,7 @@ export function AdminPropertyDashboard({ initialProperties }: { initialPropertie
     setFieldErrors(errors)
     setSaving(true)
     setMessage('')
-    const response = await fetch('/api/admin/properties', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ ...form, id: editingId, bedrooms: Number(form.bedrooms), areaSqm: form.areaSqm ? Number(form.areaSqm) : null }) })
+    const response = await fetch('/api/admin/properties', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ ...form, location: manualAddress.trim() || form.location, id: editingId, bedrooms: Number(form.bedrooms), areaSqm: form.areaSqm ? Number(form.areaSqm) : null }) })
     const result = await response.json()
     if (!response.ok) {
       setMessage(result.error ?? 'Unable to publish property')
@@ -268,7 +272,7 @@ export function AdminPropertyDashboard({ initialProperties }: { initialPropertie
               <label className="text-xs uppercase tracking-wide text-muted">Status<select value={form.status} onChange={(e) => update('status', e.target.value)} className="admin-input"><option>Ready to move</option><option>Under construction</option><option>Resale</option></select></label>
               <label className="text-xs uppercase tracking-wide text-muted">Property type<select value={form.propertyType} onChange={(e) => update('propertyType', e.target.value)} className="admin-input"><option>Condominium</option><option>Villa</option><option>House</option></select></label>
               <label className="text-xs uppercase tracking-wide text-muted">Bedrooms<select value={form.bedrooms} onChange={(e) => update('bedrooms', e.target.value)} className="admin-input"><option value="0">Studio</option><option value="1">1 bedroom</option><option value="2">2 bedrooms</option><option value="3">3 bedrooms</option><option value="4">4 bedrooms</option></select></label>
-              <label className="text-xs uppercase tracking-wide text-muted">Location<select id="property-location" name="location" ref={(element) => { fieldRefs.current.location = element }} value={customLocationMode ? '__custom__' : form.location} onChange={(e) => { const value = e.target.value; if (value === '__custom__') { setCustomLocationMode(true); update('location', '') } else { setCustomLocationMode(false); update('location', value) } }} aria-invalid={Boolean(fieldErrors.location)} className={`admin-input ${fieldErrors.location ? 'border-red-500 ring-1 ring-red-500' : ''}`}><option>Pattaya, Thailand</option><option>Jomtien, Thailand</option><option>Bangkok, Thailand</option><option>Phuket, Thailand</option><option value="__custom__">Custom address</option></select>{customLocationMode ? <input autoFocus value={form.location} onChange={(e) => update('location', e.target.value)} placeholder="Enter the full property address" className={`admin-input mt-2 ${fieldErrors.location ? 'border-red-500 ring-1 ring-red-500' : ''}`} /> : null}{fieldErrors.location ? <span className="mt-1 block text-xs normal-case tracking-normal text-red-400">{fieldErrors.location}</span> : null}</label>
+              <label className="text-xs uppercase tracking-wide text-muted">Location<select id="property-location" name="location" ref={(element) => { fieldRefs.current.location = element }} value={customLocationMode ? '__custom__' : form.location} onChange={(e) => { const value = e.target.value; if (value === '__custom__') { setCustomLocationMode(true); update('location', '') } else { setCustomLocationMode(false); setManualAddress(''); update('location', value) } }} aria-invalid={Boolean(fieldErrors.location)} className={`admin-input ${fieldErrors.location ? 'border-red-500 ring-1 ring-red-500' : ''}`}><option>Pattaya, Thailand</option><option>Jomtien, Thailand</option><option>Bangkok, Thailand</option><option>Phuket, Thailand</option><option value="__custom__">Custom address</option></select><input id="property-manual-address" value={manualAddress} onChange={(e) => { setManualAddress(e.target.value); setCustomLocationMode(Boolean(e.target.value)) }} placeholder="Or enter a manual address" aria-label="Manual property address" className={`admin-input mt-2 ${fieldErrors.location ? 'border-red-500 ring-1 ring-red-500' : ''}`} />{fieldErrors.location ? <span className="mt-1 block text-xs normal-case tracking-normal text-red-400">{fieldErrors.location}</span> : null}</label>
               <label className="text-xs uppercase tracking-wide text-muted">Size in m²<input id="property-area" name="areaSqm" type="number" min="0" ref={(element) => { fieldRefs.current.areaSqm = element }} value={form.areaSqm} onChange={(e) => update('areaSqm', e.target.value)} placeholder="65" aria-invalid={Boolean(fieldErrors.areaSqm)} className={`admin-input ${fieldErrors.areaSqm ? 'border-red-500 ring-1 ring-red-500' : ''}`} />{fieldErrors.areaSqm ? <span className="mt-1 block text-xs normal-case tracking-normal text-red-400">{fieldErrors.areaSqm}</span> : null}</label>
               <label className="text-xs uppercase tracking-wide text-muted">Price<input id="property-price" name="price" ref={(element) => { fieldRefs.current.price = element }} value={form.price} onChange={(e) => update('price', e.target.value)} placeholder="Price available on request" aria-invalid={Boolean(fieldErrors.price)} className={`admin-input ${fieldErrors.price ? 'border-red-500 ring-1 ring-red-500' : ''}`} />{fieldErrors.price ? <span className="mt-1 block text-xs normal-case tracking-normal text-red-400">{fieldErrors.price}</span> : null}</label>
               <label className="text-xs uppercase tracking-wide text-muted sm:col-span-2">Description<textarea id="property-description" name="description" ref={(element) => { fieldRefs.current.description = element }} value={form.description} onChange={(e) => update('description', e.target.value)} rows={4} aria-invalid={Boolean(fieldErrors.description)} className={`admin-input ${fieldErrors.description ? 'border-red-500 ring-1 ring-red-500' : ''}`} />{fieldErrors.description ? <span className="mt-1 block text-xs normal-case tracking-normal text-red-400">{fieldErrors.description}</span> : null}</label>
