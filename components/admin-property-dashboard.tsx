@@ -127,6 +127,7 @@ export function AdminPropertyDashboard({ initialProperties }: { initialPropertie
   async function uploadFiles(files: File[], kind: 'cover' | 'gallery' | 'map' | 'pdf' | 'video') {
     if (!files.length) return
     if ((kind === 'pdf' || kind === 'video') && files.length > 1) files = files.slice(0, 1)
+    setUploadKind(kind)
     setUploading(true)
     setUploadProgress(0)
     setMessage('')
@@ -140,7 +141,7 @@ export function AdminPropertyDashboard({ initialProperties }: { initialPropertie
         if (kind === 'video' && file.size > 200 * 1024 * 1024) throw new Error('Videos must be 200MB or smaller')
         if (kind === 'pdf' && file.size > 100 * 1024 * 1024) throw new Error('PDFs must be 100MB or smaller')
         if (kind === 'pdf' || kind === 'video') {
-          const blob = await uploadToBlob(`properties/media/${crypto.randomUUID()}-${file.name}`, file, { access: 'public', handleUploadUrl: '/api/admin/upload-token', clientPayload: kind, contentType: file.type || (kind === 'pdf' ? 'application/pdf' : 'video/mp4'), onUploadProgress: ({ percentage }) => setUploadProgress(Math.round(percentage)) })
+          const blob = await uploadToBlob(`properties/media/${crypto.randomUUID()}-${file.name}`, file, { access: 'public', handleUploadUrl: '/api/admin/upload-token', clientPayload: kind, contentType: file.type || (kind === 'pdf' ? 'application/pdf' : 'video/mp4'), multipart: true, onUploadProgress: ({ percentage }) => setUploadProgress(Math.round(percentage)) })
           urls.push(blob.url)
         } else {
           const body = new FormData()
