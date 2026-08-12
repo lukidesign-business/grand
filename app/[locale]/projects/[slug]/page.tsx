@@ -83,9 +83,8 @@ export default async function ProjectPage({
     { k: labels.location, v: dict.values.locations[project.location] },
     { k: labels.status, v: dict.values.statuses[project.status] },
     { k: labels.completion, v: project.completion },
-    { k: labels.plan, v: project.plan ? dict.values.plans[project.plan] : labels.resale },
-    { k: labels.bedrooms, v: project.bedrooms.map((b) => dict.values.bedroomsShort[b]).join(' · ') },
-    { k: labels.size, v: `${project.sizeFrom} ${dict.common.sqm}` },
+    { k: labels.bedrooms, v: `${labels.from}: ${project.bedrooms.map((b) => dict.values.bedroomsShort[b]).join(' · ')}` },
+    { k: labels.size, v: `${labels.from}: ${project.sizeFrom} ${dict.common.sqm}` },
     ...(project.floors ? [{ k: labels.floors, v: String(project.floors) }] : []),
     ...(project.units ? [{ k: labels.units, v: String(project.units) }] : [])
   ];
