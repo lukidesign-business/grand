@@ -65,9 +65,9 @@ export function SiteFooter({ locale, dict }: { locale: Locale; dict: Dictionary 
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={social.id}
-                      className="grid size-10 place-items-center border border-line-soft text-muted transition-colors duration-300 hover:border-line-strong hover:text-gold"
+                      className={`social-box social-box-${social.id} grid size-12 place-items-center border text-muted transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_24px_-14px_currentColor]`}
                     >
-                      <Icon className="size-4.5" />
+                      <Icon className="size-5.5" />
                     </a>
                   </li>
                 );

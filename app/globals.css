@@ -171,6 +171,45 @@
   }
 }
 
+/* Social links use their recognizable platform colors while preserving a quiet dark treatment. */
+.social-box-instagram {
+  border-color: transparent;
+  background: linear-gradient(135deg, #833ab4 0%, #c13584 36%, #e1306c 65%, #f77737 100%);
+  color: #fff;
+}
+
+.social-box-instagram:hover {
+  filter: brightness(1.12) saturate(1.08);
+}
+
+.social-box-tiktok {
+  border-color: #25f4ee;
+  background: linear-gradient(135deg, #111 0%, #171717 100%);
+  color: #fff;
+  text-shadow: 2px 0 #25f4ee, -2px 0 #fe2c55;
+}
+
+.social-box-tiktok:hover {
+  border-color: #fe2c55;
+  background: linear-gradient(135deg, #25f4ee 0%, #111 42%, #fe2c55 100%);
+  filter: brightness(1.1);
+}
+
+.social-box-facebook {
+  border-color: transparent;
+  background: #1877f2;
+  color: #fff;
+}
+
+.social-box-facebook:hover {
+  background: #0d65d9;
+  filter: brightness(1.1);
+}
+
+[data-theme='light'] .social-box-tiktok:hover {
+  background: #111;
+}
+
 /* --------------------------------------------------------------- utilities */
 
 /* The page gutter and max width, used by every section. */
