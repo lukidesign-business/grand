@@ -5,7 +5,7 @@ import { db } from '@/lib/db'
 import { properties } from '@/lib/db/schema'
 import { requireAdmin } from '@/lib/admin'
 
-const allowedStatuses = new Set(['Ready to move', 'Under construction', 'Resale'])
+const allowedStatuses = new Set(['Ready to move', 'Under construction', 'Resale', 'Presale'])
 const allowedTypes = new Set(['Condominium', 'Villa', 'House'])
 
 export async function GET() {
@@ -28,6 +28,7 @@ export async function POST(request: Request) {
     const requestedSlug = String(body.slug ?? '').trim()
     const safeSlug = requestedSlug || safeName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || `property-${Date.now()}`
     const status = String(body.status ?? 'Ready to move')
+    const completionText = String(body.completionText ?? '').trim() || null
     const propertyType = String(body.propertyType ?? 'Condominium')
     const bedrooms = Number.isFinite(Number(body.bedrooms)) ? Number(body.bedrooms) : 0
     const location = String(body.location ?? '').trim() || 'Location available on request'
@@ -51,6 +52,7 @@ export async function POST(request: Request) {
       slug: safeSlug,
       name: safeName,
       status,
+      completionText,
       propertyType,
       bedrooms,
       location,

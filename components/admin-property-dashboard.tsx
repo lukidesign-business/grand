@@ -9,6 +9,7 @@ type Property = {
   slug: string
   name: string
   status: string
+  completionText: string | null
   propertyType: string
   bedrooms: number
   location: string
@@ -27,6 +28,7 @@ type PropertyForm = {
   name: string
   slug: string
   status: string
+  completionText: string
   propertyType: string
   bedrooms: string
   location: string
@@ -45,7 +47,7 @@ type PropertyField = keyof PropertyForm
 type FieldErrors = Partial<Record<PropertyField, string>>
 
 const initialForm: PropertyForm = {
-  name: '', slug: '', status: 'Ready to move', propertyType: 'Condominium', bedrooms: '1', location: 'Pattaya, Thailand', price: '', description: '', coverImageUrl: '', galleryImageUrls: [], mapImageUrl: '', areaSqm: '', isPublished: true, videoUrl: '', documents: [],
+  name: '', slug: '', status: 'Ready to move', completionText: '', propertyType: 'Condominium', bedrooms: '1', location: 'Pattaya, Thailand', price: '', description: '', coverImageUrl: '', galleryImageUrls: [], mapImageUrl: '', areaSqm: '', isPublished: true, videoUrl: '', documents: [],
 }
 
 export function AdminPropertyDashboard({ initialProperties }: { initialProperties: Property[] }) {
@@ -74,7 +76,7 @@ export function AdminPropertyDashboard({ initialProperties }: { initialPropertie
     })
   }
 
-  const validStatuses = ['Ready to move', 'Under construction', 'Resale']
+  const validStatuses = ['Ready to move', 'Under construction', 'Resale', 'Presale']
   const validPropertyTypes = ['Condominium', 'Villa', 'House']
 
   function editProperty(property: Property) {
@@ -86,6 +88,7 @@ export function AdminPropertyDashboard({ initialProperties }: { initialPropertie
       name: property.name,
       slug: property.slug,
       status: validStatuses.includes(property.status) ? property.status : 'Ready to move',
+      completionText: property.completionText ?? '',
       propertyType: validPropertyTypes.includes(property.propertyType) ? property.propertyType : 'Condominium',
       bedrooms: String(property.bedrooms),
       location: property.location,
@@ -269,7 +272,8 @@ export function AdminPropertyDashboard({ initialProperties }: { initialPropertie
             <div className="mt-7 grid gap-5 sm:grid-cols-2">
               <label className="text-xs uppercase tracking-wide text-muted">Property name<input id="property-name" name="name" ref={(element) => { fieldRefs.current.name = element }} value={form.name} onChange={(e) => update('name', e.target.value)} aria-invalid={Boolean(fieldErrors.name)} aria-describedby={fieldErrors.name ? 'property-name-error' : undefined} className={`admin-input ${fieldErrors.name ? 'border-red-500 ring-1 ring-red-500' : ''}`} />{fieldErrors.name ? <span id="property-name-error" className="mt-1 block text-xs normal-case tracking-normal text-red-400">{fieldErrors.name}</span> : null}</label>
               <label className="text-xs uppercase tracking-wide text-muted">Slug<input id="property-slug" name="slug" ref={(element) => { fieldRefs.current.slug = element }} value={form.slug} onChange={(e) => update('slug', e.target.value)} placeholder="auto-generated" aria-invalid={Boolean(fieldErrors.slug)} aria-describedby={fieldErrors.slug ? 'property-slug-error' : undefined} className={`admin-input ${fieldErrors.slug ? 'border-red-500 ring-1 ring-red-500' : ''}`} />{fieldErrors.slug ? <span id="property-slug-error" className="mt-1 block text-xs normal-case tracking-normal text-red-400">{fieldErrors.slug}</span> : null}</label>
-              <label className="text-xs uppercase tracking-wide text-muted">Status<select value={form.status} onChange={(e) => update('status', e.target.value)} className="admin-input"><option>Ready to move</option><option>Under construction</option><option>Resale</option></select></label>
+              <label className="text-xs uppercase tracking-wide text-muted">Status<select value={form.status} onChange={(e) => update('status', e.target.value)} className="admin-input"><option>Ready to move</option><option>Under construction</option><option>Resale</option><option>Presale</option></select></label>
+              <label className="text-xs uppercase tracking-wide text-muted">Completion<input id="property-completion" value={form.completionText} onChange={(e) => update('completionText', e.target.value)} placeholder="e.g. Q4 2027 or Ready to move in" className="admin-input" /></label>
               <label className="text-xs uppercase tracking-wide text-muted">Property type<select value={form.propertyType} onChange={(e) => update('propertyType', e.target.value)} className="admin-input"><option>Condominium</option><option>Villa</option><option>House</option></select></label>
               <label className="text-xs uppercase tracking-wide text-muted">Bedrooms<select value={form.bedrooms} onChange={(e) => update('bedrooms', e.target.value)} className="admin-input"><option value="0">Studio</option><option value="1">1 bedroom</option><option value="2">2 bedrooms</option><option value="3">3 bedrooms</option><option value="4">4 bedrooms</option></select></label>
               <label className="text-xs uppercase tracking-wide text-muted">Location<select id="property-location" name="location" ref={(element) => { fieldRefs.current.location = element }} value={customLocationMode ? '__custom__' : form.location} onChange={(e) => { const value = e.target.value; if (value === '__custom__') { setCustomLocationMode(true); update('location', '') } else { setCustomLocationMode(false); setManualAddress(''); update('location', value) } }} aria-invalid={Boolean(fieldErrors.location)} className={`admin-input ${fieldErrors.location ? 'border-red-500 ring-1 ring-red-500' : ''}`}><option>Pattaya, Thailand</option><option>Jomtien, Thailand</option><option>Bangkok, Thailand</option><option>Phuket, Thailand</option><option value="__custom__">Custom address</option></select><input id="property-manual-address" value={manualAddress} onChange={(e) => { setManualAddress(e.target.value); setCustomLocationMode(Boolean(e.target.value)) }} placeholder="Or enter a manual address" aria-label="Manual property address" className={`admin-input mt-2 ${fieldErrors.location ? 'border-red-500 ring-1 ring-red-500' : ''}`} />{fieldErrors.location ? <span className="mt-1 block text-xs normal-case tracking-normal text-red-400">{fieldErrors.location}</span> : null}</label>

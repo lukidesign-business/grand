@@ -5,6 +5,7 @@ export const properties = pgTable('properties', {
   slug: text('slug').notNull().unique(),
   name: text('name').notNull(),
   status: text('status').notNull(),
+  completionText: text('completion_text'),
   propertyType: text('property_type').notNull(),
   bedrooms: integer('bedrooms').notNull(),
   location: text('location').notNull(),
