@@ -30,15 +30,27 @@ export function ContactForm({ dict }: { dict: Dictionary }) {
 
     setStatus('sending');
 
-    // No backend is wired up yet — the submission is acknowledged locally so the
-    // flow can be demonstrated. Replace this with a server action or an API
-    // route (see README) before launch.
     try {
-      await new Promise((resolve) => setTimeout(resolve, 700));
-      form.reset();
-      setStatus('sent');
+      const values = new FormData(form)
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: values.get('name') ?? '',
+          email: values.get('email') ?? '',
+          phone: values.get('phone') ?? '',
+          budget: values.get('budget') ?? '',
+          interest: values.get('interest') ?? '',
+          message: values.get('message') ?? '',
+          consent: values.get('consent') === 'on',
+        }),
+      })
+
+      if (!response.ok) throw new Error('Contact submission failed')
+      form.reset()
+      setStatus('sent')
     } catch {
-      setStatus('error');
+      setStatus('error')
     }
   }
 
