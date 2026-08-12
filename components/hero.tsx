@@ -60,7 +60,6 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           height={144}
           className="size-10 opacity-100 drop-shadow-[0_5px_18px_rgba(0,0,0,.7)] sm:size-28"
         />
-        <span className="hidden text-[0.6rem] uppercase tracking-[0.2em] text-[rgba(247,244,238,0.9)] sm:block">{OFFICIAL_PARTNER.name}</span>
       </div>
 
       <div className="shell flex min-h-0 flex-1 items-start pt-4 md:items-center md:pb-[clamp(1rem,3vh,2.5rem)] md:pt-0">
