@@ -28,7 +28,7 @@ export async function POST(request: Request) {
 
     const resend = new Resend(apiKey)
     const result = await resend.emails.send({
-      from: 'Grand Properties Website <onboarding@resend.dev>',
+      from: 'Grand Properties Website <thai@grand-properties.com>',
       to: [recipient],
       replyTo: email,
       subject: `New property enquiry from ${name}`,
