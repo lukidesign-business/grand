@@ -8,8 +8,8 @@ export const BRAND = {
   phoneHref: '+66980850053',
   whatsappHref: 'https://wa.me/66980850053',
   whatsapp: [
-    { display: '+66 98 085 0053', href: 'https://wa.me/66980850053', country: 'Thailand', code: 'TH' },
-    { display: '+48 666 212 777', href: 'https://wa.me/48666212777', country: 'Poland', code: 'PL' }
+    { display: '+48 666 212 777', href: 'https://wa.me/48666212777', country: 'Poland', code: 'PL' },
+    { display: '+66 98 085 0053', href: 'https://wa.me/66980850053', country: 'Thailand', code: 'TH' }
   ],
   address: '315/85 Moo 12, Nongprue Banglamung, Chonburi, Thailand',
   city: '315/85 Moo 12, Nongprue Banglamung',
