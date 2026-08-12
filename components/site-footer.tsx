@@ -1,13 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Facebook, Instagram, Mail, MapPin, MessageCircle } from 'lucide-react';
+import { Facebook, Instagram, Mail, MapPin, MessageCircle, Music2 } from 'lucide-react';
 
 import { LanguageSwitcher } from '@/components/language-switcher';
 import { BRAND, FOOTER_NAV, OFFICIAL_PARTNER, TEAM, href } from '@/lib/site';
 import type { Dictionary } from '@/lib/i18n';
 import type { Locale } from '@/lib/i18n/config';
 
-const SOCIAL_ICONS = { instagram: Instagram, facebook: Facebook } as const;
+const SOCIAL_ICONS = { instagram: Instagram, tiktok: Music2, facebook: Facebook } as const;
 
 export function SiteFooter({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const { footer, nav, lang } = dict;

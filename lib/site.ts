@@ -15,8 +15,9 @@ export const BRAND = {
   city: '315/85 Moo 12, Nongprue Banglamung',
   country: 'Chonburi, Thailand',
   social: [
-    { id: 'instagram', href: 'https://instagram.com/' },
-    { id: 'facebook', href: 'https://facebook.com/' }
+    { id: 'instagram', href: 'https://instagram.com/grand.property.th' },
+    { id: 'tiktok', href: 'https://tiktok.com/@grand.property67' },
+    { id: 'facebook', href: 'https://facebook.com/profile.php?id=61592544962549' }
   ]
 } as const;
 
