@@ -110,7 +110,7 @@ export function propertyToProject(property: Property): Project {
       : property.status.toLowerCase().includes('construction')
         ? 'plan3'
         : 'plan4',
-    completion: property.status,
+    completion: property.completionText || property.status,
     priceFrom: Number.isFinite(numericPrice) && numericPrice > 0 ? numericPrice * 1_000_000 : undefined,
     sizeFrom: property.areaSqm ?? (isZenithPattaya ? 35 : isZenithPattayaTwo ? 65 : 0),
     bedrooms: [bedroomId],
