@@ -117,7 +117,7 @@ export function HeroSearch({ locale, dict }: { locale: Locale; dict: Dictionary 
           placeholder={s.bedroomsAny}
           icon={<BedDouble />}
           options={BEDROOMS.map((id) => ({ value: id, label: v.bedroomsShort[id] }))}
-          className={`${divider} sm:border-l-0 sm:border-t xl:border-l xl:border-t-0`}
+          className={`${divider} sm:border-t xl:border-l xl:border-t-0`}
         />
 
         <button
