@@ -9,7 +9,7 @@ type PropertyLocationFallbackProps = {
 
 export function PropertyLocationFallback({ location, mapUrl }: PropertyLocationFallbackProps) {
   const query = encodeURIComponent(location)
-  const embedUrl = `https://www.google.com/maps?q=${query}&output=embed&z=13`
+  const embedUrl = `https://www.google.com/maps?q=${query}&output=embed&z=13&hl=en`
 
   return (
     <div className="relative size-full overflow-hidden bg-[#161a20]">
