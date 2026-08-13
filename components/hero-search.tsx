@@ -83,7 +83,6 @@ export function HeroSearch({ locale, dict }: { locale: Locale; dict: Dictionary 
           setOpenField={setOpenField}
           label={s.location}
           placeholder={s.locationPlaceholder}
-          hint={s.locationHint}
           icon={<MapPin />}
           options={LOCATIONS.map((id) => ({ value: id, label: v.locations[id] }))}
         />
@@ -118,7 +117,7 @@ export function HeroSearch({ locale, dict }: { locale: Locale; dict: Dictionary 
           placeholder={s.bedroomsAny}
           icon={<BedDouble />}
           options={BEDROOMS.map((id) => ({ value: id, label: v.bedroomsShort[id] }))}
-          className={divider}
+          className={`${divider} sm:border-t xl:border-l xl:border-t-0`}
         />
 
         <button
