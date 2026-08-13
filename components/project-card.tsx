@@ -90,7 +90,7 @@ export function ProjectCard({ project, locale, dict, priority = false }: Project
         <dl className="mt-4 flex items-end gap-6 border-t border-line-soft pt-3">
           <div>
             <dt className="mb-0.5 text-[0.56rem] uppercase tracking-[0.16em] text-muted-2">{labels.from}</dt>
-            <dd className="m-0 font-serif text-[1.3rem] font-semibold leading-tight text-gold">
+            <dd className={`m-0 font-serif font-semibold leading-tight text-gold ${meta[0].price && meta[0].value === labels.priceOnRequest ? 'text-[0.78rem] tracking-normal sm:text-[0.86rem]' : 'text-[1.3rem]'}`}>
               {meta[0].value}
             </dd>
           </div>
