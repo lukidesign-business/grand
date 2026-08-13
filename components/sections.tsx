@@ -81,19 +81,22 @@ export function Benefits({ dict }: { dict: Dictionary }) {
 export function WhyPattaya({ dict }: { dict: Dictionary }) {
   const p = dict.pattaya;
   return (
-    <section id="pattaya" className="relative bg-ink-2 py-16 md:py-20 lg:py-24">
+    <section id="pattaya" className="relative overflow-hidden bg-ink-2 py-16 md:py-20 lg:py-24">
       <Wash src="/images/wash-city.jpg" />
       <div className="shell relative z-1">
-        <SectionHead eyebrow={p.eyebrow} title={p.title} lead={p.lead} className="max-w-4xl md:mb-12" />
+        <SectionHead eyebrow={p.eyebrow} title={p.title} lead={p.lead} className="max-w-3xl md:mb-10 lg:mb-12" />
 
-        <div className="mt-10 grid items-start gap-8 lg:mt-12 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:gap-12">
-          {/* Editorial copy aligns to the top of the media column for a clean desktop rhythm. */}
-          <div className="reveal max-w-[38rem] lg:pt-2">
-            <p className="text-[0.98rem] leading-[1.75] text-muted">{p.body1}</p>
-            <p className="mt-5 text-[0.98rem] leading-[1.75] text-muted">{p.body2}</p>
+        <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-14">
+          <div className="reveal flex max-w-[34rem] flex-col justify-between gap-8 lg:min-h-[25rem] lg:pt-1">
+            <div className="space-y-5">
+              <p className="text-[0.98rem] leading-[1.75] text-muted">{p.body1}</p>
+              <p className="text-[0.98rem] leading-[1.75] text-muted">{p.body2}</p>
+            </div>
+            <p className="hidden border-l border-gold/60 pl-4 text-[0.72rem] uppercase tracking-[0.22em] text-gold/80 lg:block">
+              Grand Properties · Eastern Seaboard
+            </p>
           </div>
 
-          {/* Image and statistics share one measured right-hand column. */}
           <div className="reveal min-w-0">
             <FramedImage
               src="/images/pattaya-aerial.jpg"
@@ -101,30 +104,29 @@ export function WhyPattaya({ dict }: { dict: Dictionary }) {
               width={1280}
               height={731}
               className="w-full"
-              sizes="(max-width: 1024px) 100vw, 58vw"
+              sizes="(max-width: 1024px) 100vw, 56vw"
               tight
             />
-            <ul className="mt-6 grid grid-cols-2 gap-px border border-line-soft bg-line-soft">
-              {p.stats.map((stat) => (
-                <li key={stat.label} className="min-h-32 bg-ink-2 px-6 py-5 lg:px-7 lg:py-6">
-                  <span className="mb-1.5 block font-serif text-[1.9rem] leading-tight text-gold">
-                    {stat.value}
-                  </span>
-                  <span className="block max-w-[15rem] text-[0.76rem] leading-snug text-muted">{stat.label}</span>
-                </li>
-              ))}
-            </ul>
           </div>
         </div>
 
-        <ul className="mt-12 grid gap-px border border-line-soft bg-line-soft sm:grid-cols-2 lg:mt-16 lg:grid-cols-4">
+        <ul className="mt-8 grid grid-cols-2 gap-px border border-line-soft bg-line-soft lg:mt-10 lg:grid-cols-4">
+          {p.stats.map((stat) => (
+            <li key={stat.label} className="bg-ink-2 px-5 py-5 sm:px-6 lg:px-7 lg:py-6">
+              <span className="mb-1 block font-serif text-[1.75rem] leading-tight text-gold">{stat.value}</span>
+              <span className="block max-w-[15rem] text-[0.72rem] leading-snug text-muted">{stat.label}</span>
+            </li>
+          ))}
+        </ul>
+
+        <ul className="mt-8 grid gap-px border border-line-soft bg-line-soft sm:grid-cols-2 lg:mt-10 lg:grid-cols-4">
           {p.points.map((point) => (
             <li
               key={point.title}
-              className="reveal bg-ink-2 p-7 transition-colors duration-500 hover:bg-surface md:p-9"
+              className="reveal bg-ink-2 p-6 transition-colors duration-500 hover:bg-surface md:p-7"
             >
-              <h3 className="mb-3 text-[1.28rem]">{point.title}</h3>
-              <p className="text-[0.92rem] leading-[1.8] text-muted">{point.body}</p>
+              <h3 className="mb-2.5 text-[1.2rem]">{point.title}</h3>
+              <p className="text-[0.9rem] leading-[1.72] text-muted">{point.body}</p>
             </li>
           ))}
         </ul>
