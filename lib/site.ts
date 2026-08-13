@@ -98,13 +98,10 @@ export const LOCATIONS = ['pattaya', 'jomtien', 'pratumnak', 'bangsaray', 'wonga
 export const PROPERTY_TYPES = ['condo', 'penthouse', 'villa', 'townhouse'] as const;
 export const BEDROOMS = ['studio', '1', '2', '3', '4plus'] as const;
 export const STATUSES = ['ready', 'offplan'] as const;
-export const PLANS = ['plan2', 'plan3', 'plan4'] as const;
-
 export type LocationId = (typeof LOCATIONS)[number];
 export type PropertyType = (typeof PROPERTY_TYPES)[number];
 export type BedroomId = (typeof BEDROOMS)[number];
 export type StatusId = (typeof STATUSES)[number];
-export type PlanId = (typeof PLANS)[number];
 export type PriceBandId = 'p1' | 'p2' | 'p3' | 'p4';
 
 export const PRICE_BANDS: { id: PriceBandId; min: number; max: number }[] = [
@@ -132,7 +129,6 @@ export interface Project {
   location: LocationId;
   type: PropertyType;
   status: StatusId;
-  plan?: PlanId;
   completion: string;
   priceFrom?: number;
   sizeFrom: number;

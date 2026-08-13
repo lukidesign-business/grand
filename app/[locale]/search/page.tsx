@@ -63,7 +63,6 @@ export default async function SearchPage({
             location: value('location'),
             type: value('type'),
             price: value('price'),
-            plan: value('plan'),
             bedrooms: value('bedrooms'),
             status: value('status')
           }}

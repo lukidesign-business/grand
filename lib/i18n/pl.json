@@ -132,7 +132,7 @@
       {
         "id": "payment",
         "title": "Elastyczne płatności",
-        "body": "Harmonogramy deweloperskie rozłożone nawet na cztery lata, 0% odsetek, z odroczonymi ratami w wybranych inwestycjach i wkładem własnym, który nie blokuje kapitału."
+        "body": "Jasne doradztwo zakupowe, kompletna dokumentacja i wsparcie od rezerwacji aż po odbiór nieruchomości."
       }
     ]
   },
@@ -255,7 +255,6 @@
       "resale": "Rynek wtórny",
       "map": "Mapa lokalizacji",
       "openMap": "Otwórz w Google Maps",
-      "plan": "Plan płatności",
       "completion": "Termin oddania",
       "location": "Lokalizacja",
       "bedrooms": "Sypialnie",
@@ -294,8 +293,7 @@
         "highlights": [
           "Położenie bezpośrednio przy plaży",
           "Basen i lounge na 40. piętrze",
-          "W pełni umeblowany przy odbiorze",
-          "Plan płatności na 4 lata, 0% odsetek"
+          "W pełni umeblowany przy odbiorze"
         ]
       },
       "celeste-skyline": {
@@ -306,8 +304,7 @@
         "highlights": [
           "Niezasłonięty widok na zatokę Pattaya",
           "Prywatny sky lounge i basen infinity",
-          "Dostępny program zarządzania najmem",
-          "Plan płatności na 3 lata, 0% odsetek"
+          "Dostępny program zarządzania najmem"
         ]
       },
       "verdana-lagoon": {
@@ -318,8 +315,7 @@
         "highlights": [
           "Gotowe do zamieszkania i już wynajmowane",
           "Laguna basenowa 1 800 m² w centrum założenia",
-          "Niska, rozproszona zabudowa",
-          "Plan płatności na 2 lata dla pozostałych lokali"
+          "Niska, rozproszona zabudowa"
         ]
       },
       "meridian-grand": {
@@ -330,8 +326,7 @@
         "highlights": [
           "Spacer od Beach Road",
           "Widok na miasto i zatokę od 12. piętra",
-          "Najwyższy popyt na najem krótkoterminowy w portfolio",
-          "Plan płatności na 3 lata, 0% odsetek"
+          "Najwyższy popyt na najem krótkoterminowy w portfolio"
         ]
       },
       "seranai-wongamat": {
@@ -354,8 +349,7 @@
         "highlights": [
           "Prywatny basen przy każdej willi",
           "Zamknięte osiedle tylko 34 domów",
-          "Pawilon plażowy dla mieszkańców",
-          "Plan płatności na 3 lata, 0% odsetek"
+          "Pawilon plażowy dla mieszkańców"
         ]
       },
       "zenith-pattaya": {
@@ -626,11 +620,6 @@
     "statuses": {
       "ready": "Gotowe do zamieszkania",
       "offplan": "W budowie"
-    },
-    "plans": {
-      "plan2": "Do 2 lat, 0%",
-      "plan3": "Do 3 lat, 0%",
-      "plan4": "Do 4 lat, 0%"
     },
     "priceBands": {
       "p1": "Poniżej ฿4 mln",

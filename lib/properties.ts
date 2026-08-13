@@ -105,11 +105,6 @@ export function propertyToProject(property: Property): Project {
           ? 'townhouse'
           : 'condo',
     status,
-    plan: property.status.toLowerCase().includes('ready') || property.status.toLowerCase().includes('resale')
-      ? 'plan2'
-      : property.status.toLowerCase().includes('construction')
-        ? 'plan3'
-        : 'plan4',
     completion: property.completionText || property.status,
     priceFrom: Number.isFinite(numericPrice) && numericPrice > 0 ? numericPrice * 1_000_000 : undefined,
     sizeFrom: property.areaSqm ?? (isZenithPattaya ? 35 : isZenithPattayaTwo ? 65 : 0),
