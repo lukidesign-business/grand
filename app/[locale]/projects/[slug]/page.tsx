@@ -122,7 +122,7 @@ export default async function ProjectPage({
           </Link>
 
           <h1 className="mb-2.5 text-[clamp(2.3rem,5.2vw,4rem)]">{item.name}</h1>
-          <p className="mb-5 text-[1.1rem] text-muted">{item.tagline}</p>
+          {item.tagline && item.tagline !== item.summary ? <p className="mb-5 text-[1.1rem] text-muted">{item.tagline}</p> : null}
 
           <p className="mb-6 flex items-center gap-2 text-[0.72rem] uppercase tracking-luxe text-gold">
             <MapPin className="size-4" />
@@ -148,7 +148,7 @@ export default async function ProjectPage({
             <p className="text-[clamp(1.02rem,1.25vw,1.16rem)] leading-[1.8] text-cream">
               {item.summary}
             </p>
-            <p className="mt-5 text-muted">{item.body}</p>
+            {item.body && item.body !== item.summary ? <p className="mt-5 text-muted">{item.body}</p> : null}
 
             <h3 className="mt-10 border-t border-line-soft pt-6 text-[1.35rem]">
               {labels.highlights}
