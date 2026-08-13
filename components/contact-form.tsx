@@ -11,7 +11,7 @@ import { cn } from '@/lib/utils';
 type Status = 'idle' | 'sending' | 'sent' | 'error';
 
 const fieldClass =
-  'border border-[rgba(255,255,255,0.09)] bg-[rgba(28,33,42,.75)] px-4 py-3.5 text-[0.95rem] font-light text-[var(--fixed-cream-bright)] transition-colors duration-300 placeholder:text-[var(--fixed-muted-2)] focus:border-gold focus:bg-[rgba(28,33,42,.9)] focus:outline-none aria-invalid:border-[#b9603f]';
+  'border border-[rgba(255,255,255,0.09)] bg-[rgba(28,33,42,.75)] px-4 py-3.5 text-[0.95rem] font-light text-[var(--fixed-cream-bright)] transition-colors duration-300 placeholder:text-[var(--fixed-muted-2)] focus:border-[var(--fixed-gold)] focus:bg-[rgba(28,33,42,.9)] focus:outline-none aria-invalid:border-[#b9603f]';
 
 const labelClass = 'text-[0.66rem] uppercase tracking-luxe text-[var(--fixed-gold)]';
 
