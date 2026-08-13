@@ -50,7 +50,8 @@ export function LanguageGate({ locale, copy }: LanguageGateProps) {
   const router = useRouter();
   const pathname = usePathname();
 
-  const other = locales.find((l) => l !== locale) as Locale;
+  const primaryLocales: Locale[] = ['en', 'pl'];
+  const additionalLocales: Locale[] = ['ru', 'de', 'es'];
 
   useEffect(() => {
     if (hasStoredChoice()) return;
@@ -146,12 +147,27 @@ export function LanguageGate({ locale, copy }: LanguageGateProps) {
         {suggestsOther ? <p className="mb-4 text-[0.82rem] text-gold">{copy.modalHintPl}</p> : null}
 
         <div className="grid gap-3">
-          <Button variant="gold" onClick={() => choose(locale)}>
-            {copy.modalPrimary}
-          </Button>
-          <Button variant="ghost" lang={other} onClick={() => choose(other)}>
-            {copy.modalSecondary}
-          </Button>
+          {primaryLocales.map((code) => (
+            <Button key={code} variant={code === 'en' ? 'gold' : 'ghost'} lang={code} onClick={() => choose(code)}>
+              {code === 'en' ? copy.modalPrimary : copy.modalSecondary}
+            </Button>
+          ))}
+          <div className="mt-3 border-t border-line-soft pt-3">
+            <p className="mb-2 text-[0.68rem] uppercase tracking-[0.16em] text-muted-2">Weitere Sprachen · Otros idiomas · Другие языки</p>
+            <div className="flex flex-wrap justify-center gap-2">
+              {additionalLocales.map((code) => (
+                <button
+                  key={code}
+                  type="button"
+                  lang={code}
+                  onClick={() => choose(code)}
+                  className="px-2.5 py-1 text-[0.68rem] text-muted-2 underline decoration-line underline-offset-4 transition-colors hover:text-gold"
+                >
+                  {code === 'ru' ? 'Русский' : code === 'de' ? 'Deutsch' : 'Español'}
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
 
         <p className="mt-5 text-[0.72rem] text-muted-2">{copy.remember}</p>
