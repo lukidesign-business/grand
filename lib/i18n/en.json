@@ -203,7 +203,7 @@
       { "k": "Type of title", "v": "Freehold, not leasehold" },
       { "k": "Source of funds", "v": "Documented from abroad" },
       { "k": "Registration", "v": "Provincial land office" },
-      { "k": "Your presence", "v": "Optional — remote purchase supported" }
+      { "k": "Your presence", "v": "Optional. Remote purchase supported" }
     ],
     "note": "This is a plain-language summary, not legal advice. Every purchase we handle is reviewed by an independent Thai lawyer before anything is signed, and we introduce you to one at the start rather than the end.",
     "cta": "Read the full guide"
