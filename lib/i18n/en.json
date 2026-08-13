@@ -132,7 +132,7 @@
       {
         "id": "payment",
         "title": "Flexible payment",
-        "body": "Developer payment schedules stretching up to four years at 0% interest, with deferred instalments on selected projects and a deposit that keeps your capital working."
+        "body": "Clear purchase guidance, careful documentation and support from reservation through handover."
       }
     ]
   },
@@ -255,7 +255,6 @@
       "resale": "Resale",
       "map": "Location map",
       "openMap": "Open in Google Maps",
-      "plan": "Payment plan",
       "completion": "Completion",
       "location": "Location",
       "bedrooms": "Bedrooms",
@@ -294,8 +293,7 @@
         "highlights": [
           "Direct beachfront position",
           "Sky pool and lounge on level 40",
-          "Fully furnished at handover",
-          "4-year payment plan, 0% interest"
+          "Fully furnished at handover"
         ]
       },
       "celeste-skyline": {
@@ -306,8 +304,7 @@
         "highlights": [
           "Unobstructed views across Pattaya Bay",
           "Private sky lounge and infinity edge pool",
-          "Managed rental programme available",
-          "3-year payment plan, 0% interest"
+          "Managed rental programme available"
         ]
       },
       "verdana-lagoon": {
@@ -318,8 +315,7 @@
         "highlights": [
           "Ready to move in and already renting",
           "1,800 m² lagoon pool at the centre of the scheme",
-          "Low-density, low-rise layout",
-          "2-year payment plan on remaining units"
+          "Low-density, low-rise layout"
         ]
       },
       "meridian-grand": {
@@ -330,8 +326,7 @@
         "highlights": [
           "Walking distance to Beach Road",
           "City and bay outlooks from level 12 up",
-          "Highest short-let demand in our portfolio",
-          "3-year payment plan, 0% interest"
+          "Highest short-let demand in our portfolio"
         ]
       },
       "seranai-wongamat": {
@@ -354,8 +349,7 @@
         "highlights": [
           "Private pool with every villa",
           "Gated enclave of only 34 homes",
-          "Beach pavilion for residents",
-          "3-year payment plan, 0% interest"
+          "Beach pavilion for residents"
         ]
       },
       "zenith-pattaya": {
@@ -626,11 +620,6 @@
     "statuses": {
       "ready": "Ready to move in",
       "offplan": "Under construction"
-    },
-    "plans": {
-      "plan2": "Up to 2 years, 0%",
-      "plan3": "Up to 3 years, 0%",
-      "plan4": "Up to 4 years, 0%"
     },
     "priceBands": {
       "p1": "Under ฿4M",

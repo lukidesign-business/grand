@@ -27,10 +27,6 @@ export function ProjectCard({ project, locale, dict, priority = false }: Project
       price: true
     },
     {
-      label: labels.plan,
-      value: project.plan ? dict.values.plans[project.plan] : labels.resale
-    },
-    {
       label: labels.bedrooms,
       value: project.bedrooms.map((b) => dict.values.bedroomsShort[b]).join(' · ')
     },
@@ -91,17 +87,14 @@ export function ProjectCard({ project, locale, dict, priority = false }: Project
           <div>
             <dt className="mb-0.5 text-[0.56rem] uppercase tracking-[0.16em] text-muted-2">{labels.from}</dt>
             <dd className={`m-0 font-serif font-semibold leading-tight text-gold ${meta[0].price && meta[0].value === labels.priceOnRequest ? 'text-[0.78rem] tracking-normal sm:text-[0.86rem]' : 'text-[1.3rem]'}`}>
-              {meta[0].value}
+              {meta[0].value.startsWith('฿') ? <><span className="align-[0.08em] text-[0.72em] font-normal">฿</span>{meta[0].value.slice(1)}</> : meta[0].value}
             </dd>
           </div>
           <div>
             <dt className="mb-0.5 text-[0.56rem] uppercase tracking-[0.16em] text-muted-2">{labels.bedrooms}</dt>
             <dd className="m-0 text-[0.82rem] text-cream">{meta[2].value}</dd>
           </div>
-          <div className="ml-auto hidden sm:block">
-            <dt className="sr-only">{labels.plan}</dt>
-            <dd className="m-0 text-[0.72rem] text-muted">{meta[1].value}</dd>
-          </div>
+
         </dl>
       </div>
     </article>

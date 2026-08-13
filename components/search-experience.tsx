@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
-import { BedDouble, Building2, CalendarDays, ChevronDown, Home, MapPin, Search, Tag } from 'lucide-react';
+import { BedDouble, Building2, ChevronDown, Home, MapPin, Search, Tag } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { ProjectCard } from '@/components/project-card';
@@ -10,7 +10,6 @@ import { SearchField } from '@/components/hero-search';
 import {
   BEDROOMS,
   LOCATIONS,
-  PLANS,
   PRICE_BANDS,
   PROPERTY_TYPES,
   STATUSES,
@@ -25,12 +24,11 @@ export type SearchFilters = {
   location: string;
   type: string;
   price: string;
-  plan: string;
   bedrooms: string;
   status: string;
 };
 
-const EMPTY: SearchFilters = { location: '', type: '', price: '', plan: '', bedrooms: '', status: '' };
+const EMPTY: SearchFilters = { location: '', type: '', price: '', bedrooms: '', status: '' };
 type SortMode = 'featured' | 'asc' | 'desc';
 
 export function SearchExperience({
@@ -53,7 +51,6 @@ export function SearchExperience({
     const matched = projects.filter((project) => {
       if (filters.location && project.location !== filters.location) return false;
       if (filters.type && project.type !== filters.type) return false;
-      if (filters.plan && project.plan !== filters.plan) return false;
       if (filters.status && project.status !== filters.status) return false;
       if (filters.bedrooms && !project.bedrooms.includes(filters.bedrooms as never)) return false;
       if (
@@ -138,17 +135,6 @@ export function SearchExperience({
               value={filters.price}
               onChange={set('price')}
               options={PRICE_BANDS.map((b) => ({ value: b.id, label: v.priceBands[b.id] }))}
-              className="bg-ink-2"
-            />
-            <SearchField
-              id="f-plan"
-              name="plan"
-              label={s.plan}
-              placeholder={s.anyPlan}
-              icon={<CalendarDays />}
-              value={filters.plan}
-              onChange={set('plan')}
-              options={PLANS.map((id) => ({ value: id, label: v.plans[id] }))}
               className="bg-ink-2"
             />
             <SearchField

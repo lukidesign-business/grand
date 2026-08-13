@@ -21,7 +21,7 @@ export function BackToTop({ label }: { label: string }) {
       aria-label={label}
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       className={cn(
-        'fixed bottom-5 right-5 z-40 inline-flex size-11 items-center justify-center border border-gold/60 bg-ink/90 text-gold shadow-lg backdrop-blur-sm transition-all duration-300 hover:border-gold-bright hover:bg-ink hover:text-gold-bright focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-gold-bright sm:bottom-7 sm:right-7',
+        'inline-flex size-11 items-center justify-center border border-gold/60 bg-ink/90 text-gold shadow-lg backdrop-blur-sm transition-all duration-300 hover:border-gold-bright hover:bg-ink hover:text-gold-bright focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-gold-bright',
         visible ? 'translate-y-0 opacity-100' : 'pointer-events-none translate-y-3 opacity-0'
       )}
     >
