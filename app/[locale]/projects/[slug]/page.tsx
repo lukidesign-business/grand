@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, Building2, Check, MapPin } from 'lucide-react';
+import { ArrowLeft, Building2, MapPin } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { Rule } from '@/components/ui/section-head';
@@ -68,7 +68,6 @@ export default async function ProjectPage({
     tagline: project.tagline ?? dictItem?.tagline ?? '',
     summary: project.summary ?? dictItem?.summary ?? '',
     body: project.body ?? dictItem?.body ?? '',
-    highlights: dictItem?.highlights ?? []
   };
   const labels = dict.projects.labels;
   const published = await getPublishedProperties();
@@ -149,18 +148,6 @@ export default async function ProjectPage({
               {item.summary}
             </p>
             {item.body && item.body !== item.summary ? <p className="mt-5 text-muted">{item.body}</p> : null}
-
-            <h3 className="mt-10 border-t border-line-soft pt-6 text-[1.35rem]">
-              {labels.highlights}
-            </h3>
-            <ul className="mt-5 grid gap-3.5">
-              {item.highlights.map((highlight) => (
-                <li key={highlight} className="flex gap-3 text-[0.93rem] leading-relaxed text-muted">
-                  <Check className="mt-1.5 size-4 shrink-0 text-gold" />
-                  <span>{highlight}</span>
-                </li>
-              ))}
-            </ul>
 
             <h3 className="mt-10 border-t border-line-soft pt-6 text-[1.35rem]">{labels.gallery}</h3>
             <ProjectGallery
