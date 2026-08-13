@@ -1,8 +1,8 @@
 {
-  "code": "en",
-  "htmlLang": "en",
-  "name": "English",
-  "nativeName": "English",
+  "code": "ru",
+  "htmlLang": "ru",
+  "name": "Russian",
+  "nativeName": "Русский",
   "dir": "ltr",
 
   "meta": {
@@ -37,16 +37,16 @@
   },
 
   "nav": {
-    "projects": "Projects",
-    "thailand": "Thailand",
-    "invest": "Invest",
-    "about": "About",
-    "search": "Search",
-    "contact": "Contact",
-    "menu": "Menu",
-    "close": "Close",
-    "skip": "Skip to content",
-    "backToTop": "Back to top"
+    "projects": "Проекты",
+    "thailand": "Таиланд",
+    "invest": "Инвестиции",
+    "about": "О компании",
+    "search": "Поиск",
+    "contact": "Контакты",
+    "menu": "Меню",
+    "close": "Закрыть",
+    "skip": "К содержанию",
+    "backToTop": "Наверх"
   },
 
   "lang": {
@@ -54,6 +54,9 @@
     "current": "Current language",
     "en": "English",
     "pl": "Polski",
+    "ru": "Русский",
+    "de": "Deutsch",
+    "es": "Español",
     "enShort": "EN",
     "plShort": "PL",
     "modalEyebrow": "Language",
@@ -83,30 +86,27 @@
 
   "hero": {
     "eyebrow": "Pattaya",
-    "titleTop": "Property",
-    "titleBottom": "Expert",
-    "taglineLine1": "Local knowledge. Trusted advice.",
-    "taglineLine2": "Premium results.",
-    "name": "Eryk Fokt",
-    "role": "Real Estate Consultant",
-    "signatureAlt": "Eryk Fokt signature",
-    "officialPartner": "Official Partner",
-    "ctaPrimary": "Explore projects",
-    "ctaSecondary": "Book a consultation",
-    "scroll": "Scroll",
+    "titleTop": "Эксперт",
+    "titleBottom": "по недвижимости",
+    "taglineLine1": "Знание местности. Надёжный совет.",
+    "taglineLine2": "Премиальный результат.",
+    "role": "Консультант по недвижимости",
+    "officialPartner": "Официальный партнёр",
+    "ctaPrimary": "Смотреть проекты",
+    "ctaSecondary": "Записаться на консультацию",
+    "scroll": "Прокрутить",
     "search": {
-      "label": "Find your property",
-      "location": "Location",
-      "locationPlaceholder": "Where do you want to live?",
-      "locationHint": "Pattaya, Jomtien, Pratumnak…",
-      "type": "Property type",
-      "typeAny": "Any type",
-      "price": "Price range",
-      "priceAny": "Any price",
-      "bedrooms": "Bedrooms",
-      "bedroomsAny": "Any",
-      "submit": "Search properties",
-      "popular": "Popular locations"
+      "label": "Найдите свою недвижимость",
+      "location": "Расположение",
+      "locationPlaceholder": "Где вы хотите жить?",
+      "type": "Тип недвижимости",
+      "typeAny": "Любой тип",
+      "price": "Ценовой диапазон",
+      "priceAny": "Любая цена",
+      "bedrooms": "Спальни",
+      "bedroomsAny": "Любое количество",
+      "submit": "Искать недвижимость",
+      "popular": "Популярные районы"
     }
   },
 

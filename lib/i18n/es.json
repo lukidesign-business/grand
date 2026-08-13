@@ -1,8 +1,8 @@
 {
-  "code": "en",
-  "htmlLang": "en",
-  "name": "English",
-  "nativeName": "English",
+  "code": "es",
+  "htmlLang": "es",
+  "name": "Spanish",
+  "nativeName": "Español",
   "dir": "ltr",
 
   "meta": {
@@ -37,16 +37,16 @@
   },
 
   "nav": {
-    "projects": "Projects",
-    "thailand": "Thailand",
-    "invest": "Invest",
-    "about": "About",
-    "search": "Search",
-    "contact": "Contact",
-    "menu": "Menu",
-    "close": "Close",
-    "skip": "Skip to content",
-    "backToTop": "Back to top"
+    "projects": "Proyectos",
+    "thailand": "Tailandia",
+    "invest": "Invertir",
+    "about": "Sobre nosotros",
+    "search": "Buscar",
+    "contact": "Contacto",
+    "menu": "Menú",
+    "close": "Cerrar",
+    "skip": "Ir al contenido",
+    "backToTop": "Volver arriba"
   },
 
   "lang": {
@@ -54,6 +54,9 @@
     "current": "Current language",
     "en": "English",
     "pl": "Polski",
+    "ru": "Русский",
+    "de": "Deutsch",
+    "es": "Español",
     "enShort": "EN",
     "plShort": "PL",
     "modalEyebrow": "Language",
@@ -83,30 +86,27 @@
 
   "hero": {
     "eyebrow": "Pattaya",
-    "titleTop": "Property",
-    "titleBottom": "Expert",
-    "taglineLine1": "Local knowledge. Trusted advice.",
-    "taglineLine2": "Premium results.",
-    "name": "Eryk Fokt",
-    "role": "Real Estate Consultant",
-    "signatureAlt": "Eryk Fokt signature",
-    "officialPartner": "Official Partner",
-    "ctaPrimary": "Explore projects",
-    "ctaSecondary": "Book a consultation",
-    "scroll": "Scroll",
+    "titleTop": "Experto en",
+    "titleBottom": "inmuebles",
+    "taglineLine1": "Conocimiento local. Asesoramiento de confianza.",
+    "taglineLine2": "Resultados premium.",
+    "role": "Consultor inmobiliario",
+    "officialPartner": "Socio oficial",
+    "ctaPrimary": "Explorar proyectos",
+    "ctaSecondary": "Reservar una consulta",
+    "scroll": "Desplazar",
     "search": {
-      "label": "Find your property",
-      "location": "Location",
-      "locationPlaceholder": "Where do you want to live?",
-      "locationHint": "Pattaya, Jomtien, Pratumnak…",
-      "type": "Property type",
-      "typeAny": "Any type",
-      "price": "Price range",
-      "priceAny": "Any price",
-      "bedrooms": "Bedrooms",
-      "bedroomsAny": "Any",
-      "submit": "Search properties",
-      "popular": "Popular locations"
+      "label": "Encuentra tu propiedad",
+      "location": "Ubicación",
+      "locationPlaceholder": "¿Dónde quieres vivir?",
+      "type": "Tipo de propiedad",
+      "typeAny": "Cualquier tipo",
+      "price": "Rango de precios",
+      "priceAny": "Cualquier precio",
+      "bedrooms": "Dormitorios",
+      "bedroomsAny": "Cualquiera",
+      "submit": "Buscar propiedades",
+      "popular": "Ubicaciones populares"
     }
   },
 
