@@ -67,7 +67,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
 
       <section className="section-y bg-ink-2">
         <div className="shell grid items-start gap-10 lg:grid-cols-[1.25fr_.75fr] lg:gap-16">
-          <div className="on-photo reveal border border-line bg-[linear-gradient(160deg,rgba(28,33,42,.75),rgba(16,19,24,.9))] p-7 text-[var(--fixed-cream)] md:p-8">
+          <div className="on-photo reveal border border-line bg-[linear-gradient(160deg,rgba(28,33,42,.75),rgba(16,19,24,.9))] p-7 md:p-8">
             <h2 className="text-[1.8rem]">{c.formTitle}</h2>
             <Rule />
             <ContactForm dict={dict} />
