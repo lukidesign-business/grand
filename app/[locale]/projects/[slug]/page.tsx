@@ -94,7 +94,7 @@ export default async function ProjectPage({
     <>
       <section className="on-photo relative isolate overflow-hidden pb-[clamp(3rem,6vw,5rem)] pt-[clamp(9rem,17vh,12rem)]">
         <div className="absolute inset-0 -z-10">
-          {project.image && !project.image.startsWith('/placeholder.svg') ? (
+          {project.image && !project.image.includes('placeholder.svg') ? (
             <>
               <Image
                 src={project.image.startsWith('http') || project.image.startsWith('/') ? project.image : `/images/${project.image}`}
