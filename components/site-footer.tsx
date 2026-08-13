@@ -31,7 +31,7 @@ export function SiteFooter({ locale, dict }: { locale: Locale; dict: Dictionary 
   );
 
   return (
-    <footer className="border-t border-line-soft bg-[#08090b] pb-8 pt-[clamp(3.5rem,7vw,5.5rem)]">
+    <footer className="on-photo border-t border-line-soft bg-[#08090b] pb-8 pt-[clamp(3.5rem,7vw,5.5rem)]">
       <div className="shell">
         <div className="grid gap-10 border-b border-line-soft pb-12 md:grid-cols-2 lg:grid-cols-[1.6fr_.8fr_.8fr_1.2fr]">
           <div>
