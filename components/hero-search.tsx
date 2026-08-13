@@ -83,7 +83,6 @@ export function HeroSearch({ locale, dict }: { locale: Locale; dict: Dictionary 
           setOpenField={setOpenField}
           label={s.location}
           placeholder={s.locationPlaceholder}
-          hint={s.locationHint}
           icon={<MapPin />}
           options={LOCATIONS.map((id) => ({ value: id, label: v.locations[id] }))}
         />
