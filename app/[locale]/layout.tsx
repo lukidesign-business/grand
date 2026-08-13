@@ -77,8 +77,10 @@ export default async function LocaleLayout({
       <SiteFooter locale={locale as Locale} dict={dict} />
 
       <LanguageGate locale={locale as Locale} copy={dict.lang} />
-      <PageColorToggle darkLabel="Use dark page" lightLabel="Use light page" />
-      <BackToTop label={dict.nav.backToTop} />
+      <div className="fixed bottom-5 right-5 z-40 flex flex-col gap-2 sm:bottom-7 sm:right-7">
+        <PageColorToggle darkLabel="Use dark page" lightLabel="Use light page" />
+        <BackToTop label={dict.nav.backToTop} />
+      </div>
     </>
   );
 }

@@ -133,7 +133,7 @@ export default async function ProjectPage({
           <p className="flex items-baseline gap-3">
             <span className="text-[0.68rem] uppercase tracking-luxe text-muted-2">{labels.from}</span>
             <strong className="font-serif text-[clamp(1.9rem,3.4vw,2.6rem)] font-semibold text-gold">
-              {project.priceFrom ? formatPrice(locale, project.priceFrom) : labels.priceOnRequest}
+              {project.priceFrom ? <><span className="align-[0.08em] text-[0.62em] font-normal">฿</span>{formatPrice(locale, project.priceFrom).slice(1)}</> : labels.priceOnRequest}
             </strong>
           </p>
         </div>
@@ -227,7 +227,7 @@ export default async function ProjectPage({
                         fact.price && 'font-serif text-[1.3rem] font-semibold text-gold'
                       )}
                     >
-                      {fact.v}
+                      {fact.price && typeof fact.v === 'string' && fact.v.startsWith('฿') ? <><span className="align-[0.08em] text-[0.68em] font-normal">฿</span>{fact.v.slice(1)}</> : fact.v}
                     </dd>
                   </div>
                 ))}
