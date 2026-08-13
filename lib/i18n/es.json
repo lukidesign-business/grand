@@ -1,0 +1,631 @@
+{
+  "code": "es",
+  "htmlLang": "es",
+  "name": "Spanish",
+  "nativeName": "Español",
+  "dir": "ltr",
+
+  "meta": {
+    "home": {
+      "title": "Grand Property — Pattaya Real Estate & Investment Apartments in Thailand",
+      "description": "Turnkey investment apartments in Pattaya, bought direct from the developer. Freehold condominium ownership for foreign buyers, flexible payment plans and full after-sales support."
+    },
+    "projects": {
+      "title": "Projects — Developer-Direct Condominiums in Pattaya | Grand Property",
+      "description": "A curated selection of developer-backed condominium projects in Pattaya and along the Eastern Seaboard, with starting prices, payment plans and completion dates."
+    },
+    "thailand": {
+      "title": "Why Thailand — Investing in Pattaya Property | Grand Property",
+      "description": "Why Thailand is a gateway to Asia, how Pattaya became one of the country's fastest-growing cities, and exactly how foreign buyers take freehold ownership."
+    },
+    "about": {
+      "title": "About — Advisory-Led Property Investment in Pattaya | Grand Property",
+      "description": "Grand Property is an advisory-led property practice in Pattaya: direct developer access, independent guidance and support that continues long after the keys change hands."
+    },
+    "search": {
+      "title": "Search Properties — Pattaya & Thailand | Grand Property",
+      "description": "Filter developer-direct apartments and villas in Thailand by location, type, price, payment plan, bedrooms and completion status."
+    },
+    "contact": {
+      "title": "Contact & Consultation | Grand Property",
+      "description": "Book a private consultation about buying investment property in Pattaya. Remote purchase supported — talk to us by call, email or WhatsApp."
+    },
+    "project": {
+      "titleSuffix": "Grand Property",
+      "descriptionPrefix": "Developer-direct apartments from"
+    }
+  },
+
+  "nav": {
+    "projects": "Proyectos",
+    "thailand": "Tailandia",
+    "invest": "Invertir",
+    "about": "Sobre nosotros",
+    "search": "Buscar",
+    "contact": "Contacto",
+    "menu": "Menú",
+    "close": "Cerrar",
+    "skip": "Ir al contenido",
+    "backToTop": "Volver arriba"
+  },
+
+  "lang": {
+    "switcher": "Language",
+    "current": "Current language",
+    "en": "English",
+    "pl": "Polski",
+    "ru": "Русский",
+    "de": "Deutsch",
+    "es": "Español",
+    "enShort": "EN",
+    "plShort": "PL",
+    "modalEyebrow": "Language",
+    "modalTitle": "Choose how you'd like to read",
+    "modalBody": "This site is published in full in both English and Polish. Pick the one you prefer — you can change it at any time from the top of any page.",
+    "modalHintPl": "It looks like Polish may suit you better.",
+    "modalPrimary": "Continue in English",
+    "modalSecondary": "Przejdź na polski",
+    "modalDismiss": "Close language chooser",
+    "remember": "We'll remember your choice on this device."
+  },
+
+  "common": {
+    "from": "From",
+    "learnMore": "Learn more",
+    "viewAll": "View all projects",
+    "viewProject": "View project details",
+    "bookCall": "Book a consultation",
+    "backToProjects": "Back to all projects",
+    "explore": "Explore",
+    "company": "Company",
+    "getInTouch": "Get in touch",
+    "enquire": "Enquire about this project",
+    "thb": "THB",
+    "sqm": "m²"
+  },
+
+  "hero": {
+    "eyebrow": "Pattaya",
+    "titleTop": "Experto en",
+    "titleBottom": "inmuebles",
+    "taglineLine1": "Conocimiento local. Asesoramiento de confianza.",
+    "taglineLine2": "Resultados premium.",
+    "role": "Consultor inmobiliario",
+    "officialPartner": "Socio oficial",
+    "ctaPrimary": "Explorar proyectos",
+    "ctaSecondary": "Reservar una consulta",
+    "scroll": "Desplazar",
+    "search": {
+      "label": "Encuentra tu propiedad",
+      "location": "Ubicación",
+      "locationPlaceholder": "¿Dónde quieres vivir?",
+      "type": "Tipo de propiedad",
+      "typeAny": "Cualquier tipo",
+      "price": "Rango de precios",
+      "priceAny": "Cualquier precio",
+      "bedrooms": "Dormitorios",
+      "bedroomsAny": "Cualquiera",
+      "submit": "Buscar propiedades",
+      "popular": "Ubicaciones populares"
+    }
+  },
+
+  "benefits": {
+    "eyebrow": "Why buy with us",
+    "title": "Four things we guarantee",
+    "items": [
+      {
+        "id": "price",
+        "title": "Best price",
+        "body": "We contract directly with the developer, so there is no brokerage commission layered onto your purchase — and the price you are quoted is the price on the reservation form."
+      },
+      {
+        "id": "turnkey",
+        "title": "Turnkey investment",
+        "body": "Apartments are handed over finished and furnished to a specification you can rent or move into immediately. No fit-out, no waiting, no second budget."
+      },
+      {
+        "id": "service",
+        "title": "Care beyond handover",
+        "body": "Our work starts at handover: rental placement, technical care, tenant continuity and, when the time comes, resale. One point of contact throughout."
+      },
+      {
+        "id": "payment",
+        "title": "Flexible payment",
+        "body": "Clear purchase guidance, careful documentation and support from reservation through handover."
+      }
+    ]
+  },
+
+  "pattaya": {
+    "eyebrow": "The location",
+    "title": "Choose a place where investing and living become the same decision",
+    "lead": "Pattaya is no longer only a resort on the Gulf of Thailand. It has become one of the country's fastest-growing cities — a coastal economy with international demand, real infrastructure behind it, and a quality of life that keeps owners coming back.",
+    "body1": "The city sits inside the Eastern Economic Corridor, Thailand's flagship development zone, and roughly two hours from Bangkok's international airport. Motorway, rail and marina projects continue to reshape the coastline, and each one shortens the distance between Pattaya and the rest of Asia.",
+    "body2": "For an owner, that combination is unusual: a holiday destination with year-round arrivals, a resident international community, and a property market where a finished sea-view apartment still costs a fraction of its European equivalent.",
+    "imageAlt": "Aerial view of Pattaya bay and its coastal skyline at dusk",
+    "stats": [
+      { "value": "EEC", "label": "Inside Thailand's Eastern Economic Corridor" },
+      { "value": "~2 h", "label": "From Bangkok's international airport" },
+      { "value": "49%", "label": "Foreign freehold quota per condominium" },
+      { "value": "12 mo", "label": "Rental season that never really closes" }
+    ],
+    "points": [
+      {
+        "title": "A city that keeps building",
+        "body": "Road, rail and marina investment under the EEC programme continues to expand the city's reach — and with it, the catchment for tenants and buyers."
+      },
+      {
+        "title": "The tropics, on your doorstep",
+        "body": "Jomtien and Pratumnak beaches, the islands off Koh Larn, national parks inland, and a climate that makes the balcony the most-used room in the apartment."
+      },
+      {
+        "title": "Visitors from everywhere",
+        "body": "Millions of international travellers pass through the region each year, from Europe, the Gulf and across Asia. That flow is what underwrites short-let occupancy."
+      },
+      {
+        "title": "A life, not just a line item",
+        "body": "Marinas, golf, international schools, private hospitals and a restaurant scene that spans street food to fine dining. People invest here and then find reasons to stay."
+      }
+    ]
+  },
+
+  "ownership": {
+    "eyebrow": "Ownership",
+    "title": "How a foreign buyer owns property in Thailand",
+    "lead": "Buying inside a condominium is the most straightforward route into the Thai market, and the one with the clearest legal footing for a foreign owner. Four steps, and none of them require you to be in the country.",
+    "imageAlt": "Architectural drawings, a brass key and a document folder on a dark desk",
+    "steps": [
+      {
+        "n": "01",
+        "title": "Buy inside the foreign quota",
+        "body": "Thai law allows up to 49% of a condominium building's saleable floor area to be registered to foreign owners. Units within that quota are available to you personally, as freehold."
+      },
+      {
+        "n": "02",
+        "title": "Send the funds from abroad",
+        "body": "The purchase money must arrive in Thailand from an overseas account in foreign currency. The receiving bank then issues the certificate that documents it — the paperwork the land office will ask for."
+      },
+      {
+        "n": "03",
+        "title": "Register at the land office",
+        "body": "Ownership is recorded in your name at the provincial Land Department and the title is issued to you. With a power of attorney, we complete this on your behalf."
+      },
+      {
+        "n": "04",
+        "title": "Hold it outright",
+        "body": "Freehold condominium title is yours indefinitely. It can be rented out, sold on, or passed to your heirs — it is not a lease and it does not expire."
+      }
+    ],
+    "factsTitle": "The essentials",
+    "facts": [
+      { "k": "Foreign quota", "v": "49% of a building" },
+      { "k": "Type of title", "v": "Freehold, not leasehold" },
+      { "k": "Source of funds", "v": "Documented from abroad" },
+      { "k": "Registration", "v": "Provincial land office" },
+      { "k": "Your presence", "v": "Optional. Remote purchase supported" }
+    ],
+    "note": "This is a plain-language summary, not legal advice. Every purchase we handle is reviewed by an independent Thai lawyer before anything is signed, and we introduce you to one at the start rather than the end.",
+    "cta": "Read the full guide"
+  },
+
+  "advantages": {
+    "eyebrow": "The investment case",
+    "title": "Why capital is moving to Thailand",
+    "lead": "Thailand offers foreign buyers a gateway to Asia, clear condominium ownership and a compelling alternative to European coastal markets.",
+    "groups": [
+      {
+        "title": "Market",
+        "items": [
+          "Value growth in a destination people want to visit",
+          "Active Asian market with real transaction volume",
+          "Attractive pricing versus European coastal markets",
+          "Diversification across currency and economic cycles"
+        ]
+      },
+      {
+        "title": "The asset",
+        "items": [
+          "Five-star grade developments, built for living",
+          "Pools, gym, sauna, co-working and 24/7 security",
+          "Turnkey finishes and furniture at handover",
+          "Rental potential for long and short stays"
+        ]
+      },
+      {
+        "title": "The process",
+        "items": [
+          "Experienced developers with completed projects",
+          "Direct purchase with no added brokerage fee",
+          "Remote legal support and power of attorney",
+          "After-sales rental management"
+        ]
+      }
+    ]
+  },
+
+  "projects": {
+    "eyebrow": "Selected projects",
+    "title": "Developments we stand behind",
+    "lead": "A short list rather than a long one. Every project here is one we have visited, whose developer we have worked with, and whose numbers we are willing to put our name to.",
+    "cta": "View all projects",
+      "labels": {
+      "from": "From",
+      "priceOnRequest": "Price on request",
+      "resale": "Resale",
+      "map": "Location map",
+      "openMap": "Open in Google Maps",
+      "completion": "Completion",
+      "location": "Location",
+      "bedrooms": "Bedrooms",
+      "size": "Sizes from",
+      "status": "Status",
+      "highlights": "Highlights",
+      "view": "View project details",
+      "floors": "Floors",
+      "units": "Units",
+      "gallery": "Gallery",
+      "viewAll": "View all {count} photos",
+      "close": "Close gallery",
+      "prev": "Previous photo",
+      "next": "Next photo",
+      "overview": "Overview",
+      "facts": "Key facts",
+      "enquire": "Enquire about this project",
+      "similar": "Other projects"
+    },
+    "page": {
+      "eyebrow": "Portfolio",
+      "title": "Current developments",
+      "lead": "Developer-direct apartments and villas across Pattaya and the Eastern Seaboard. Filter by what matters to you, or ask us to shortlist against a budget and a target yield.",
+      "filterAll": "All projects",
+      "filterReady": "Ready to move in",
+      "filterOffplan": "Under construction",
+      "count": "{n} projects",
+      "countOne": "1 project"
+    },
+    "items": {
+      "aurea-bayfront": {
+        "name": "Aurea Bayfront Residences",
+        "tagline": "Beachfront living on the Jomtien seafront",
+        "summary": "A 44-storey tower set directly on the Jomtien beachfront, with a sky pool on the fortieth floor and a residents' beach club at ground level. Every unit above the tenth floor holds an unobstructed sea view.",
+        "body": "Aurea is the developer's flagship on the southern coastline, and the last remaining beachfront plot of its size in the district. The building is arranged so that circulation sits inland and living space faces the water — a simple decision that gives almost every apartment a sea outlook rather than a side glance at one. Handover is fully furnished, and the developer's rental programme is available to owners from completion.",
+        "highlights": [
+          "Direct beachfront position",
+          "Sky pool and lounge on level 40",
+          "Fully furnished at handover"
+        ]
+      },
+      "celeste-skyline": {
+        "name": "Celeste Skyline Residences",
+        "tagline": "Panoramic bay views from Pratumnak Hill",
+        "summary": "Thirty-eight floors on the quiet side of Pratumnak Hill, looking north across the whole sweep of Pattaya Bay. Larger layouts, lower density, and a private sky lounge on the top floor.",
+        "body": "Pratumnak has long been the address for buyers who want the bay without the boulevard. Celeste takes that position and adds scale: generous one- to three-bedroom layouts, ceilings above the market standard, and a managed rental programme with a track record on the developer's two previous towers. The hill location means the view is protected by topography rather than by promises.",
+        "highlights": [
+          "Unobstructed views across Pattaya Bay",
+          "Private sky lounge and infinity edge pool",
+          "Managed rental programme available"
+        ]
+      },
+      "verdana-lagoon": {
+        "name": "Verdana Lagoon Suites",
+        "tagline": "A low-rise resort address in Na Jomtien",
+        "summary": "Completed and occupied. Eight low-rise buildings arranged around an 1,800 m² lagoon pool in Na Jomtien, a short drive south of the city and a minute from the water.",
+        "body": "Verdana is the option for a buyer who wants the asset earning now rather than in three years. The scheme is finished, the landscaping has matured, and occupancy is already established across the rental pool. Density is deliberately low — eight buildings of eight floors rather than a single tower — which is what keeps the resort feeling like a resort in high season.",
+        "highlights": [
+          "Ready to move in and already renting",
+          "1,800 m² lagoon pool at the centre of the scheme",
+          "Low-density, low-rise layout"
+        ]
+      },
+      "meridian-grand": {
+        "name": "Meridian Grand Tower",
+        "tagline": "Central Pattaya, a walk from Beach Road",
+        "summary": "Forty-one floors in the centre of the city, with a double-height sky lobby and both bay and city outlooks. The strongest short-let demand of anything in the portfolio.",
+        "body": "Location does the work here. Meridian sits within walking distance of Beach Road, Central Festival and the Walking Street end of the bay, which is precisely the catchment that drives nightly rates in high season. The developer has kept unit sizes efficient and the amenity deck generous — a combination built for rental performance rather than for the brochure.",
+        "highlights": [
+          "Walking distance to Beach Road",
+          "City and bay outlooks from level 12 up",
+          "Highest short-let demand in our portfolio"
+        ]
+      },
+      "seranai-wongamat": {
+        "name": "Seranai Wongamat Penthouses",
+        "tagline": "Ninety-six residences on the northern beach",
+        "summary": "A completed boutique tower on Wongamat Beach — the quiet northern stretch — with only ninety-six residences and duplex penthouses on the upper three floors.",
+        "body": "Wongamat is where long-term residents go when they have already tried the rest of the coast. Seranai is small by local standards and priced accordingly: fewer, larger apartments, a private beach frontage, and a service model closer to a hotel than a condominium. The upper duplexes are the largest freehold layouts we currently represent.",
+        "highlights": [
+          "Only 96 residences with private beach frontage",
+          "Duplex penthouses on the upper three floors",
+          "Completed and fully operational",
+          "Hotel-grade residents' service"
+        ]
+      },
+      "palmera-bangsaray": {
+        "name": "Palmera Bangsaray Villas",
+        "tagline": "Thirty-four private pool villas by the sea",
+        "summary": "A gated enclave of thirty-four three- and four-bedroom villas in Bangsaray, each with a private pool, twenty minutes south of Pattaya and a few hundred metres from the beach.",
+        "body": "Bangsaray is the fishing village that Pattaya's growth has not yet reached, and that is the entire appeal. Palmera is built for buyers who want land and space rather than a floor number: single-storey and duplex villas on private plots, with a residents' beach pavilion and a management company handling the villas as short-let stock when owners are away.",
+        "highlights": [
+          "Private pool with every villa",
+          "Gated enclave of only 34 homes",
+          "Beach pavilion for residents"
+        ]
+      },
+      "zenith-pattaya": {
+        "name": "ZENITH Pattaya",
+        "tagline": "A fully furnished 35 m² one-bedroom residence",
+        "summary": "A ready-to-move-in resale residence in ZENITH Pattaya, finished in a refined black, marble and cream palette with a smart one-bedroom layout.",
+        "body": "This 35 m² residence combines a polished interior, integrated kitchen, mirrored detailing and hotel-style bathrooms in one of Pattaya's established resort residences. The one-bedroom property is available for resale and can be viewed by appointment.",
+        "highlights": [
+          "Ready to move in",
+          "Fully furnished one-bedroom layout",
+          "35 m² of interior space",
+          "Premium marble finishes and fitted kitchen"
+        ]
+      },
+      "zenith-pattaya-2": {
+        "name": "Zenith Pattaya 2",
+        "tagline": "A ready-to-move-in 65 m² resort condominium near Jomtien Beach",
+        "summary": "A modern eight-storey resort condominium in the Tappraya area, planned around lagoon pools, Japanese gardens and more than 900 residences.",
+        "body": "Zenith Pattaya 2 is a ready-to-move-in 65 m² residence with convenient access to Jomtien Beach, cafés, markets and the main roads. The property is available to view by appointment, with prices currently available on request.",
+        "highlights": [
+          "Ready to move in",
+          "65 m² of interior space",
+          "Approximately 10 minutes to Jomtien Beach",
+          "Lagoon pools, Japanese gardens and resort amenities",
+          "Eight-storey low-rise development with 900+ residences"
+        ]
+      }
+    }
+  },
+
+  "about": {
+    "eyebrow": "My approach",
+    "title": "Advice first. The transaction follows.",
+    "lead": "I have spent years in the Pattaya market, and the part that matters is rarely the listing — it is knowing which developer delivers on time, which building will still rent in five years, and which deal is not worth doing.",
+    "body1": "Grand Property was built around direct developer relationships and independent advice. You get access to the same inventory at the same price you would get walking into a sales gallery yourself, without the commission layer, and with someone on your side of the table reading the contract.",
+    "body2": "Whether you are buying a sea-view apartment to rent out, moving capital out of Europe, or planning a life that starts somewhere warmer — the process should be clear, documented and calm. That is the whole job.",
+    "closing1": "Your goals set the brief.",
+    "closing2": "Let's build your position in Thailand.",
+    "cta": "Read more about us",
+    "imageAlt": "Infinity pool terrace at sunset overlooking the Gulf of Thailand",
+    "pillars": [
+      {
+        "title": "Local expertise",
+        "body": "Street-level knowledge of Pattaya's districts, developers and pricing — the things that never make it into a brochure."
+      },
+      {
+        "title": "Client focused",
+        "body": "A personal service built on transparency and long relationships, not on transaction volume."
+      },
+      {
+        "title": "Premium selection",
+        "body": "A short list of projects that meet our own standard for build quality, location and value."
+      },
+      {
+        "title": "Smart investment",
+        "body": "Guidance grounded in yields, exit routes and real occupancy data, so the numbers hold up."
+      }
+    ],
+    "page": {
+      "eyebrow": "About",
+      "title": "A property practice, not a listings site",
+      "lead": "Grand Property advises international buyers on acquiring, holding and eventually selling residential property in Thailand. We work with a small number of developers, a short list of projects, and clients who intend to keep the asset.",
+      "storyTitle": "Why we exist",
+      "story1": "Most people arrive in Pattaya's property market through a search engine and a sales gallery, in that order. They are shown whatever is paying the highest commission that month, told the yield figure that closes fastest, and left alone the day the transfer completes. It works — for everyone except the buyer.",
+      "story2": "Grand Property was set up to invert that. We contract directly with developers, so our income does not depend on which building you choose. We put an independent Thai lawyer in front of you before you sign anything. And we stay involved after handover, because a rental apartment that nobody manages is not an investment, it is an expense.",
+      "missionTitle": "What we're for",
+      "mission": "To make owning property in Thailand as considered, documented and unremarkable as owning property at home — for buyers who are doing it from four thousand miles away.",
+      "expertiseTitle": "Market expertise",
+      "expertise1": "We track completions, handover delays, resale prices and rental occupancy across the districts we sell in. That record is what lets us tell you which project is worth a four-year payment plan and which one is worth walking away from.",
+      "expertise2": "It also means we can be specific. Not 'strong rental demand', but what a two-bedroom on that street actually achieved last high season, and what it sat empty for in May.",
+      "philosophyTitle": "How we work with clients",
+      "philosophy": [
+        {
+          "title": "We start with the brief, not the inventory",
+          "body": "Budget, timeframe, whether this is a yield play or a future home, and what you would need to see to walk away. The shortlist comes after that conversation."
+        },
+        {
+          "title": "Everything in writing",
+          "body": "Reservation terms, payment schedule, what is included at handover, and what happens if the developer is late. In your language, before any money moves."
+        },
+        {
+          "title": "Independent legal review",
+          "body": "A Thai lawyer who is not paid by the developer reads the contract and confirms the unit sits inside the foreign quota."
+        },
+        {
+          "title": "We are still here in year three",
+          "body": "Rental placement, maintenance, tax filing support and resale. The relationship is meant to outlast the transaction."
+        }
+      ],
+      "consultantTitle": "Eryk Fokt",
+      "consultantRole": "Founder & Real Estate Consultant",
+      "consultantBody": "Based in Pattaya and working with buyers across Europe and Asia. Fluent in the practical detail of Thai property — the quota, the transfer, the tax, the management contract — and blunt about the deals that do not stack up."
+    }
+  },
+
+  "thailand": {
+    "hero": {
+      "eyebrow": "Thailand",
+      "title": "A gateway to Asia",
+      "lead": "Strategically placed at the centre of Southeast Asia, with an open condominium market, a deep tourism economy and a currency cycle that runs independently of Europe. If you are looking for somewhere to invest, protect capital outside the eurozone, or make a genuine change of life, this is a region that offers all three at once.",
+      "imageAlt": "Aerial view of a tropical Thai coastline at golden hour"
+    },
+    "whyTitle": "Why Thailand",
+    "why": [
+      {
+        "title": "Strategic position",
+        "body": "Bangkok is within a few hours' flight of every major market in the region — Singapore, Hong Kong, Kuala Lumpur, Ho Chi Minh City, and onward to China and India. Thailand is where Asia connects."
+      },
+      {
+        "title": "An economy built on arrivals",
+        "body": "Tens of millions of international visitors a year sustain a hospitality and rental economy that very few property markets can match at this price level."
+      },
+      {
+        "title": "An open market for foreign buyers",
+        "body": "The Condominium Act gives foreign nationals a clear, registered route to freehold apartment ownership. No company structure, no nominee, no workaround."
+      },
+      {
+        "title": "Capital outside Europe",
+        "body": "A hard asset in a different currency, a different regulatory regime and a different economic cycle — the practical definition of diversification."
+      }
+    ],
+    "climateTitle": "The investment climate",
+    "climate1": "Thailand's Eastern Economic Corridor — the industrial and infrastructure programme covering Chonburi, Rayong and Chachoengsao — has channelled sustained public and private investment into exactly the stretch of coast where Pattaya sits. High-speed rail, airport expansion and motorway upgrades are the visible part of it.",
+    "climate2": "For a property owner the effect is indirect but real: better connections mean more residents, more corporate tenants and more weekend arrivals from Bangkok. Infrastructure is slow, but it is the most reliable thing a coastal market can have behind it.",
+    "lifestyleTitle": "Lifestyle and tourism",
+    "lifestyle1": "The everyday case is simpler. Warm water eleven months of the year, islands within an hour of the shore, private healthcare at a fraction of European cost, international schools, golf, marinas, and food that ranges from a hundred-baht plate on the street to a tasting menu on the fortieth floor.",
+    "lifestyle2": "Cost of living remains low relative to Western Europe, and the residency and long-stay visa options available to retirees, remote workers and investors have widened considerably in recent years.",
+    "ctaTitle": "Ready to look at specifics?",
+    "ctaBody": "Tell us the budget, the horizon and whether this is a yield decision or a life decision. We will come back with a shortlist and the numbers behind it.",
+    "ctaButton": "Book a consultation"
+  },
+
+  "search": {
+    "eyebrow": "Search",
+    "title": "Find your property",
+    "lead": "Filter the portfolio by location, type, budget, payment plan, bedrooms and build status. Every result is developer-direct, with no commission added to the price.",
+    "filters": "Filters",
+    "location": "Location",
+    "type": "Property type",
+    "price": "Price range",
+    "plan": "Payment plan",
+    "bedrooms": "Bedrooms",
+    "status": "Availability",
+    "any": "Any",
+    "anyLocation": "Any location",
+    "anyType": "Any type",
+    "anyPrice": "Any price",
+    "anyPlan": "Any plan",
+    "anyBedrooms": "Any",
+    "anyStatus": "Any",
+    "apply": "Show results",
+    "reset": "Reset filters",
+    "results": "Results",
+    "resultCount": "{n} properties match",
+    "resultCountOne": "1 property matches",
+    "empty": "Nothing matches that combination yet.",
+    "emptyBody": "Our portfolio is deliberately short, and new releases arrive most months. Widen a filter, or tell us the brief and we will source against it directly.",
+    "emptyCta": "Send us your brief",
+    "sort": "Sort by",
+    "sortFeatured": "Featured",
+    "sortPriceAsc": "Price: low to high",
+    "sortPriceDesc": "Price: high to low"
+  },
+
+  "contact": {
+    "eyebrow": "Consultation",
+    "title": "Start with a conversation",
+    "lead": "No brochure dump and no pressure. A call to understand what you are trying to achieve, followed by a shortlist that reflects it — or an honest answer that now is not the moment.",
+    "formTitle": "Tell us what you're looking for",
+    "form": {
+      "name": "Full name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "you@example.com",
+      "phone": "Phone or WhatsApp",
+      "phonePlaceholder": "Optional",
+      "budget": "Budget",
+      "budgetPlaceholder": "Select a range",
+      "interest": "I'm interested in",
+      "interestOptions": [
+        "An investment apartment",
+        "A home or retirement property",
+        "Both — I'm still deciding",
+        "General market advice"
+      ],
+      "message": "Anything else",
+      "messagePlaceholder": "Timeframe, preferred district, questions about ownership rules…",
+      "consent": "I agree to be contacted about my enquiry.",
+      "submit": "Request a consultation",
+      "sending": "Sending…",
+      "success": "Thank you — your enquiry has been recorded. We reply to every message personally, usually within one working day.",
+      "error": "Something went wrong. Please email us directly and we'll pick it up from there.",
+      "required": "Required"
+    },
+    "directTitle": "Or reach us directly",
+    "whatsapp": "Message on WhatsApp",
+    "chooseWhatsapp": "Select a WhatsApp number",
+    "emailUs": "Email us",
+    "callUs": "Call us",
+    "hours": "Consultations by appointment, Monday to Saturday, Indochina Time (GMT+7).",
+    "remote": "Buying from abroad? The entire purchase can be completed remotely under power of attorney. Most of our clients sign before they ever see the building in person.",
+    "trust": [
+      "Direct developer pricing, no brokerage commission",
+      "Independent Thai legal review before you sign",
+      "Support that continues after handover"
+    ]
+  },
+
+  "cta": {
+    "eyebrow": "Next step",
+    "title": "Choose a place where investment and life become a pleasure",
+    "body": "Tell us what you want the money to do. We will tell you honestly whether Pattaya is the right place to do it.",
+    "primary": "Book a consultation",
+    "secondary": "Browse the portfolio"
+  },
+
+  "footer": {
+  "tagline": "Advisory-led property investment in Pattaya, Thailand. Direct developer access, freehold condominium ownership for foreign buyers, and support that continues after handover.",
+  "explore": "Explore",
+  "company": "Company",
+  "contact": "Contact",
+  "language": "Language",
+  "officialPartner": "Official Partner",
+  "rights": "All rights reserved.",
+    "legal": {
+      "privacy": "Privacy",
+      "terms": "Terms"
+    }
+  },
+
+  "notFound": {
+    "code": "404",
+    "title": "This page has moved on",
+    "body": "The address you followed doesn't exist any more. The portfolio is the best place to pick the thread back up.",
+    "primary": "Go to the homepage",
+    "secondary": "View projects"
+  },
+
+  "values": {
+    "locations": {
+      "pattaya": "Central Pattaya",
+      "jomtien": "Jomtien",
+      "pratumnak": "Pratumnak Hill",
+      "najomtien": "Na Jomtien",
+      "bangsaray": "Bangsaray",
+      "wongamat": "Wongamat"
+    },
+    "types": {
+      "condo": "Condominium",
+      "penthouse": "Penthouse",
+      "villa": "Villa",
+      "townhouse": "Townhouse"
+    },
+    "bedrooms": {
+      "studio": "Studio",
+      "1": "1 bedroom",
+      "2": "2 bedrooms",
+      "3": "3 bedrooms",
+      "4plus": "4+ bedrooms"
+    },
+    "bedroomsShort": {
+      "studio": "Studio",
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4plus": "4+"
+    },
+    "statuses": {
+      "ready": "Ready to move in",
+      "offplan": "Under construction"
+    },
+    "priceBands": {
+      "p1": "Under ฿4M",
+      "p2": "฿4M – ฿7M",
+      "p3": "฿7M – ฿12M",
+      "p4": "฿12M and above"
+    }
+  }
+}

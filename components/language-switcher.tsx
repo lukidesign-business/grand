@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { ChevronDown } from 'lucide-react';
 
 import { locales, type Locale, LANG_COOKIE } from '@/lib/i18n/config';
 import { cn } from '@/lib/utils';
@@ -28,31 +29,39 @@ interface LanguageSwitcherProps {
 export function LanguageSwitcher({ locale, labels, className }: LanguageSwitcherProps) {
   const pathname = usePathname();
 
+  const names: Record<Locale, string> = {
+    en: labels.en || 'English',
+    pl: labels.pl || 'Polski',
+    ru: labels.ru || 'Русский',
+    de: labels.de || 'Deutsch',
+    es: labels.es || 'Español'
+  };
+  const activeName = names[locale];
+
   return (
-    <div className={cn('inline-flex items-center overflow-hidden border border-line', className)}>
-      {locales.map((code, index) => {
-        const active = code === locale;
-        return (
+    <details className={cn('group relative', className)}>
+      <summary className="flex cursor-pointer list-none items-center gap-1.5 border border-line px-3 py-1.5 text-[0.68rem] uppercase tracking-[0.14em] text-muted transition-colors hover:border-gold hover:text-gold-bright [&::-webkit-details-marker]:hidden">
+        <span>{activeName}</span>
+        <ChevronDown className="size-3.5 transition-transform group-open:rotate-180" />
+      </summary>
+      <div className="absolute right-0 top-[calc(100%+0.45rem)] z-50 min-w-36 border border-line bg-ink-2 p-1.5 shadow-2xl">
+        {locales.map((code) => (
           <Link
             key={code}
             href={swapLocale(pathname, code)}
             hrefLang={code}
             lang={code}
-            aria-current={active ? 'true' : undefined}
+            aria-current={code === locale ? 'page' : undefined}
             onClick={() => rememberLocale(code)}
             className={cn(
-              'px-3 py-1.5 text-[0.68rem] uppercase tracking-[0.14em] transition-colors duration-300',
-              index > 0 && 'border-l border-line',
-              active
-                ? 'bg-[linear-gradient(135deg,#d8b26d,#b98f45)] font-medium text-[var(--fixed-ink)]'
-                : 'text-muted hover:bg-gold/8 hover:text-gold-bright'
+              'block px-3 py-2 text-left text-[0.68rem] uppercase tracking-[0.12em] transition-colors',
+              code === locale ? 'bg-gold text-[var(--fixed-ink)]' : 'text-muted hover:bg-gold/10 hover:text-gold-bright'
             )}
           >
-            <span aria-hidden="true">{labels[`${code}Short`]}</span>
-            <span className="sr-only">{labels[code]}</span>
+            {names[code]}
           </Link>
-        );
-      })}
-    </div>
+        ))}
+      </div>
+    </details>
   );
 }
