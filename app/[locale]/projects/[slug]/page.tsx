@@ -9,6 +9,7 @@ import { Rule } from '@/components/ui/section-head';
 import { ProjectCard } from '@/components/project-card';
 import { ProjectGallery } from '@/components/project-gallery';
 import { PropertyPdfPreview, PropertyVideo } from '@/components/property-media-previews';
+import { PropertyLocationFallback } from '@/components/property-location-fallback';
 import { WhatsAppSelector } from '@/components/whatsapp-selector';
 import { CtaBand } from '@/components/sections';
 import { BRAND, PROJECTS, formatPrice, getProject, href } from '@/lib/site';
@@ -92,17 +93,23 @@ export default async function ProjectPage({
   return (
     <>
       <section className="on-photo relative isolate overflow-hidden pb-[clamp(3rem,6vw,5rem)] pt-[clamp(9rem,17vh,12rem)]">
-        <div aria-hidden="true" className="absolute inset-0 -z-10">
-          <Image
-            src={project.image.startsWith('http') || project.image.startsWith('/') ? project.image : `/images/${project.image}`}
-            alt=""
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover"
-            unoptimized={project.image.startsWith('http://') || project.image.startsWith('https://')}
-          />
-          <span className="page-scrim absolute inset-0" />
+        <div className="absolute inset-0 -z-10">
+          {project.image && !project.image.startsWith('/placeholder.svg') ? (
+            <>
+              <Image
+                src={project.image.startsWith('http') || project.image.startsWith('/') ? project.image : `/images/${project.image}`}
+                alt=""
+                fill
+                priority
+                sizes="100vw"
+                className="object-cover"
+                unoptimized={project.image.startsWith('http://') || project.image.startsWith('https://')}
+              />
+              <span aria-hidden="true" className="page-scrim absolute inset-0" />
+            </>
+          ) : (
+            <PropertyLocationFallback location={`${dict.values.locations[project.location]}, ${BRAND.country}`} mapUrl={project.mapUrl ?? `https://maps.google.com/?q=${encodeURIComponent(project.location)}`} />
+          )}
         </div>
 
         <div className="shell max-w-[44rem]">
