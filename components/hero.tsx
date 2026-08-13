@@ -115,7 +115,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
         </div>
       </div>
 
-      <div className="shell relative z-[90] mt-7 md:-mt-[clamp(0.5rem,1.5vh,1.25rem)]">
+      <div className="shell relative z-[90] mt-7 md:mt-[clamp(2rem,5vh,3.5rem)]">
         <HeroSearch locale={locale} dict={dict} />
       </div>
     </section>
