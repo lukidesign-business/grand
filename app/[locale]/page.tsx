@@ -35,7 +35,7 @@ export async function generateMetadata({
       type: 'website',
       title: dict.meta.home.title,
       description: dict.meta.home.description,
-      images: [{ url: '/images/grand-logo.png', width: 998, height: 966, alt: 'Grand Property logo' }]
+      images: [{ url: 'https://grand-properties.com/images/grand-logo.png', width: 998, height: 966, alt: 'Grand Property logo' }]
     },
     twitter: {
       card: 'summary',
