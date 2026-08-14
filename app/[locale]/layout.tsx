@@ -28,19 +28,25 @@ export async function generateMetadata({
   const dict = getDictionary(locale);
 
   return {
-    // Makes relative OG/canonical URLs resolve. Set NEXT_PUBLIC_SITE_URL in prod.
-    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'),
+    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://grand-properties.com'),
     title: dict.meta.home.title,
     description: dict.meta.home.description,
     applicationName: BRAND.name,
-    icons: { icon: '/images/emblem-sm.png', apple: '/images/emblem.png' },
+    icons: {
+      icon: '/images/grand-logo.png',
+      shortcut: '/images/grand-logo.png',
+      apple: '/images/grand-logo.png'
+    },
     openGraph: {
       type: 'website',
       siteName: BRAND.name,
       locale: locale === 'pl' ? 'pl_PL' : 'en_GB',
-      images: ['/images/pattaya-aerial.jpg']
+      images: [{ url: '/images/grand-logo.png', width: 998, height: 966, alt: 'Grand Property logo' }]
     },
-    twitter: { card: 'summary_large_image' }
+    twitter: {
+      card: 'summary',
+      images: ['/images/grand-logo.png']
+    }
   };
 }
 

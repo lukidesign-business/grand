@@ -19,7 +19,7 @@ const jost = Jost({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://grand-properties.com'),
   title: 'Grand Property',
   description: 'Premium real estate advisory in Thailand',
   icons: {
@@ -35,13 +35,13 @@ export const metadata: Metadata = {
     siteName: 'Grand Property',
     title: 'Grand Property',
     description: 'Premium real estate advisory in Thailand',
-    images: [{ url: '/images/grand-logo.png', width: 998, height: 966, alt: 'Grand Property logo' }]
+    images: [{ url: 'https://grand-properties.com/images/grand-logo.png', width: 998, height: 966, alt: 'Grand Property logo' }]
   },
   twitter: {
     card: 'summary',
     title: 'Grand Property',
     description: 'Premium real estate advisory in Thailand',
-    images: ['/images/grand-logo.png']
+    images: ['https://grand-properties.com/images/grand-logo.png']
   }
 };
 
