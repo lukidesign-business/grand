@@ -131,9 +131,19 @@ export function SiteFooter({ locale, dict }: { locale: Locale; dict: Dictionary 
                   </div>
                 </div>
               ))}
-              <div className="flex items-center gap-4 md:justify-end">
-                <div><span className="block text-[0.68rem] uppercase tracking-luxer text-gold">{footer.officialPartner}</span><span className="mt-1 block text-[0.8rem] text-muted">{OFFICIAL_PARTNER.name}</span></div>
-                <Image src={OFFICIAL_PARTNER.mark} alt={OFFICIAL_PARTNER.name} width={112} height={112} className="size-24 opacity-95" />
+              <div className="flex items-center justify-between gap-5 md:justify-end">
+                <Image
+                  src="/images/partners/grand-solaire-team.jpg"
+                  alt="Grand Solaire team"
+                  width={96}
+                  height={96}
+                  className="size-20 shrink-0 rounded-full border border-line-soft object-cover"
+                />
+                <div className="min-w-0">
+                  <span className="block text-[0.68rem] uppercase tracking-luxer text-gold">{footer.officialPartner}</span>
+                  <span className="mt-1 block text-[0.8rem] text-muted">{OFFICIAL_PARTNER.name}</span>
+                </div>
+                <Image src={OFFICIAL_PARTNER.mark} alt={OFFICIAL_PARTNER.name} width={112} height={112} className="size-24 shrink-0 opacity-95" />
               </div>
             </div>
           </div>
